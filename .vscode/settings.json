@@ -1,0 +1,87 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "workbench.localHistory.exclude": {
+    "**/pnpm-lock.yaml": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/._*": true,
+    "**/.turbo/": true,
+    ".vscode": true,
+    "**/next-env.d.ts": true
+  },
+  "workbench.editor.highlightModifiedTabs": true,
+  "explorer.sortOrder": "type",
+  "files.trimFinalNewlines": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.turbo": true,
+    "**/.next": true,
+    "**/.angular": true,
+    "**/.stencil": true,
+    "**/.vscode": true,
+    "**/build": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/storybook-static": true,
+    "**/out": true
+  },
+  "search.exclude": {
+    "**/.git": true,
+    "**/.turbo": true,
+    "**/.next": true,
+    "**/.angular": true,
+    "**/.stencil": true,
+    "**/.vscode": true,
+    "**/build": true,
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/storybook-static": true,
+    "**/out": true
+  },
+  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.statusBar.visible": true,
+  "workbench.editor.enablePreview": false,
+  "javascript.format.enable": false,
+  "typescript.format.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.paths": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#e4db32",
+    "activityBar.background": "#e4db32",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#16a9a2",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#e4db32",
+    "statusBar.background": "#c9c01a",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#9c9514",
+    "statusBarItem.remoteBackground": "#c9c01a",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#c9c01a",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#c9c01a99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "peacock.color": "#c9c01a",
+
+  // Formatters
+  "editor.defaultFormatter": "biomejs.biome",
+
+  // Use Prettier for specific file types
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

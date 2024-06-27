@@ -1,0 +1,27 @@
+{
+  "name": "ui-stencil-vue",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "dist/plugin.js",
+  "scripts": {
+    "build": "npm run tsc",
+    "clean": "rm -rf node_modules .turbo",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc -p ."
+  },
+  "types": "dist/plugin.d.ts",
+  "dependencies": {
+    "ui-stencil": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.2",
+    "vue": "^3.4.30"
+  },
+  "keywords": [],
+  "publishConfig": {
+    "access": "public"
+  }
+}

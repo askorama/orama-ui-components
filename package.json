@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "stencil-design-system",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "dev": "turbo run dev --filter=ui-stencil --filter=storybook",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint",
+    "maintenance": "turbo run maintenance"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@turbo/gen": "^2.0.5",
+    "eslint": "^9.5.0",
+    "eslint-config-custom": "workspace:*",
+    "eslint-plugin-html": "^8.1.1",
+    "prettier": "^3.3.2",
+    "turbo": "^2.0.5"
+  },
+  "packageManager": "pnpm@7.15.0"
+}

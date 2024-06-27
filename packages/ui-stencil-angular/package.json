@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "ui-stencil-angular",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "npx -p @angular/cli ng build component-library",
+    "clean": "rm -rf node_modules .turbo",
+    "ng": "ng",
+    "start": "ng serve",
+    "test": "ng test",
+    "watch": "ng build --watch --configuration development"
+  },
+  "dependencies": {
+    "@angular/animations": "^18.0.5",
+    "@angular/common": "^18.0.5",
+    "@angular/compiler": "^18.0.5",
+    "@angular/core": "^18.0.5",
+    "@angular/forms": "^18.0.5",
+    "@angular/platform-browser": "^18.0.5",
+    "@angular/platform-browser-dynamic": "^18.0.5",
+    "@angular/router": "^18.0.5",
+    "rxjs": "~7.8.1",
+    "tslib": "^2.6.3",
+    "ui-stencil": "workspace:*",
+    "zone.js": "~0.14.7"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.0.6",
+    "@angular/cli": "~18.0.6",
+    "@angular/compiler-cli": "^18.0.5",
+    "karma": "~6.4.3",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.1",
+    "ng-packagr": "^18.0.0",
+    "typescript": "^5.5.2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "demo-vue",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vue-tsc && vite build",
+    "clean": "rm -rf node_modules .turbo dist",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "ui-stencil-vue": "workspace:*",
+    "vue": "^3.4.30"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1",
+    "vue-tsc": "^2.0.22"
+  }
+}

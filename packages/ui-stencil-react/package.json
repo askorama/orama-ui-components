@@ -1,0 +1,32 @@
+{
+  "name": "ui-stencil-react",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run tsc",
+    "clean": "rm -rf node_modules .turbo",
+    "test": "node ./__tests__/react-library.test.js",
+    "tsc": "tsc -p . --outDir ./dist"
+  },
+  "types": "dist/types/index.d.ts",
+  "dependencies": {
+    "ui-stencil": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.5.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
