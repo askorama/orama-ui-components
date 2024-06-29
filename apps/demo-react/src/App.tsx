@@ -1,5 +1,7 @@
 import './App.css'
-import { defineCustomElements } from 'ui-stencil-react'
+import { defineCustomElements, SearchBox } from 'ui-stencil-react'
+
+// import {} from 'ui-stencil-react'
 
 void defineCustomElements()
 
@@ -13,7 +15,9 @@ function App() {
 
         <section>
           <h2>Stencil Components</h2>
-          <div className="component-row">{/* <MyButton></MyButton> */}</div>
+          <div className="component-row">
+            <SearchBox theme={{ colors: { light: { primaryColor: 'red' }, dark: { primaryColor: '#fff' } } }} />
+          </div>
         </section>
       </main>
     </>

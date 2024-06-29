@@ -7,6 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface SearchBox {
+        "color": 'dark' | 'light' | 'system';
+        "theme": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
 }
 declare global {
@@ -22,6 +24,8 @@ declare global {
 }
 declare namespace LocalJSX {
     interface SearchBox {
+        "color"?: 'dark' | 'light' | 'system';
+        "theme"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface IntrinsicElements {
         "search-box": SearchBox;

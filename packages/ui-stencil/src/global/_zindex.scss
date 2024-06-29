@@ -1,0 +1,7 @@
+$zindex: 'tag', 'menu', 'popoverSupport', 'header', 'configurator';
+
+$zindex-header: index($zindex, 'header') * 10;
+$zindex-popoverSupport: index($zindex, 'popoverSupport') * 10;
+$zindex-tag: index($zindex, 'tag') * 10;
+$zindex-menu: index($zindex, 'menu') * 10;
+$zindex-configurator: index($zindex, 'configurator') * 10;

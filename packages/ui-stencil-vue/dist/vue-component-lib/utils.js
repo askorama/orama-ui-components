@@ -1,4 +1,4 @@
-import { defineComponent, getCurrentInstance, h, inject, ref } from 'vue';
+import { defineComponent, getCurrentInstance, h, inject, ref, withDirectives } from 'vue';
 const UPDATE_VALUE_EVENT = 'update:modelValue';
 const MODEL_VALUE = 'modelValue';
 const ROUTER_LINK_VALUE = 'routerLink';
@@ -14,7 +14,7 @@ const getElementClasses = (ref, componentClasses, defaultClasses = []) => {
     var _a;
     return [...Array.from(((_a = ref.value) === null || _a === void 0 ? void 0 : _a.classList) || []), ...defaultClasses].filter((c, i, self) => !componentClasses.has(c) && self.indexOf(c) === i);
 };
-export const defineContainer = (name, defineCustomElement, componentProps = [], modelProp, modelUpdateEvent, externalModelUpdateEvent) => {
+export const defineContainer = (name, defineCustomElement, componentProps = [], modelProp, modelUpdateEvent) => {
     if (defineCustomElement !== undefined) {
         defineCustomElement();
     }
@@ -23,19 +23,18 @@ export const defineContainer = (name, defineCustomElement, componentProps = [], 
         let modelPropValue = props[modelProp];
         const containerRef = ref();
         const classes = new Set(getComponentClasses(attrs.class));
-        const onVnodeBeforeMount = (vnode) => {
-            if (vnode.el) {
+        const vModelDirective = {
+            created: (el) => {
                 const eventsNames = Array.isArray(modelUpdateEvent) ? modelUpdateEvent : [modelUpdateEvent];
                 eventsNames.forEach((eventName) => {
-                    vnode.el.addEventListener(eventName.toLowerCase(), (e) => {
-                        modelPropValue = (e === null || e === void 0 ? void 0 : e.target)[modelProp];
-                        emit(UPDATE_VALUE_EVENT, modelPropValue);
-                        if (externalModelUpdateEvent) {
-                            emit(externalModelUpdateEvent, e);
+                    el.addEventListener(eventName.toLowerCase(), (e) => {
+                        if (e.target.tagName === el.tagName) {
+                            modelPropValue = (e === null || e === void 0 ? void 0 : e.target)[modelProp];
+                            emit(UPDATE_VALUE_EVENT, modelPropValue);
                         }
                     });
                 });
-            }
+            },
         };
         const currentInstance = getCurrentInstance();
         const hasRouter = (_a = currentInstance === null || currentInstance === void 0 ? void 0 : currentInstance.appContext) === null || _a === void 0 ? void 0 : _a.provides[NAV_MANAGER];
@@ -76,7 +75,6 @@ export const defineContainer = (name, defineCustomElement, componentProps = [], 
                 ref: containerRef,
                 class: getElementClasses(containerRef, classes),
                 onClick: handleClick,
-                onVnodeBeforeMount: modelUpdateEvent ? onVnodeBeforeMount : undefined,
             };
             for (const key in props) {
                 const value = props[key];
@@ -92,7 +90,8 @@ export const defineContainer = (name, defineCustomElement, componentProps = [], 
                     propsToAdd = Object.assign(Object.assign({}, propsToAdd), { [modelProp]: modelPropValue });
                 }
             }
-            return h(name, propsToAdd, slots.default && slots.default());
+            const node = h(name, propsToAdd, slots.default && slots.default());
+            return modelProp === undefined ? node : withDirectives(node, [[vModelDirective]]);
         };
     });
     if (typeof Container !== 'function') {
@@ -105,7 +104,7 @@ export const defineContainer = (name, defineCustomElement, componentProps = [], 
         });
         if (modelProp) {
             Container.props[MODEL_VALUE] = DEFAULT_EMPTY_PROP;
-            Container.emits = [UPDATE_VALUE_EVENT, externalModelUpdateEvent];
+            Container.emits = [UPDATE_VALUE_EVENT];
         }
     }
     return Container;

@@ -1,0 +1,21 @@
+$base: 8;
+
+$spacing3XS: rem-value($base * 0.25); // 2px
+$spacingXXS: rem-value($base * 0.5); // 4px
+$spacingXS: rem-value($base); // 8px
+$spacingSM: rem-value($base * 1.5); // 8px
+$spacingS: rem-value($base * 2); // 16px
+$spacingM: rem-value($base * 3); // 24px
+$spacingL: rem-value($base * 4); // 32px
+$spacingXL: rem-value($base * 5); // 40px
+$spacingXXL: rem-value($base * 6); // 48px
+$spacing3XL: rem-value($base * 7); // 56px
+$spacing4XL: rem-value($base * 8); // 64px
+$spacing5XL: rem-value($base * 9); // 72px
+$spacing6XL: rem-value($base * 10); // 80px
+$spacing7XL: rem-value($base * 11); // 88px
+$spacing8XL: rem-value($base * 12); // 96px
+$spacing9XL: rem-value($base * 13); // 104px
+$spacing10XL: rem-value($base * 14); // 112px
+$spacing11XL: rem-value($base * 15); // 120px
+$spacing12XL: rem-value($base * 16); // 128px

@@ -25,6 +25,7 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@stencil/core": "^4.19.0",
+    "@stencil/sass": "^3.0.12",
     "@stencil/store": "^2.0.16"
   },
   "devDependencies": {

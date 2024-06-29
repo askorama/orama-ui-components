@@ -1,0 +1,42 @@
+$grid-breakpoints: (
+  xs: 480px,
+  sm: 768px,
+  md: 1024px,
+  lg: 1200px,
+  xl: 1400px
+);
+
+// MOBILE DEVICES
+$xs: map($grid-breakpoints, xs);
+
+// IPAD, TABLETS
+$sm: map($grid-breakpoints, sm);
+
+// SMALL SCREEN, LAPTOPS
+$md: map($grid-breakpoints, md);
+
+// EXTRA LARGE SCREENS, TV
+$lg: map($grid-breakpoints, lg);
+
+// EXTRA LARGE SCREENS, TV
+$xl: map($grid-breakpoints, xl);
+
+/* TABLET PORTRAIT */
+@custom-media --xs-min (width > #{$xs});
+@custom-media --xs-only (#{$xs} < width <= #{$sm});
+@custom-media --xs-max (width <= #{$xs});
+
+@custom-media --sm-min (width > #{$sm});
+@custom-media --sm-only (#{$sm} < width <= #{$md});
+@custom-media --sm-max (width <= #{$sm});
+
+@custom-media --md-min (width > #{$md});
+@custom-media --md-only (#{$md} < width <= #{$lg});
+@custom-media --md-max (width <= #{$md});
+
+@custom-media --lg-min (width > #{$lg});
+@custom-media --lg-only (#{$lg} < width <= #{$xl});
+@custom-media --lg-max (width <= #{$lg});
+
+@custom-media --xl-min (width > #{$xl});
+@custom-media --xl-max (width <= #{$xl});

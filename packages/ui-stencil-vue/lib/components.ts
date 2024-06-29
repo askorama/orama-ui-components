@@ -8,5 +8,8 @@ import type { JSX } from 'ui-stencil';
 
 
 
-export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined);
+export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined, [
+  'theme',
+  'color'
+]);
 

@@ -8,13 +8,14 @@ import { Components } from 'ui-stencil';
 
 
 @ProxyCmp({
+  inputs: ['color', 'theme']
 })
 @Component({
   selector: 'search-box',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['color', 'theme'],
 })
 export class SearchBox {
   protected el: HTMLElement;

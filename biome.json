@@ -15,7 +15,7 @@
     "enabled": true,
     "rules": {
       "nursery": {
-        "noConsole": "error"
+        "noConsole": "off"
       },
       "recommended": true,
       "a11y": { "noAutofocus": "off" },
