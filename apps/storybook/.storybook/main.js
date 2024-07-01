@@ -22,13 +22,12 @@ const config = {
     getAbsolutePath("@storybook/addon-designs"),
     getAbsolutePath("@storybook/addon-themes"),
     getAbsolutePath("@storybook/addon-a11y"),
+    "@chromatic-com/storybook"
   ],
   framework: {
     name: getAbsolutePath("@storybook/html-vite"),
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
+  docs: {},
 };
 export default config;
