@@ -1,4 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core'
+import cssCustomProperties from '../../config/colors';
 
 @Component({
   tag: 'search-box',
@@ -10,11 +11,10 @@ export class SearchBox {
   @Prop() color: 'dark' | 'light' | 'system'
 
   render() {
-    console.log(this.theme)
-
+    console.log('***vars 1***', cssCustomProperties, typeof cssCustomProperties)
     return (
       <Host>
-        {/* <style>{`:host { --primary-color: ${this.theme?.colors?.light?.primaryColor}; }`}</style> */}
+        <style>{`:host { --primary-color: ${this.theme?.colors?.light?.primaryColor}; }`}</style>
 
         <div>This is the searchbox</div>
 

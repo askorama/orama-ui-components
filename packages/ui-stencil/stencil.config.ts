@@ -1,5 +1,8 @@
 import type { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
+import postcss from 'postcss'
+import postcssImport from 'postcss-import'
+import scssVariable from 'rollup-plugin-sass-variables'
 import { reactOutputTarget } from '@stencil/react-output-target'
 import { angularOutputTarget } from '@stencil/angular-output-target'
 import { vueOutputTarget } from '@stencil/vue-output-target'
@@ -9,7 +12,7 @@ const componentCorePackage = namespace
 
 export const config: Config = {
   namespace,
-  globalStyle: 'src/global/global.css',
+  globalStyle: 'src/globals/global.css',
   outputTargets: [
     {
       type: 'dist',
@@ -44,7 +47,10 @@ export const config: Config = {
   },
   plugins: [
     sass({
-      injectGlobalPaths: ['src/global/tokens.scss']
-    })
+      injectGlobalPaths:
+      [
+        'src/globals/tokens.scss'
+      ]
+    }),
   ]
 }

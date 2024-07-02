@@ -20,10 +20,6 @@
 }
 
 /* ===BACKGROUND COLOR FUNCTION=== */
-@function bg-color($role: 'primary', $palette: $palette) {
-  @return palette('background', $role, $palette);
-}
-
 @function background-color($role: 'primary', $palette: $palette) {
   @return palette('background', $role, $palette);
 }
@@ -76,7 +72,7 @@
 /**
  * Sassy functions to get the rem equivalent of a px value
  * preset-css-env will take care of fallback for older browsers
- * !NOTE: you only need to change the $rem-baseline value if your base size 
+ * !NOTE: you only need to change the $rem-baseline value if your base size
  * is different from 10px (use _var_typography.scss in case)
  * @param value is referred to px, pass the unitless value
  * Credits: Rowan Manning
@@ -88,7 +84,7 @@
   @if type-of($value) == "number" {
     /* Return rem value */
     $val: #{calc($value / $rem-base)}rem;
-    
+
     @return #{calc($value / $rem-base)}rem;
   }
   /* Non-numeric value, just return */

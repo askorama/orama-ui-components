@@ -1,0 +1,64 @@
+// ### PRIMARY COLORS //
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+:export {
+  primary-color: $primary-color;
+  secondary-color: $secondary-color;
+}
+
+/**
+ * in order to use one of the colors included in the palette map,
+ *  use the functions text-color(key), bg-color(key), border-color(key)
+ * ie: text-color('primary')
+ */
+//  $palette: (
+//   text: (
+//     primary: $gray50,
+//     secondary: $gray900,
+//     tertiary: $bluegray400,
+//     accent: $purple700,
+//     inactive: $gray700,
+//     reverse: $purplegray500,
+//     info: $blue700,
+//     success: $green700,
+//     warning: $orange700,
+//     error: $cherry400
+//   ),
+//   background: (
+//     primary: $white,
+//     secondary: $gray100,
+//     tertiary: $purple50,
+//     accent: $purple700,
+//     inactive: $purplegray500,
+//     reverse: $purplegray700,
+//     info: $blue50,
+//     success: $green100,
+//     warning: $orange50,
+//     error: $cherry50,
+//   ),
+//   border: (
+//     primary: $bluegray300,
+//     secondary: $bluegray100,
+//     tertiary: $gray700,
+//     accent: $purple800,
+//     inactive: $purple800,
+//     reverse: $purplegray50,
+//     info: $blue400,
+//     success: $green400,
+//     warning: $orange700,
+//     error: $cherry400,
+//   ),
+//   icon: (
+//     primary: $gray800,
+//     secondary: $purplegray300,
+//     tertiary: $gray700,
+//     accent: $purple700,
+//     inactive: $gray700,
+//     reverse: $purplegray50,
+//     info: $blue600,
+//     success: $green700,
+//     warning: $orange700,
+//     error: $cherry300,
+//   )
+// );

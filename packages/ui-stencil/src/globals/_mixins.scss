@@ -1,0 +1,51 @@
+/* ===WEB FONTS MANAGEMENT=== */
+/**
+ * Applies the font smoothing
+ * Used for better cross browser support
+ * Ref: https://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+ */
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+/**
+  * Use to set the theme skin based on user preferences
+  * @include spread-map($map);
+ */
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
+
+/**
+ * Use to hide elements visually but still make them accessible to screen readers
+ * @include screen-reader-only();
+ */
+@mixin screen-reader-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 1px;
+}
+
+@mixin flex-cols($cols: 1, $breakpoint: undefined, $gap: $spacingS) {
+  @if $breakpoint != undefined {
+    @media (--#{$breakpoint}-min) {
+      flex: 0 0 calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
+      max-width: calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
+    }
+  } @else {
+    flex: 0 0 calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
+    max-width: calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
+  }
+}
