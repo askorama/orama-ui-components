@@ -1,7 +1,7 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
 
 const meta: Meta = {
-  title: 'SearchBox',
+  title: 'Public/SearchBox',
   component: 'search-box',
 }
 

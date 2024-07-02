@@ -1,20 +1,21 @@
 import { Component, Host, Prop, h } from '@stencil/core'
-import cssCustomProperties from '../../config/colors';
+import  { sassVariables } from '../../config/colors';
 
 @Component({
   tag: 'search-box',
-  styleUrl: 'search-box.scss',
+  styleUrl: 'searchbox.scss',
   shadow: true
 })
 export class SearchBox {
-  @Prop() theme: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } }
+  @Prop() themeConfig: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } }
   @Prop() color: 'dark' | 'light' | 'system'
 
   render() {
-    console.log('***vars 1***', cssCustomProperties, typeof cssCustomProperties)
+    console.log('***vars 1***', sassVariables, typeof sassVariables)
+
     return (
       <Host>
-        <style>{`:host { --primary-color: ${this.theme?.colors?.light?.primaryColor}; }`}</style>
+        <style>{`:host { --primary-color: ${this.themeConfig?.colors?.light?.primaryColor}; }`}</style>
 
         <div>This is the searchbox</div>
 

@@ -6,12 +6,20 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface OramaP {
+    }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
-        "theme": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
+        "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
 }
 declare global {
+    interface HTMLOramaPElement extends Components.OramaP, HTMLStencilElement {
+    }
+    var HTMLOramaPElement: {
+        prototype: HTMLOramaPElement;
+        new (): HTMLOramaPElement;
+    };
     interface HTMLSearchBoxElement extends Components.SearchBox, HTMLStencilElement {
     }
     var HTMLSearchBoxElement: {
@@ -19,15 +27,19 @@ declare global {
         new (): HTMLSearchBoxElement;
     };
     interface HTMLElementTagNameMap {
+        "orama-p": HTMLOramaPElement;
         "search-box": HTMLSearchBoxElement;
     }
 }
 declare namespace LocalJSX {
+    interface OramaP {
+    }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
-        "theme"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
+        "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface IntrinsicElements {
+        "orama-p": OramaP;
         "search-box": SearchBox;
     }
 }
@@ -35,6 +47,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "orama-p": LocalJSX.OramaP & JSXBase.HTMLAttributes<HTMLOramaPElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
         }
     }

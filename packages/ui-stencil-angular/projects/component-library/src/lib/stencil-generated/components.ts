@@ -4,18 +4,39 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZo
 
 import { ProxyCmp } from './angular-component-lib/utils';
 
-import { Components } from 'ui-stencil';
+import { Components } from 'orama-ui';
 
 
 @ProxyCmp({
-  inputs: ['color', 'theme']
+})
+@Component({
+  selector: 'orama-p',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class OramaP {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaP extends Components.OramaP {}
+
+
+@ProxyCmp({
+  inputs: ['color', 'themeConfig']
 })
 @Component({
   selector: 'search-box',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['color', 'theme'],
+  inputs: ['color', 'themeConfig'],
 })
 export class SearchBox {
   protected el: HTMLElement;

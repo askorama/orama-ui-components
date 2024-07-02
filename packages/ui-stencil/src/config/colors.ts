@@ -1,5 +1,7 @@
-// TODO: this should come from the sass file as unique source of truth, importing the sass file (colors.scss) directly
-export const primitive= {
+// import * as variables from '../styles/_colors.scss'
+
+// TODO: these values should come from the sass file as unique source of truth, importing the sass file (colors.scss) directly
+export const primitive = {
   gray50: '#FBFBFB',
   gray100: '#EFEFEF',
   gray200: '#DADADA',
@@ -14,6 +16,8 @@ export const primitive= {
   purple500: '#8152EE',
   purple700: '#6A4BB2'
 }
+
+export const sassVariables = {}
 
 const semantic = {
   light: {

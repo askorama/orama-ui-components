@@ -1,6 +1,9 @@
 import { defineCustomElements } from "./../../../packages/ui-stencil/loader";
+import "./../../../packages/ui-stencil/dist/orama-ui/orama-ui.css";
 
 defineCustomElements();
+
+// import global styles
 
 /** @type { import('@storybook/html').Preview } */
 const preview = {

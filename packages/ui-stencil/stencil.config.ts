@@ -1,18 +1,15 @@
 import type { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
-import postcss from 'postcss'
-import postcssImport from 'postcss-import'
-import scssVariable from 'rollup-plugin-sass-variables'
 import { reactOutputTarget } from '@stencil/react-output-target'
 import { angularOutputTarget } from '@stencil/angular-output-target'
 import { vueOutputTarget } from '@stencil/vue-output-target'
 
-const namespace = 'ui-stencil'
+const namespace = 'orama-ui'
 const componentCorePackage = namespace
 
 export const config: Config = {
   namespace,
-  globalStyle: 'src/globals/global.css',
+  globalStyle: 'src/styles/globals.scss',
   outputTargets: [
     {
       type: 'dist',
@@ -49,7 +46,7 @@ export const config: Config = {
     sass({
       injectGlobalPaths:
       [
-        'src/globals/tokens.scss'
+        'src/styles/tokens.scss'
       ]
     }),
   ]

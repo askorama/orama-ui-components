@@ -20,7 +20,7 @@
 }
 
 /* ===BACKGROUND COLOR FUNCTION=== */
-@function background-color($role: 'primary', $palette: $palette) {
+@function bg-color($role: 'primary', $palette: $palette) {
   @return palette('background', $role, $palette);
 }
 
