@@ -3,11 +3,17 @@ import "./../../../packages/ui-stencil/dist/orama-ui/orama-ui.css";
 
 defineCustomElements();
 
-// import global styles
-
 /** @type { import('@storybook/html').Preview } */
 const preview = {
   tags: ["autodocs"],
+  decorators: [
+    (story) => {
+      const decorator = document.createElement('div');
+      decorator.id = 'orama-ui';
+      decorator.appendChild(story());
+      return decorator;
+    }
+  ],
   parameters: {
     controls: {
       matchers: {

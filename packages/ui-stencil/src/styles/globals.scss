@@ -1,3 +1,5 @@
 :root {
-  @include spread-map($theme-light);
+  #orama-ui {
+    @include spread-map($theme-light);
+  }
 }
