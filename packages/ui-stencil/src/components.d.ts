@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface OramaChat {
+    }
     interface OramaP {
     }
     interface SearchBox {
@@ -14,6 +16,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLOramaChatElement extends Components.OramaChat, HTMLStencilElement {
+    }
+    var HTMLOramaChatElement: {
+        prototype: HTMLOramaChatElement;
+        new (): HTMLOramaChatElement;
+    };
     interface HTMLOramaPElement extends Components.OramaP, HTMLStencilElement {
     }
     var HTMLOramaPElement: {
@@ -27,11 +35,14 @@ declare global {
         new (): HTMLSearchBoxElement;
     };
     interface HTMLElementTagNameMap {
+        "orama-chat": HTMLOramaChatElement;
         "orama-p": HTMLOramaPElement;
         "search-box": HTMLSearchBoxElement;
     }
 }
 declare namespace LocalJSX {
+    interface OramaChat {
+    }
     interface OramaP {
     }
     interface SearchBox {
@@ -39,6 +50,7 @@ declare namespace LocalJSX {
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface IntrinsicElements {
+        "orama-chat": OramaChat;
         "orama-p": OramaP;
         "search-box": SearchBox;
     }
@@ -47,6 +59,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-p": LocalJSX.OramaP & JSXBase.HTMLAttributes<HTMLOramaPElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
         }
