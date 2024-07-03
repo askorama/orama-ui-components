@@ -1,34 +1,15 @@
 // FONT FAMILY
-$font-primary: var(--font-primary, 'Inter', sans-serif);
-$font-secondary: var(--font-secondary, 'Norm', sans-serif);
-$font-tertiary: var(--font-tertiary, 'JetBrains Mono', monospace);
+$font-primary: var(--font-primary, 'Instrument', sans-serif); // TODO: handle Instrument
 
 // FONT SIZE
-$font-size-2xs: rem-value(10);
 $font-size-xs: rem-value(12);
 $font-size-sm: rem-value(14);
 $font-size-md: rem-value(16);
-$font-size-lg: rem-value(18);
-$font-size-xl: rem-value(20);
-$font-size-2xl: rem-value(24);
-$font-size-3xl: rem-value(30);
-$font-size-4xl: rem-value(36);
-$font-size-5xl: rem-value(48);
-$font-size-6xl: rem-value(60);
-$font-size-7xl: rem-value(72);
-$font-size-8xl: rem-value(96);
-$font-size-9xl: rem-value(128);
 
 // FONT WEIGHT
-$font-weight-light: 300;
 $font-weight-normal: 400;
-$font-weight-medium: 700;
+$font-weight-semibold: 600;
 
 // LINE HEIGHT
-$font-line-height-xs: 1;
 $font-line-height-s: 1.25;
 $font-line-height-m: 1.5;
-$font-line-height-l: 1.75;
-
-// FONT TRACKING - letter-spacing
-$font-tracking-normal: 0;
