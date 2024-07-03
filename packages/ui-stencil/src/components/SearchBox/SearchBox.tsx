@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core'
-import  { sassVariables } from '../../config/colors';
+import { sassVariables } from '../../config/colors'
 
 @Component({
   tag: 'search-box',
