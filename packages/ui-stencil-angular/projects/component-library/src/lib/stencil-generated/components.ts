@@ -8,15 +8,16 @@ import { Components } from 'orama-ui';
 
 
 @ProxyCmp({
+  inputs: ['as']
 })
 @Component({
-  selector: 'orama-p',
+  selector: 'orama-paragraph',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: [],
+  inputs: ['as'],
 })
-export class OramaP {
+export class OramaParagraph {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -25,7 +26,7 @@ export class OramaP {
 }
 
 
-export declare interface OramaP extends Components.OramaP {}
+export declare interface OramaParagraph extends Components.OramaParagraph {}
 
 
 @ProxyCmp({

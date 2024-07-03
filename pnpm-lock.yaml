@@ -183,6 +183,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^1
         version: 1.6.0(react@18.3.1)
+      '@stencil/core':
+        specifier: ^4.19.0
+        version: 4.19.0
       '@storybook/addon-a11y':
         specifier: ^8.1.11
         version: 8.1.11

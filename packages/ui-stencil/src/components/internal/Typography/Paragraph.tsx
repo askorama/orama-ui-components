@@ -1,16 +1,22 @@
-import { Component, h } from '@stencil/core'
-
+import { Component, Prop, h } from '@stencil/core';
+export interface ParagraphProps {
+  as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+}
 @Component({
-  tag: 'orama-p',
+  tag: 'orama-paragraph',
   styleUrl: 'typography.scss',
-  shadow: false
 })
-export class Paragraph {
+
+export class Paragraph implements ParagraphProps {
+  @Prop() as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
   render() {
+    const Tag = this.as || 'p';
+
     return (
-      <p class='paragraph'>
-        <slot></slot>
-      </p>
-    )
+      <Tag class="paragraph">
+        <slot />
+      </Tag>
+    );
   }
 }

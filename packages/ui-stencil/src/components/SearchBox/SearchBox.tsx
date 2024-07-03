@@ -17,7 +17,7 @@ export class SearchBox {
       <Host>
         <style>{`:host { --primary-color: ${this.themeConfig?.colors?.light?.primaryColor}; }`}</style>
 
-        <div>This is the searchbox</div>
+        <orama-paragraph>This is the searchbox</orama-paragraph>
 
         <button type="button" class="btn">
           This is a button

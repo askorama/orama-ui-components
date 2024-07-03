@@ -7,5 +7,5 @@ import type { JSX } from 'orama-ui';
 
 
 
-export const OramaP = /*@__PURE__*/createReactComponent<JSX.OramaP, HTMLOramaPElement>('orama-p');
+export const OramaParagraph = /*@__PURE__*/createReactComponent<JSX.OramaParagraph, HTMLOramaParagraphElement>('orama-paragraph');
 export const SearchBox = /*@__PURE__*/createReactComponent<JSX.SearchBox, HTMLSearchBoxElement>('search-box');

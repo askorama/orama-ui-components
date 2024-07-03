@@ -2,6 +2,6 @@
 import * as d from './components';
 
 export const DIRECTIVES = [
-  d.OramaP,
+  d.OramaParagraph,
   d.SearchBox
 ];

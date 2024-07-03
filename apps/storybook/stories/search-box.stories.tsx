@@ -1,21 +1,15 @@
-import type { StoryObj, Meta } from '@storybook/web-components'
+import type { StoryObj, Meta } from '@storybook/html'
 
 const meta: Meta = {
   title: 'Public/SearchBox',
   component: 'search-box',
-}
+} satisfies Meta
 
 export default meta
 type Story = StoryObj
 
-const Template = (props) => {
-  console.log(props)
-
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  const element = document.createElement('search-box') as any
-  element.theme = props.theme
-
-  return element
+const Template = (args) => {
+  return `<search-box theme-config='${JSON.stringify(args.theme)}'></search-box>`
 }
 
 // More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args

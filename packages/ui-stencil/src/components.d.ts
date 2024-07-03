@@ -6,7 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface OramaP {
+    interface OramaParagraph {
+        "as"?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
@@ -14,11 +15,11 @@ export namespace Components {
     }
 }
 declare global {
-    interface HTMLOramaPElement extends Components.OramaP, HTMLStencilElement {
+    interface HTMLOramaParagraphElement extends Components.OramaParagraph, HTMLStencilElement {
     }
-    var HTMLOramaPElement: {
-        prototype: HTMLOramaPElement;
-        new (): HTMLOramaPElement;
+    var HTMLOramaParagraphElement: {
+        prototype: HTMLOramaParagraphElement;
+        new (): HTMLOramaParagraphElement;
     };
     interface HTMLSearchBoxElement extends Components.SearchBox, HTMLStencilElement {
     }
@@ -27,19 +28,20 @@ declare global {
         new (): HTMLSearchBoxElement;
     };
     interface HTMLElementTagNameMap {
-        "orama-p": HTMLOramaPElement;
+        "orama-paragraph": HTMLOramaParagraphElement;
         "search-box": HTMLSearchBoxElement;
     }
 }
 declare namespace LocalJSX {
-    interface OramaP {
+    interface OramaParagraph {
+        "as"?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface IntrinsicElements {
-        "orama-p": OramaP;
+        "orama-paragraph": OramaParagraph;
         "search-box": SearchBox;
     }
 }
@@ -47,7 +49,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "orama-p": LocalJSX.OramaP & JSXBase.HTMLAttributes<HTMLOramaPElement>;
+            "orama-paragraph": LocalJSX.OramaParagraph & JSXBase.HTMLAttributes<HTMLOramaParagraphElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
         }
     }
