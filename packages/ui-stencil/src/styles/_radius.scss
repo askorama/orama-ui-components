@@ -1,6 +1,13 @@
 $base: 8;
 
-$radiusS: pxToRem($base); // 8px
-$radiusM: pxToRem($base * 1.5); // 12px
-$radiusL: pxToRem($base * 2); // 16px
-$radius3XL: pxToRem($base * 5); // 40px
+$radiusS: pxToRem($base);
+$radiusM: pxToRem($base * 1.5);
+$radiusL: pxToRem($base * 2);
+$radius3XL: pxToRem($base * 5);
+
+$theme-radius: (
+  '--radius-s': $radiusS,
+  '--radius-m': $radiusM,
+  '--radius-l': $radiusL,
+  '--radius-3xl': $radius3XL
+)

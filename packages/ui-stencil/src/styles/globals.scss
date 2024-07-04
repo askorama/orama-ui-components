@@ -4,6 +4,8 @@
   #orama-ui {
     @include mapToCustomProperties($theme-colors-light);
     @include mapToCustomProperties($theme-typography);
+    @include mapToCustomProperties($theme-radius);
+    @include mapToCustomProperties($theme-spacing);
 
     &.theme-dark {
       @include mapToCustomProperties($theme-colors-dark);

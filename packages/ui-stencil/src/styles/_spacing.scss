@@ -1,10 +1,23 @@
 $base: 8;
 
-$spacing2XS: rem-value($base * 0.25); // 2px
-$spacingXS: rem-value($base * 0.5); // 4px
-$spacingS: rem-value($base); // 8px
-$spacingM: rem-value($base * 1.5); // 12px
-$spacingL: rem-value($base * 2); // 16px
-$spacingXL: rem-value($base * 3); // 24px
-$spacing2XL: rem-value($base * 4); // 32px
-$spacing3XL: rem-value($base * 5); // 40px
+$spacing2XS: rem-value($base * 0.25);
+$spacingXS: rem-value($base * 0.5);
+
+$spacingS: rem-value($base);
+
+$spacingM: rem-value($base * 1.5);
+$spacingL: rem-value($base * 2);
+$spacingXL: rem-value($base * 3);
+$spacing2XL: rem-value($base * 4);
+$spacing3XL: rem-value($base * 5);
+
+$theme-spacing: (
+  '--spacing-2xs': $spacing2XS,
+  '--spacing-xs': $spacingXS,
+  '--spacing-s': $spacingS,
+  '--spacing-m': $spacingM,
+  '--spacing-l': $spacingL,
+  '--spacing-xl': $spacingXL,
+  '--spacing-2xl': $spacing2XL,
+  '--spacing-3xl': $spacing3XL
+)

@@ -16,6 +16,16 @@ export const OramaParagraph = /*@__PURE__*/ defineContainer<JSX.OramaParagraph>(
 ]);
 
 
+export const OramaSmall = /*@__PURE__*/ defineContainer<JSX.OramaSmall>('orama-small', undefined, [
+  'as'
+]);
+
+
+export const OramaSpan = /*@__PURE__*/ defineContainer<JSX.OramaSpan>('orama-span', undefined, [
+  'as'
+]);
+
+
 export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined, [
   'themeConfig',
   'color'

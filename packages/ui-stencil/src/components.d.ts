@@ -6,12 +6,22 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ParagraphProps } from "./components/internal/Typography/Paragraph";
+import { SmallProps } from "./components/internal/Typography/Small";
+import { SpanProps } from "./components/internal/Typography/Span";
 export { ParagraphProps } from "./components/internal/Typography/Paragraph";
+export { SmallProps } from "./components/internal/Typography/Small";
+export { SpanProps } from "./components/internal/Typography/Span";
 export namespace Components {
     interface OramaChat {
     }
     interface OramaParagraph {
         "as"?: ParagraphProps['as'];
+    }
+    interface OramaSmall {
+        "as"?: SmallProps['as'];
+    }
+    interface OramaSpan {
+        "as"?: SpanProps['as'];
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
@@ -31,6 +41,18 @@ declare global {
         prototype: HTMLOramaParagraphElement;
         new (): HTMLOramaParagraphElement;
     };
+    interface HTMLOramaSmallElement extends Components.OramaSmall, HTMLStencilElement {
+    }
+    var HTMLOramaSmallElement: {
+        prototype: HTMLOramaSmallElement;
+        new (): HTMLOramaSmallElement;
+    };
+    interface HTMLOramaSpanElement extends Components.OramaSpan, HTMLStencilElement {
+    }
+    var HTMLOramaSpanElement: {
+        prototype: HTMLOramaSpanElement;
+        new (): HTMLOramaSpanElement;
+    };
     interface HTMLSearchBoxElement extends Components.SearchBox, HTMLStencilElement {
     }
     var HTMLSearchBoxElement: {
@@ -40,6 +62,8 @@ declare global {
     interface HTMLElementTagNameMap {
         "orama-chat": HTMLOramaChatElement;
         "orama-paragraph": HTMLOramaParagraphElement;
+        "orama-small": HTMLOramaSmallElement;
+        "orama-span": HTMLOramaSpanElement;
         "search-box": HTMLSearchBoxElement;
     }
 }
@@ -49,6 +73,12 @@ declare namespace LocalJSX {
     interface OramaParagraph {
         "as"?: ParagraphProps['as'];
     }
+    interface OramaSmall {
+        "as"?: SmallProps['as'];
+    }
+    interface OramaSpan {
+        "as"?: SpanProps['as'];
+    }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
@@ -56,6 +86,8 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "orama-chat": OramaChat;
         "orama-paragraph": OramaParagraph;
+        "orama-small": OramaSmall;
+        "orama-span": OramaSpan;
         "search-box": SearchBox;
     }
 }
@@ -65,6 +97,8 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-paragraph": LocalJSX.OramaParagraph & JSXBase.HTMLAttributes<HTMLOramaParagraphElement>;
+            "orama-small": LocalJSX.OramaSmall & JSXBase.HTMLAttributes<HTMLOramaSmallElement>;
+            "orama-span": LocalJSX.OramaSpan & JSXBase.HTMLAttributes<HTMLOramaSpanElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
         }
     }

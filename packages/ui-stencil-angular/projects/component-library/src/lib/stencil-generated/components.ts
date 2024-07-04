@@ -51,6 +51,50 @@ export declare interface OramaParagraph extends Components.OramaParagraph {}
 
 
 @ProxyCmp({
+  inputs: ['as']
+})
+@Component({
+  selector: 'orama-small',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['as'],
+})
+export class OramaSmall {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaSmall extends Components.OramaSmall {}
+
+
+@ProxyCmp({
+  inputs: ['as']
+})
+@Component({
+  selector: 'orama-span',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['as'],
+})
+export class OramaSpan {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaSpan extends Components.OramaSpan {}
+
+
+@ProxyCmp({
   inputs: ['color', 'themeConfig']
 })
 @Component({
