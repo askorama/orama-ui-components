@@ -5,9 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ParagraphProps } from "./components/internal/Typography/Paragraph";
+export { ParagraphProps } from "./components/internal/Typography/Paragraph";
 export namespace Components {
+    interface OramaChat {
+    }
     interface OramaParagraph {
-        "as"?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "as"?: ParagraphProps['as'];
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
@@ -15,6 +19,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLOramaChatElement extends Components.OramaChat, HTMLStencilElement {
+    }
+    var HTMLOramaChatElement: {
+        prototype: HTMLOramaChatElement;
+        new (): HTMLOramaChatElement;
+    };
     interface HTMLOramaParagraphElement extends Components.OramaParagraph, HTMLStencilElement {
     }
     var HTMLOramaParagraphElement: {
@@ -28,19 +38,23 @@ declare global {
         new (): HTMLSearchBoxElement;
     };
     interface HTMLElementTagNameMap {
+        "orama-chat": HTMLOramaChatElement;
         "orama-paragraph": HTMLOramaParagraphElement;
         "search-box": HTMLSearchBoxElement;
     }
 }
 declare namespace LocalJSX {
+    interface OramaChat {
+    }
     interface OramaParagraph {
-        "as"?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+        "as"?: ParagraphProps['as'];
     }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface IntrinsicElements {
+        "orama-chat": OramaChat;
         "orama-paragraph": OramaParagraph;
         "search-box": SearchBox;
     }
@@ -49,6 +63,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-paragraph": LocalJSX.OramaParagraph & JSXBase.HTMLAttributes<HTMLOramaParagraphElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
         }

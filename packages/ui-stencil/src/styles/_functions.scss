@@ -84,7 +84,6 @@
   @if type-of($value) == "number" {
     /* Return rem value */
     $val: #{calc($value / $rem-base)}rem;
-
     @return #{calc($value / $rem-base)}rem;
   }
   /* Non-numeric value, just return */

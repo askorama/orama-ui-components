@@ -30,7 +30,7 @@ $mediaquery: (
 );
 
 /* TABLET PORTRAIT */
-@custom-media --xs-min (width > var(--xs, #{$xs}));
+@custom-media --xs-min (width > #{$xs});
 @custom-media --xs-only (#{$xs} < width <= #{$sm});
 @custom-media --xs-max (width <= #{$xs});
 
@@ -42,7 +42,7 @@ $mediaquery: (
 @custom-media --md-only (#{$md} < width <= #{$lg});
 @custom-media --md-max (width <= #{$md});
 
-@custom-media --lg-min (width > var(--lg, #{$lg}));
+@custom-media --lg-min (width > #{$lg});
 @custom-media --lg-only (#{$lg} < width <= #{$xl});
 @custom-media --lg-max (width <= #{$lg});
 

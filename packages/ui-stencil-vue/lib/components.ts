@@ -8,6 +8,9 @@ import type { JSX } from 'orama-ui';
 
 
 
+export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-chat', undefined);
+
+
 export const OramaParagraph = /*@__PURE__*/ defineContainer<JSX.OramaParagraph>('orama-paragraph', undefined, [
   'as'
 ]);

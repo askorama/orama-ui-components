@@ -1,5 +1,13 @@
 :root {
   #orama-ui {
     @include spread-map($theme-light);
+
+    &.theme-dark {
+      @include spread-map($theme-dark);
+    }
   }
+}
+
+html {
+  font-size: 62.5%;
 }
