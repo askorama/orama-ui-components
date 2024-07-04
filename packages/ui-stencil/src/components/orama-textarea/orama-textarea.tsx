@@ -22,6 +22,20 @@ export class OramaTextarea {
     this.syncHeight()
   }
 
+  // TODO: Use to calculate adornment width later
+  getNamedSlotWidth(slotName: string) {
+    const slot = this.el.shadowRoot.querySelector(`slot[name="${slotName}"]`) as HTMLSlotElement
+    if (slot) {
+      const assignedElements = slot.assignedElements()
+      if (assignedElements.length > 0) {
+        const firstAssignedElement = assignedElements[0] as HTMLElement
+        const width = firstAssignedElement.offsetWidth
+        return width
+      }
+    }
+    return 0
+  }
+
   @Watch('value')
   @Watch('maxRows')
   @Watch('minRows')
@@ -110,18 +124,23 @@ export class OramaTextarea {
   }
 
   render() {
-    console.log(this.getAllProps())
     return (
       <Host>
+        {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}
+        <slot name="adornment-start" />
         <textarea
           {...this.getAllProps()}
           value={this.value}
           onInput={this.handleChange}
           ref={(el) => (this.textarea = el as HTMLTextAreaElement)}
           rows={Number(this.minRows)}
-          style={{ height: this.height ? `${this.height}px` : undefined }}
+          style={{
+            height: this.height ? `${this.height}px` : undefined
+          }}
           placeholder={this.placeholder}
         />
+        {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}
+        <slot name="adornment-end" />
 
         {/* Textare below should be hidden from the user and it's used to calculate the height of the textarea */}
         {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: This component shouldn't be focusable */}
