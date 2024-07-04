@@ -67,35 +67,3 @@
   }
   @warn "Unknown `#{$font}` in `#{$fonts}`";
 }
-
-/* ===REM FUNCTION=== */
-/**
- * Sassy functions to get the rem equivalent of a px value
- * preset-css-env will take care of fallback for older browsers
- * !NOTE: you only need to change the $rem-baseline value if your base size
- * is different from 10px (use _var_typography.scss in case)
- * @param value is referred to px, pass the unitless value
- * Credits: Rowan Manning
- */
-@function rem-value($value) {
-  $rem-baseline: 10 !default;
-
-  /* If value is a number, do some magic rem stuff */
-  @if type-of($value) == "number" {
-    /* Return rem value */
-    $val: #{calc($value / $rem-baseline)}rem;
-    @return $val;
-  }
-  /* Non-numeric value, just return */
-  @return $value;
-}
-
-@function rem($values) {
-  /* Loop over pixel values to get rem values */
-  $rem-values: unquote("");
-  @each $value in $values {
-    $rem-values: append($rem-values, rem-value($value));
-  }
-
-  @return $rem-values;
-}

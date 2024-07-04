@@ -1,13 +1,13 @@
 $base: 8;
 
-$radiusS: pxToRem($base);
-$radiusM: pxToRem($base * 1.5);
-$radiusL: pxToRem($base * 2);
-$radius3XL: pxToRem($base * 5);
+$radius-s: pxToRem($base);
+$radius-m: pxToRem($base * 1.5);
+$radius-l: pxToRem($base * 2);
+$radius-3xl: pxToRem($base * 5);
 
 $theme-radius: (
-  '--radius-s': $radiusS,
-  '--radius-m': $radiusM,
-  '--radius-l': $radiusL,
-  '--radius-3xl': $radius3XL
+  '--radius-s': $radius-s,
+  '--radius-m': $radius-m,
+  '--radius-l': $radius-l,
+  '--radius-3xl': $radius-3xl
 )

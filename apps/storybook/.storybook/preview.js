@@ -6,7 +6,7 @@ defineCustomElements();
 /** @type { import('@storybook/html').Preview } */
 const preview = {
   tags: ["autodocs"],
-  decorators: [(story) => `<div id="orama-ui">${story()}</div>`],
+  decorators: [(story) => `<div id="orama-ui" class="theme-dark">${story()}</div>`],
   parameters: {
     controls: {
       matchers: {

@@ -5,14 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { InputProps } from "./components/internal/Form/Input";
 import { ParagraphProps } from "./components/internal/Typography/Paragraph";
 import { SmallProps } from "./components/internal/Typography/Small";
 import { SpanProps } from "./components/internal/Typography/Span";
+export { InputProps } from "./components/internal/Form/Input";
 export { ParagraphProps } from "./components/internal/Typography/Paragraph";
 export { SmallProps } from "./components/internal/Typography/Small";
 export { SpanProps } from "./components/internal/Typography/Span";
 export namespace Components {
     interface OramaChat {
+    }
+    interface OramaInput {
+        "label"?: InputProps['label'];
+        "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
+        "name": InputProps['name'];
+        "placeholder"?: InputProps['placeholder'];
+        "size"?: InputProps['size'];
     }
     interface OramaParagraph {
         "as"?: ParagraphProps['as'];
@@ -34,6 +43,12 @@ declare global {
     var HTMLOramaChatElement: {
         prototype: HTMLOramaChatElement;
         new (): HTMLOramaChatElement;
+    };
+    interface HTMLOramaInputElement extends Components.OramaInput, HTMLStencilElement {
+    }
+    var HTMLOramaInputElement: {
+        prototype: HTMLOramaInputElement;
+        new (): HTMLOramaInputElement;
     };
     interface HTMLOramaParagraphElement extends Components.OramaParagraph, HTMLStencilElement {
     }
@@ -61,6 +76,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "orama-chat": HTMLOramaChatElement;
+        "orama-input": HTMLOramaInputElement;
         "orama-paragraph": HTMLOramaParagraphElement;
         "orama-small": HTMLOramaSmallElement;
         "orama-span": HTMLOramaSpanElement;
@@ -69,6 +85,13 @@ declare global {
 }
 declare namespace LocalJSX {
     interface OramaChat {
+    }
+    interface OramaInput {
+        "label"?: InputProps['label'];
+        "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
+        "name"?: InputProps['name'];
+        "placeholder"?: InputProps['placeholder'];
+        "size"?: InputProps['size'];
     }
     interface OramaParagraph {
         "as"?: ParagraphProps['as'];
@@ -85,6 +108,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "orama-chat": OramaChat;
+        "orama-input": OramaInput;
         "orama-paragraph": OramaParagraph;
         "orama-small": OramaSmall;
         "orama-span": OramaSpan;
@@ -96,6 +120,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
+            "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-paragraph": LocalJSX.OramaParagraph & JSXBase.HTMLAttributes<HTMLOramaParagraphElement>;
             "orama-small": LocalJSX.OramaSmall & JSXBase.HTMLAttributes<HTMLOramaSmallElement>;
             "orama-span": LocalJSX.OramaSpan & JSXBase.HTMLAttributes<HTMLOramaSpanElement>;

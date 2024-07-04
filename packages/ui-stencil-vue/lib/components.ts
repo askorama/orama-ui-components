@@ -11,6 +11,15 @@ import type { JSX } from 'orama-ui';
 export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-chat', undefined);
 
 
+export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-input', undefined, [
+  'name',
+  'placeholder',
+  'size',
+  'label',
+  'labelForScreenReaders'
+]);
+
+
 export const OramaParagraph = /*@__PURE__*/ defineContainer<JSX.OramaParagraph>('orama-paragraph', undefined, [
   'as'
 ]);

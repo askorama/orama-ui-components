@@ -7,6 +7,10 @@ export interface ParagraphProps {
   styleUrl: 'typography.scss',
 })
 
+/**
+ * The Paragraph component is used to render a paragraph of text.
+ *
+ */
 export class Paragraph implements ParagraphProps {
   @Prop() as?: ParagraphProps['as']
 

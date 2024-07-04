@@ -1,8 +1,9 @@
 import { Component, Prop, h } from '@stencil/core';
 
-export interface SpanProps {
+export type SpanProps = {
   as?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'small' | 'a'
 }
+
 @Component({
   tag: 'orama-span',
   styleUrl: 'typography.scss',
