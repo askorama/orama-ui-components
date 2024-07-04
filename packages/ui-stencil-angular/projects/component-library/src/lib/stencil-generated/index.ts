@@ -7,5 +7,6 @@ export const DIRECTIVES = [
   d.OramaParagraph,
   d.OramaSmall,
   d.OramaSpan,
+  d.OramaTextarea,
   d.SearchBox
 ];

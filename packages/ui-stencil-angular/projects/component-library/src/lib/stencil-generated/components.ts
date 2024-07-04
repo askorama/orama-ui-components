@@ -117,6 +117,28 @@ export declare interface OramaSpan extends Components.OramaSpan {}
 
 
 @ProxyCmp({
+  inputs: ['maxRows', 'minRows', 'placeholder', 'value']
+})
+@Component({
+  selector: 'orama-textarea',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['maxRows', 'minRows', 'placeholder', 'value'],
+})
+export class OramaTextarea {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaTextarea extends Components.OramaTextarea {}
+
+
+@ProxyCmp({
   inputs: ['color', 'themeConfig']
 })
 @Component({
