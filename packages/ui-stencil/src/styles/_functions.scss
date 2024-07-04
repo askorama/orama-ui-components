@@ -78,13 +78,13 @@
  * Credits: Rowan Manning
  */
 @function rem-value($value) {
-  $rem-base: 10 !default;
+  $rem-baseline: 10 !default;
 
   /* If value is a number, do some magic rem stuff */
   @if type-of($value) == "number" {
     /* Return rem value */
-    $val: #{calc($value / $rem-base)}rem;
-    @return #{calc($value / $rem-base)}rem;
+    $val: #{calc($value / $rem-baseline)}rem;
+    @return $val;
   }
   /* Non-numeric value, just return */
   @return $value;

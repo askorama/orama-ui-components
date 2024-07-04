@@ -1,5 +1,11 @@
 import type { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
+import { postcss } from '@stencil-community/postcss';
+import autoprefixer from 'autoprefixer'
+import cssnano from 'cssnano'
+import postcssPresetEnv from 'postcss-preset-env'
+import rucksack from 'rucksack-css'
+import cssfunctions from 'postcss-functions'
 import { reactOutputTarget } from '@stencil/react-output-target'
 import { angularOutputTarget } from '@stencil/angular-output-target'
 import { vueOutputTarget } from '@stencil/vue-output-target'
@@ -49,5 +55,28 @@ export const config: Config = {
         'src/styles/tokens.scss'
       ]
     }),
+    postcss({
+      plugins: [
+        autoprefixer(),
+        cssnano(),
+        rucksack(),
+        cssfunctions({
+          functions: {
+            pxToRem: (px: string) => `calc(${px}rem / var(--base-font-size, 16))`
+          }
+        }),
+        postcssPresetEnv({
+          stage: 3,
+          features: {
+            'nesting-rules': true,
+            'custom-media-queries': true,
+            'media-query-ranges': true,
+            'custom-properties': true,
+            'nested-calc': true,
+            'prefers-color-scheme-query': true,
+          }
+        }),
+      ]
+    })
   ]
 }

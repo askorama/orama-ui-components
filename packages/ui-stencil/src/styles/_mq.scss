@@ -1,9 +1,9 @@
 $grid-breakpoints: (
-  xs: rem-value(480),
-  sm: rem-value(768),
-  md: rem-value(1024),
-  lg: rem-value(1200), // max width
-  xl: rem-value(1400)
+  xs: 480px,
+  sm: 768px,
+  md: 1024px,
+  lg: 1200px,
+  xl: 1400px
 );
 
 // MOBILE DEVICES

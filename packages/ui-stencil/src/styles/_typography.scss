@@ -1,10 +1,10 @@
 // FONT FAMILY
-$font-primary: var(--font-primary, 'Instrument', sans-serif); // TODO: handle Instrument
+$font-primary: var(--font-primary, 'Instrument Sans', sans-serif);
 
 // FONT SIZE
-$font-size-xs: rem-value(12);
-$font-size-sm: rem-value(14);
-$font-size-md: rem-value(16);
+$font-size-xs: pxToRem(12);
+$font-size-sm: pxToRem(14);
+$font-size-md: pxToRem(16);
 
 // FONT WEIGHT
 $font-weight-normal: 400;
@@ -13,3 +13,14 @@ $font-weight-semibold: 600;
 // LINE HEIGHT
 $font-line-height-s: 1.25;
 $font-line-height-m: 1.5;
+
+$theme-typography: (
+  '--font-primary': $font-primary,
+  '--font-size-xs': $font-size-xs,
+  '--font-size-sm': $font-size-sm,
+  '--font-size-md': $font-size-md,
+  '--font-weight-normal': $font-weight-normal,
+  '--font-weight-semibold': $font-weight-semibold,
+  '--font-line-height-s': $font-line-height-s,
+  '--font-line-height-m': $font-line-height-m
+);

@@ -2,12 +2,15 @@
   color: var(--text-color-secondary, text-color('secondary'));
   font-size: var(--font-size-md, $font-size-md);
   line-height: var(--font-line-height-m, $font-line-height-m);
+  margin: 0;
+  padding: 0;
+  transform: translate(0, 0);
 
   &--bold {
     font-weight: var(--font-weight-semibold, $font-weight-semibold);
   }
 
-  @media (--md-min) {
+  @media (--sm-min) {
     font-size: var(--font-size-sm, $font-size-sm);
   }
 }
@@ -16,6 +19,9 @@
   color:  var(--text-color-tertiary, text-color('tertiary'));
   font-size: var(--font-size-sm, $font-size-sm);
   line-height: var(--font-line-height-s, $font-line-height-s);
+  margin: 0;
+  padding: 0;
+
 
   &--bold {
     font-weight: var(--font-weight-semibold, $font-weight-semibold);
@@ -30,6 +36,8 @@
   color: var(--text-color-tertiary, text-color('tertiary'));
   font-size: var(--font-size-xs, $font-size-xs);
   line-height: var(--font-line-height-s, $font-line-height-s);
+  margin: 0;
+  padding: 0;
 
   &--bold {
     font-weight: var(--font-weight-semibold, $font-weight-semibold);

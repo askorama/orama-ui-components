@@ -18,7 +18,7 @@
   * Use to set the theme skin based on user preferences
   * @include spread-map($map);
  */
-@mixin spread-map($map: ()) {
+@mixin mapToCustomProperties($map: ()) {
   @each $key, $value in $map {
     #{$key}: $value;
   }

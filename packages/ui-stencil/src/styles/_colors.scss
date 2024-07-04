@@ -74,7 +74,7 @@ $paletteDark: (
 );
 
 // should be imported by the config/colors.ts file
-$theme-light: (
+$theme-colors-light: (
   '--text-color-primary': text-color('primary'),
   '--text-color-secondary': text-color('secondary'),
   '--text-color-tertiary': text-color('tertiary'),
@@ -92,7 +92,7 @@ $theme-light: (
   '--icon-color-accent': icon-color('accent')
 );
 
-$theme-dark: (
+$theme-colors-dark: (
   '--text-color-primary': text-color('primary', $paletteDark),
   '--text-color-secondary': text-color('secondary', $paletteDark),
   '--text-color-tertiary': text-color('tertiary', $paletteDark),

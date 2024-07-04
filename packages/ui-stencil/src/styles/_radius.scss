@@ -1,6 +1,6 @@
 $base: 8;
 
-$radiusS: rem-value($base); // 8px
-$radiusM: rem-value($base * 1.5); // 12px
-$radiusL: rem-value($base * 2); // 16px
-$radius3XL: rem-value($base * 5); // 40px
+$radiusS: pxToRem($base); // 8px
+$radiusM: pxToRem($base * 1.5); // 12px
+$radiusL: pxToRem($base * 2); // 16px
+$radius3XL: pxToRem($base * 5); // 40px
