@@ -6,7 +6,7 @@ import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core'
   shadow: true
 })
 export class OramaTextarea {
-  @Element() el: HTMLElement
+  @Element() el: HTMLTextAreaElement
 
   @Prop() value: string | null = ''
   @Prop() maxRows: number | string
@@ -124,6 +124,8 @@ export class OramaTextarea {
   }
 
   render() {
+    console.log(this.getAllProps())
+
     return (
       <Host>
         {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}

@@ -1,0 +1,70 @@
+:host {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  padding: var(--spacing-m, $spacing-m) 0;
+
+  border-radius: var(--radius-l, $radius-l);
+
+  border: 1px solid var(--border-color-primary, border-color('primary'));
+  background: var(--background-color-secondary, background-color('secondary'));
+  color: var(--text-color-secondary, text-color('secondary'));
+}
+
+::slotted([slot='adornment-start']) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
+}
+
+::slotted([slot='adornment-end']) {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
+}
+
+textarea {
+  left: 0;
+  right: 0;
+  // TODO: Fix hardcoded padding
+  padding: 0 54px;
+  resize: none;
+  border: none;
+  outline: none;
+  background: none;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  font-family: inherit;
+  width: 100%;
+
+  transition: max-height 0.2s;
+
+  &::placeholder {
+    color: var(--text-color-inactive, text-color('inactive'));
+  }
+
+  &:focus {
+    border-color: var(--border-color-accent, border-color('accent'));
+    outline: none;
+  }
+
+  // Maybe move somewhere else to reuse in some somponents, but not globally
+  &::-webkit-scrollbar {
+    width: 0.2em;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ffffff85;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #ffffff85;
+  }
+}

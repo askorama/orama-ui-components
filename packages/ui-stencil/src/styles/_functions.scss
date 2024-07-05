@@ -3,7 +3,7 @@
  * The function palette is used by the following functions
  * text-color(), border-color() and bg-color()
  */
- @function palette($feature, $role: 'primary', $palette: $palette) {
+@function palette($feature, $role: 'primary', $palette: $palette) {
   @if map-has-key($palette, $feature) {
     $feat: map-get($palette, $feature);
 
@@ -20,7 +20,7 @@
 }
 
 /* ===BACKGROUND COLOR FUNCTION=== */
-@function bg-color($role: 'primary', $palette: $palette) {
+@function background-color($role: 'primary', $palette: $palette) {
   @return palette('background', $role, $palette);
 }
 
