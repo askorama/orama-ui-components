@@ -15,8 +15,8 @@
 }
 
 /**
-  * Use to set the theme skin based on user preferences
-  * @include spread-map($map);
+  * Use to set the theme CSS custom properties based on user preferences
+  * @include mapToCustomProperties($map);
  */
 @mixin mapToCustomProperties($map: ()) {
   @each $key, $value in $map {

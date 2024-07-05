@@ -54,16 +54,3 @@
   }
   @return map-get($map, $key);
 }
-
-/* ===GET FONT FAMILY NAME FROM NESTED MAP=== */
-@function font-family($font) {
-  @if map-has-key($fonts, $font) {
-    $fontprops: map-get($fonts, $font);
-
-    @if map-has-key($fontprops, 'family') {
-      @return map-get($fontprops, 'family');
-    }
-    @warn "Unknown family key in $font";
-  }
-  @warn "Unknown `#{$font}` in `#{$fonts}`";
-}

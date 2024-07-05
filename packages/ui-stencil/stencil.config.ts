@@ -52,7 +52,7 @@ export const config: Config = {
     sass({
       injectGlobalPaths:
       [
-        'src/styles/tokens.scss'
+        'src/styles/abstracts.scss'
       ]
     }),
     postcss({
