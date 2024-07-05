@@ -1,7 +1,5 @@
 # search-box
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -29,10 +27,10 @@ graph TD;
   orama-search --> orama-input
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-textarea
-  orama-chat --> orama-small
+  orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message
-  orama-chat-assistent-message --> orama-span
+  orama-chat-assistent-message --> orama-text
   style search-box fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -116,28 +116,6 @@ export declare interface OramaInput extends Components.OramaInput {}
 
 
 @ProxyCmp({
-  inputs: ['as', 'class']
-})
-@Component({
-  selector: 'orama-paragraph',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['as', 'class'],
-})
-export class OramaParagraph {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface OramaParagraph extends Components.OramaParagraph {}
-
-
-@ProxyCmp({
 })
 @Component({
   selector: 'orama-search',
@@ -159,16 +137,16 @@ export declare interface OramaSearch extends Components.OramaSearch {}
 
 
 @ProxyCmp({
-  inputs: ['as']
+  inputs: ['as', 'styledAs']
 })
 @Component({
-  selector: 'orama-small',
+  selector: 'orama-text',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['as'],
+  inputs: ['as', 'styledAs'],
 })
-export class OramaSmall {
+export class OramaText {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
@@ -177,29 +155,7 @@ export class OramaSmall {
 }
 
 
-export declare interface OramaSmall extends Components.OramaSmall {}
-
-
-@ProxyCmp({
-  inputs: ['as', 'class']
-})
-@Component({
-  selector: 'orama-span',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: '<ng-content></ng-content>',
-  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['as', 'class'],
-})
-export class OramaSpan {
-  protected el: HTMLElement;
-  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
-    c.detach();
-    this.el = r.nativeElement;
-  }
-}
-
-
-export declare interface OramaSpan extends Components.OramaSpan {}
+export declare interface OramaText extends Components.OramaText {}
 
 
 @ProxyCmp({

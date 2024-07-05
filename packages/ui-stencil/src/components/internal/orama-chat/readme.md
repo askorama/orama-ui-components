@@ -15,17 +15,17 @@
 
 - [orama-chat-messages-container](../orama-chat-messages-container)
 - [orama-textarea](../orama-textarea)
-- [orama-small](../Typography)
+- [orama-text](../orama-text)
 
 ### Graph
 ```mermaid
 graph TD;
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-textarea
-  orama-chat --> orama-small
+  orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message
-  orama-chat-assistent-message --> orama-span
+  orama-chat-assistent-message --> orama-text
   search-box --> orama-chat
   style orama-chat fill:#f9f,stroke:#333,stroke-width:4px
 ```

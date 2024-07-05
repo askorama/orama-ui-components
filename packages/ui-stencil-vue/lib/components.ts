@@ -29,28 +29,17 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
   'placeholder',
   'size',
   'label',
-  'labelForScreenReaders',
-  'type'
-]);
-
-
-export const OramaParagraph = /*@__PURE__*/ defineContainer<JSX.OramaParagraph>('orama-paragraph', undefined, [
-  'as',
-  'class'
+  'type',
+  'labelForScreenReaders'
 ]);
 
 
 export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined);
 
 
-export const OramaSmall = /*@__PURE__*/ defineContainer<JSX.OramaSmall>('orama-small', undefined, [
-  'as'
-]);
-
-
-export const OramaSpan = /*@__PURE__*/ defineContainer<JSX.OramaSpan>('orama-span', undefined, [
+export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
-  'class'
+  'styledAs'
 ]);
 
 

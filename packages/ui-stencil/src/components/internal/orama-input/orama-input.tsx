@@ -6,6 +6,7 @@ type BaseInputProps = {
   name?: string
   placeholder?: string
   size?: 'small' | 'medium' | 'large'
+  type?: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url' | 'search'
 }
 
 type ConditionalInputProps =
@@ -22,7 +23,7 @@ export type InputProps = BaseInputProps & ConditionalInputProps
 
 @Component({
   tag: 'orama-input',
-  styleUrl: 'form.scss'
+  styleUrl: 'orama-input.scss'
 })
 export class Input {
   @Element() el: HTMLElement
@@ -31,10 +32,8 @@ export class Input {
   @Prop() placeholder?: InputProps['placeholder']
   @Prop() size?: InputProps['size'] = 'medium'
   @Prop() label?: InputProps['label']
+  @Prop() type?: InputProps['type'] = 'text'
   @Prop() labelForScreenReaders?: InputProps['labelForScreenReaders']
-
-  // inherits attributes from the input element
-  @Prop() type: string
 
   @State() value = ''
 
@@ -42,7 +41,7 @@ export class Input {
     const inputSizeClass = `input input--${this.size}`
     const labelClass = `label ${this.labelForScreenReaders ? 'sr-only' : ''}`
 
-    const declaredProps = ['id', 'name']
+    const declaredProps = ['id', 'name', 'type']
     const inputProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps)
 
     return (
@@ -54,6 +53,7 @@ export class Input {
           <input
             class={inputSizeClass}
             id={this.name}
+            type={this.type}
             placeholder={this.placeholder || null}
             onInput={(e: Event) => (this.value = (e.target as HTMLInputElement).value)}
             value={this.value}

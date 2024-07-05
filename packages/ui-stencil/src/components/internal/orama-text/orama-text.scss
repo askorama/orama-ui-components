@@ -1,0 +1,23 @@
+.p {
+      @include paragraph();
+
+      &--bold {
+            font-weight: var(--font-weight-semibold, $font-weight-semibold);
+      }
+}
+
+.span {
+      @include span();
+
+      &--bold {
+            font-weight: var(--font-weight-semibold, $font-weight-semibold);
+      }
+}
+
+.small {
+      @include small();
+
+      &--bold {
+            font-weight: var(--font-weight-semibold, $font-weight-semibold);
+      }
+}
