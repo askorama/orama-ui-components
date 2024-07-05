@@ -14,6 +14,7 @@
 | `name`                  | `name`                     |             | `string`                         | `undefined` |
 | `placeholder`           | `placeholder`              |             | `string`                         | `undefined` |
 | `size`                  | `size`                     |             | `"large" \| "medium" \| "small"` | `'medium'`  |
+| `type`                  | `type`                     |             | `string`                         | `undefined` |
 
 
 ## Dependencies

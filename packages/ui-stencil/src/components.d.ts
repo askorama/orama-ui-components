@@ -32,6 +32,7 @@ export namespace Components {
         "name": InputProps['name'];
         "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
+        "type": string;
     }
     interface OramaParagraph {
         "as"?: ParagraphProps['as'];
@@ -166,6 +167,7 @@ declare namespace LocalJSX {
         "name"?: InputProps['name'];
         "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
+        "type"?: string;
     }
     interface OramaParagraph {
         "as"?: ParagraphProps['as'];
