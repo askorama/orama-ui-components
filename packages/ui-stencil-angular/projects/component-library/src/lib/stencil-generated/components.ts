@@ -29,14 +29,14 @@ export declare interface OramaChat extends Components.OramaChat {}
 
 
 @ProxyCmp({
-  inputs: ['label', 'labelForScreenReaders', 'name', 'placeholder', 'size']
+  inputs: ['label', 'labelForScreenReaders', 'name', 'placeholder', 'size', 'type']
 })
 @Component({
   selector: 'orama-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['label', 'labelForScreenReaders', 'name', 'placeholder', 'size'],
+  inputs: ['label', 'labelForScreenReaders', 'name', 'placeholder', 'size', 'type'],
 })
 export class OramaInput {
   protected el: HTMLElement;

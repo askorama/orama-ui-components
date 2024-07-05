@@ -16,7 +16,8 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
   'placeholder',
   'size',
   'label',
-  'labelForScreenReaders'
+  'labelForScreenReaders',
+  'type'
 ]);
 
 
