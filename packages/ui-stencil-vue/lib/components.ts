@@ -16,23 +16,14 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
   'placeholder',
   'size',
   'label',
-  'labelForScreenReaders',
-  'type'
+  'type',
+  'labelForScreenReaders'
 ]);
 
 
-export const OramaParagraph = /*@__PURE__*/ defineContainer<JSX.OramaParagraph>('orama-paragraph', undefined, [
-  'as'
-]);
-
-
-export const OramaSmall = /*@__PURE__*/ defineContainer<JSX.OramaSmall>('orama-small', undefined, [
-  'as'
-]);
-
-
-export const OramaSpan = /*@__PURE__*/ defineContainer<JSX.OramaSpan>('orama-span', undefined, [
-  'as'
+export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
+  'as',
+  'styledAs'
 ]);
 
 

@@ -5,14 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { InputProps } from "./components/internal/Form/Input";
-import { ParagraphProps } from "./components/internal/Typography/Paragraph";
-import { SmallProps } from "./components/internal/Typography/Small";
-import { SpanProps } from "./components/internal/Typography/Span";
-export { InputProps } from "./components/internal/Form/Input";
-export { ParagraphProps } from "./components/internal/Typography/Paragraph";
-export { SmallProps } from "./components/internal/Typography/Small";
-export { SpanProps } from "./components/internal/Typography/Span";
+import { InputProps } from "./components/internal/orama-input/orama-input";
+import { TextProps } from "./components/internal/orama-text/orama-text";
+export { InputProps } from "./components/internal/orama-input/orama-input";
+export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
     interface OramaChat {
     }
@@ -22,16 +18,17 @@ export namespace Components {
         "name": InputProps['name'];
         "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
-        "type": string;
+        "type"?: InputProps['type'];
     }
-    interface OramaParagraph {
-        "as"?: ParagraphProps['as'];
-    }
-    interface OramaSmall {
-        "as"?: SmallProps['as'];
-    }
-    interface OramaSpan {
-        "as"?: SpanProps['as'];
+    interface OramaText {
+        /**
+          * it defines the HTML tag to be used
+         */
+        "as"?: TextProps['as'];
+        /**
+          * it defines how it should look like
+         */
+        "styledAs"?: TextProps['styledAs'];
     }
     interface OramaTextarea {
         "maxRows": number | string;
@@ -57,23 +54,11 @@ declare global {
         prototype: HTMLOramaInputElement;
         new (): HTMLOramaInputElement;
     };
-    interface HTMLOramaParagraphElement extends Components.OramaParagraph, HTMLStencilElement {
+    interface HTMLOramaTextElement extends Components.OramaText, HTMLStencilElement {
     }
-    var HTMLOramaParagraphElement: {
-        prototype: HTMLOramaParagraphElement;
-        new (): HTMLOramaParagraphElement;
-    };
-    interface HTMLOramaSmallElement extends Components.OramaSmall, HTMLStencilElement {
-    }
-    var HTMLOramaSmallElement: {
-        prototype: HTMLOramaSmallElement;
-        new (): HTMLOramaSmallElement;
-    };
-    interface HTMLOramaSpanElement extends Components.OramaSpan, HTMLStencilElement {
-    }
-    var HTMLOramaSpanElement: {
-        prototype: HTMLOramaSpanElement;
-        new (): HTMLOramaSpanElement;
+    var HTMLOramaTextElement: {
+        prototype: HTMLOramaTextElement;
+        new (): HTMLOramaTextElement;
     };
     interface HTMLOramaTextareaElement extends Components.OramaTextarea, HTMLStencilElement {
     }
@@ -90,9 +75,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "orama-chat": HTMLOramaChatElement;
         "orama-input": HTMLOramaInputElement;
-        "orama-paragraph": HTMLOramaParagraphElement;
-        "orama-small": HTMLOramaSmallElement;
-        "orama-span": HTMLOramaSpanElement;
+        "orama-text": HTMLOramaTextElement;
         "orama-textarea": HTMLOramaTextareaElement;
         "search-box": HTMLSearchBoxElement;
     }
@@ -106,16 +89,17 @@ declare namespace LocalJSX {
         "name"?: InputProps['name'];
         "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
-        "type"?: string;
+        "type"?: InputProps['type'];
     }
-    interface OramaParagraph {
-        "as"?: ParagraphProps['as'];
-    }
-    interface OramaSmall {
-        "as"?: SmallProps['as'];
-    }
-    interface OramaSpan {
-        "as"?: SpanProps['as'];
+    interface OramaText {
+        /**
+          * it defines the HTML tag to be used
+         */
+        "as"?: TextProps['as'];
+        /**
+          * it defines how it should look like
+         */
+        "styledAs"?: TextProps['styledAs'];
     }
     interface OramaTextarea {
         "maxRows"?: number | string;
@@ -130,9 +114,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "orama-chat": OramaChat;
         "orama-input": OramaInput;
-        "orama-paragraph": OramaParagraph;
-        "orama-small": OramaSmall;
-        "orama-span": OramaSpan;
+        "orama-text": OramaText;
         "orama-textarea": OramaTextarea;
         "search-box": SearchBox;
     }
@@ -143,9 +125,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
-            "orama-paragraph": LocalJSX.OramaParagraph & JSXBase.HTMLAttributes<HTMLOramaParagraphElement>;
-            "orama-small": LocalJSX.OramaSmall & JSXBase.HTMLAttributes<HTMLOramaSmallElement>;
-            "orama-span": LocalJSX.OramaSpan & JSXBase.HTMLAttributes<HTMLOramaSpanElement>;
+            "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;
             "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
         }

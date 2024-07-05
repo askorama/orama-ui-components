@@ -1,5 +1,4 @@
 import type { StoryObj, Meta } from '@storybook/html'
-import { h } from 'jsx-dom'
 
 const meta = {
   title: 'Internal/Form',
