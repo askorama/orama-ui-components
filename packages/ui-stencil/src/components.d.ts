@@ -32,6 +32,12 @@ export namespace Components {
     interface OramaSpan {
         "as"?: SpanProps['as'];
     }
+    interface OramaTextarea {
+        "maxRows": number | string;
+        "minRows": number | string;
+        "placeholder": string;
+        "value": string | null;
+    }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
         "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
@@ -68,6 +74,12 @@ declare global {
         prototype: HTMLOramaSpanElement;
         new (): HTMLOramaSpanElement;
     };
+    interface HTMLOramaTextareaElement extends Components.OramaTextarea, HTMLStencilElement {
+    }
+    var HTMLOramaTextareaElement: {
+        prototype: HTMLOramaTextareaElement;
+        new (): HTMLOramaTextareaElement;
+    };
     interface HTMLSearchBoxElement extends Components.SearchBox, HTMLStencilElement {
     }
     var HTMLSearchBoxElement: {
@@ -80,6 +92,7 @@ declare global {
         "orama-paragraph": HTMLOramaParagraphElement;
         "orama-small": HTMLOramaSmallElement;
         "orama-span": HTMLOramaSpanElement;
+        "orama-textarea": HTMLOramaTextareaElement;
         "search-box": HTMLSearchBoxElement;
     }
 }
@@ -102,6 +115,12 @@ declare namespace LocalJSX {
     interface OramaSpan {
         "as"?: SpanProps['as'];
     }
+    interface OramaTextarea {
+        "maxRows"?: number | string;
+        "minRows"?: number | string;
+        "placeholder"?: string;
+        "value"?: string | null;
+    }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
@@ -112,6 +131,7 @@ declare namespace LocalJSX {
         "orama-paragraph": OramaParagraph;
         "orama-small": OramaSmall;
         "orama-span": OramaSpan;
+        "orama-textarea": OramaTextarea;
         "search-box": SearchBox;
     }
 }
@@ -124,6 +144,7 @@ declare module "@stencil/core" {
             "orama-paragraph": LocalJSX.OramaParagraph & JSXBase.HTMLAttributes<HTMLOramaParagraphElement>;
             "orama-small": LocalJSX.OramaSmall & JSXBase.HTMLAttributes<HTMLOramaSmallElement>;
             "orama-span": LocalJSX.OramaSpan & JSXBase.HTMLAttributes<HTMLOramaSpanElement>;
+            "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
         }
     }

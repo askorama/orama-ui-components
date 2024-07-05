@@ -35,6 +35,14 @@ export const OramaSpan = /*@__PURE__*/ defineContainer<JSX.OramaSpan>('orama-spa
 ]);
 
 
+export const OramaTextarea = /*@__PURE__*/ defineContainer<JSX.OramaTextarea>('orama-textarea', undefined, [
+  'value',
+  'maxRows',
+  'minRows',
+  'placeholder'
+]);
+
+
 export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined, [
   'themeConfig',
   'color'
