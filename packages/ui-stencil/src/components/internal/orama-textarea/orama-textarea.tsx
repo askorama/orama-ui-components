@@ -14,12 +14,16 @@ export class OramaTextarea {
   @Prop() placeholder: string
 
   @State() height: number
+  @State() startAdornmentWidth: number
+  @State() endAdornmentWidth: number
 
   textarea!: HTMLTextAreaElement
   shadowTextarea!: HTMLTextAreaElement
 
   componentDidLoad() {
     this.syncHeight()
+    this.startAdornmentWidth = this.getNamedSlotWidth('adornment-start')
+    this.endAdornmentWidth = this.getNamedSlotWidth('adornment-end')
   }
 
   // TODO: Use to calculate adornment width later
@@ -124,12 +128,12 @@ export class OramaTextarea {
   }
 
   render() {
-    console.log(this.getAllProps())
-
     return (
       <Host>
         {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}
+
         <slot name="adornment-start" />
+
         <textarea
           {...this.getAllProps()}
           value={this.value}
@@ -137,7 +141,9 @@ export class OramaTextarea {
           ref={(el) => (this.textarea = el as HTMLTextAreaElement)}
           rows={Number(this.minRows)}
           style={{
-            height: this.height ? `${this.height}px` : undefined
+            height: this.height ? `${this.height}px` : undefined,
+            paddingLeft: this.startAdornmentWidth ? `${this.startAdornmentWidth}px` : undefined,
+            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined
           }}
           placeholder={this.placeholder}
         />
@@ -160,7 +166,9 @@ export class OramaTextarea {
             left: '0',
             transform: 'translateZ(0)',
             paddingTop: '0',
-            paddingBottom: '0'
+            paddingBottom: '0',
+            paddingLeft: this.startAdornmentWidth ? `${this.startAdornmentWidth}px` : undefined,
+            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined
           }}
         />
       </Host>

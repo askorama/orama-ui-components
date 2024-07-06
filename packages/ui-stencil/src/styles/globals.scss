@@ -21,7 +21,9 @@
   vertical-align: baseline;
   text-size-adjust: none;
 
-  *, *:before, *:after{
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
   }
 }
