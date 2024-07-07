@@ -2,29 +2,26 @@ import type { StoryObj, Meta } from '@storybook/html'
 
 const meta: Meta = {
   title: 'Public/SearchBox',
-  component: 'search-box',
+  component: 'search-box'
 } satisfies Meta
 
 export default meta
 type Story = StoryObj
 
-const Template = (args) => {
-  return `<search-box theme-config='${JSON.stringify(args.theme)}'></search-box>`
+// More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
+export const SearchBox: Story = {
+  render: () => `
+  <div style="height: 800px; width: 360px; border: 1px solid white; overflow: hidden;"> 
+    <search-box open="true"></search-box>
+  </div>`
 }
 
-// More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
-export const Primary: Story = {
-  render: Template,
-  args: {
-    theme: {
-      colors: {
-        light: {
-          primaryColor: 'red'
-        },
-        dark: {
-          primaryColor: 'blue'
-        }
-      }
-    }
-  }
+export const SearchBoxWithToggler: Story = {
+  render: () => `
+  <div>
+    <search-box-toggler></search-box-toggler>
+    <div style="height: 800px; width: 360px; border: 1px solid white; overflow: hidden;"> 
+      <search-box></search-box>
+    </div>
+  </div>`
 }

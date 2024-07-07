@@ -5,7 +5,6 @@ defineCustomElements()
 
 /** @type { import('@storybook/html').Preview } */
 const preview = {
-  tags: ['autodocs'],
   // TODO: Theme class should be a variable
   decorators: [(story) => `<div id="orama-ui" class="theme-dark">${story()}</div>`],
   parameters: {

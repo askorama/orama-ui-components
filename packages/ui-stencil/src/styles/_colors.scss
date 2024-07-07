@@ -32,6 +32,7 @@ $palette: (
     primary: $gray950,
     secondary: $gray900,
     tertiary: $gray800,
+    fourth: $gray700,
   ),
   border: (
     primary: $gray700,
@@ -59,6 +60,7 @@ $paletteDark: (
     primary: $gray950,
     secondary: $gray900,
     tertiary: $gray800,
+    fourth: $gray700,
   ),
   border: (
     primary: $gray700,
@@ -83,6 +85,7 @@ $theme-colors-light: (
   '--background-color-primary': background-color('primary'),
   '--background-color-secondary': background-color('secondary'),
   '--background-color-tertiary': background-color('tertiary'),
+  '--background-color-fourth': background-color('fourth'),
   '--border-color-primary': border-color('primary'),
   '--border-color-secondary': border-color('secondary'),
   '--border-color-inactive': border-color('inactive'),
@@ -101,6 +104,7 @@ $theme-colors-dark: (
   '--background-color-primary': background-color('primary', $paletteDark),
   '--background-color-secondary': background-color('secondary', $paletteDark),
   '--background-color-tertiary': background-color('tertiary', $paletteDark),
+  '--background-color-fourth': background-color('fourth', $paletteDark),
   '--border-color-primary': border-color('primary', $paletteDark),
   '--border-color-secondary': border-color('secondary', $paletteDark),
   '--border-color-inactive': border-color('inactive', $paletteDark),

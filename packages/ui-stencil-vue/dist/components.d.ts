@@ -1,2 +1,12 @@
-export declare const OramaP: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaChat: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaChatAssistentMessage: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaChatMessagesContainer: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaChatUserMessage: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaInput: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaParagraph: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaSearch: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaSmall: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaSpan: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const OramaTextarea: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
 export declare const SearchBox: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
+export declare const SearchBoxToggler: import("vue").DefineSetupFnComponent<any, {}, {}, any, import("vue").PublicProps>;
