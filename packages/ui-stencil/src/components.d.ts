@@ -25,6 +25,10 @@ export namespace Components {
          */
         "as"?: TextProps['as'];
         /**
+          * the optional class name
+         */
+        "class"?: string;
+        /**
           * it defines how it should look like
          */
         "styledAs"?: TextProps['styledAs'];
@@ -94,6 +98,10 @@ declare namespace LocalJSX {
           * it defines the HTML tag to be used
          */
         "as"?: TextProps['as'];
+        /**
+          * the optional class name
+         */
+        "class"?: string;
         /**
           * it defines how it should look like
          */

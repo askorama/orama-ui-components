@@ -22,7 +22,8 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
 
 export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
-  'styledAs'
+  'styledAs',
+  'class'
 ]);
 
 

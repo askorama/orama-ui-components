@@ -1,17 +1,17 @@
 // Primitive colors
-$gray50: #FBFBFB;
-$gray100: #EFEFEF;
-$gray200: #DADADA;
-$gray300: #C6C6C6;
-$gray400: #AFAFB1;
-$gray500: #99989D;
+$gray50: #fbfbfb;
+$gray100: #efefef;
+$gray200: #dadada;
+$gray300: #c6c6c6;
+$gray400: #afafb1;
+$gray500: #99989d;
 $gray600: #838289;
-$gray700: #2E2E2E;
+$gray700: #2e2e2e;
 $gray800: #212121;
 $gray900: #151515;
 $gray950: #050505;
-$purple500: #8152EE;
-$purple700: #6A4BB2;
+$purple500: #8152ee;
+$purple700: #6a4bb2;
 
 /**
 * in order to use one of the colors included in the palette map;
@@ -31,21 +31,21 @@ $palette: (
   background: (
     primary: $gray950,
     secondary: $gray900,
-    tertiary: $gray800
+    tertiary: $gray800,
   ),
   border: (
     primary: $gray700,
     secondary: $gray900,
     inactive: $gray400,
-    accent: $purple500
+    accent: $purple500,
   ),
   icon: (
     primary: $gray50,
     secondary: $gray200,
     tertiary: $gray600,
     inactive: $gray500,
-    accent: $purple500
-  )
+    accent: $purple500,
+  ),
 );
 
 $paletteDark: (
@@ -58,20 +58,20 @@ $paletteDark: (
   background: (
     primary: $gray950,
     secondary: $gray900,
-    tertiary: $gray800
+    tertiary: $gray800,
   ),
   border: (
     primary: $gray700,
     secondary: $gray900,
-    inactive: $gray400
+    inactive: $gray400,
   ),
   icon: (
     primary: $gray50,
     secondary: $gray200,
     tertiary: $gray600,
     inactive: $gray500,
-    accent: $purple500
-  )
+    accent: $purple500,
+  ),
 );
 
 // should be imported by the config/colors.ts file
@@ -90,7 +90,7 @@ $theme-colors-light: (
   '--icon-color-secondary': icon-color('secondary'),
   '--icon-color-tertiary': icon-color('tertiary'),
   '--icon-color-inactive': icon-color('inactive'),
-  '--icon-color-accent': icon-color('accent')
+  '--icon-color-accent': icon-color('accent'),
 );
 
 $theme-colors-dark: (
@@ -108,5 +108,5 @@ $theme-colors-dark: (
   '--icon-color-secondary': icon-color('secondary', $paletteDark),
   '--icon-color-tertiary': icon-color('tertiary', $paletteDark),
   '--icon-color-inactive': icon-color('inactive', $paletteDark),
-  '--icon-color-accent': icon-color('accent', $paletteDark)
+  '--icon-color-accent': icon-color('accent', $paletteDark),
 );
