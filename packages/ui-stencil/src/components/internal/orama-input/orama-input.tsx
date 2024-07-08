@@ -1,5 +1,5 @@
-// create stencil component for Input
 import { Component, Host, Prop, State, h, Element } from '@stencil/core';
+// import '@phoshpor-icons/webcomponents/PhHorse'
 import { AttributeUtils } from '../../../services/AttributeUtils';
 
 type BaseInputProps = {
@@ -28,7 +28,6 @@ export class Input {
   @Element() el: HTMLElement;
 
   @Prop() name: InputProps['name'];
-  @Prop() placeholder?: InputProps['placeholder'];
   @Prop() size?: InputProps['size'] = 'medium'
   @Prop() label?: InputProps['label']
   @Prop() type?: InputProps['type'] = 'text'
@@ -40,7 +39,7 @@ export class Input {
     const inputSizeClass = `input input--${this.size}`
     const labelClass = `label ${this.labelForScreenReaders ? 'sr-only' : ''}`
 
-    const declaredProps = ['id', 'name', 'type'];
+    const declaredProps = ['id', 'name', 'type', 'class', 'onInput'];
     const inputProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps);
 
     return (
@@ -53,11 +52,10 @@ export class Input {
             class={inputSizeClass}
             id={this.name}
             type={this.type}
-            placeholder={this.placeholder || null}
             onInput={(e: Event) => this.value = (e.target as HTMLInputElement).value}
-            value={this.value}
             {...inputProps}
           />
+          <ph-horse></ph-horse>
         </div>
       </Host>
     );

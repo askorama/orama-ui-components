@@ -13,7 +13,6 @@ export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-cha
 
 export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-input', undefined, [
   'name',
-  'placeholder',
   'size',
   'label',
   'type',
