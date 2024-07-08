@@ -26,7 +26,6 @@ export namespace Components {
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
         "name": InputProps['name'];
-        "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
     }
@@ -146,7 +145,6 @@ declare namespace LocalJSX {
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
         "name"?: InputProps['name'];
-        "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
     }

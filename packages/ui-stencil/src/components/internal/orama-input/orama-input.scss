@@ -3,20 +3,25 @@
 }
 
 .input {
+  @include paragraph();
   border: 1px solid var(--border-color-primary, border-color('primary'));
   background: var(--background-color-secondary, background-color('secondary'));
   border-radius: var(--radius-m, $radius-m);
-  color: var(--text-color-secondary, text-color('secondary'));
   padding: var(--radius-s, $radius-s) var(--radius-m, $radius-m);
-  font-size: var(--font-size-sm, $font-size-sm);
+  display: block;
 
   &::placeholder {
     color: var(--text-color-inactive, text-color('inactive'));
   }
 
   &:focus {
-    border-color: var(--border-color-accent, border-color('accent'));
+    border: 1px solid var(--border-color-primary, border-color('primary'));
     outline: none;
+  }
+
+  &[type='search']::-webkit-search-cancel-button,
+  &[type='search']::-webkit-search-decoration {
+    appearance: none;
   }
 }
 
