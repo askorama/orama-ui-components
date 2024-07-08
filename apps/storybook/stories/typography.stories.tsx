@@ -20,13 +20,14 @@ export default meta;
 type Story = StoryObj;
 
 const Template = (content: string) => (args) => `
-  <orama-text as=${args.as} styled-as=${args.styledAs}>${content}</orama-text>
+  <orama-text as=${args.as} styled-as=${args.styledAs} class=${args.class}>${content}</orama-text>
 `;
 
 export const Paragraph: Story = {
   render: Template("This is a paragraph"),
   args: {
     as: "p",
+    class: "my-optional-class",
   },
 };
 
@@ -34,7 +35,7 @@ export const Span: Story = {
   render: Template("This is a span"),
   args: {
     as: "span",
-    styledAss: "span",
+    class: "my-optional-class",
   },
 };
 
@@ -42,6 +43,6 @@ export const Small: Story = {
   render: Template("This is a small"),
   args: {
     as: "small",
-    styledAs: "small",
+    class: "my-optional-class",
   },
 };

@@ -38,7 +38,8 @@ export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama
 
 export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
-  'styledAs'
+  'styledAs',
+  'class'
 ]);
 
 

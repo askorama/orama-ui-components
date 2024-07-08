@@ -137,14 +137,14 @@ export declare interface OramaSearch extends Components.OramaSearch {}
 
 
 @ProxyCmp({
-  inputs: ['as', 'styledAs']
+  inputs: ['as', 'class', 'styledAs']
 })
 @Component({
   selector: 'orama-text',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['as', 'styledAs'],
+  inputs: ['as', 'class', 'styledAs'],
 })
 export class OramaText {
   protected el: HTMLElement;

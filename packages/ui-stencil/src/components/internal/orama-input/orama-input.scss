@@ -14,14 +14,18 @@
     color: var(--text-color-inactive, text-color('inactive'));
   }
 
-  &:focus {
-    border: 1px solid var(--border-color-primary, border-color('primary'));
-    outline: none;
-  }
-
   &[type='search']::-webkit-search-cancel-button,
   &[type='search']::-webkit-search-decoration {
     appearance: none;
+  }
+
+  // &:focus {
+  //   outline: none;
+  //   background: #ffdd00; /* gold */
+  // }
+
+  &:focus-visible {
+    background: red; /* undo gold */
   }
 }
 
