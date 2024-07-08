@@ -8,7 +8,7 @@
   background: var(--background-color-secondary, background-color('secondary'));
   border-radius: var(--radius-m, $radius-m);
   padding: var(--radius-s, $radius-s) var(--radius-m, $radius-m);
-  display: block;
+  width: 100%;
 
   &::placeholder {
     color: var(--text-color-inactive, text-color('inactive'));
@@ -19,13 +19,12 @@
     appearance: none;
   }
 
-  // &:focus {
-  //   outline: none;
-  //   background: #ffdd00; /* gold */
-  // }
+  &:focus {
+    outline: none;
+  }
 
   &:focus-visible {
-    background: red; /* undo gold */
+    border: 1px solid var(--border-color-accent, border-color('accent'));
   }
 }
 
