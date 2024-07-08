@@ -1,5 +1,5 @@
 import { Component, Host, Prop, State, h, Element } from '@stencil/core';
-// import '@phoshpor-icons/webcomponents/PhHorse'
+import "@phosphor-icons/webcomponents/PhX";
 import { AttributeUtils } from '../../../services/AttributeUtils';
 
 type BaseInputProps = {
@@ -55,7 +55,7 @@ export class Input {
             onInput={(e: Event) => this.value = (e.target as HTMLInputElement).value}
             {...inputProps}
           />
-          <ph-horse></ph-horse>
+          <ph-x></ph-x>
         </div>
       </Host>
     );
