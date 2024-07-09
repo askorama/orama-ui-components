@@ -1,6 +1,6 @@
 import type { Config } from '@stencil/core'
 import { sass } from '@stencil/sass'
-import { postcss } from '@stencil-community/postcss';
+import { postcss } from '@stencil-community/postcss'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'cssnano'
 import postcssPresetEnv from 'postcss-preset-env'
@@ -11,7 +11,7 @@ import { angularOutputTarget } from '@stencil/angular-output-target'
 import { vueOutputTarget } from '@stencil/vue-output-target'
 
 const namespace = 'orama-ui'
-const componentCorePackage = namespace
+const componentCorePackage = 'ui-stencil'
 
 export const config: Config = {
   namespace,
@@ -19,41 +19,38 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader'
+      esmLoaderPath: '../loader',
     },
     {
-      type: 'dist-custom-elements'
+      type: 'dist-custom-elements',
     },
     {
-      type: 'docs-readme'
+      type: 'docs-readme',
     },
     {
       type: 'www',
-      serviceWorker: null // disable service workers
+      serviceWorker: null, // disable service workers
     },
     reactOutputTarget({
       componentCorePackage,
-      proxiesFile: '../ui-stencil-react/src/components/stencil-generated/index.ts'
+      proxiesFile: '../ui-stencil-react/src/components/stencil-generated/index.ts',
     }),
     angularOutputTarget({
       componentCorePackage,
       directivesProxyFile: '../ui-stencil-angular/projects/component-library/src/lib/stencil-generated/components.ts',
-      directivesArrayFile: '../ui-stencil-angular/projects/component-library/src/lib/stencil-generated/index.ts'
+      directivesArrayFile: '../ui-stencil-angular/projects/component-library/src/lib/stencil-generated/index.ts',
     }),
     vueOutputTarget({
       componentCorePackage,
-      proxiesFile: '../ui-stencil-vue/lib/components.ts'
-    })
+      proxiesFile: '../ui-stencil-vue/lib/components.ts',
+    }),
   ],
   testing: {
-    browserHeadless: 'new'
+    browserHeadless: 'new',
   },
   plugins: [
     sass({
-      injectGlobalPaths:
-      [
-        'src/styles/abstracts.scss'
-      ]
+      injectGlobalPaths: ['src/styles/abstracts.scss'],
     }),
     postcss({
       plugins: [
@@ -62,8 +59,8 @@ export const config: Config = {
         rucksack(),
         cssfunctions({
           functions: {
-            pxToRem: (px: string) => `calc(${px}rem / var(--base-font-size, 16))`
-          }
+            pxToRem: (px: string) => `calc(${px}rem / var(--base-font-size, 16))`,
+          },
         }),
         postcssPresetEnv({
           stage: 3,
@@ -74,9 +71,9 @@ export const config: Config = {
             'custom-properties': true,
             'nested-calc': true,
             'prefers-color-scheme-query': true,
-          }
+          },
         }),
-      ]
-    })
-  ]
+      ],
+    }),
+  ],
 }
