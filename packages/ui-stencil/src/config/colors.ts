@@ -30,6 +30,7 @@ const semantic = {
     '--background-color-primary': primitive.gray950,
     '--background-color-secondary': primitive.gray900,
     '--background-color-tertiary': primitive.gray800,
+    '--background-color-fourth': primitive.gray500,
 
     '--border-color-primary': primitive.gray700,
     '--border-color-secondary': primitive.gray900,
@@ -39,7 +40,7 @@ const semantic = {
     '--icon-color-secondary': primitive.gray200,
     '--icon-color-tertiary': primitive.gray600,
     '--icon-color-inactive': primitive.gray500,
-    '--icon-color-accent': primitive.purple500,
+    '--icon-color-accent': primitive.purple500
   },
   dark: {
     '--text-color-primary': primitive.gray50,
@@ -50,6 +51,7 @@ const semantic = {
     '--background-color-primary': primitive.gray950,
     '--background-color-secondary': primitive.gray900,
     '--background-color-tertiary': primitive.gray800,
+    '--background-color-fourth': primitive.gray500,
 
     '--border-color-primary': primitive.gray700,
     '--border-color-secondary': primitive.gray900,
@@ -60,7 +62,7 @@ const semantic = {
     '--icon-color-tertiary': primitive.gray600,
     '--icon-color-inactive': primitive.gray500,
     // TODO: check the primitive to use for accent
-    '--icon-color-accent': primitive.purple500,
+    '--icon-color-accent': primitive.purple500
   },
   system: {}
 }

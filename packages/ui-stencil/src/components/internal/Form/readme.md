@@ -16,6 +16,19 @@
 | `size`                  | `size`                     |             | `"large" \| "medium" \| "small"` | `'medium'`  |
 
 
+## Dependencies
+
+### Used by
+
+ - [orama-search](../orama-search)
+
+### Graph
+```mermaid
+graph TD;
+  orama-search --> orama-input
+  style orama-input fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

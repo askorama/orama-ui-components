@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  color: var(--text-color-secondary, text-color('secondary'));
+}
+
+.message-wrapper {
+  background: var(--background-color-secondary, background-color('secondary'));
+  border-radius: var(--radius-m, $radius-m);
+  padding: var(--spacing-m, $spacing-m);
+  margin: 0 var(--spacing-l, $spacing-l);
+
+  .message-actions {
+    display: flex;
+    margin-top: var(--spacing-xl, $spacing-xl);
+    gap: var(--spacing-l, $spacing-l);
+    justify-content: end;
+
+    > * {
+      cursor: pointer;
+    }
+  }
+}
+
+.sources-wrapper {
+  display: flex;
+  margin-top: var(--spacing-s, $spacing-s);
+  padding: 0 var(--spacing-l, $spacing-l);
+  gap: var(--spacing-s, $spacing-s);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.source {
+  position: relative;
+  overflow: hidden;
+  width: 180px;
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  & ::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 70%, var(--background-color-secondary, background-color('secondary')) 95%);
+  }
+
+  padding: var(--spacing-m, $spacing-m);
+  border-radius: var(--radius-s, $radius-s);
+  background: var(--background-color-secondary, background-color('secondary'));
+
+  .source-title {
+    color: var(--text-color-secondary, text-color('secondary'));
+    white-space: nowrap;
+  }
+
+  .source-subtitle {
+    color: var(--text-color-tertiary, text-color('tertiary'));
+    white-space: nowrap;
+  }
+}

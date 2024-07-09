@@ -1,10 +1,10 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core'
 export interface ParagraphProps {
   as?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'small' | 'a'
 }
 @Component({
   tag: 'orama-paragraph',
-  styleUrl: 'typography.scss',
+  styleUrl: 'typography.scss'
 })
 
 /**
@@ -13,14 +13,21 @@ export interface ParagraphProps {
  */
 export class Paragraph implements ParagraphProps {
   @Prop() as?: ParagraphProps['as']
+  @Prop() class: string
 
   render() {
-    const Tag = this.as || 'p';
+    const Tag = this.as || 'p'
 
     return (
-      <Tag class="paragraph">
-        <slot />
-      </Tag>
-    );
+      <host>
+        <Tag
+          class={{
+            [this.class]: !!this.class
+          }}
+        >
+          <slot />
+        </Tag>
+      </host>
+    )
   }
 }

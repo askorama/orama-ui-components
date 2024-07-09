@@ -29,6 +29,71 @@ export declare interface OramaChat extends Components.OramaChat {}
 
 
 @ProxyCmp({
+  inputs: ['message']
+})
+@Component({
+  selector: 'orama-chat-assistent-message',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['message'],
+})
+export class OramaChatAssistentMessage {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaChatAssistentMessage extends Components.OramaChatAssistentMessage {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'orama-chat-messages-container',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class OramaChatMessagesContainer {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaChatMessagesContainer extends Components.OramaChatMessagesContainer {}
+
+
+@ProxyCmp({
+  inputs: ['message']
+})
+@Component({
+  selector: 'orama-chat-user-message',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['message'],
+})
+export class OramaChatUserMessage {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaChatUserMessage extends Components.OramaChatUserMessage {}
+
+
+@ProxyCmp({
   inputs: ['label', 'labelForScreenReaders', 'name', 'placeholder', 'size']
 })
 @Component({
@@ -51,14 +116,14 @@ export declare interface OramaInput extends Components.OramaInput {}
 
 
 @ProxyCmp({
-  inputs: ['as']
+  inputs: ['as', 'class']
 })
 @Component({
   selector: 'orama-paragraph',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['as'],
+  inputs: ['as', 'class'],
 })
 export class OramaParagraph {
   protected el: HTMLElement;
@@ -70,6 +135,27 @@ export class OramaParagraph {
 
 
 export declare interface OramaParagraph extends Components.OramaParagraph {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'orama-search',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class OramaSearch {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaSearch extends Components.OramaSearch {}
 
 
 @ProxyCmp({
@@ -95,14 +181,14 @@ export declare interface OramaSmall extends Components.OramaSmall {}
 
 
 @ProxyCmp({
-  inputs: ['as']
+  inputs: ['as', 'class']
 })
 @Component({
   selector: 'orama-span',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['as'],
+  inputs: ['as', 'class'],
 })
 export class OramaSpan {
   protected el: HTMLElement;
@@ -117,14 +203,14 @@ export declare interface OramaSpan extends Components.OramaSpan {}
 
 
 @ProxyCmp({
-  inputs: ['maxRows', 'minRows', 'placeholder', 'value']
+  inputs: ['autoFocus', 'maxRows', 'minRows', 'placeholder', 'value']
 })
 @Component({
   selector: 'orama-textarea',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['maxRows', 'minRows', 'placeholder', 'value'],
+  inputs: ['autoFocus', 'maxRows', 'minRows', 'placeholder', 'value'],
 })
 export class OramaTextarea {
   protected el: HTMLElement;
@@ -139,14 +225,14 @@ export declare interface OramaTextarea extends Components.OramaTextarea {}
 
 
 @ProxyCmp({
-  inputs: ['color', 'themeConfig']
+  inputs: ['color', 'open', 'themeConfig']
 })
 @Component({
   selector: 'search-box',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['color', 'themeConfig'],
+  inputs: ['color', 'open', 'themeConfig'],
 })
 export class SearchBox {
   protected el: HTMLElement;
@@ -158,5 +244,26 @@ export class SearchBox {
 
 
 export declare interface SearchBox extends Components.SearchBox {}
+
+
+@ProxyCmp({
+})
+@Component({
+  selector: 'search-box-toggler',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: [],
+})
+export class SearchBoxToggler {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface SearchBoxToggler extends Components.SearchBoxToggler {}
 
 

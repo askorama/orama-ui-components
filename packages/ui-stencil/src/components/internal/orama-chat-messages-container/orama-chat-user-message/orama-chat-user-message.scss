@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  justify-content: end;
+  color: var(--text-color-primary, text-color('primary'));
+  padding: 0 var(--spacing-l, $spacing-l);
+}
+
+.message-wrapper {
+  background: var(--background-color-fourth, background-color('fourth'));
+  border-radius: var(--radius-s, $radius-s);
+  padding: var(--radius-s, $radius-s) var(--radius-m, $radius-m);
+}

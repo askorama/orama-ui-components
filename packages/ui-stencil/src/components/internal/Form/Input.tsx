@@ -29,6 +29,7 @@ export class Input {
   @Prop() label?: InputProps['label']
   @Prop() labelForScreenReaders?: InputProps['labelForScreenReaders']
 
+  // TODO: It probably should be a prop as well
   @State() value = ''
 
   render() {

@@ -12,6 +12,7 @@ export class OramaTextarea {
   @Prop() maxRows: number | string
   @Prop() minRows: number | string = 1
   @Prop() placeholder: string
+  @Prop() autoFocus = false
 
   @State() height: number
   @State() startAdornmentWidth: number
@@ -26,7 +27,6 @@ export class OramaTextarea {
     this.endAdornmentWidth = this.getNamedSlotWidth('adornment-end')
   }
 
-  // TODO: Use to calculate adornment width later
   getNamedSlotWidth(slotName: string) {
     const slot = this.el.shadowRoot.querySelector(`slot[name="${slotName}"]`) as HTMLSlotElement
     if (slot) {
@@ -128,6 +128,7 @@ export class OramaTextarea {
   }
 
   render() {
+    console.log(this.autoFocus)
     return (
       <Host>
         {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}
@@ -136,6 +137,7 @@ export class OramaTextarea {
 
         <textarea
           {...this.getAllProps()}
+          autoFocus={this.autoFocus}
           value={this.value}
           onInput={this.handleChange}
           ref={(el) => (this.textarea = el as HTMLTextAreaElement)}

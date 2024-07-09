@@ -2,14 +2,13 @@
   position: relative;
   display: inline-flex;
   align-items: center;
-
   padding: var(--spacing-m, $spacing-m) 0;
-
   border-radius: var(--radius-l, $radius-l);
-
   border: 1px solid var(--border-color-primary, border-color('primary'));
   background: var(--background-color-secondary, background-color('secondary'));
   color: var(--text-color-secondary, text-color('secondary'));
+
+  box-shadow: 0px 4px 24px 0px #000;
 }
 
 ::slotted([slot='adornment-start']) {
@@ -32,7 +31,6 @@
 textarea {
   left: 0;
   right: 0;
-  // TODO: Fix hardcoded padding
   padding: 0px var(--spacing-m, $spacing-m);
   resize: none;
   border: none;
@@ -44,7 +42,7 @@ textarea {
   font-family: inherit;
   width: 100%;
 
-  transition: max-height 0.2s;
+  transition: height 0.1s;
 
   &::placeholder {
     color: var(--text-color-inactive, text-color('inactive'));
@@ -57,16 +55,13 @@ textarea {
 
   // Maybe move somewhere else to reuse in some somponents, but not globally
   &::-webkit-scrollbar {
-    width: 0.2em;
+    width: 0.3em;
   }
   &::-webkit-scrollbar-track {
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #ffffff85;
-    border-radius: 8px;
-  }
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: #ffffff85;
+    background-color: #b2b2b285;
+    border-radius: var(--border-radius-l, $radius-l);
   }
 }
