@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--spacing-l, $spacing-l);
+  overflow-y: auto;
+  // TODO: Should it be a variable?
+  background: linear-gradient(180deg, #000 0%, #251e37 50%);
+
+  // Maybe move somewhere else to reuse in some somponents, but not globally
+  &::-webkit-scrollbar {
+    width: 0.3em;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    // TODO: Should it be a variable?
+    background-color: #b2b2b285;
+    border-radius: var(--border-radius-l, $radius-l);
+  }
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacing-l, $spacing-l) 0;
+  gap: var(--spacing-l, $spacing-l);
+}

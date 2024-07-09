@@ -1,15 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
-:root {
-  #orama-ui {
-    @include mapToCustomProperties($theme-colors-light);
-    @include mapToCustomProperties($theme-typography);
-    @include mapToCustomProperties($theme-radius);
-    @include mapToCustomProperties($theme-spacing);
+#orama-ui {
+  @include mapToCustomProperties($theme-colors-light);
+  @include mapToCustomProperties($theme-typography);
+  @include mapToCustomProperties($theme-radius);
+  @include mapToCustomProperties($theme-spacing);
 
-    &.theme-dark {
-      @include mapToCustomProperties($theme-colors-dark);
-    }
+  &.theme-dark {
+    @include mapToCustomProperties($theme-colors-dark);
   }
 }
 
@@ -21,7 +19,9 @@
   vertical-align: baseline;
   text-size-adjust: none;
 
-  *, *:before, *:after{
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
   }
 }

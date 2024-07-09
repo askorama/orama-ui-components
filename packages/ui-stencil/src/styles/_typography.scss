@@ -1,5 +1,5 @@
 // FONT FAMILY
-$font-primary: var(--font-primary, 'Instrument Sans', sans-serif);
+$font-primary: 'Instrument Sans', sans-serif;
 
 // FONT SIZE
 $font-size-xs: pxToRem(12);
@@ -22,5 +22,5 @@ $theme-typography: (
   '--font-weight-normal': $font-weight-normal,
   '--font-weight-semibold': $font-weight-semibold,
   '--font-line-height-s': $font-line-height-s,
-  '--font-line-height-m': $font-line-height-m
+  '--font-line-height-m': $font-line-height-m,
 );

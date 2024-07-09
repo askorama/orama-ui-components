@@ -15,7 +15,7 @@ $purple700: #6a4bb2;
 
 /**
 * in order to use one of the colors included in the palette map;
-*  use the functions text-color(key), bg-color(key), border-color(key)
+*  use the functions text-color(key), background-color(key), border-color(key)
 * ie: text-color('primary')
 * These color functions should be used to:
 *  - define a fallback color for a CSS custom property
@@ -32,6 +32,7 @@ $palette: (
     primary: $gray950,
     secondary: $gray900,
     tertiary: $gray800,
+    fourth: $gray700,
   ),
   border: (
     primary: $gray700,
@@ -59,6 +60,7 @@ $paletteDark: (
     primary: $gray950,
     secondary: $gray900,
     tertiary: $gray800,
+    fourth: $gray700,
   ),
   border: (
     primary: $gray700,
@@ -80,9 +82,10 @@ $theme-colors-light: (
   '--text-color-secondary': text-color('secondary'),
   '--text-color-tertiary': text-color('tertiary'),
   '--text-color-inactive': text-color('inactive'),
-  '--background-color-primary': bg-color('primary'),
-  '--background-color-secondary': bg-color('secondary'),
-  '--background-color-tertiary': bg-color('tertiary'),
+  '--background-color-primary': background-color('primary'),
+  '--background-color-secondary': background-color('secondary'),
+  '--background-color-tertiary': background-color('tertiary'),
+  '--background-color-fourth': background-color('fourth'),
   '--border-color-primary': border-color('primary'),
   '--border-color-secondary': border-color('secondary'),
   '--border-color-inactive': border-color('inactive'),
@@ -98,9 +101,10 @@ $theme-colors-dark: (
   '--text-color-secondary': text-color('secondary', $paletteDark),
   '--text-color-tertiary': text-color('tertiary', $paletteDark),
   '--text-color-inactive': text-color('inactive', $paletteDark),
-  '--background-color-primary': bg-color('primary', $paletteDark),
-  '--background-color-secondary': bg-color('secondary', $paletteDark),
-  '--background-color-tertiary': bg-color('tertiary', $paletteDark),
+  '--background-color-primary': background-color('primary', $paletteDark),
+  '--background-color-secondary': background-color('secondary', $paletteDark),
+  '--background-color-tertiary': background-color('tertiary', $paletteDark),
+  '--background-color-fourth': background-color('fourth', $paletteDark),
   '--border-color-primary': border-color('primary', $paletteDark),
   '--border-color-secondary': border-color('secondary', $paletteDark),
   '--border-color-inactive': border-color('inactive', $paletteDark),

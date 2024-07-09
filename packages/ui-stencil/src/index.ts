@@ -1,1 +1,1 @@
-export * from './components/SearchBox/SearchBox';
+export * from './components/search-box/search-box'

@@ -5,12 +5,22 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { TChatMessage } from "./context/chatContext";
 import { InputProps } from "./components/internal/orama-input/orama-input";
 import { TextProps } from "./components/internal/orama-text/orama-text";
+export { TChatMessage } from "./context/chatContext";
 export { InputProps } from "./components/internal/orama-input/orama-input";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
     interface OramaChat {
+    }
+    interface OramaChatAssistentMessage {
+        "message": TChatMessage;
+    }
+    interface OramaChatMessagesContainer {
+    }
+    interface OramaChatUserMessage {
+        "message": TChatMessage;
     }
     interface OramaInput {
         "label"?: InputProps['label'];
@@ -18,6 +28,8 @@ export namespace Components {
         "name": InputProps['name'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
+    }
+    interface OramaSearch {
     }
     interface OramaText {
         /**
@@ -34,6 +46,7 @@ export namespace Components {
         "styledAs"?: TextProps['styledAs'];
     }
     interface OramaTextarea {
+        "autoFocus": boolean;
         "maxRows": number | string;
         "minRows": number | string;
         "placeholder": string;
@@ -41,7 +54,10 @@ export namespace Components {
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
+        "open": false;
         "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
+    }
+    interface SearchBoxToggler {
     }
 }
 declare global {
@@ -51,11 +67,35 @@ declare global {
         prototype: HTMLOramaChatElement;
         new (): HTMLOramaChatElement;
     };
+    interface HTMLOramaChatAssistentMessageElement extends Components.OramaChatAssistentMessage, HTMLStencilElement {
+    }
+    var HTMLOramaChatAssistentMessageElement: {
+        prototype: HTMLOramaChatAssistentMessageElement;
+        new (): HTMLOramaChatAssistentMessageElement;
+    };
+    interface HTMLOramaChatMessagesContainerElement extends Components.OramaChatMessagesContainer, HTMLStencilElement {
+    }
+    var HTMLOramaChatMessagesContainerElement: {
+        prototype: HTMLOramaChatMessagesContainerElement;
+        new (): HTMLOramaChatMessagesContainerElement;
+    };
+    interface HTMLOramaChatUserMessageElement extends Components.OramaChatUserMessage, HTMLStencilElement {
+    }
+    var HTMLOramaChatUserMessageElement: {
+        prototype: HTMLOramaChatUserMessageElement;
+        new (): HTMLOramaChatUserMessageElement;
+    };
     interface HTMLOramaInputElement extends Components.OramaInput, HTMLStencilElement {
     }
     var HTMLOramaInputElement: {
         prototype: HTMLOramaInputElement;
         new (): HTMLOramaInputElement;
+    };
+    interface HTMLOramaSearchElement extends Components.OramaSearch, HTMLStencilElement {
+    }
+    var HTMLOramaSearchElement: {
+        prototype: HTMLOramaSearchElement;
+        new (): HTMLOramaSearchElement;
     };
     interface HTMLOramaTextElement extends Components.OramaText, HTMLStencilElement {
     }
@@ -75,16 +115,35 @@ declare global {
         prototype: HTMLSearchBoxElement;
         new (): HTMLSearchBoxElement;
     };
+    interface HTMLSearchBoxTogglerElement extends Components.SearchBoxToggler, HTMLStencilElement {
+    }
+    var HTMLSearchBoxTogglerElement: {
+        prototype: HTMLSearchBoxTogglerElement;
+        new (): HTMLSearchBoxTogglerElement;
+    };
     interface HTMLElementTagNameMap {
         "orama-chat": HTMLOramaChatElement;
+        "orama-chat-assistent-message": HTMLOramaChatAssistentMessageElement;
+        "orama-chat-messages-container": HTMLOramaChatMessagesContainerElement;
+        "orama-chat-user-message": HTMLOramaChatUserMessageElement;
         "orama-input": HTMLOramaInputElement;
+        "orama-search": HTMLOramaSearchElement;
         "orama-text": HTMLOramaTextElement;
         "orama-textarea": HTMLOramaTextareaElement;
         "search-box": HTMLSearchBoxElement;
+        "search-box-toggler": HTMLSearchBoxTogglerElement;
     }
 }
 declare namespace LocalJSX {
     interface OramaChat {
+    }
+    interface OramaChatAssistentMessage {
+        "message"?: TChatMessage;
+    }
+    interface OramaChatMessagesContainer {
+    }
+    interface OramaChatUserMessage {
+        "message"?: TChatMessage;
     }
     interface OramaInput {
         "label"?: InputProps['label'];
@@ -92,6 +151,8 @@ declare namespace LocalJSX {
         "name"?: InputProps['name'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
+    }
+    interface OramaSearch {
     }
     interface OramaText {
         /**
@@ -108,6 +169,7 @@ declare namespace LocalJSX {
         "styledAs"?: TextProps['styledAs'];
     }
     interface OramaTextarea {
+        "autoFocus"?: boolean;
         "maxRows"?: number | string;
         "minRows"?: number | string;
         "placeholder"?: string;
@@ -115,14 +177,22 @@ declare namespace LocalJSX {
     }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
+        "open"?: false;
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
+    }
+    interface SearchBoxToggler {
     }
     interface IntrinsicElements {
         "orama-chat": OramaChat;
+        "orama-chat-assistent-message": OramaChatAssistentMessage;
+        "orama-chat-messages-container": OramaChatMessagesContainer;
+        "orama-chat-user-message": OramaChatUserMessage;
         "orama-input": OramaInput;
+        "orama-search": OramaSearch;
         "orama-text": OramaText;
         "orama-textarea": OramaTextarea;
         "search-box": SearchBox;
+        "search-box-toggler": SearchBoxToggler;
     }
 }
 export { LocalJSX as JSX };
@@ -130,10 +200,15 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
+            "orama-chat-assistent-message": LocalJSX.OramaChatAssistentMessage & JSXBase.HTMLAttributes<HTMLOramaChatAssistentMessageElement>;
+            "orama-chat-messages-container": LocalJSX.OramaChatMessagesContainer & JSXBase.HTMLAttributes<HTMLOramaChatMessagesContainerElement>;
+            "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
+            "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
             "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;
             "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
+            "search-box-toggler": LocalJSX.SearchBoxToggler & JSXBase.HTMLAttributes<HTMLSearchBoxTogglerElement>;
         }
     }
 }

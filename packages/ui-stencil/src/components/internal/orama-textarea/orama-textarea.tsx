@@ -6,23 +6,27 @@ import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core'
   shadow: true
 })
 export class OramaTextarea {
-  @Element() el: HTMLElement
+  @Element() el: HTMLTextAreaElement
 
   @Prop() value: string | null = ''
   @Prop() maxRows: number | string
   @Prop() minRows: number | string = 1
   @Prop() placeholder: string
+  @Prop() autoFocus = false
 
   @State() height: number
+  @State() startAdornmentWidth: number
+  @State() endAdornmentWidth: number
 
   textarea!: HTMLTextAreaElement
   shadowTextarea!: HTMLTextAreaElement
 
   componentDidLoad() {
     this.syncHeight()
+    this.startAdornmentWidth = this.getNamedSlotWidth('adornment-start')
+    this.endAdornmentWidth = this.getNamedSlotWidth('adornment-end')
   }
 
-  // TODO: Use to calculate adornment width later
   getNamedSlotWidth(slotName: string) {
     const slot = this.el.shadowRoot.querySelector(`slot[name="${slotName}"]`) as HTMLSlotElement
     if (slot) {
@@ -124,18 +128,24 @@ export class OramaTextarea {
   }
 
   render() {
+    console.log(this.autoFocus)
     return (
       <Host>
         {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}
+
         <slot name="adornment-start" />
+
         <textarea
           {...this.getAllProps()}
+          autoFocus={this.autoFocus}
           value={this.value}
           onInput={this.handleChange}
           ref={(el) => (this.textarea = el as HTMLTextAreaElement)}
           rows={Number(this.minRows)}
           style={{
-            height: this.height ? `${this.height}px` : undefined
+            height: this.height ? `${this.height}px` : undefined,
+            paddingLeft: this.startAdornmentWidth ? `${this.startAdornmentWidth}px` : undefined,
+            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined
           }}
           placeholder={this.placeholder}
         />
@@ -158,7 +168,9 @@ export class OramaTextarea {
             left: '0',
             transform: 'translateZ(0)',
             paddingTop: '0',
-            paddingBottom: '0'
+            paddingBottom: '0',
+            paddingLeft: this.startAdornmentWidth ? `${this.startAdornmentWidth}px` : undefined,
+            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined
           }}
         />
       </Host>

@@ -1,6 +1,6 @@
 import { createStore } from '@stencil/store'
 
-const { state } = createStore({
+const { state: searchContext } = createStore({
   open: false,
   count: 0,
   facets: null as Record<
@@ -15,4 +15,4 @@ const { state } = createStore({
   highlightedIndex: -1
 })
 
-export default state
+export { searchContext }
