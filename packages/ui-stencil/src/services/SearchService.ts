@@ -1,6 +1,6 @@
 import type { OramaClient } from '@oramacloud/client'
 import { OramaClientNotInitializedError } from '../erros/OramaClientNotInitialized'
-import { searchContext } from '../context/searchContext'
+import { searchState } from '../context/searchContext'
 
 const LIMIT_RESULTS = 10
 
@@ -28,10 +28,10 @@ export class SearchService {
     this.oramaClient
       .search({ term: term, limit: LIMIT_RESULTS }, { abortController: this.abortController })
       .then((results) => {
-        searchContext.hits = (results?.hits as []) || []
-        searchContext.count = results?.count || 0
-        searchContext.facets = results?.facets || null
-        searchContext.highlightedIndex = -1
+        searchState.hits = (results?.hits as []) || []
+        searchState.count = results?.count || 0
+        searchState.facets = results?.facets || null
+        searchState.highlightedIndex = -1
       })
   }
 

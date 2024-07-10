@@ -8,6 +8,7 @@ export const DIRECTIVES = [
   d.OramaChatUserMessage,
   d.OramaInput,
   d.OramaSearch,
+  d.OramaSearchResults,
   d.OramaText,
   d.OramaTextarea,
   d.SearchBox,

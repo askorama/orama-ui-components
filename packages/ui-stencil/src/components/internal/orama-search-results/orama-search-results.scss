@@ -1,0 +1,30 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  display: flex;
+  gap: var(--spacing-m, $spacing-m);
+  align-items: center;
+  padding: var(--spacing-m, $spacing-m);
+  border-radius: var(--radius-s, $radius-s);
+  background-color: var(--background-color-secondary, background-color('secondary'));
+  margin-top: var(--spacing-s, $spacing-s);
+}
+
+.collapsed {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // todo: should be based on available space
+  width: 300px;
+}
+
+.results-empty {
+  text-align: center;
+  width: 80%;
+  max-width: pxToRem(400);
+  margin: $spacing-2xl auto $spacing-3xl;
+}

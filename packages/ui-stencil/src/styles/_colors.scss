@@ -10,6 +10,9 @@ $gray700: #2e2e2e;
 $gray800: #212121;
 $gray900: #151515;
 $gray950: #050505;
+$purple100: #f7f6f9;
+$purple200: #eee9f6;
+$purple300: #ae8ff7;
 $purple500: #8152ee;
 $purple700: #432d77;
 
@@ -23,29 +26,31 @@ $purple700: #432d77;
 */
 $palette: (
   text: (
-    primary: $gray950,
-    secondary: $gray900,
-    tertiary: $gray700,
-    inactive: $gray600,
+    primary: $gray900,
+    secondary: $gray600,
+    tertiary: $gray500,
+    inactive: $gray500,
   ),
   background: (
-    primary: $gray950,
-    secondary: $gray900,
-    tertiary: $gray800,
-    fourth: $gray700,
+    primary: $gray50,
+    secondary: white,
+    tertiary: $purple200,
+    fourth: $gray100,
   ),
   border: (
-    primary: $gray700,
-    secondary: $gray900,
-    inactive: $gray400,
+    primary: $gray200,
+    secondary: $gray100,
+    tertiary: $gray900,
+    inactive: $gray900,
     accent: $purple500,
   ),
   icon: (
-    primary: $gray50,
-    secondary: $gray200,
+    primary: $gray950,
+    secondary: $gray700,
     tertiary: $gray600,
     inactive: $gray500,
     accent: $purple500,
+    reverse: white,
   ),
 );
 
@@ -60,11 +65,12 @@ $paletteDark: (
     primary: $gray950,
     secondary: $gray900,
     tertiary: $gray800,
-    fourth: $purple700,
+    fourth: $gray700,
   ),
   border: (
     primary: $gray700,
     secondary: $gray900,
+    tertiary: $gray400,
     inactive: $gray400,
   ),
   icon: (
@@ -72,7 +78,8 @@ $paletteDark: (
     secondary: $gray200,
     tertiary: $gray600,
     inactive: $gray500,
-    accent: $purple500,
+    accent: $purple300,
+    reverse: black,
   ),
 );
 
@@ -88,12 +95,14 @@ $theme-colors-light: (
   '--background-color-fourth': background-color('fourth'),
   '--border-color-primary': border-color('primary'),
   '--border-color-secondary': border-color('secondary'),
+  '--border-color-tertiary': border-color('tertiary'),
   '--border-color-inactive': border-color('inactive'),
   '--icon-color-primary': icon-color('primary'),
   '--icon-color-secondary': icon-color('secondary'),
   '--icon-color-tertiary': icon-color('tertiary'),
   '--icon-color-inactive': icon-color('inactive'),
   '--icon-color-accent': icon-color('accent'),
+  '--icon-color-reverse': icon-color('reverse'),
 );
 
 $theme-colors-dark: (
@@ -107,10 +116,12 @@ $theme-colors-dark: (
   '--background-color-fourth': background-color('fourth', $paletteDark),
   '--border-color-primary': border-color('primary', $paletteDark),
   '--border-color-secondary': border-color('secondary', $paletteDark),
+  '--border-color-tertiary': border-color('tertiary', $paletteDark),
   '--border-color-inactive': border-color('inactive', $paletteDark),
   '--icon-color-primary': icon-color('primary', $paletteDark),
   '--icon-color-secondary': icon-color('secondary', $paletteDark),
   '--icon-color-tertiary': icon-color('tertiary', $paletteDark),
   '--icon-color-inactive': icon-color('inactive', $paletteDark),
   '--icon-color-accent': icon-color('accent', $paletteDark),
+  '--icon-color-reverse': icon-color('reverse', $paletteDark),
 );

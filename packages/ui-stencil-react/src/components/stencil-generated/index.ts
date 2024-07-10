@@ -13,6 +13,7 @@ export const OramaChatMessagesContainer = /*@__PURE__*/createReactComponent<JSX.
 export const OramaChatUserMessage = /*@__PURE__*/createReactComponent<JSX.OramaChatUserMessage, HTMLOramaChatUserMessageElement>('orama-chat-user-message');
 export const OramaInput = /*@__PURE__*/createReactComponent<JSX.OramaInput, HTMLOramaInputElement>('orama-input');
 export const OramaSearch = /*@__PURE__*/createReactComponent<JSX.OramaSearch, HTMLOramaSearchElement>('orama-search');
+export const OramaSearchResults = /*@__PURE__*/createReactComponent<JSX.OramaSearchResults, HTMLOramaSearchResultsElement>('orama-search-results');
 export const OramaText = /*@__PURE__*/createReactComponent<JSX.OramaText, HTMLOramaTextElement>('orama-text');
 export const OramaTextarea = /*@__PURE__*/createReactComponent<JSX.OramaTextarea, HTMLOramaTextareaElement>('orama-textarea');
 export const SearchBox = /*@__PURE__*/createReactComponent<JSX.SearchBox, HTMLSearchBoxElement>('search-box');

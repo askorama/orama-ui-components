@@ -94,14 +94,14 @@ export declare interface OramaChatUserMessage extends Components.OramaChatUserMe
 
 
 @ProxyCmp({
-  inputs: ['defaultValue', 'label', 'labelForScreenReaders', 'name', 'size', 'type']
+  inputs: ['defaultValue', 'label', 'labelForScreenReaders', 'name', 'placeholder', 'size', 'type']
 })
 @Component({
   selector: 'orama-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['defaultValue', 'label', 'labelForScreenReaders', 'name', 'size', 'type'],
+  inputs: ['defaultValue', 'label', 'labelForScreenReaders', 'name', 'placeholder', 'size', 'type'],
 })
 export class OramaInput {
   protected el: HTMLElement;
@@ -138,6 +138,28 @@ export class OramaSearch {
 
 
 export declare interface OramaSearch extends Components.OramaSearch {}
+
+
+@ProxyCmp({
+  inputs: ['items', 'searchTerm']
+})
+@Component({
+  selector: 'orama-search-results',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: '<ng-content></ng-content>',
+  // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
+  inputs: ['items', 'searchTerm'],
+})
+export class OramaSearchResults {
+  protected el: HTMLElement;
+  constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
+    c.detach();
+    this.el = r.nativeElement;
+  }
+}
+
+
+export declare interface OramaSearchResults extends Components.OramaSearchResults {}
 
 
 @ProxyCmp({

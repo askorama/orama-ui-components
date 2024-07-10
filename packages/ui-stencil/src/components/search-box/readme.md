@@ -25,6 +25,8 @@ graph TD;
   search-box --> orama-search
   search-box --> orama-chat
   orama-search --> orama-input
+  orama-search --> orama-search-results
+  orama-search-results --> orama-text
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-textarea
   orama-chat --> orama-text
