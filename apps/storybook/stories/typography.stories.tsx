@@ -1,5 +1,4 @@
 import type { StoryObj, Meta } from "@storybook/html";
-import { ParagraphProps, SpanProps, SmallProps } from "ui-stencil";
 
 const meta = {
   title: "Internal/Typography",
@@ -10,42 +9,40 @@ const meta = {
       control: { type: "select" },
       options: ["p", "h1", "h2", "h3", "h4", "h5", "h6", "span", "small", "a"],
     },
+    styledAs: {
+      control: { type: "select" },
+      options: ["p", "span", "small"],
+    },
   },
 } satisfies Meta;
 
 export default meta;
 type Story = StoryObj;
 
-const TemplateParagrah = (content: string) => (args: ParagraphProps) => `
-  <orama-paragraph as=${args.as}>${content}</orama-paragraph>
+const Template = (content: string) => (args) => `
+  <orama-text as=${args.as} styled-as=${args.styledAs} class=${args.class}>${content}</orama-text>
 `;
 
 export const Paragraph: Story = {
-  render: TemplateParagrah("This is a paragraph"),
+  render: Template("This is a paragraph"),
   args: {
     as: "p",
+    class: "my-optional-class",
   },
 };
-
-const TemplateSpan = (content: string) => (args: SpanProps) => `
-  <orama-span as=${args.as}>${content}</orama-span>
-`;
 
 export const Span: Story = {
-  render: TemplateSpan("This is a span"),
+  render: Template("This is a span"),
   args: {
     as: "span",
+    class: "my-optional-class",
   },
 };
 
-
-const TemplateSmall = (content: string) => (args: SmallProps) => `
-  <orama-small as=${args.as}>${content}</orama-small>
-`;
-
 export const Small: Story = {
-  render: TemplateSmall("This is a small"),
+  render: Template("This is a small"),
   args: {
     as: "small",
+    class: "my-optional-class",
   },
 };

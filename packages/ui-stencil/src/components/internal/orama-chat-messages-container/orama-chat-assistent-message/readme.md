@@ -20,12 +20,12 @@
 
 ### Depends on
 
-- [orama-span](../../Typography)
+- [orama-text](../../orama-text)
 
 ### Graph
 ```mermaid
 graph TD;
-  orama-chat-assistent-message --> orama-span
+  orama-chat-assistent-message --> orama-text
   orama-chat-messages-container --> orama-chat-assistent-message
   style orama-chat-assistent-message fill:#f9f,stroke:#333,stroke-width:4px
 ```

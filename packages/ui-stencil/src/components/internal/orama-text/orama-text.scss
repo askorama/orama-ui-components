@@ -1,4 +1,5 @@
-.paragraph {
+.p,
+.text--p {
   @include paragraph();
 
   &--bold {

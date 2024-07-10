@@ -26,29 +26,21 @@ export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatU
 
 export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-input', undefined, [
   'name',
-  'placeholder',
   'size',
   'label',
-  'labelForScreenReaders'
-]);
-
-
-export const OramaParagraph = /*@__PURE__*/ defineContainer<JSX.OramaParagraph>('orama-paragraph', undefined, [
-  'as',
-  'class'
+  'type',
+  'labelForScreenReaders',
+  'defaultValue',
+  'oramaInputChanged'
 ]);
 
 
 export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined);
 
 
-export const OramaSmall = /*@__PURE__*/ defineContainer<JSX.OramaSmall>('orama-small', undefined, [
-  'as'
-]);
-
-
-export const OramaSpan = /*@__PURE__*/ defineContainer<JSX.OramaSpan>('orama-span', undefined, [
+export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
+  'styledAs',
   'class'
 ]);
 

@@ -13,7 +13,7 @@
 
 ### Depends on
 
-- [orama-input](../Form)
+- [orama-input](../orama-input)
 
 ### Graph
 ```mermaid

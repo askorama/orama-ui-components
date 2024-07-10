@@ -65,9 +65,9 @@ export class OramaChat {
             </div>
           </form>
           <div class="spacer" />
-          <orama-small as="p" style={{ textAlign: 'center' }}>
+          <orama-text as="p" styledAs="small" style={{ textAlign: 'center' }}>
             Orama can make mistakes. Lorem ipsum dolor sit amet
-          </orama-small>
+          </orama-text>
         </div>
       </Host>
     )

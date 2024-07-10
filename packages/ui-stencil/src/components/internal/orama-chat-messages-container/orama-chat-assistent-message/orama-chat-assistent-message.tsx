@@ -24,36 +24,36 @@ export class OramaChatAssistentMessage {
           {/* TODO: We need to have a way to display this title only for screen readers so we can improve accessibility */}
           {/* <h2>Sources</h2> */}
           <div class="source">
-            <orama-span as="h3" class="source-title">
+            <orama-text as="h3" styledAs="span" class="source-title">
               Title title title
-            </orama-span>
-            <orama-span as="p" class="source-subtitle">
+            </orama-text>
+            <orama-text as="p" styledAs="span" class="source-subtitle">
               Subtitle subtitle subtitle
-            </orama-span>
+            </orama-text>
           </div>
           <div class="source">
-            <orama-span as="h3" class="source-title">
+            <orama-text as="h3" styledAs="span" class="source-title">
               Title title title
-            </orama-span>
-            <orama-span as="p" class="source-subtitle">
+            </orama-text>
+            <orama-text as="p" styledAs="span" class="source-subtitle">
               Subtitle subtitle subtitle
-            </orama-span>
+            </orama-text>
           </div>
           <div class="source">
-            <orama-span as="h3" class="source-title">
+            <orama-text as="h3" styledAs="span" class="source-title">
               Title title title
-            </orama-span>
-            <orama-span as="p" class="source-subtitle">
+            </orama-text>
+            <orama-text as="p" styledAs="span" class="source-subtitle">
               Subtitle subtitle subtitle
-            </orama-span>
+            </orama-text>
           </div>
           <div class="source">
-            <orama-span as="h3" class="source-title">
+            <orama-text as="h3" styledAs="span" class="source-title">
               Title title title
-            </orama-span>
-            <orama-span as="p" class="source-subtitle">
+            </orama-text>
+            <orama-text as="p" styledAs="span" class="source-subtitle">
               Subtitle subtitle subtitle
-            </orama-span>
+            </orama-text>
           </div>
         </div>
       </Host>
