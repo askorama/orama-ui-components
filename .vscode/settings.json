@@ -16,19 +16,19 @@
   "workbench.editor.highlightModifiedTabs": true,
   "explorer.sortOrder": "type",
   "files.trimFinalNewlines": true,
-  "files.exclude": {
-    "**/.git": true,
-    "**/.turbo": true,
-    "**/.next": true,
-    "**/.angular": true,
-    "**/.stencil": true,
-    "**/.vscode": true,
-    "**/build": true,
-    "**/dist": true,
-    "**/node_modules": true,
-    "**/storybook-static": true,
-    "**/out": true
-  },
+  // "files.exclude": {
+  //   "**/.git": true,
+  //   "**/.turbo": true,
+  //   "**/.next": true,
+  //   "**/.angular": true,
+  //   "**/.stencil": true,
+  //   "**/.vscode": true,
+  //   "**/build": true,
+  //   "**/dist": true,
+  //   "**/node_modules": true,
+  //   "**/storybook-static": true,
+  //   "**/out": true
+  // },
   "search.exclude": {
     "**/.git": true,
     "**/.turbo": true,

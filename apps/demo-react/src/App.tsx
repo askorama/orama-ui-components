@@ -16,7 +16,7 @@ function App() {
         <section>
           <h2>Stencil Components</h2>
           <div className="component-row">
-            <SearchBox theme={{ colors: { light: { primaryColor: 'red' }, dark: { primaryColor: '#fff' } } }} />
+            <SearchBox />
           </div>
         </section>
       </main>
