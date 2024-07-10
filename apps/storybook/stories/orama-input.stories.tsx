@@ -20,23 +20,22 @@ export const InputSizes: Story = {
 };
 
 const TemplateOnlyInput = (args) => `
-  <orama-input name='test4' size='large' labelForScreenReaders=${args.labelForScreenReaders} placeholder='Your name' type="text">
+  <orama-input name='test4' size='large' labelforscreenreaders="Label for screen readers only" placeholder='Your name' type="text">
 `;
 
 export const InputWithoutLabel: Story = {
   render: TemplateOnlyInput,
   args: {
-    labelForScreenReaders: "Label for screen readers only"
+    // TODO: if I try to pass this arg, the string will be split into an array of attributes - not expected
+    // labelforscreenreaders: "Label for screen readers only"
   },
 };
 
 const TemplateInputSearch = (args) => `
-  <orama-input name='test4' size='large' labelForScreenReaders=${args.labelForScreenReaders} placeholder='Search...' type="search">
+  <orama-input name='test4' size='large' placeholder='Search...' type="search" label-for-screen-readers="Search for something..." default-value="test"></orama-input>
 `;
 
 export const SearchInput: Story = {
   render: TemplateInputSearch,
-  args: {
-    labelForScreenReaders: "Search for something"
-  },
+  args: {},
 };

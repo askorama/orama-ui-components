@@ -23,6 +23,7 @@ export namespace Components {
         "message": TChatMessage;
     }
     interface OramaInput {
+        "defaultValue": InputProps['defaultValue'];
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
         "name": InputProps['name'];
@@ -60,6 +61,10 @@ export namespace Components {
     interface SearchBoxToggler {
     }
 }
+export interface OramaInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaInputElement;
+}
 declare global {
     interface HTMLOramaChatElement extends Components.OramaChat, HTMLStencilElement {
     }
@@ -85,7 +90,18 @@ declare global {
         prototype: HTMLOramaChatUserMessageElement;
         new (): HTMLOramaChatUserMessageElement;
     };
+    interface HTMLOramaInputElementEventMap {
+        "oramaInputChanged": string;
+    }
     interface HTMLOramaInputElement extends Components.OramaInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaInputElementEventMap>(type: K, listener: (this: HTMLOramaInputElement, ev: OramaInputCustomEvent<HTMLOramaInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaInputElementEventMap>(type: K, listener: (this: HTMLOramaInputElement, ev: OramaInputCustomEvent<HTMLOramaInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaInputElement: {
         prototype: HTMLOramaInputElement;
@@ -146,9 +162,11 @@ declare namespace LocalJSX {
         "message"?: TChatMessage;
     }
     interface OramaInput {
+        "defaultValue"?: InputProps['defaultValue'];
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
         "name"?: InputProps['name'];
+        "onOramaInputChanged"?: (event: OramaInputCustomEvent<string>) => void;
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
     }

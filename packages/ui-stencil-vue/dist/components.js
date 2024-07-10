@@ -9,21 +9,15 @@ export const OramaChatUserMessage = defineContainer('orama-chat-user-message', u
 ]);
 export const OramaInput = defineContainer('orama-input', undefined, [
     'name',
-    'placeholder',
     'size',
     'label',
+    'type',
     'labelForScreenReaders'
 ]);
-export const OramaParagraph = defineContainer('orama-paragraph', undefined, [
-    'as',
-    'class'
-]);
 export const OramaSearch = defineContainer('orama-search', undefined);
-export const OramaSmall = defineContainer('orama-small', undefined, [
-    'as'
-]);
-export const OramaSpan = defineContainer('orama-span', undefined, [
+export const OramaText = defineContainer('orama-text', undefined, [
     'as',
+    'styledAs',
     'class'
 ]);
 export const OramaTextarea = defineContainer('orama-textarea', undefined, [

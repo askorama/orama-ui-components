@@ -11,7 +11,7 @@ $gray800: #212121;
 $gray900: #151515;
 $gray950: #050505;
 $purple500: #8152ee;
-$purple700: #6a4bb2;
+$purple700: #432d77;
 
 /**
 * in order to use one of the colors included in the palette map;
@@ -60,7 +60,7 @@ $paletteDark: (
     primary: $gray950,
     secondary: $gray900,
     tertiary: $gray800,
-    fourth: $gray700,
+    fourth: $purple700,
   ),
   border: (
     primary: $gray700,

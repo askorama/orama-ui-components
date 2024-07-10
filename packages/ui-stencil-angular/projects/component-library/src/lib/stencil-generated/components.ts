@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* auto-generated angular directive proxies */
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, NgZone } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, NgZone } from '@angular/core';
 
-import { ProxyCmp } from './angular-component-lib/utils';
+import { ProxyCmp, proxyOutputs } from './angular-component-lib/utils';
 
 import { Components } from 'orama-ui';
 
@@ -94,25 +94,29 @@ export declare interface OramaChatUserMessage extends Components.OramaChatUserMe
 
 
 @ProxyCmp({
-  inputs: ['label', 'labelForScreenReaders', 'name', 'size', 'type']
+  inputs: ['defaultValue', 'label', 'labelForScreenReaders', 'name', 'size', 'type']
 })
 @Component({
   selector: 'orama-input',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['label', 'labelForScreenReaders', 'name', 'size', 'type'],
+  inputs: ['defaultValue', 'label', 'labelForScreenReaders', 'name', 'size', 'type'],
 })
 export class OramaInput {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ['oramaInputChanged']);
   }
 }
 
 
-export declare interface OramaInput extends Components.OramaInput {}
+export declare interface OramaInput extends Components.OramaInput {
+
+  oramaInputChanged: EventEmitter<CustomEvent<string>>;
+}
 
 
 @ProxyCmp({

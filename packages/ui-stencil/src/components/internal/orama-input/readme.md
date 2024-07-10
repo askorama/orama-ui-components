@@ -7,11 +7,19 @@
 
 | Property                | Attribute                  | Description | Type                                                                        | Default     |
 | ----------------------- | -------------------------- | ----------- | --------------------------------------------------------------------------- | ----------- |
+| `defaultValue`          | `default-value`            |             | `string`                                                                    | `undefined` |
 | `label`                 | `label`                    |             | `string`                                                                    | `undefined` |
 | `labelForScreenReaders` | `label-for-screen-readers` |             | `string`                                                                    | `undefined` |
 | `name`                  | `name`                     |             | `string`                                                                    | `undefined` |
 | `size`                  | `size`                     |             | `"large" \| "medium" \| "small"`                                            | `'medium'`  |
 | `type`                  | `type`                     |             | `"email" \| "number" \| "password" \| "search" \| "tel" \| "text" \| "url"` | `'text'`    |
+
+
+## Events
+
+| Event               | Description | Type                  |
+| ------------------- | ----------- | --------------------- |
+| `oramaInputChanged` |             | `CustomEvent<string>` |
 
 
 ## Dependencies
