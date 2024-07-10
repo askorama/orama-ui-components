@@ -3,7 +3,7 @@
 /* auto-generated vue proxies */
 import { defineContainer } from './vue-component-lib/utils';
 
-import type { JSX } from 'orama-ui';
+import type { JSX } from 'ui-stencil';
 
 
 
@@ -59,6 +59,9 @@ export const OramaTextarea = /*@__PURE__*/ defineContainer<JSX.OramaTextarea>('o
   'placeholder',
   'autoFocus'
 ]);
+
+
+export const OramaToggler = /*@__PURE__*/ defineContainer<JSX.OramaToggler>('orama-toggler', undefined);
 
 
 export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined, [
