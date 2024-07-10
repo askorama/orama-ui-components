@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                                       | Default |
-| -------- | --------- | ----------- | ---------------------------------------------------------- | ------- |
-| `items`  | --        |             | `{ title: string; description: string; path?: string; }[]` | `[]`    |
+| Property     | Attribute     | Description | Type                                                                   | Default     |
+| ------------ | ------------- | ----------- | ---------------------------------------------------------------------- | ----------- |
+| `items`      | --            |             | `{ id: string; title: string; description: string; path?: string; }[]` | `[]`        |
+| `searchTerm` | `search-term` |             | `string`                                                               | `undefined` |
 
 
 ## Dependencies

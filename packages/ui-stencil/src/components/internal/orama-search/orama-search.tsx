@@ -7,9 +7,8 @@ import type { SearchResultsProps } from '../orama-search-results/orama-search-re
 @Component({
   tag: 'orama-search',
   styleUrl: 'orama-search.scss',
-  shadow: true
+  shadow: true,
 })
-
 export class OramaSearch {
   private searchService!: SearchService
 
@@ -21,7 +20,7 @@ export class OramaSearch {
     // TODO: Should not be hardcoded
     const oramaClient = new OramaClient({
       api_key: '6kHcoevr3zkbBmC2hHqlcNQrOgejS4ds',
-      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign'
+      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign',
     })
 
     this.searchService = new SearchService(oramaClient)
@@ -32,13 +31,13 @@ export class OramaSearch {
     this.searchService.search(newValue)
     searchStore.onChange('hits', (hits) => {
       this.searchResults = hits.map((hit) => ({
+        id: hit.document.id,
         title: hit.document.title,
         description: hit.document.content,
-        path: hit.document.path
+        path: hit.document.path,
       }))
     })
   }
-
 
   onSearch(e: Event) {
     this.searchValue = (e.target as HTMLInputElement).value
@@ -50,11 +49,11 @@ export class OramaSearch {
       <Host style={{ background: 'black', color: 'white' }}>
         <div>
           <orama-input
-            autoFocus
-            type='search'
+            autofocus
+            type="search"
             onInput={this.onSearch.bind(this)}
-            labelForScreenReaders='Search...'
-            placeholder='Search...'
+            labelForScreenReaders="Search..."
+            placeholder="Search..."
           />
           <orama-search-results items={this.searchResults} />
         </div>

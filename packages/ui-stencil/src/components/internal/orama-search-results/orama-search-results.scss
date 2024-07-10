@@ -18,5 +18,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  direction: rtl;
+  // todo: should be based on available space
+  width: 300px;
+}
+
+.results-empty {
+  text-align: center;
+  width: 80%;
+  max-width: pxToRem(400);
+  margin: $spacing-2xl auto $spacing-3xl;
 }

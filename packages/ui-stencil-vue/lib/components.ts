@@ -40,7 +40,8 @@ export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama
 
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [
-  'items'
+  'items',
+  'searchTerm'
 ]);
 
 

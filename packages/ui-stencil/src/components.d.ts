@@ -37,6 +37,7 @@ export namespace Components {
     }
     interface OramaSearchResults {
         "items": SearchResultsProps['items'];
+        "searchTerm": SearchResultsProps['searchTerm'];
     }
     interface OramaText {
         /**
@@ -188,6 +189,7 @@ declare namespace LocalJSX {
     }
     interface OramaSearchResults {
         "items"?: SearchResultsProps['items'];
+        "searchTerm"?: SearchResultsProps['searchTerm'];
     }
     interface OramaText {
         /**

@@ -141,14 +141,14 @@ export declare interface OramaSearch extends Components.OramaSearch {}
 
 
 @ProxyCmp({
-  inputs: ['items']
+  inputs: ['items', 'searchTerm']
 })
 @Component({
   selector: 'orama-search-results',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<ng-content></ng-content>',
   // eslint-disable-next-line @angular-eslint/no-inputs-metadata-property
-  inputs: ['items'],
+  inputs: ['items', 'searchTerm'],
 })
 export class OramaSearchResults {
   protected el: HTMLElement;
