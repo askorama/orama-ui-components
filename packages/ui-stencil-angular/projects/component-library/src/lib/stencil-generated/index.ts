@@ -11,6 +11,7 @@ export const DIRECTIVES = [
   d.OramaSearchResults,
   d.OramaText,
   d.OramaTextarea,
+  d.OramaToggler,
   d.SearchBox,
   d.SearchBoxToggler
 ];

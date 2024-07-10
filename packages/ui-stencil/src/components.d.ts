@@ -60,6 +60,8 @@ export namespace Components {
         "placeholder": string;
         "value": string | null;
     }
+    interface OramaToggler {
+    }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
         "open": false;
@@ -138,6 +140,12 @@ declare global {
         prototype: HTMLOramaTextareaElement;
         new (): HTMLOramaTextareaElement;
     };
+    interface HTMLOramaTogglerElement extends Components.OramaToggler, HTMLStencilElement {
+    }
+    var HTMLOramaTogglerElement: {
+        prototype: HTMLOramaTogglerElement;
+        new (): HTMLOramaTogglerElement;
+    };
     interface HTMLSearchBoxElement extends Components.SearchBox, HTMLStencilElement {
     }
     var HTMLSearchBoxElement: {
@@ -160,6 +168,7 @@ declare global {
         "orama-search-results": HTMLOramaSearchResultsElement;
         "orama-text": HTMLOramaTextElement;
         "orama-textarea": HTMLOramaTextareaElement;
+        "orama-toggler": HTMLOramaTogglerElement;
         "search-box": HTMLSearchBoxElement;
         "search-box-toggler": HTMLSearchBoxTogglerElement;
     }
@@ -212,6 +221,8 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "value"?: string | null;
     }
+    interface OramaToggler {
+    }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
         "open"?: false;
@@ -229,6 +240,7 @@ declare namespace LocalJSX {
         "orama-search-results": OramaSearchResults;
         "orama-text": OramaText;
         "orama-textarea": OramaTextarea;
+        "orama-toggler": OramaToggler;
         "search-box": SearchBox;
         "search-box-toggler": SearchBoxToggler;
     }
@@ -246,6 +258,7 @@ declare module "@stencil/core" {
             "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;
             "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;
             "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
+            "orama-toggler": LocalJSX.OramaToggler & JSXBase.HTMLAttributes<HTMLOramaTogglerElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
             "search-box-toggler": LocalJSX.SearchBoxToggler & JSXBase.HTMLAttributes<HTMLSearchBoxTogglerElement>;
         }

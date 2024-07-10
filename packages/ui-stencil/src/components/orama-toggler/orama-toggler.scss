@@ -1,0 +1,62 @@
+:host {
+  display: inline-flex;
+  padding: var(--spacing-2xs, $spacing-2xs);
+  align-items: center;
+
+  border-radius: var(--radius-3xl, $radius-3xl);
+  background: var(---background-color-fourth, background-color('fourth'));
+  overflow: hidden;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs, $spacing-xs);
+    background-color: transparent;
+    border: none;
+    padding: var(--spacing-s, $spacing-s) var(--spacing-m, $spacing-m);
+    color: var(--text-color-primary, text-color('primary'));
+    cursor: pointer;
+    position: relative;
+
+    &.selected {
+      color: var(--text-color-reverse, text-color('reverse'));
+      transition: color 0.3s ease-in-out;
+      z-index: 1;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--background-color-reverse, background-color('reverse'));
+        padding: var(--spacing-s, $spacing-s) var(--spacing-m, $spacing-m);
+        border-radius: var(--radius-3xl, $radius-3xl);
+        z-index: -1;
+        animation: slideToLeft 0.3s ease-in-out;
+      }
+
+      &:first-child::after {
+        animation: slideToRight 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+// TODO: This is not ideal. If sizes changes, it will make a small  glitch on the animation.
+// I'll leave it like that for now
+@keyframes slideToRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideToLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

@@ -3,7 +3,7 @@ import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core'
 @Component({
   tag: 'orama-textarea',
   styleUrl: 'orama-textarea.scss',
-  shadow: true
+  shadow: true,
 })
 export class OramaTextarea {
   @Element() el: HTMLTextAreaElement
@@ -58,7 +58,7 @@ export class OramaTextarea {
     if (computedStyle.width === '0px') {
       return {
         outerHeightStyle: 0,
-        overflowing: false
+        overflowing: false,
       }
     }
 
@@ -128,7 +128,6 @@ export class OramaTextarea {
   }
 
   render() {
-    console.log(this.autoFocus)
     return (
       <Host>
         {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}
@@ -145,7 +144,7 @@ export class OramaTextarea {
           style={{
             height: this.height ? `${this.height}px` : undefined,
             paddingLeft: this.startAdornmentWidth ? `${this.startAdornmentWidth}px` : undefined,
-            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined
+            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined,
           }}
           placeholder={this.placeholder}
         />
@@ -170,7 +169,7 @@ export class OramaTextarea {
             paddingTop: '0',
             paddingBottom: '0',
             paddingLeft: this.startAdornmentWidth ? `${this.startAdornmentWidth}px` : undefined,
-            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined
+            paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined,
           }}
         />
       </Host>
