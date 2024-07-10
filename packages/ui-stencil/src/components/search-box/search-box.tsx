@@ -1,5 +1,5 @@
 import { Component, Host, Prop, Watch, h } from '@stencil/core'
-import { searchContext } from '../../context/searchContext'
+import { searchState } from '../../context/searchContext'
 import { globalContext } from '../../context/searchBoxContext'
 
 @Component({
@@ -14,15 +14,15 @@ export class SearchBox {
 
   @Watch('open')
   handleOpenChange(newValue: boolean) {
-    searchContext.open = newValue
+    searchState.open = newValue
   }
 
   componentWillLoad() {
-    searchContext.open = this.open
+    searchState.open = this.open
   }
 
   render() {
-    if (!searchContext.open) {
+    if (!searchState.open) {
       return null
     }
 
@@ -38,10 +38,8 @@ export class SearchBox {
             justifyContent: 'center',
             backgroundColor: 'black',
             color: 'white',
-            borderBottom: '1px solid white'
           }}
         >
-          Navigation Placeholder
           <div
             style={{
               display: 'flex',

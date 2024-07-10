@@ -5,9 +5,9 @@ import { AttributeUtils } from '../../../services/AttributeUtils';
 
 type BaseInputProps = {
   name?: string;
-  placeholder?: string;
   size?: 'small' | 'medium' | 'large';
   type?: 'text' | 'password' | 'email' | 'number' | 'tel' | 'url' | 'search';
+  placeholder?: string;
   defaultValue?: string;
 };
 
@@ -34,8 +34,9 @@ export class Input {
   @Prop() size?: InputProps['size'] = 'medium';
   @Prop() label?: InputProps['label'];
   @Prop() type?: InputProps['type'] = 'text';
+  @Prop() placeholder?: InputProps['placeholder'];
   @Prop() labelForScreenReaders?: InputProps['labelForScreenReaders'];
-  @Prop({ mutable: true }) defaultValue: InputProps['defaultValue'];
+  @Prop() defaultValue: InputProps['defaultValue'];
 
   @Event({
     eventName: 'oramaInputChanged',
@@ -67,7 +68,7 @@ export class Input {
     const inputClass = `input input--${this.size}`;
     const labelClass = `label ${this.labelForScreenReaders ? 'sr-only' : ''}`;
 
-    const declaredProps = ['id', 'name', 'type', 'class', 'onInput', 'value', 'label-for-screen-readers', 'default-value'];
+    const declaredProps = ['id', 'name', 'type', 'class', 'onInput', 'value', 'label-for-screen-readers', 'default-value', 'placeholder'];
     const inputProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps);
 
     const isSearch = this.type === 'search';
@@ -90,6 +91,7 @@ export class Input {
               type={this.type}
               value={this.value}
               onInput={event => this.handleChange(event)}
+              placeholder={this.placeholder}
               {...inputProps}
             />
             {isSearch && !!this.value && (

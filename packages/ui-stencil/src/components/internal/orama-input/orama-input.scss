@@ -92,3 +92,7 @@
     display: inline-flex;
   }
 }
+
+.sr-only {
+  @include screen-reader-only();
+}

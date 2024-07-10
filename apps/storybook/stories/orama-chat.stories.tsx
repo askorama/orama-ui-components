@@ -1,7 +1,7 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
 
 const meta: Meta = {
-  title: 'Internal/OramaChat',
+  title: 'Demo Preview/OramaChat',
   component: 'orama-chat'
 }
 

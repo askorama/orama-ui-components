@@ -7,9 +7,11 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TChatMessage } from "./context/chatContext";
 import { InputProps } from "./components/internal/orama-input/orama-input";
+import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { TChatMessage } from "./context/chatContext";
 export { InputProps } from "./components/internal/orama-input/orama-input";
+export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
     interface OramaChat {
@@ -27,10 +29,14 @@ export namespace Components {
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
         "name": InputProps['name'];
+        "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
     }
     interface OramaSearch {
+    }
+    interface OramaSearchResults {
+        "items": SearchResultsProps['items'];
     }
     interface OramaText {
         /**
@@ -113,6 +119,12 @@ declare global {
         prototype: HTMLOramaSearchElement;
         new (): HTMLOramaSearchElement;
     };
+    interface HTMLOramaSearchResultsElement extends Components.OramaSearchResults, HTMLStencilElement {
+    }
+    var HTMLOramaSearchResultsElement: {
+        prototype: HTMLOramaSearchResultsElement;
+        new (): HTMLOramaSearchResultsElement;
+    };
     interface HTMLOramaTextElement extends Components.OramaText, HTMLStencilElement {
     }
     var HTMLOramaTextElement: {
@@ -144,6 +156,7 @@ declare global {
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
         "orama-input": HTMLOramaInputElement;
         "orama-search": HTMLOramaSearchElement;
+        "orama-search-results": HTMLOramaSearchResultsElement;
         "orama-text": HTMLOramaTextElement;
         "orama-textarea": HTMLOramaTextareaElement;
         "search-box": HTMLSearchBoxElement;
@@ -167,10 +180,14 @@ declare namespace LocalJSX {
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
         "name"?: InputProps['name'];
         "onOramaInputChanged"?: (event: OramaInputCustomEvent<string>) => void;
+        "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
     }
     interface OramaSearch {
+    }
+    interface OramaSearchResults {
+        "items"?: SearchResultsProps['items'];
     }
     interface OramaText {
         /**
@@ -207,6 +224,7 @@ declare namespace LocalJSX {
         "orama-chat-user-message": OramaChatUserMessage;
         "orama-input": OramaInput;
         "orama-search": OramaSearch;
+        "orama-search-results": OramaSearchResults;
         "orama-text": OramaText;
         "orama-textarea": OramaTextarea;
         "search-box": SearchBox;
@@ -223,6 +241,7 @@ declare module "@stencil/core" {
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
+            "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;
             "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;
             "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
             "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;

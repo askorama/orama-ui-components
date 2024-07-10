@@ -1,17 +1,20 @@
 import { OramaClient } from '@oramacloud/client'
 import { Component, Host, State, Watch, h } from '@stencil/core'
 import { SearchService } from '../../../services/SearchService'
-import { searchContext } from '../../../context/searchContext'
+import { searchState, searchStore } from '../../../context/searchContext'
+import type { SearchResultsProps } from '../orama-search-results/orama-search-results'
 
 @Component({
   tag: 'orama-search',
   styleUrl: 'orama-search.scss',
   shadow: true
 })
+
 export class OramaSearch {
   private searchService!: SearchService
 
-  @State() inputValue = ''
+  @State() searchValue = ''
+  @State() searchResults: SearchResultsProps['items'] = []
 
   // TODO: We probably want to use this oramaClient both in chat and search. We may want to uplift orama client to be a singleton
   componentWillLoad() {
@@ -24,42 +27,36 @@ export class OramaSearch {
     this.searchService = new SearchService(oramaClient)
   }
 
-  @Watch('inputValue')
-  handleInputValueChange(newValue: string) {
+  @Watch('searchValue')
+  handleSearchValueChange(newValue: string) {
     this.searchService.search(newValue)
-    console.log(searchContext.hits)
+    searchStore.onChange('hits', (hits) => {
+      this.searchResults = hits.map((hit) => ({
+        title: hit.document.title,
+        description: hit.document.content,
+        path: hit.document.path
+      }))
+    })
+  }
+
+
+  onSearch(e: Event) {
+    this.searchValue = (e.target as HTMLInputElement).value
+    searchState.term = this.searchValue
   }
 
   render() {
     return (
       <Host style={{ background: 'black', color: 'white' }}>
-        <div
-          style={{
-            height: '400px',
-            backgroundColor: 'black',
-            display: 'flex',
-            flexDirection: 'column',
-            flexGrow: '1'
-          }}
-        >
-          <h3>Search Placeholder</h3>
-          <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden', gap: '10px' }}>
-            {searchContext.hits.map((hit) => (
-              <div key={hit.id}>
-                <div>{hit.document.title}</div>
-                <div style={{ whiteSpace: 'nowrap' }}>{hit.document.content}</div>
-              </div>
-            ))}
-          </div>
-        </div>
         <div>
           <orama-input
-            // TODO: Autofocus is not working
-            // TODO: Width style is not working
             autoFocus
-            style={{ width: '100%' }}
-            onInput={(e: Event) => (this.inputValue = (e.target as HTMLInputElement).value)}
+            type='search'
+            onInput={this.onSearch.bind(this)}
+            labelForScreenReaders='Search...'
+            placeholder='Search...'
           />
+          <orama-search-results items={this.searchResults} />
         </div>
       </Host>
     )

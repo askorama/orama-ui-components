@@ -1,4 +1,5 @@
-import { Component, Prop, h, State } from '@stencil/core';
+import { Component, Prop, h, State, Element } from '@stencil/core';
+// import { AttributeUtils } from '../../../services/AttributeUtils';
 
 export interface TextProps {
   /** it defines the HTML tag to be used */
@@ -18,6 +19,8 @@ export interface TextProps {
  *
  */
 export class OramaText implements TextProps {
+  @Element() el: HTMLElement
+
   @Prop() as?: TextProps['as'] = 'p'
   @Prop() styledAs?: TextProps['styledAs']
   @Prop() class?: string
@@ -26,12 +29,16 @@ export class OramaText implements TextProps {
 
   render() {
     const Tag = this.as;
+    // const declaredProps = ['as', 'styled-as', 'class']
+    // const textProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps)
 
     return (
-      <Tag class={{
-        [this.defaultStyle]: true,
-        [this.class]: !!this.class
-      }}>
+      <Tag
+        class={{
+          [this.defaultStyle]: true,
+          [this.class]: !!this.class
+        }}
+      >
         <slot />
       </Tag>
     );
