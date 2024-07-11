@@ -1,5 +1,5 @@
 import { Component, Host, h } from '@stencil/core'
-import { chatContext } from '../../../context/chatContext'
+import { chatContext } from '@/context/chatContext'
 
 @Component({
   tag: 'orama-chat-messages-container',

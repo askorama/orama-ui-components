@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core'
-import type { TChatMessage } from '../../../../context/chatContext'
+import type { TChatMessage } from '@/context/chatContext'
 
 @Component({
   tag: 'orama-chat-assistent-message',

@@ -1,6 +1,6 @@
 import { Component, Host, Prop, Watch, h } from '@stencil/core'
-import { searchState } from '../../context/searchContext'
-import { globalContext } from '../../context/searchBoxContext'
+import { searchState } from '@/context/searchContext'
+import { globalContext } from '@/context/searchBoxContext'
 
 @Component({
   tag: 'search-box',

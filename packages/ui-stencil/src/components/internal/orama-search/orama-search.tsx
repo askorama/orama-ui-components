@@ -1,8 +1,8 @@
 import { OramaClient } from '@oramacloud/client'
 import { Component, Host, State, Watch, h } from '@stencil/core'
-import { SearchService } from '../../../services/SearchService'
-import { searchState, searchStore } from '../../../context/searchContext'
-import type { SearchResultsProps } from '../orama-search-results/orama-search-results'
+import { SearchService } from '@/services/SearchService'
+import { searchState, searchStore } from '@/context/searchContext'
+import type { SearchResultsProps } from '@/components/internal/orama-search-results/orama-search-results'
 
 @Component({
   tag: 'orama-search',

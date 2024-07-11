@@ -1,11 +1,11 @@
 import { Component, Host, State, h } from '@stencil/core'
 import { OramaClient } from '@oramacloud/client'
-import { ChatService } from '../../../services/ChatService'
+import { ChatService } from '@/services/ChatService'
 
 @Component({
   tag: 'orama-chat',
   styleUrl: 'orama-chat.scss',
-  shadow: true
+  shadow: true,
 })
 export class OramaChat {
   @State() inputValue = ''
@@ -17,7 +17,7 @@ export class OramaChat {
     // TODO: Should not be hardcoded
     const oramaClient = new OramaClient({
       api_key: '6kHcoevr3zkbBmC2hHqlcNQrOgejS4ds',
-      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign'
+      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign',
     })
 
     this.chatService = new ChatService(oramaClient)
