@@ -8,6 +8,14 @@ import type { JSX } from 'ui-stencil';
 
 
 
+export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama-button', undefined, [
+  'as',
+  'class',
+  'variant',
+  'type'
+]);
+
+
 export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-chat', undefined);
 
 

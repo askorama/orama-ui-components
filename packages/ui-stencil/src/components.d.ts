@@ -5,15 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonProps } from "./components/internal/orama-button/orama-button";
 import { TChatMessage } from "./context/chatContext";
 import { InputProps } from "./components/internal/orama-input/orama-input";
 import { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
+export { ButtonProps } from "./components/internal/orama-button/orama-button";
 export { TChatMessage } from "./context/chatContext";
 export { InputProps } from "./components/internal/orama-input/orama-input";
 export { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
+    interface OramaButton {
+        "as"?: ButtonProps['as'];
+        "class"?: string;
+        "type"?: ButtonProps['type'];
+        "variant"?: ButtonProps['variant'];
+    }
     interface OramaChat {
     }
     interface OramaChatAssistentMessage {
@@ -84,6 +92,12 @@ export interface OramaSearchResultsCustomEvent<T> extends CustomEvent<T> {
     target: HTMLOramaSearchResultsElement;
 }
 declare global {
+    interface HTMLOramaButtonElement extends Components.OramaButton, HTMLStencilElement {
+    }
+    var HTMLOramaButtonElement: {
+        prototype: HTMLOramaButtonElement;
+        new (): HTMLOramaButtonElement;
+    };
     interface HTMLOramaChatElement extends Components.OramaChat, HTMLStencilElement {
     }
     var HTMLOramaChatElement: {
@@ -179,6 +193,7 @@ declare global {
         new (): HTMLSearchBoxTogglerElement;
     };
     interface HTMLElementTagNameMap {
+        "orama-button": HTMLOramaButtonElement;
         "orama-chat": HTMLOramaChatElement;
         "orama-chat-assistent-message": HTMLOramaChatAssistentMessageElement;
         "orama-chat-messages-container": HTMLOramaChatMessagesContainerElement;
@@ -194,6 +209,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface OramaButton {
+        "as"?: ButtonProps['as'];
+        "class"?: string;
+        "type"?: ButtonProps['type'];
+        "variant"?: ButtonProps['variant'];
+    }
     interface OramaChat {
     }
     interface OramaChatAssistentMessage {
@@ -257,6 +278,7 @@ declare namespace LocalJSX {
     interface SearchBoxToggler {
     }
     interface IntrinsicElements {
+        "orama-button": OramaButton;
         "orama-chat": OramaChat;
         "orama-chat-assistent-message": OramaChatAssistentMessage;
         "orama-chat-messages-container": OramaChatMessagesContainer;
@@ -275,6 +297,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "orama-button": LocalJSX.OramaButton & JSXBase.HTMLAttributes<HTMLOramaButtonElement>;
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-chat-assistent-message": LocalJSX.OramaChatAssistentMessage & JSXBase.HTMLAttributes<HTMLOramaChatAssistentMessageElement>;
             "orama-chat-messages-container": LocalJSX.OramaChatMessagesContainer & JSXBase.HTMLAttributes<HTMLOramaChatMessagesContainerElement>;

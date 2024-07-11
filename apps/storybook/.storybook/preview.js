@@ -23,7 +23,7 @@ const preview = {
       },
     },
     backgrounds: {
-      default: 'dark',
+      default: 'light',
       values: [
         {
           name: 'dark',

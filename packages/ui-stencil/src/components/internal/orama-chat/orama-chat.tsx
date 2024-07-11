@@ -56,11 +56,12 @@ export class OramaChat {
                 onInput={(e: Event) => {
                   this.inputValue = (e.target as HTMLInputElement).value
                 }}
+                placeholder="Ask me anything"
               >
                 <div slot="adornment-end">
-                  <button type="submit" onClick={this.handleSubmit}>
+                  <orama-button type="submit" onClick={this.handleSubmit} onKeyDown={this.handleSubmit}>
                     Ask
-                  </button>
+                  </orama-button>
                 </div>
               </orama-textarea>
             </div>

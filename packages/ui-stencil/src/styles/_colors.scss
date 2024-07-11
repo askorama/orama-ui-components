@@ -40,10 +40,10 @@ $palette: (
     reverse: black,
   ),
   border: (
-    primary: $gray700,
-    secondary: $gray900,
-    inactive: $gray400,
-    accent: $purple500,
+    primary: $gray200,
+    secondary: $gray100,
+    tertiary: $gray900,
+    accent: $purple300,
   ),
   icon: (
     primary: $gray50,
@@ -72,7 +72,8 @@ $paletteDark: (
   border: (
     primary: $gray700,
     secondary: $gray900,
-    inactive: $gray400,
+    tertiary: $gray400,
+    accent: $purple500,
   ),
   icon: (
     primary: $gray50,
@@ -100,12 +101,16 @@ $theme-colors-light: (
   '--background-color-reverse': background-color('reverse'),
   '--border-color-primary': border-color('primary'),
   '--border-color-secondary': border-color('secondary'),
-  '--border-color-inactive': border-color('inactive'),
+  '--border-color-tertiary': border-color('tertiary'),
+  '--border-color-accent': border-color('accent'),
   '--icon-color-primary': icon-color('primary'),
   '--icon-color-secondary': icon-color('secondary'),
   '--icon-color-tertiary': icon-color('tertiary'),
   '--icon-color-inactive': icon-color('inactive'),
   '--icon-color-accent': icon-color('accent'),
+  '--textarea-shadow-color': white,
+  '--button-primary-background-color': $purple500,
+  '--button-primary-text-color': $purple100,
 );
 
 $theme-colors-dark: (
@@ -123,10 +128,14 @@ $theme-colors-dark: (
   '--background-ai-gradient-two': #251e37,
   '--border-color-primary': border-color('primary', $paletteDark),
   '--border-color-secondary': border-color('secondary', $paletteDark),
-  '--border-color-inactive': border-color('inactive', $paletteDark),
+  '--border-color-tertiary': border-color('tertiary', $paletteDark),
+  '--border-color-accent': border-color('accent', $paletteDark),
   '--icon-color-primary': icon-color('primary', $paletteDark),
   '--icon-color-secondary': icon-color('secondary', $paletteDark),
   '--icon-color-tertiary': icon-color('tertiary', $paletteDark),
   '--icon-color-inactive': icon-color('inactive', $paletteDark),
   '--icon-color-accent': icon-color('accent', $paletteDark),
+  '--textarea-shadow-color': black,
+  '--button-primary-background-color': $purple700,
+  '--button-primary-text-color': $gray100,
 );

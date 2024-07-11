@@ -33,6 +33,7 @@ graph TD;
   orama-search-results --> orama-text
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-textarea
+  orama-chat --> orama-button
   orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message

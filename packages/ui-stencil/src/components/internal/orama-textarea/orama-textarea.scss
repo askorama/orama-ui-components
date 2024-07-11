@@ -1,14 +1,12 @@
 orama-textarea {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  padding: var(--spacing-m, $spacing-m) 0;
+  padding: var(--spacing-xs, $spacing-xs) var(--spacing-xs, $spacing-xs) var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
   border-radius: var(--radius-l, $radius-l);
   border: 1px solid var(--border-color-primary, border-color('primary'));
   background: var(--background-color-secondary, background-color('secondary'));
-  color: var(--text-color-secondary, text-color('secondary'));
-
-  // box-shadow: 0px 4px 24px 0px #000;
+  box-shadow: 0px 4px 24px 0px var(--textarea-shadow-color, white);
 }
 
 ::slotted([slot='adornment-start']) {
@@ -29,17 +27,15 @@ orama-textarea {
 }
 
 textarea {
+  @include paragraph();
   left: 0;
   right: 0;
-  padding: 0px var(--spacing-m, $spacing-m);
   resize: none;
   border: none;
   outline: none;
   background: none;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
   font-family: inherit;
+  color: var(--text-color-primary, text-color('primary'));
   width: 100%;
 
   transition: height 0.1s;
