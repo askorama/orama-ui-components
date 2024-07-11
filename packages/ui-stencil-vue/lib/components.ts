@@ -61,7 +61,9 @@ export const OramaTextarea = /*@__PURE__*/ defineContainer<JSX.OramaTextarea>('o
 ]);
 
 
-export const OramaToggler = /*@__PURE__*/ defineContainer<JSX.OramaToggler>('orama-toggler', undefined);
+export const OramaToggler = /*@__PURE__*/ defineContainer<JSX.OramaToggler>('orama-toggler', undefined, [
+  'performInitialAnimation'
+]);
 
 
 export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined, [

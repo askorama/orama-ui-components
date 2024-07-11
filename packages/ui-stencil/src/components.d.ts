@@ -61,6 +61,7 @@ export namespace Components {
         "value": string | null;
     }
     interface OramaToggler {
+        "performInitialAnimation": boolean;
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
@@ -222,6 +223,7 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface OramaToggler {
+        "performInitialAnimation"?: boolean;
     }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';

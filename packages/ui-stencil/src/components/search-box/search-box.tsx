@@ -41,8 +41,9 @@ export class SearchBox {
         >
           <orama-toggler />
         </div>
-        {/* TODO: How to lazily load components chat component as it won't necessarily be used */}
-        {globalContext.selectedTab === 'search' ? <orama-search /> : <orama-chat />}
+
+        <orama-search style={{ display: globalContext.selectedTab === 'search' ? 'flex' : 'none' }} />
+        <orama-chat style={{ display: globalContext.selectedTab === 'chat' ? 'flex' : 'none' }} />
       </Host>
     )
   }
