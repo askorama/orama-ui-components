@@ -4,7 +4,6 @@ import { chatContext } from '../../../context/chatContext'
 @Component({
   tag: 'orama-chat-messages-container',
   styleUrl: 'orama-chat-messages-container.scss',
-  shadow: true,
 })
 export class OramaChatMessagesContainer {
   render() {

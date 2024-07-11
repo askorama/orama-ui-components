@@ -1,5 +1,4 @@
-.p,
-.text--p {
+.p {
   @include paragraph();
 
   &--bold {
@@ -21,4 +20,16 @@
   &--bold {
     font-weight: var(--font-weight-semibold, $font-weight-semibold);
   }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
 }

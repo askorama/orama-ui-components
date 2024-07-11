@@ -1,24 +1,25 @@
-:host {
+orama-chat {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
+  background: linear-gradient(180deg, var(--background-ai-gradient-one) 0%, var(--background-ai-gradient-two) 50%);
 }
 
 orama-textarea {
   width: 100%;
 }
+
 .messages-container-wrapper {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.footer-wrapper {
-  background: var(--background-color-tertiary, background-color('tertiary'));
-  padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l) var(--spacing-s, $spacing-s) var(--spacing-l, $spacing-l);
+.chat-form-wrapper {
+  padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
 }
 
-.spacer {
-  margin-top: var(--spacing-s, $spacing-s);
+.chat-input {
+  margin-bottom: var(--spacing-s, $spacing-s);
 }

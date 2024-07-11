@@ -7,7 +7,6 @@ import type { SearchResultsProps } from '../orama-search-results/orama-search-re
 @Component({
   tag: 'orama-search',
   styleUrl: 'orama-search.scss',
-  shadow: true,
 })
 export class OramaSearch {
   private searchService!: SearchService
@@ -47,16 +46,14 @@ export class OramaSearch {
   render() {
     return (
       <Host>
-        <div>
-          <orama-input
-            autofocus
-            type="search"
-            onInput={this.onSearch.bind(this)}
-            labelForScreenReaders="Search..."
-            placeholder="Search..."
-          />
-          <orama-search-results items={this.searchResults} />
-        </div>
+        <orama-input
+          autofocus
+          type="search"
+          onInput={this.onSearch.bind(this)}
+          labelForScreenReaders="Search..."
+          placeholder="Search..."
+        />
+        <orama-search-results items={this.searchResults} />
       </Host>
     )
   }

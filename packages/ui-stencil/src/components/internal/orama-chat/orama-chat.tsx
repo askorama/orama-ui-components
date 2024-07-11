@@ -5,7 +5,6 @@ import { ChatService } from '../../../services/ChatService'
 @Component({
   tag: 'orama-chat',
   styleUrl: 'orama-chat.scss',
-  shadow: true
 })
 export class OramaChat {
   @State() inputValue = ''
@@ -17,7 +16,7 @@ export class OramaChat {
     // TODO: Should not be hardcoded
     const oramaClient = new OramaClient({
       api_key: '6kHcoevr3zkbBmC2hHqlcNQrOgejS4ds',
-      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign'
+      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign',
     })
 
     this.chatService = new ChatService(oramaClient)
@@ -37,11 +36,13 @@ export class OramaChat {
   render() {
     return (
       <Host>
+        {/* CHAT MESSAGES */}
         <orama-chat-messages-container />
 
-        <div class="footer-wrapper">
+        {/* CHAT INPUT */}
+        <div class="chat-form-wrapper">
           <form onSubmit={this.handleSubmit}>
-            <div style={{ display: 'flex' }}>
+            <div class="chat-input">
               <orama-textarea
                 autoFocus
                 maxRows={4}
@@ -64,8 +65,7 @@ export class OramaChat {
               </orama-textarea>
             </div>
           </form>
-          <div class="spacer" />
-          <orama-text as="p" styledAs="small" style={{ textAlign: 'center' }}>
+          <orama-text as="p" styledAs="small" align="center">
             Orama can make mistakes. Lorem ipsum dolor sit amet
           </orama-text>
         </div>

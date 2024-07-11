@@ -19,6 +19,7 @@
 - [orama-toggler](../orama-toggler)
 - [orama-search](../internal/orama-search)
 - [orama-chat](../internal/orama-chat)
+- [orama-text](../internal/orama-text)
 
 ### Graph
 ```mermaid
@@ -26,6 +27,7 @@ graph TD;
   search-box --> orama-toggler
   search-box --> orama-search
   search-box --> orama-chat
+  search-box --> orama-text
   orama-search --> orama-input
   orama-search --> orama-search-results
   orama-search-results --> orama-text

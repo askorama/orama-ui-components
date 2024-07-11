@@ -7,11 +7,11 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TChatMessage } from "./context/chatContext";
 import { InputProps } from "./components/internal/orama-input/orama-input";
-import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
+import { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { TChatMessage } from "./context/chatContext";
 export { InputProps } from "./components/internal/orama-input/orama-input";
-export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
+export { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
     interface OramaChat {
@@ -40,6 +40,10 @@ export namespace Components {
         "searchTerm": SearchResultsProps['searchTerm'];
     }
     interface OramaText {
+        /**
+          * optionally change text alignment
+         */
+        "align"?: TextProps['align'];
         /**
           * it defines the HTML tag to be used
          */
@@ -74,6 +78,10 @@ export namespace Components {
 export interface OramaInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOramaInputElement;
+}
+export interface OramaSearchResultsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaSearchResultsElement;
 }
 declare global {
     interface HTMLOramaChatElement extends Components.OramaChat, HTMLStencilElement {
@@ -123,7 +131,18 @@ declare global {
         prototype: HTMLOramaSearchElement;
         new (): HTMLOramaSearchElement;
     };
+    interface HTMLOramaSearchResultsElementEventMap {
+        "oramaItemClick": SearchItem;
+    }
     interface HTMLOramaSearchResultsElement extends Components.OramaSearchResults, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaSearchResultsElementEventMap>(type: K, listener: (this: HTMLOramaSearchResultsElement, ev: OramaSearchResultsCustomEvent<HTMLOramaSearchResultsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaSearchResultsElementEventMap>(type: K, listener: (this: HTMLOramaSearchResultsElement, ev: OramaSearchResultsCustomEvent<HTMLOramaSearchResultsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaSearchResultsElement: {
         prototype: HTMLOramaSearchResultsElement;
@@ -199,9 +218,14 @@ declare namespace LocalJSX {
     }
     interface OramaSearchResults {
         "items"?: SearchResultsProps['items'];
+        "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchItem>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
     }
     interface OramaText {
+        /**
+          * optionally change text alignment
+         */
+        "align"?: TextProps['align'];
         /**
           * it defines the HTML tag to be used
          */

@@ -3,7 +3,6 @@ import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core'
 @Component({
   tag: 'orama-textarea',
   styleUrl: 'orama-textarea.scss',
-  shadow: true,
 })
 export class OramaTextarea {
   @Element() el: HTMLTextAreaElement

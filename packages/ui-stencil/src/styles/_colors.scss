@@ -83,7 +83,8 @@ $paletteDark: (
   ),
 );
 
-// should be imported by the config/colors.ts file
+// TODO: should be imported by the config/colors.ts file
+// TODO: review --background-ai-gradient-one and --background-ai-gradient-two with Angela
 $theme-colors-light: (
   '--text-color-primary': text-color('primary'),
   '--text-color-secondary': text-color('secondary'),
@@ -94,6 +95,8 @@ $theme-colors-light: (
   '--background-color-secondary': background-color('secondary'),
   '--background-color-tertiary': background-color('tertiary'),
   '--background-color-fourth': background-color('fourth'),
+  '--background-ai-gradient-one': background-color('primary'),
+  '--background-ai-gradient-two': #ece7f5,
   '--background-color-reverse': background-color('reverse'),
   '--border-color-primary': border-color('primary'),
   '--border-color-secondary': border-color('secondary'),
@@ -116,6 +119,8 @@ $theme-colors-dark: (
   '--background-color-tertiary': background-color('tertiary', $paletteDark),
   '--background-color-fourth': background-color('fourth', $paletteDark),
   '--background-color-reverse': background-color('reverse', $paletteDark),
+  '--background-ai-gradient-one': background-color('primary', $paletteDark),
+  '--background-ai-gradient-two': #251e37,
   '--border-color-primary': border-color('primary', $paletteDark),
   '--border-color-secondary': border-color('secondary', $paletteDark),
   '--border-color-inactive': border-color('inactive', $paletteDark),

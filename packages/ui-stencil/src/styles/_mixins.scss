@@ -41,12 +41,12 @@
 @mixin flex-cols($cols: 1, $breakpoint: undefined, $gap: $spacingS) {
   @if $breakpoint != undefined {
     @media (--#{$breakpoint}-min) {
-      flex: 0 0 calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
-      max-width: calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
+      flex: 0 0 calc(((100% - calc(#{$gap} * #{calc(12 / $cols - 1)})) / 12 * $cols));
+      max-width: calc(((100% - calc(#{$gap} * #{calc(12 / $cols - 1)})) / 12 * $cols));
     }
   } @else {
-    flex: 0 0 calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
-    max-width: calc(((100% - calc(#{$gap} * #{calc(12/$cols - 1)}))  / 12 * $cols));
+    flex: 0 0 calc(((100% - calc(#{$gap} * #{calc(12 / $cols - 1)})) / 12 * $cols));
+    max-width: calc(((100% - calc(#{$gap} * #{calc(12 / $cols - 1)})) / 12 * $cols));
   }
 }
 
@@ -64,9 +64,8 @@
   }
 }
 
-
 @mixin span() {
-  color:  var(--text-color-tertiary, text-color('tertiary'));
+  color: var(--text-color-tertiary, text-color('tertiary'));
   font-size: var(--font-size-sm, $font-size-sm);
   line-height: var(--font-line-height-s, $font-line-height-s);
   font-weight: var(--font-weight-normal, $font-weight-normal);
@@ -79,7 +78,7 @@
 }
 
 @mixin small() {
-  color: var(--text-color-tertiary, text-color('tertiary'));
+  color: var(--text-color-primary, text-color('primary'));
   font-size: var(--font-size-xs, $font-size-xs);
   font-weight: var(--font-weight-normal, $font-weight-normal);
   line-height: var(--font-line-height-s, $font-line-height-s);
