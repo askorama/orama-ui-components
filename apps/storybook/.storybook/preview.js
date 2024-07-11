@@ -10,7 +10,7 @@ const DARK_THEME_BG = '#050505'
 const preview = {
   decorators: [
     (story, context) => {
-      const classTheme = context.globals.backgrounds.value === DARK_THEME_BG ? 'theme-dark' : 'theme-light'
+      const classTheme = context.globals?.backgrounds?.value === DARK_THEME_BG ? 'theme-dark' : 'theme-light'
       return `<div id="orama-ui" class="${classTheme}" style="padding: 20px">${story()}</div>`
     },
   ],
