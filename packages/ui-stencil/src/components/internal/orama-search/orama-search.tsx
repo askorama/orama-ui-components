@@ -46,7 +46,7 @@ export class OramaSearch {
 
   render() {
     return (
-      <Host style={{ background: 'black', color: 'white' }}>
+      <Host>
         <div>
           <orama-input
             autofocus

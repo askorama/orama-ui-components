@@ -35,7 +35,6 @@ export class SearchBox {
             padding: '16px 0',
             alginItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'black',
             color: 'white',
           }}
         >
