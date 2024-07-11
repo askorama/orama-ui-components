@@ -26,8 +26,8 @@ export class ChatService {
           onMessageLoading: (loading) => (chatContext.isLoading = loading),
           onSourceChange: (sources) => {
             console.log(sources)
-          }
-        }
+          },
+        },
       })
     }
 

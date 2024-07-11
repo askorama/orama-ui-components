@@ -4,7 +4,7 @@ import type { TChatMessage } from '../../../../context/chatContext'
 @Component({
   tag: 'orama-chat-assistent-message',
   styleUrl: 'orama-chat-assistent-message.scss',
-  shadow: true
+  shadow: true,
 })
 export class OramaChatAssistentMessage {
   @Prop() message: TChatMessage
