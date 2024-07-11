@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core'
+import { Component, Host, Prop, h } from '@stencil/core'
 import { globalContext } from '../../context/searchBoxContext'
 import '@phosphor-icons/webcomponents/PhMagnifyingGlass'
 import '@phosphor-icons/webcomponents/PhSparkle'
@@ -9,12 +9,30 @@ import '@phosphor-icons/webcomponents/PhSparkle'
   shadow: true,
 })
 export class OramaToggler {
+  @Prop() performInitialAnimation = false
+  private firstRender = true
+
+  componentWillLoad() {
+    if (this.performInitialAnimation) {
+      this.firstRender = false
+    }
+  }
+
+  componentDidLoad() {
+    if (this.firstRender) {
+      this.firstRender = false
+    }
+  }
+
   render() {
     return (
       <Host>
         <button
           type="button"
-          class={{ selected: globalContext.selectedTab === 'search' }}
+          class={{
+            selected: globalContext.selectedTab === 'search',
+            animate: !this.firstRender || this.performInitialAnimation,
+          }}
           onClick={() => (globalContext.selectedTab = 'search')}
         >
           <span>Search</span>
@@ -22,7 +40,10 @@ export class OramaToggler {
         </button>
         <button
           type="button"
-          class={{ selected: globalContext.selectedTab === 'chat' }}
+          class={{
+            selected: globalContext.selectedTab === 'chat',
+            animate: !this.firstRender || this.performInitialAnimation,
+          }}
           onClick={() => (globalContext.selectedTab = 'chat')}
         >
           <ph-sparkle size={16} />

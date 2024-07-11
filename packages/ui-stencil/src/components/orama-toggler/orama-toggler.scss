@@ -31,11 +31,16 @@
         padding: var(--spacing-s, $spacing-s) var(--spacing-m, $spacing-m);
         border-radius: var(--radius-3xl, $radius-3xl);
         z-index: -1;
-        animation: slideToLeft 0.3s ease-in-out;
       }
 
-      &:first-child::after {
-        animation: slideToRight 0.3s ease-in-out;
+      &.animate {
+        &::after {
+          animation: slideToLeft 0.3s ease-in-out;
+        }
+
+        &:first-child::after {
+          animation: slideToRight 0.3s ease-in-out;
+        }
       }
     }
   }
