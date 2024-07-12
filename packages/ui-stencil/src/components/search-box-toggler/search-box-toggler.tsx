@@ -4,7 +4,6 @@ import { searchState } from '@/context/searchContext'
 @Component({
   tag: 'search-box-toggler',
   styleUrl: 'search-box-toggler.scss',
-  shadow: true,
 })
 export class SearchBoxToggler {
   render() {

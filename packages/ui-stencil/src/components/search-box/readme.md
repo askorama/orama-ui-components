@@ -5,11 +5,12 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type                                                                                  | Default     |
-| ------------- | --------- | ----------- | ------------------------------------------------------------------------------------- | ----------- |
-| `color`       | `color`   |             | `"dark" \| "light" \| "system"`                                                       | `undefined` |
-| `open`        | `open`    |             | `boolean`                                                                             | `undefined` |
-| `themeConfig` | --        |             | `{ colors: { light: { primaryColor: string; }; dark: { primaryColor: string; }; }; }` | `undefined` |
+| Property        | Attribute        | Description | Type                                                                                  | Default     |
+| --------------- | ---------------- | ----------- | ------------------------------------------------------------------------------------- | ----------- |
+| `color`         | `color`          |             | `"dark" \| "light" \| "system"`                                                       | `undefined` |
+| `facetProperty` | `facet-property` |             | `string`                                                                              | `undefined` |
+| `open`          | `open`           |             | `boolean`                                                                             | `undefined` |
+| `themeConfig`   | --               |             | `{ colors: { light: { primaryColor: string; }; dark: { primaryColor: string; }; }; }` | `undefined` |
 
 
 ## Dependencies
@@ -19,6 +20,7 @@
 - [orama-toggler](../orama-toggler)
 - [orama-search](../internal/orama-search)
 - [orama-chat](../internal/orama-chat)
+- [orama-text](../internal/orama-text)
 
 ### Graph
 ```mermaid
@@ -26,11 +28,14 @@ graph TD;
   search-box --> orama-toggler
   search-box --> orama-search
   search-box --> orama-chat
+  search-box --> orama-text
   orama-search --> orama-input
+  orama-search --> orama-facets
   orama-search --> orama-search-results
   orama-search-results --> orama-text
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-textarea
+  orama-chat --> orama-button
   orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message

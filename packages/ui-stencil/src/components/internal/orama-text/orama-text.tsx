@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Element } from '@stencil/core';
+import { Component, Prop, h, State, Element } from '@stencil/core'
 // import { AttributeUtils } from '../../../services/AttributeUtils';
 
 export interface TextProps {
@@ -8,6 +8,8 @@ export interface TextProps {
   styledAs?: 'p' | 'span' | 'small' | undefined
   /** the optional class name */
   class?: string
+  /** optionally change text alignment */
+  align?: 'left' | 'center' | 'right'
 }
 @Component({
   tag: 'orama-text',
@@ -24,11 +26,13 @@ export class OramaText implements TextProps {
   @Prop() as?: TextProps['as'] = 'p'
   @Prop() styledAs?: TextProps['styledAs']
   @Prop() class?: string
+  @Prop() align?: TextProps['align']
 
-  @State () defaultStyle: string = this.styledAs === 'span' || this.styledAs === 'small' || this.styledAs === 'p' ? this.styledAs : this.as
+  @State() defaultStyle: string =
+    this.styledAs === 'span' || this.styledAs === 'small' || this.styledAs === 'p' ? this.styledAs : this.as
 
   render() {
-    const Tag = this.as;
+    const Tag = this.as
     // const declaredProps = ['as', 'styled-as', 'class']
     // const textProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps)
 
@@ -36,11 +40,12 @@ export class OramaText implements TextProps {
       <Tag
         class={{
           [this.defaultStyle]: true,
-          [this.class]: !!this.class
+          [`text-${this.align}`]: !!this.align,
+          [this.class]: !!this.class,
         }}
       >
         <slot />
       </Tag>
-    );
+    )
   }
 }

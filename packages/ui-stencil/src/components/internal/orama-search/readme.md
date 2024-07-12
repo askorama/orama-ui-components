@@ -14,12 +14,14 @@
 ### Depends on
 
 - [orama-input](../orama-input)
+- [orama-facets](../orama-facets)
 - [orama-search-results](../orama-search-results)
 
 ### Graph
 ```mermaid
 graph TD;
   orama-search --> orama-input
+  orama-search --> orama-facets
   orama-search --> orama-search-results
   orama-search-results --> orama-text
   search-box --> orama-search

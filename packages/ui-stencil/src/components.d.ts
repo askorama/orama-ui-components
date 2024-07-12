@@ -5,15 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonProps } from "./components/internal/orama-button/orama-button";
 import { TChatMessage } from "./context/chatContext";
 import { InputProps } from "./components/internal/orama-input/orama-input";
-import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
+import { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
+export { ButtonProps } from "./components/internal/orama-button/orama-button";
 export { TChatMessage } from "./context/chatContext";
 export { InputProps } from "./components/internal/orama-input/orama-input";
-export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
+export { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
+    interface OramaButton {
+        "as"?: ButtonProps['as'];
+        "class"?: string;
+        "type"?: ButtonProps['type'];
+        "variant"?: ButtonProps['variant'];
+    }
     interface OramaChat {
     }
     interface OramaChatAssistentMessage {
@@ -23,6 +31,9 @@ export namespace Components {
     }
     interface OramaChatUserMessage {
         "message": TChatMessage;
+    }
+    interface OramaFacets {
+        "facets": any[];
     }
     interface OramaInput {
         "defaultValue": InputProps['defaultValue'];
@@ -40,6 +51,10 @@ export namespace Components {
         "searchTerm": SearchResultsProps['searchTerm'];
     }
     interface OramaText {
+        /**
+          * optionally change text alignment
+         */
+        "align"?: TextProps['align'];
         /**
           * it defines the HTML tag to be used
          */
@@ -65,6 +80,7 @@ export namespace Components {
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
+        "facetProperty": string;
         "open": false;
         "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
@@ -75,7 +91,17 @@ export interface OramaInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOramaInputElement;
 }
+export interface OramaSearchResultsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaSearchResultsElement;
+}
 declare global {
+    interface HTMLOramaButtonElement extends Components.OramaButton, HTMLStencilElement {
+    }
+    var HTMLOramaButtonElement: {
+        prototype: HTMLOramaButtonElement;
+        new (): HTMLOramaButtonElement;
+    };
     interface HTMLOramaChatElement extends Components.OramaChat, HTMLStencilElement {
     }
     var HTMLOramaChatElement: {
@@ -100,6 +126,12 @@ declare global {
         prototype: HTMLOramaChatUserMessageElement;
         new (): HTMLOramaChatUserMessageElement;
     };
+    interface HTMLOramaFacetsElement extends Components.OramaFacets, HTMLStencilElement {
+    }
+    var HTMLOramaFacetsElement: {
+        prototype: HTMLOramaFacetsElement;
+        new (): HTMLOramaFacetsElement;
+    };
     interface HTMLOramaInputElementEventMap {
         "oramaInputChanged": string;
     }
@@ -123,7 +155,18 @@ declare global {
         prototype: HTMLOramaSearchElement;
         new (): HTMLOramaSearchElement;
     };
+    interface HTMLOramaSearchResultsElementEventMap {
+        "oramaItemClick": SearchItem;
+    }
     interface HTMLOramaSearchResultsElement extends Components.OramaSearchResults, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaSearchResultsElementEventMap>(type: K, listener: (this: HTMLOramaSearchResultsElement, ev: OramaSearchResultsCustomEvent<HTMLOramaSearchResultsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaSearchResultsElementEventMap>(type: K, listener: (this: HTMLOramaSearchResultsElement, ev: OramaSearchResultsCustomEvent<HTMLOramaSearchResultsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaSearchResultsElement: {
         prototype: HTMLOramaSearchResultsElement;
@@ -160,10 +203,12 @@ declare global {
         new (): HTMLSearchBoxTogglerElement;
     };
     interface HTMLElementTagNameMap {
+        "orama-button": HTMLOramaButtonElement;
         "orama-chat": HTMLOramaChatElement;
         "orama-chat-assistent-message": HTMLOramaChatAssistentMessageElement;
         "orama-chat-messages-container": HTMLOramaChatMessagesContainerElement;
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
+        "orama-facets": HTMLOramaFacetsElement;
         "orama-input": HTMLOramaInputElement;
         "orama-search": HTMLOramaSearchElement;
         "orama-search-results": HTMLOramaSearchResultsElement;
@@ -175,6 +220,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface OramaButton {
+        "as"?: ButtonProps['as'];
+        "class"?: string;
+        "type"?: ButtonProps['type'];
+        "variant"?: ButtonProps['variant'];
+    }
     interface OramaChat {
     }
     interface OramaChatAssistentMessage {
@@ -184,6 +235,9 @@ declare namespace LocalJSX {
     }
     interface OramaChatUserMessage {
         "message"?: TChatMessage;
+    }
+    interface OramaFacets {
+        "facets"?: any[];
     }
     interface OramaInput {
         "defaultValue"?: InputProps['defaultValue'];
@@ -199,9 +253,14 @@ declare namespace LocalJSX {
     }
     interface OramaSearchResults {
         "items"?: SearchResultsProps['items'];
+        "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchItem>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
     }
     interface OramaText {
+        /**
+          * optionally change text alignment
+         */
+        "align"?: TextProps['align'];
         /**
           * it defines the HTML tag to be used
          */
@@ -227,16 +286,19 @@ declare namespace LocalJSX {
     }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
+        "facetProperty"?: string;
         "open"?: false;
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface SearchBoxToggler {
     }
     interface IntrinsicElements {
+        "orama-button": OramaButton;
         "orama-chat": OramaChat;
         "orama-chat-assistent-message": OramaChatAssistentMessage;
         "orama-chat-messages-container": OramaChatMessagesContainer;
         "orama-chat-user-message": OramaChatUserMessage;
+        "orama-facets": OramaFacets;
         "orama-input": OramaInput;
         "orama-search": OramaSearch;
         "orama-search-results": OramaSearchResults;
@@ -251,10 +313,12 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "orama-button": LocalJSX.OramaButton & JSXBase.HTMLAttributes<HTMLOramaButtonElement>;
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-chat-assistent-message": LocalJSX.OramaChatAssistentMessage & JSXBase.HTMLAttributes<HTMLOramaChatAssistentMessageElement>;
             "orama-chat-messages-container": LocalJSX.OramaChatMessagesContainer & JSXBase.HTMLAttributes<HTMLOramaChatMessagesContainerElement>;
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
+            "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
             "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;

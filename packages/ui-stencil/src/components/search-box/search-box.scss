@@ -1,5 +1,19 @@
 :host {
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: var(--spacing-s, $spacing-s) 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
 }

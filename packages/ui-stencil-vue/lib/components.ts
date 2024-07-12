@@ -8,6 +8,14 @@ import type { JSX } from 'ui-stencil';
 
 
 
+export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama-button', undefined, [
+  'as',
+  'class',
+  'variant',
+  'type'
+]);
+
+
 export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-chat', undefined);
 
 
@@ -21,6 +29,11 @@ export const OramaChatMessagesContainer = /*@__PURE__*/ defineContainer<JSX.Oram
 
 export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatUserMessage>('orama-chat-user-message', undefined, [
   'message'
+]);
+
+
+export const OramaFacets = /*@__PURE__*/ defineContainer<JSX.OramaFacets>('orama-facets', undefined, [
+  'facets'
 ]);
 
 
@@ -41,14 +54,16 @@ export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [
   'items',
-  'searchTerm'
+  'searchTerm',
+  'oramaItemClick'
 ]);
 
 
 export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
   'styledAs',
-  'class'
+  'class',
+  'align'
 ]);
 
 
@@ -69,6 +84,7 @@ export const OramaToggler = /*@__PURE__*/ defineContainer<JSX.OramaToggler>('ora
 export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined, [
   'themeConfig',
   'color',
+  'facetProperty',
   'open'
 ]);
 

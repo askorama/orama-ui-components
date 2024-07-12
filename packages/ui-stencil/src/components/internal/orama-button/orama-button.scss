@@ -1,0 +1,15 @@
+.button {
+  display: inline-flex;
+  gap: var(--spacing-s, $spacing-s);
+  align-items: center;
+  border-radius: var(--radius-m, $radius-m);
+  border: 0;
+  padding: var(--spacing-m, $spacing-m);
+  cursor: pointer;
+  font-family: var(--font-primary, font('primary'));
+}
+
+.button--primary {
+  background-color: var(--button-primary-background-color);
+  color: var(--button-primary-text-color);
+}

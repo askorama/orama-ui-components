@@ -7,10 +7,17 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type                                                                   | Default     |
-| ------------ | ------------- | ----------- | ---------------------------------------------------------------------- | ----------- |
-| `items`      | --            |             | `{ id: string; title: string; description: string; path?: string; }[]` | `[]`        |
-| `searchTerm` | `search-term` |             | `string`                                                               | `undefined` |
+| Property     | Attribute     | Description | Type           | Default     |
+| ------------ | ------------- | ----------- | -------------- | ----------- |
+| `items`      | --            |             | `SearchItem[]` | `undefined` |
+| `searchTerm` | `search-term` |             | `string`       | `undefined` |
+
+
+## Events
+
+| Event            | Description | Type                                                                              |
+| ---------------- | ----------- | --------------------------------------------------------------------------------- |
+| `oramaItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path?: string; }>` |
 
 
 ## Dependencies

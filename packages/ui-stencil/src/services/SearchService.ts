@@ -13,7 +13,7 @@ export class SearchService {
     this.abortController = new AbortController()
   }
 
-  search = (term: string) => {
+  search = (term: string, currentFacet?: string) => {
     if (!this.oramaClient) {
       throw new OramaClientNotInitializedError()
     }
@@ -26,7 +26,26 @@ export class SearchService {
 
     // TODO: Maybe we would like to have a debounce here (Check with Michele)
     this.oramaClient
-      .search({ term: term, limit: LIMIT_RESULTS }, { abortController: this.abortController })
+      .search(
+        {
+          term: term,
+          limit: LIMIT_RESULTS,
+          ...(searchState.facetProperty && {
+            facets: {
+              [searchState.facetProperty]: {},
+            },
+            ...(currentFacet &&
+              currentFacet !== 'All' && {
+                where: {
+                  [searchState.facetProperty]: {
+                    eq: currentFacet,
+                  },
+                },
+              }),
+          }),
+        },
+        { abortController: this.abortController },
+      )
       .then((results) => {
         searchState.hits = (results?.hits as []) || []
         searchState.count = results?.count || 0

@@ -1,0 +1,34 @@
+.facets-list {
+  display: flex;
+  align-items: center;
+  column-gap: var(--spacing-s, $spacing-s);
+  margin: var(--spacing-l, $spacing-l) 0;
+  list-style: none;
+  padding: 0;
+  // todo: check scroll styles
+  overflow: scroll;
+}
+
+.facet-button {
+  @include span();
+  border-radius: var(--radius-3xl, $radius-3xl);
+  border: 1px solid var(--border-color-primary, border-color('primary'));
+  cursor: pointer;
+  padding: var(--spacing-s, $spacing-s) var(--spacing-m, $spacing-m);
+  display: flex;
+  column-gap: var(--spacing-xs, $spacing-xs);
+  background-color: transparent;
+  width: max-content;
+
+  &--selected {
+    border-color: var(--border-color-tertiary, border-color('tertiary'));
+  }
+
+  @media (--md-min) {
+    padding: var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
+  }
+}
+
+.facet-count {
+  color: var(--text-color-tertiary, text-color('tertiary'));
+}
