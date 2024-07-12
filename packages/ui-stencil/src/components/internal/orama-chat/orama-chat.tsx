@@ -1,6 +1,5 @@
 import { Component, Host, State, h } from '@stencil/core'
-import { OramaClient } from '@oramacloud/client'
-import { ChatService } from '@/services/ChatService'
+import { chatContext } from '@/context/chatContext'
 
 @Component({
   tag: 'orama-chat',
@@ -9,27 +8,14 @@ import { ChatService } from '@/services/ChatService'
 export class OramaChat {
   @State() inputValue = ''
 
-  private chatService: ChatService
-
-  // TODO: We probably want to use this oramaClient both in chat and search. We may want to uplift orama client to be a singleton
-  componentWillLoad() {
-    // TODO: Should not be hardcoded
-    const oramaClient = new OramaClient({
-      api_key: '6kHcoevr3zkbBmC2hHqlcNQrOgejS4ds',
-      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign',
-    })
-
-    this.chatService = new ChatService(oramaClient)
-  }
-
   handleSubmit = (e: Event) => {
     e.preventDefault()
 
-    if (!this.chatService) {
+    if (chatContext.chatService === null) {
       throw new Error('Chat Service is not initialized')
     }
 
-    this.chatService.sendQuestion(this.inputValue)
+    chatContext.chatService.sendQuestion(this.inputValue)
     this.inputValue = ''
   }
 

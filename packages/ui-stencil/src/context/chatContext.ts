@@ -1,3 +1,4 @@
+import type { ChatService } from '@/services/ChatService'
 import { createStore } from '@stencil/store'
 
 // TODO: Seems like there is no message type being exported from orama-client rn
@@ -17,7 +18,8 @@ const { state: chatContext } = createStore({
   messages: [] as TChatMessage[],
   isLoading: false,
   // TODO: Evaluate if we need to have a error object/string instead of just a boolean
-  error: false
+  error: false,
+  chatService: null as ChatService | null,
 })
 
 export { chatContext }

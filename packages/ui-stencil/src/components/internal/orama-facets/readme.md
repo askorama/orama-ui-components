@@ -7,17 +7,9 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type     | Default     |
-| -------------- | --------------- | ----------- | -------- | ----------- |
-| `currentFacet` | `current-facet` |             | `string` | `undefined` |
-| `facets`       | --              |             | `any[]`  | `undefined` |
-
-
-## Events
-
-| Event           | Description | Type                  |
-| --------------- | ----------- | --------------------- |
-| `facetSelected` |             | `CustomEvent<string>` |
+| Property | Attribute | Description | Type    | Default     |
+| -------- | --------- | ----------- | ------- | ----------- |
+| `facets` | --        |             | `any[]` | `undefined` |
 
 
 ## Dependencies

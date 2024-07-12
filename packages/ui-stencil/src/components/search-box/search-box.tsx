@@ -1,6 +1,10 @@
 import { Component, Host, Prop, Watch, h, Listen } from '@stencil/core'
+import { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
+import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/searchBoxContext'
+import { ChatService } from '@/services/ChatService'
+import { SearchService } from '@/services/SearchService'
 
 @Component({
   tag: 'search-box',
@@ -10,11 +14,17 @@ import { globalContext } from '@/context/searchBoxContext'
 export class SearchBox {
   @Prop() themeConfig: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } }
   @Prop() color: 'dark' | 'light' | 'system'
+  @Prop() facetProperty: string
   @Prop() open: false
 
   @Watch('open')
   handleOpenChange(newValue: boolean) {
     searchState.open = newValue
+  }
+
+  @Watch('facetProperty')
+  handleFacetPropertyChange(newValue: string) {
+    searchState.facetProperty = newValue
   }
 
   @Listen('oramaItemClick')
@@ -25,6 +35,15 @@ export class SearchBox {
 
   componentWillLoad() {
     searchState.open = this.open
+    searchState.facetProperty = this.facetProperty
+
+    const oramaClient = new OramaClient({
+      api_key: '6kHcoevr3zkbBmC2hHqlcNQrOgejS4ds',
+      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign',
+    })
+
+    searchState.searchService = new SearchService(oramaClient)
+    chatContext.chatService = new ChatService(oramaClient)
   }
 
   render() {

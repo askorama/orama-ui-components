@@ -33,7 +33,6 @@ export namespace Components {
         "message": TChatMessage;
     }
     interface OramaFacets {
-        "currentFacet": string;
         "facets": any[];
     }
     interface OramaInput {
@@ -81,15 +80,12 @@ export namespace Components {
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
+        "facetProperty": string;
         "open": false;
         "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface SearchBoxToggler {
     }
-}
-export interface OramaFacetsCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLOramaFacetsElement;
 }
 export interface OramaInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -130,18 +126,7 @@ declare global {
         prototype: HTMLOramaChatUserMessageElement;
         new (): HTMLOramaChatUserMessageElement;
     };
-    interface HTMLOramaFacetsElementEventMap {
-        "facetSelected": string;
-    }
     interface HTMLOramaFacetsElement extends Components.OramaFacets, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLOramaFacetsElementEventMap>(type: K, listener: (this: HTMLOramaFacetsElement, ev: OramaFacetsCustomEvent<HTMLOramaFacetsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLOramaFacetsElementEventMap>(type: K, listener: (this: HTMLOramaFacetsElement, ev: OramaFacetsCustomEvent<HTMLOramaFacetsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaFacetsElement: {
         prototype: HTMLOramaFacetsElement;
@@ -252,9 +237,7 @@ declare namespace LocalJSX {
         "message"?: TChatMessage;
     }
     interface OramaFacets {
-        "currentFacet"?: string;
         "facets"?: any[];
-        "onFacetSelected"?: (event: OramaFacetsCustomEvent<string>) => void;
     }
     interface OramaInput {
         "defaultValue"?: InputProps['defaultValue'];
@@ -303,6 +286,7 @@ declare namespace LocalJSX {
     }
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
+        "facetProperty"?: string;
         "open"?: false;
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }

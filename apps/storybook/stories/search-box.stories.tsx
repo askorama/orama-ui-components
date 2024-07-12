@@ -3,16 +3,30 @@ import type { StoryObj, Meta } from '@storybook/html'
 const meta: Meta = {
   title: 'Public/SearchBox',
   component: 'search-box',
+
+  argTypes: {
+    facetProperty: {
+      control: { type: 'text' },
+    },
+  },
 } satisfies Meta
 
 export default meta
 type Story = StoryObj
 
 // More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
+const Template = (args) => {
+  return `
+    <search-box open="true" facet-property=${args.facetProperty}></search-box>
+  `
+}
+
 export const SearchBox: Story = {
-  render: () => `
-    <search-box open="true"></search-box>
-  `,
+  render: Template,
+  args: {
+    class: 'my-optional-class',
+    facetProperty: 'category',
+  },
 }
 
 export const SearchBoxWithToggler: Story = {

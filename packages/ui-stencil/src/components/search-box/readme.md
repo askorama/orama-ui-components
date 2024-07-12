@@ -5,11 +5,12 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type                                                                                  | Default     |
-| ------------- | --------- | ----------- | ------------------------------------------------------------------------------------- | ----------- |
-| `color`       | `color`   |             | `"dark" \| "light" \| "system"`                                                       | `undefined` |
-| `open`        | `open`    |             | `boolean`                                                                             | `undefined` |
-| `themeConfig` | --        |             | `{ colors: { light: { primaryColor: string; }; dark: { primaryColor: string; }; }; }` | `undefined` |
+| Property        | Attribute        | Description | Type                                                                                  | Default     |
+| --------------- | ---------------- | ----------- | ------------------------------------------------------------------------------------- | ----------- |
+| `color`         | `color`          |             | `"dark" \| "light" \| "system"`                                                       | `undefined` |
+| `facetProperty` | `facet-property` |             | `string`                                                                              | `undefined` |
+| `open`          | `open`           |             | `boolean`                                                                             | `undefined` |
+| `themeConfig`   | --               |             | `{ colors: { light: { primaryColor: string; }; dark: { primaryColor: string; }; }; }` | `undefined` |
 
 
 ## Dependencies

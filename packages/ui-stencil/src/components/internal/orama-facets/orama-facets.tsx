@@ -1,5 +1,5 @@
-import { Component, h, Prop, Event, type EventEmitter } from '@stencil/core'
-// import { searchState } from '@/context/searchContext'
+import { Component, h, Prop, State } from '@stencil/core'
+import { searchState } from '@/context/searchContext'
 
 @Component({
   tag: 'orama-facets',
@@ -11,11 +11,12 @@ import { Component, h, Prop, Event, type EventEmitter } from '@stencil/core'
  */
 export class OramaFacets {
   @Prop() facets: any[] // TODO: fix type
-  @Prop() currentFacet: string
-  @Event() facetSelected: EventEmitter<string>
 
-  handleClick(facet: string) {
-    this.facetSelected.emit(facet)
+  @State() selected: string
+
+  handleClick(facet: { name: string; count: number }) {
+    this.selected = facet.name
+    searchState.currentFacet = facet
   }
 
   render() {
@@ -25,7 +26,7 @@ export class OramaFacets {
 
     return (
       <ul class="facets-list">
-        {this.facets?.map((facet, key) => {
+        {this.facets?.map((facet) => {
           if (facet?.count === 0) {
             return
           }
@@ -35,7 +36,7 @@ export class OramaFacets {
                 type="button"
                 class={{
                   'facet-button': true,
-                  'facet-button--selected': facet === this.currentFacet || (!this.currentFacet && key === 0),
+                  'facet-button--selected': this.selected === facet?.name || (!this.selected && facet?.name === 'All'),
                 }}
                 onClick={() => this.handleClick(facet)}
               >
