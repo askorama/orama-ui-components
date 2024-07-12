@@ -35,7 +35,6 @@ export class SearchResults {
   }
 
   render() {
-    console.log('this.items', this.items)
     if (!this.items?.length) {
       return (
         <div class="results-empty">

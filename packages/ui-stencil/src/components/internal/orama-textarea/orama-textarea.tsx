@@ -27,7 +27,7 @@ export class OramaTextarea {
   }
 
   getNamedSlotWidth(slotName: string) {
-    const slot = this.el.shadowRoot.querySelector(`slot[name="${slotName}"]`) as HTMLSlotElement
+    const slot = this.el.querySelector(`slot[name="${slotName}"]`) as HTMLSlotElement
     if (slot) {
       const assignedElements = slot.assignedElements()
       if (assignedElements.length > 0) {

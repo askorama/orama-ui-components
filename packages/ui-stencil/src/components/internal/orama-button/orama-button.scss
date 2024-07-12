@@ -6,6 +6,7 @@
   border: 0;
   padding: var(--spacing-m, $spacing-m);
   cursor: pointer;
+  font-family: var(--font-primary, font('primary'));
 }
 
 .button--primary {

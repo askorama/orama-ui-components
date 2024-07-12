@@ -32,6 +32,13 @@ export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatU
 ]);
 
 
+export const OramaFacets = /*@__PURE__*/ defineContainer<JSX.OramaFacets>('orama-facets', undefined, [
+  'facets',
+  'currentFacet',
+  'facetSelected'
+]);
+
+
 export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-input', undefined, [
   'name',
   'size',

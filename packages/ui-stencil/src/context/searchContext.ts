@@ -10,9 +10,10 @@ const store = createStore({
       values: Record<string, number>
     }
   > | null,
+  currentFacet: undefined,
   hits: [],
   term: '',
-  highlightedIndex: -1
+  highlightedIndex: -1,
 })
 
 const { state: searchState, ...searchStore } = store

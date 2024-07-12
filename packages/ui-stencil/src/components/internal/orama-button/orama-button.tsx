@@ -45,7 +45,6 @@ export class OramaButton {
     const buttonProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps)
 
     const buttonClass = `button button--${this.variant} ${this.class}`
-    console.log('buttonClass', buttonProps)
 
     return (
       <Tag class={buttonClass} {...buttonProps}>

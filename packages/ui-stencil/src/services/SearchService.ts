@@ -26,7 +26,17 @@ export class SearchService {
 
     // TODO: Maybe we would like to have a debounce here (Check with Michele)
     this.oramaClient
-      .search({ term: term, limit: LIMIT_RESULTS }, { abortController: this.abortController })
+      .search(
+        {
+          term: term,
+          limit: LIMIT_RESULTS,
+          facets: {
+            // TODO: this should be dynamic and come from the config
+            category: {},
+          },
+        },
+        { abortController: this.abortController },
+      )
       .then((results) => {
         searchState.hits = (results?.hits as []) || []
         searchState.count = results?.count || 0

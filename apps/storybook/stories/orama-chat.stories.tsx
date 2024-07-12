@@ -1,8 +1,8 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
 
 const meta: Meta = {
-  title: 'Demo Preview/OramaChat',
-  component: 'orama-chat'
+  title: 'Internal/OramaChat',
+  component: 'orama-chat',
 }
 
 export default meta
@@ -13,12 +13,11 @@ const Template = (args) => {
   <div style="height: 800px; width: 360px; border: 1px solid white; display: flex; flex-direction: column;">
     <orama-chat ${{ ...args }}></orama-chat>
   </div>
-  
   `
 }
 
 // More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
 export const OramaChat: Story = {
   render: Template,
-  args: {}
+  args: {},
 }

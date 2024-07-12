@@ -1,4 +1,4 @@
-import { Component, Host, Prop, Watch, h } from '@stencil/core'
+import { Component, Host, Prop, Watch, h, Listen } from '@stencil/core'
 import { searchState } from '@/context/searchContext'
 import { globalContext } from '@/context/searchBoxContext'
 

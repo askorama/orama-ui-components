@@ -32,6 +32,10 @@ export namespace Components {
     interface OramaChatUserMessage {
         "message": TChatMessage;
     }
+    interface OramaFacets {
+        "currentFacet": string;
+        "facets": any[];
+    }
     interface OramaInput {
         "defaultValue": InputProps['defaultValue'];
         "label"?: InputProps['label'];
@@ -83,6 +87,10 @@ export namespace Components {
     interface SearchBoxToggler {
     }
 }
+export interface OramaFacetsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaFacetsElement;
+}
 export interface OramaInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOramaInputElement;
@@ -121,6 +129,23 @@ declare global {
     var HTMLOramaChatUserMessageElement: {
         prototype: HTMLOramaChatUserMessageElement;
         new (): HTMLOramaChatUserMessageElement;
+    };
+    interface HTMLOramaFacetsElementEventMap {
+        "facetSelected": string;
+    }
+    interface HTMLOramaFacetsElement extends Components.OramaFacets, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaFacetsElementEventMap>(type: K, listener: (this: HTMLOramaFacetsElement, ev: OramaFacetsCustomEvent<HTMLOramaFacetsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaFacetsElementEventMap>(type: K, listener: (this: HTMLOramaFacetsElement, ev: OramaFacetsCustomEvent<HTMLOramaFacetsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLOramaFacetsElement: {
+        prototype: HTMLOramaFacetsElement;
+        new (): HTMLOramaFacetsElement;
     };
     interface HTMLOramaInputElementEventMap {
         "oramaInputChanged": string;
@@ -198,6 +223,7 @@ declare global {
         "orama-chat-assistent-message": HTMLOramaChatAssistentMessageElement;
         "orama-chat-messages-container": HTMLOramaChatMessagesContainerElement;
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
+        "orama-facets": HTMLOramaFacetsElement;
         "orama-input": HTMLOramaInputElement;
         "orama-search": HTMLOramaSearchElement;
         "orama-search-results": HTMLOramaSearchResultsElement;
@@ -224,6 +250,11 @@ declare namespace LocalJSX {
     }
     interface OramaChatUserMessage {
         "message"?: TChatMessage;
+    }
+    interface OramaFacets {
+        "currentFacet"?: string;
+        "facets"?: any[];
+        "onFacetSelected"?: (event: OramaFacetsCustomEvent<string>) => void;
     }
     interface OramaInput {
         "defaultValue"?: InputProps['defaultValue'];
@@ -283,6 +314,7 @@ declare namespace LocalJSX {
         "orama-chat-assistent-message": OramaChatAssistentMessage;
         "orama-chat-messages-container": OramaChatMessagesContainer;
         "orama-chat-user-message": OramaChatUserMessage;
+        "orama-facets": OramaFacets;
         "orama-input": OramaInput;
         "orama-search": OramaSearch;
         "orama-search-results": OramaSearchResults;
@@ -302,6 +334,7 @@ declare module "@stencil/core" {
             "orama-chat-assistent-message": LocalJSX.OramaChatAssistentMessage & JSXBase.HTMLAttributes<HTMLOramaChatAssistentMessageElement>;
             "orama-chat-messages-container": LocalJSX.OramaChatMessagesContainer & JSXBase.HTMLAttributes<HTMLOramaChatMessagesContainerElement>;
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
+            "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
             "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;
