@@ -1,6 +1,6 @@
 import type { OramaClient } from '@oramacloud/client'
-import { OramaClientNotInitializedError } from '../erros/OramaClientNotInitialized'
-import { searchState } from '../context/searchContext'
+import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
+import { searchState } from '@/context/searchContext'
 
 const LIMIT_RESULTS = 10
 

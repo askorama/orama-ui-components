@@ -1,6 +1,6 @@
 import { Component, Host, State, h } from '@stencil/core'
 import { OramaClient } from '@oramacloud/client'
-import { ChatService } from '../../../services/ChatService'
+import { ChatService } from '@/services/ChatService'
 
 @Component({
   tag: 'orama-chat',

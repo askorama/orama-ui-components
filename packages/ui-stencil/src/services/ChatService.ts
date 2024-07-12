@@ -1,6 +1,6 @@
 import type { OramaClient, AnswerSession } from '@oramacloud/client'
-import { OramaClientNotInitializedError } from '../erros/OramaClientNotInitialized'
-import { chatContext } from '../context/chatContext'
+import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
+import { chatContext } from '@/context/chatContext'
 
 export class ChatService {
   oramaClient: OramaClient

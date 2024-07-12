@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core'
-import { globalContext } from '../../context/searchBoxContext'
+import { globalContext } from '@/context/searchBoxContext'
 import '@phosphor-icons/webcomponents/PhMagnifyingGlass'
 import '@phosphor-icons/webcomponents/PhSparkle'
 

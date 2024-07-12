@@ -1,7 +1,7 @@
-import { Component, Host, Prop, h, Element, State, Event, EventEmitter } from '@stencil/core'
+import { Component, Host, Prop, h, Element, State, Event, type EventEmitter } from '@stencil/core'
 import '@phosphor-icons/webcomponents/PhX'
 import '@phosphor-icons/webcomponents/PhMagnifyingGlass'
-import { AttributeUtils } from '../../../services/AttributeUtils'
+import { AttributeUtils } from '@/services/AttributeUtils'
 
 type BaseInputProps = {
   name?: string
