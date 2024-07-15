@@ -15,9 +15,9 @@ import type { ResultMap } from '@/types'
 export class SearchBox {
   @Prop() themeConfig: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } }
   @Prop() color: 'dark' | 'light' | 'system'
-  @Prop() facetProperty: string
+  @Prop() facetProperty?: string
   @Prop() open? = false
-  @Prop() resultMap: Partial<ResultMap> = {}
+  @Prop() resultMap?: Partial<ResultMap> = {}
 
   @Watch('open')
   handleOpenChange(newValue: boolean) {

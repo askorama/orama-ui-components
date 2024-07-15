@@ -86,9 +86,9 @@ export namespace Components {
     }
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
-        "facetProperty": string;
+        "facetProperty"?: string;
         "open"?: boolean;
-        "resultMap": Partial<ResultMap>;
+        "resultMap"?: Partial<ResultMap>;
         "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface SearchBoxToggler {
