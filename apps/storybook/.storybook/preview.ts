@@ -1,18 +1,17 @@
-import { defineCustomElements } from './../../../packages/ui-stencil/loader'
+import { defineCustomElements } from 'ui-stencil/loader'
 import 'ui-stencil/dist/orama-ui/orama-ui.css'
-import './storybook.css'
+import { html } from 'lit-html'
 
 defineCustomElements()
 
 const LIGTH_THEME_BG = '#fbfbfb'
 const DARK_THEME_BG = '#050505'
 
-/** @type { import('@storybook/html').Preview } */
 const preview = {
   decorators: [
     (story, context) => {
       const classTheme = context.globals?.backgrounds?.value === DARK_THEME_BG ? 'theme-dark' : 'theme-light'
-      return `<div id="orama-ui" class="${classTheme}">${story()}</div>`
+      return html`<div id="orama-ui" class="${classTheme}">${story()}</div>`
     },
   ],
   parameters: {

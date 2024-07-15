@@ -16,9 +16,8 @@ export class SearchBox {
   @Prop() themeConfig: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } }
   @Prop() color: 'dark' | 'light' | 'system'
   @Prop() facetProperty: string
-  @Prop() open = false
-  // TODO: Remove default values as soon as we have StoryBook fully working
-  @Prop() resultMap: Partial<ResultMap> = { description: 'title', section: 'category' }
+  @Prop() open? = false
+  @Prop() resultMap: Partial<ResultMap> = {}
 
   @Watch('open')
   handleOpenChange(newValue: boolean) {
@@ -60,17 +59,17 @@ export class SearchBox {
       <Host>
         <div class={{ 'orama-container': true, hidden: !globalContext.open }}>
           {/* NAVIGATION - to replace with component */}
-          <div style={{ display: 'grid', padding: '8px', gridTemplateColumns: '1fr 1fr 1fr' }}>
-            <div>
+          <div style={{ display: 'flex', padding: '8px' }}>
+            <div style={{ flex: '1' }}>
               <button type="button" onClick={() => (globalContext.open = false)}>
-                Back Placeholder
+                Back
               </button>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', flexGrow: '1' }}>
               <orama-toggler />
             </div>
-            <div style={{ display: 'flex', justifyContent: 'end' }}>
-              <div>PLACEHOLDER</div>
+            <div style={{ display: 'flex', flex: '1', justifyContent: 'end' }}>
+              <div>...</div>
             </div>
           </div>
           {/* MAIN CONTENT */}

@@ -37,8 +37,8 @@ export namespace Components {
         "message": TChatMessage;
     }
     interface OramaFacets {
-        "facetClick": (facetName: string) => void;
         "facets": Facet[];
+        "onFacetClick": (facetName: string) => void;
         "selectedFacet": string;
     }
     interface OramaInput {
@@ -87,7 +87,7 @@ export namespace Components {
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
         "facetProperty": string;
-        "open": boolean;
+        "open"?: boolean;
         "resultMap": Partial<ResultMap>;
         "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
@@ -244,8 +244,8 @@ declare namespace LocalJSX {
         "message"?: TChatMessage;
     }
     interface OramaFacets {
-        "facetClick"?: (facetName: string) => void;
         "facets"?: Facet[];
+        "onFacetClick"?: (facetName: string) => void;
         "selectedFacet"?: string;
     }
     interface OramaInput {

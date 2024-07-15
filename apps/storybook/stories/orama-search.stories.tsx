@@ -1,24 +1,15 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
+import type { Components } from 'ui-stencil'
 
-const meta: Meta = {
+const meta: Meta<Components.OramaSearch> = {
   title: 'Internal/OramaSearch',
-  component: 'orama-search'
+  component: 'orama-search',
 }
 
 export default meta
-type Story = StoryObj
+type Story = StoryObj<Components.OramaSearch>
 
-const Template = (args) => {
-  return `
-  <div style="height: 800px; width: 360px; border: 1px solid white; display: flex; flex-direction: column;">
-    <orama-search ${{ ...args }}></orama-chat>
-  </div>
-  
-  `
-}
-
-// More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
+// TODO: Add controls for props
 export const OramaSearch: Story = {
-  render: Template,
-  args: {}
+  args: {},
 }

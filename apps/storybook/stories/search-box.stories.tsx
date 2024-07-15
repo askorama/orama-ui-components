@@ -1,33 +1,31 @@
-import type { StoryObj, Meta } from '@storybook/html'
+import type { StoryObj, Meta } from '@storybook/web-components'
+import { html } from 'lit-html'
+import type { Components } from 'ui-stencil'
+type Story = StoryObj<Components.SearchBox>
 
-const meta: Meta = {
+const meta: Meta<Components.SearchBox> = {
   title: 'Public/SearchBox',
   component: 'search-box',
-
-  argTypes: {
-    facetProperty: {
-      control: { type: 'text' },
-    },
-  },
-} satisfies Meta
-
-export default meta
-type Story = StoryObj
-
-// More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
-const Template = (args) => {
-  // TODO: We need to find a away to pass complex objects here so we can manipulate the args with the storybook controls
-  return `
-  <div>
-    <search-box-toggler></search-box-toggler>
-    <search-box facet-property="${args.facetProperty}" open="${args.open}"></search-box>
-  </div>`
 }
+export default meta
 
 export const SearchBox: Story = {
-  render: Template,
+  render: (args) => html`
+  <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+    <search-box-toggler></search-box-toggler>
+    <search-box
+      open=${args.open}
+      facet-property=${args.facetProperty}
+      result-map=${args.resultMap}
+    />
+   </div>
+  `,
+
   args: {
-    facetProperty: 'category',
     open: true,
+    facetProperty: 'category',
+    resultMap: {
+      description: 'title',
+    },
   },
 }

@@ -1,24 +1,29 @@
-import type { StoryObj, Meta } from '@storybook/html'
+import type { StoryObj, Meta } from '@storybook/web-components'
+import type { Components } from 'ui-stencil'
+import { spread } from '@open-wc/lit-helpers'
+import { html } from 'lit-html'
 
-const meta = {
-  title: 'Internal/Button',
+const meta: Meta<Components.OramaButton> = {
+  title: 'Internal/OramaButton',
   component: 'orama-button',
-} satisfies Meta
+  argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+    },
+  },
+}
 
 export default meta
 
-type Story = StoryObj
+type Story = StoryObj<Components.OramaButton>
 
-const Template = (content: string) => (args) =>
-  `
-  <orama-button variant=${args.variant} class=${args.class}>${content}</orama-button>
-`
+const Template = (content: string) => (args) => html`<orama-button ${spread(args)}>${content}</orama-button>`
 
-export const Primary: Story = {
+export const OramaButton: Story = {
   render: Template('Primary button'),
   args: {
     variant: 'primary',
     class: 'my-optional-class',
-    type: 'button',
   },
 }

@@ -1,35 +1,38 @@
 import type { StoryObj, Meta } from '@storybook/html'
+import type { Components } from 'ui-stencil'
 
-const meta = {
-  title: 'Internal/Search Results',
+const meta: Meta<Components.OramaSearchResults> = {
+  title: 'Internal/OramaSearchResults',
   component: 'orama-search-results',
-} satisfies Meta
+}
 
 export default meta
-type Story = StoryObj
-
-const Template = (args) => `
-  <orama-search-results items=${args.items} search-term='test'</orama-search-results>
-`
+type Story = StoryObj<Components.OramaSearchResults>
 
 export const NoResults: Story = {
-  render: Template,
-  args: {},
+  args: {
+    sections: [{ section: undefined, items: [] }],
+  },
 }
 
 export const WithResults: Story = {
-  render: Template,
   args: {
-    items: [
+    sections: [
       {
-        id: '1',
-        title: 'Title 1',
-        description: 'Description 1',
+        section: 'Section 1',
+        items: [
+          { id: 'id 1', score: 1, title: 'Title 1', description: 'Description 1', path: '../somePath' },
+          { id: 'id 2', score: 1, title: 'Title 2', description: 'Description 2', path: '../somePath' },
+          { id: 'id 3', score: 1, title: 'Title 3', description: 'Description 3', path: '../somePath' },
+        ],
       },
       {
-        id: '2',
-        title: 'Title 2',
-        description: 'Description 2',
+        section: 'Section 2',
+        items: [
+          { id: 'id 1', score: 1, title: 'Title 1', description: 'Description 1', path: '../somePath' },
+          { id: 'id 2', score: 1, title: 'Title 2', description: 'Description 2', path: '../somePath' },
+          { id: 'id 3', score: 1, title: 'Title 3', description: 'Description 3', path: '../somePath' },
+        ],
       },
     ],
   },

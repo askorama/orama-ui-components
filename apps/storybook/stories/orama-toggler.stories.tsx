@@ -1,14 +1,13 @@
-import type { StoryObj, Meta } from '@storybook/html'
+import type { StoryObj, Meta } from '@storybook/web-components'
+import type { Components } from 'ui-stencil'
 
-const meta: Meta = {
-  title: 'Internal/Toggler',
-  component: 'search-box-toggler'
+const meta: Meta<Components.OramaToggler> = {
+  title: 'Internal/OramaToggler',
+  component: 'orama-toggler',
 } satisfies Meta
 
 export default meta
-type Story = StoryObj
+type Story = StoryObj<Components.OramaToggler>
 
 // More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
-export const OramaToggler: Story = {
-  render: () => '<orama-toggler></orama-toggler>'
-}
+export const OramaToggler: Story = {}

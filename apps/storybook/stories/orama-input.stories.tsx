@@ -1,41 +1,42 @@
-import type { StoryObj, Meta } from "@storybook/html";
+import type { StoryObj, Meta } from '@storybook/web-components'
+import { html } from 'lit-html'
 
-const meta = {
-  title: "Internal/Form",
-  tags: ["autodocs"],
-} satisfies Meta;
-
-export default meta;
-type Story = StoryObj;
-
-const TemplateInput = (args) => `
-  <orama-input name='test1' label='Small size input' size='small' placeholder="Your name" type='text'>
-  <orama-input name='test2' label='Medium size input' placeholder="Your surname" type='text'>
-  <orama-input name='test3' label='Large size input' size='large' placeholder="Your address" type='text'>
-`;
-
-export const InputSizes: Story = {
-  render: TemplateInput,
-  args: {},
-};
-
-const TemplateOnlyInput = (args) => `
-  <orama-input name='test4' size='large' labelforscreenreaders="Label for screen readers only" placeholder='Your name' type="text">
-`;
-
-export const InputWithoutLabel: Story = {
-  render: TemplateOnlyInput,
-  args: {
-    // TODO: if I try to pass this arg, the string will be split into an array of attributes - not expected
-    // labelforscreenreaders: "Label for screen readers only"
+import type { Components } from 'ui-stencil'
+const meta: Meta<Components.OramaInput> = {
+  title: 'Internal/Form',
+  component: 'orama-input',
+  tags: ['autodocs'],
+  argTypes: {
+    type: {
+      control: { type: 'select' },
+      options: ['text', 'password', 'email', 'number', 'tel', 'url', 'search'],
+    },
+    size: {
+      control: { type: 'select' },
+      options: ['small', 'medium', 'large'],
+    },
   },
-};
+}
 
-const TemplateInputSearch = (args) => `
-  <orama-input name='test4' size='large' placeholder='Search...' type="search" label-for-screen-readers="Search for something..." default-value="test"></orama-input>
-`;
+export default meta
+type Story = StoryObj<Components.OramaInput>
+
+export const Input: Story = {
+  args: {
+    name: 'Input',
+    label: 'Small size input',
+    placeholder: 'Your name',
+    size: 'small',
+    type: 'text',
+  },
+}
 
 export const SearchInput: Story = {
-  render: TemplateInputSearch,
-  args: {},
-};
+  args: {
+    name: 'Input',
+    size: 'large',
+    placeholder: 'Search...',
+    type: 'text',
+    labelForScreenReaders: 'Search for something...',
+  },
+}

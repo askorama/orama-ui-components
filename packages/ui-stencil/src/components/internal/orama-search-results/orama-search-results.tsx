@@ -28,7 +28,7 @@ export class SearchResults {
   }
 
   render() {
-    if (!this.sections.length) {
+    if (!this.sections?.some((section) => section.items.length > 0)) {
       return (
         <div class="results-empty">
           <orama-text as="h3" styledAs="span">
