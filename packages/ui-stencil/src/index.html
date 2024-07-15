@@ -1,17 +1,18 @@
 <!doctype html>
 <html dir="ltr" lang="en">
-      <head>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-            <title>Stencil Component Starter</title>
-            <!-- TODO: check paths here -->
-            <link rel="stylesheet" href="/packages/ui-stencil/dist/orama-ui/orama-ui.css" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
 
-            <script type="module" src="/packages/ui-stencil/dist/orama-ui/orama-ui.esm.js"></script>
-            <script nomodule src="/packages/ui-stencil/dist/orama-ui/orama-ui/orama-ui.js"></script>
-      </head>
-      <body>
-            <search-box color="light"></search-box>
-            <orama-p>This is a paragraph</orama-p>
-      </body>
+    <link rel="stylesheet" href="/build/orama-ui.css" />
+    <script type="module" src="/build/orama-ui.esm.js"></script>
+    <script nomodule src="/bui  ld/orama-ui.js"></script>
+  </head>
+  <body>
+    <search-box-toggler></search-box-toggler>
+    <div id="orama-ui">
+      <search-box></search-box>
+    </div>
+  </body>
 </html>

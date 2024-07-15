@@ -7,13 +7,17 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonProps } from "./components/internal/orama-button/orama-button";
 import { TChatMessage } from "./context/chatContext";
+import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
-import { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
+import { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
+import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
 export { TChatMessage } from "./context/chatContext";
+export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
-export { SearchItem, SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
+export { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
+export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
     interface OramaButton {
@@ -33,7 +37,9 @@ export namespace Components {
         "message": TChatMessage;
     }
     interface OramaFacets {
-        "facets": any[];
+        "facetClick": (facetName: string) => void;
+        "facets": Facet[];
+        "selectedFacet": string;
     }
     interface OramaInput {
         "defaultValue": InputProps['defaultValue'];
@@ -47,8 +53,8 @@ export namespace Components {
     interface OramaSearch {
     }
     interface OramaSearchResults {
-        "items": SearchResultsProps['items'];
         "searchTerm": SearchResultsProps['searchTerm'];
+        "sections": SearchResultBySection[];
     }
     interface OramaText {
         /**
@@ -81,7 +87,8 @@ export namespace Components {
     interface SearchBox {
         "color": 'dark' | 'light' | 'system';
         "facetProperty": string;
-        "open": false;
+        "open": boolean;
+        "resultMap": Partial<ResultMap>;
         "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface SearchBoxToggler {
@@ -156,7 +163,7 @@ declare global {
         new (): HTMLOramaSearchElement;
     };
     interface HTMLOramaSearchResultsElementEventMap {
-        "oramaItemClick": SearchItem;
+        "oramaItemClick": SearchResult;
     }
     interface HTMLOramaSearchResultsElement extends Components.OramaSearchResults, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOramaSearchResultsElementEventMap>(type: K, listener: (this: HTMLOramaSearchResultsElement, ev: OramaSearchResultsCustomEvent<HTMLOramaSearchResultsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -237,7 +244,9 @@ declare namespace LocalJSX {
         "message"?: TChatMessage;
     }
     interface OramaFacets {
-        "facets"?: any[];
+        "facetClick"?: (facetName: string) => void;
+        "facets"?: Facet[];
+        "selectedFacet"?: string;
     }
     interface OramaInput {
         "defaultValue"?: InputProps['defaultValue'];
@@ -252,9 +261,9 @@ declare namespace LocalJSX {
     interface OramaSearch {
     }
     interface OramaSearchResults {
-        "items"?: SearchResultsProps['items'];
-        "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchItem>) => void;
+        "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchResult>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
+        "sections"?: SearchResultBySection[];
     }
     interface OramaText {
         /**
@@ -287,7 +296,8 @@ declare namespace LocalJSX {
     interface SearchBox {
         "color"?: 'dark' | 'light' | 'system';
         "facetProperty"?: string;
-        "open"?: false;
+        "open"?: boolean;
+        "resultMap"?: Partial<ResultMap>;
         "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
     }
     interface SearchBoxToggler {

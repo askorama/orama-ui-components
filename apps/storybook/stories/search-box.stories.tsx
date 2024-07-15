@@ -16,25 +16,18 @@ type Story = StoryObj
 
 // More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
 const Template = (args) => {
+  // TODO: We need to find a away to pass complex objects here so we can manipulate the args with the storybook controls
   return `
-    <search-box open="true" facet-property=${args.facetProperty}></search-box>
-  `
+  <div>
+    <search-box-toggler></search-box-toggler>
+    <search-box facet-property="${args.facetProperty}" open="${args.open}"></search-box>
+  </div>`
 }
 
 export const SearchBox: Story = {
   render: Template,
   args: {
-    class: 'my-optional-class',
     facetProperty: 'category',
+    open: true,
   },
-}
-
-export const SearchBoxWithToggler: Story = {
-  render: () => `
-  <div>
-    <search-box-toggler></search-box-toggler>
-    <div style="height: 800px; width: 360px; overflow: hidden;"> 
-      <search-box></search-box>
-    </div>
-  </div>`,
 }

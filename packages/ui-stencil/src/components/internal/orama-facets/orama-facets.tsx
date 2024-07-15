@@ -1,5 +1,7 @@
-import { Component, h, Prop, State } from '@stencil/core'
-import { searchState } from '@/context/searchContext'
+import { Component, h, Prop } from '@stencil/core'
+
+// TODO: fix type
+export type Facet = { name: string; count: number }
 
 @Component({
   tag: 'orama-facets',
@@ -10,13 +12,12 @@ import { searchState } from '@/context/searchContext'
  * The orama-facets component renders a list of facets
  */
 export class OramaFacets {
-  @Prop() facets: any[] // TODO: fix type
+  @Prop() facets: Facet[]
+  @Prop() facetClick: (facetName: string) => void
+  @Prop() selectedFacet: string
 
-  @State() selected: string
-
-  handleClick(facet: { name: string; count: number }) {
-    this.selected = facet.name
-    searchState.currentFacet = facet
+  handleClick(facet: Facet) {
+    this.facetClick(facet.name)
   }
 
   render() {
@@ -31,12 +32,13 @@ export class OramaFacets {
             return
           }
           return (
-            <li key={facet} class="facet">
+            <li key={facet.name} class="facet">
               <button
                 type="button"
                 class={{
                   'facet-button': true,
-                  'facet-button--selected': this.selected === facet?.name || (!this.selected && facet?.name === 'All'),
+                  'facet-button--selected':
+                    this.selectedFacet === facet?.name || (!this.selectedFacet && facet?.name === 'All'),
                 }}
                 onClick={() => this.handleClick(facet)}
               >

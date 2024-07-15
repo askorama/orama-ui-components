@@ -2,11 +2,27 @@
   display: flex;
   align-items: center;
   column-gap: var(--spacing-s, $spacing-s);
-  margin: var(--spacing-l, $spacing-l) 0;
+
   list-style: none;
-  padding: 0;
-  // todo: check scroll styles
-  overflow: scroll;
+  padding: var(--radius-l, $spacing-l);
+
+  margin: 0;
+
+  // TODO: check scroll styles
+  // Maybe move somewhere else to reuse in some somponents, but not globally
+  &::-webkit-scrollbar {
+    height: 0.3em;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    // TODO: Should it be a variable?
+    background-color: #b2b2b285;
+    border-radius: var(--border-radius-l, $radius-l);
+  }
+
+  overflow-x: auto;
 }
 
 .facet-button {

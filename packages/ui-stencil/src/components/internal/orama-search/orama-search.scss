@@ -1,3 +1,30 @@
 orama-search {
-  padding: var(--spacing-s, $spacing-s) var(--spacing-l, $spacing-l);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--spacing-s, $spacing-s) 0;
+}
+
+orama-input {
+  padding: 0 var(--spacing-l, $spacing-l);
+}
+
+.result-wrapper {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 var(--spacing-l, $spacing-l);
+
+  // TODO: check scroll styles
+  // Maybe move somewhere else to reuse in some somponents, but not globally
+  &::-webkit-scrollbar {
+    width: 0.3em;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    // TODO: Should it be a variable?
+    background-color: #b2b2b285;
+    border-radius: var(--border-radius-l, $radius-l);
+  }
 }

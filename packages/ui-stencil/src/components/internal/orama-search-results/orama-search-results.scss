@@ -4,6 +4,11 @@
   margin: 0;
 }
 
+.section-title-wrapper {
+  text-transform: capitalize;
+  padding: var(--spacing-l, $spacing-l) var(--spacing-m, $spacing-m);
+}
+
 .list-item {
   margin-top: var(--spacing-s, $spacing-s);
   cursor: pointer;

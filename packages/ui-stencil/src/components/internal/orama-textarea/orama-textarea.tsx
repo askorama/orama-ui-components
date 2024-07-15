@@ -20,10 +20,12 @@ export class OramaTextarea {
   textarea!: HTMLTextAreaElement
   shadowTextarea!: HTMLTextAreaElement
 
-  componentDidLoad() {
-    this.syncHeight()
+  componentDidLoad() {}
+
+  componetWillLoad() {
     this.startAdornmentWidth = this.getNamedSlotWidth('adornment-start')
     this.endAdornmentWidth = this.getNamedSlotWidth('adornment-end')
+    this.syncHeight()
   }
 
   getNamedSlotWidth(slotName: string) {

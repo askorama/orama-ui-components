@@ -1,31 +1,22 @@
 import type { SearchService } from '@/services/SearchService'
 import { createStore } from '@stencil/store'
+import type { ResultMap, SearchResultBySection } from '@/types'
 
 const store = createStore({
-  open: false,
   count: 0,
-  facets: null as Record<
-    string,
-    {
-      count: number
-      values: Record<string, number>
-    }
-  > | null,
+  // TODO: Create a type for facets
+  facets: [] as { name: string; count: number }[],
   facetProperty: '', // TODO: consider to move to resultsMap
-  currentFacet: {
-    name: undefined as string | undefined,
-    count: 0,
-  },
-  hits: [],
+  results: [] as SearchResultBySection[],
+  resultMap: {} as ResultMap,
+  // TODO: Provavel there ins't a good reason for this to be global
   term: '',
   highlightedIndex: -1,
+  // TODO: Probable needs to be held in component property.
+  // Lets queckly dicudd about this again.
   searchService: null as SearchService | null,
 })
 
 const { state: searchState, ...searchStore } = store
-
-searchStore.onChange('currentFacet', (currentFacet) => {
-  searchState.searchService?.search(searchState.term, currentFacet?.name)
-})
 
 export { searchState, searchStore }

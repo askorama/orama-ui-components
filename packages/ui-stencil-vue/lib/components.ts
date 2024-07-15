@@ -33,7 +33,9 @@ export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatU
 
 
 export const OramaFacets = /*@__PURE__*/ defineContainer<JSX.OramaFacets>('orama-facets', undefined, [
-  'facets'
+  'facets',
+  'facetClick',
+  'selectedFacet'
 ]);
 
 
@@ -53,7 +55,7 @@ export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama
 
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [
-  'items',
+  'sections',
   'searchTerm',
   'oramaItemClick'
 ]);
@@ -85,7 +87,8 @@ export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-bo
   'themeConfig',
   'color',
   'facetProperty',
-  'open'
+  'open',
+  'resultMap'
 ]);
 
 

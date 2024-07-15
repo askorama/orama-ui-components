@@ -7,9 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type    | Default     |
-| -------- | --------- | ----------- | ------- | ----------- |
-| `facets` | --        |             | `any[]` | `undefined` |
+| Property        | Attribute        | Description | Type                          | Default     |
+| --------------- | ---------------- | ----------- | ----------------------------- | ----------- |
+| `facetClick`    | --               |             | `(facetName: string) => void` | `undefined` |
+| `facets`        | --               |             | `Facet[]`                     | `undefined` |
+| `selectedFacet` | `selected-facet` |             | `string`                      | `undefined` |
 
 
 ## Dependencies

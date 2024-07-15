@@ -1,14 +1,19 @@
 :host {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  height: 100vh;
+  display: block;
+}
+
+.orama-container {
   display: flex;
+  background-color: var(--background-color-primary, background('primary'));
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
   flex-direction: column;
   justify-content: space-between;
   padding: var(--spacing-s, $spacing-s) 0;
+  &.hidden {
+    display: none;
+  }
 }
 
 .main {

@@ -1,5 +1,5 @@
 import { Component, Host, h } from '@stencil/core'
-import { searchState } from '@/context/searchContext'
+import { globalContext } from '@/context/GlobalContext'
 
 @Component({
   tag: 'search-box-toggler',
@@ -12,7 +12,7 @@ export class SearchBoxToggler {
         <button
           type="button"
           onClick={() => {
-            searchState.open = !searchState.open
+            globalContext.open = !globalContext.open
           }}
         >
           Toggle

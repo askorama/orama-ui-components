@@ -1,15 +1,8 @@
-import { Component, Host, h, Element, Prop, Event } from '@stencil/core'
-import type { EventEmitter } from '@stencil/core'
-
-export type SearchItem = {
-  id: string
-  title: string
-  description: string
-  path?: string
-}
+import { Component, Host, h, Element, Prop, Event, type EventEmitter } from '@stencil/core'
+import type { SearchResult, SearchResultBySection } from '@/types'
 
 export type SearchResultsProps = {
-  items: SearchItem[] | null
+  sections: SearchResultBySection[]
   searchTerm?: string
 }
 
@@ -20,12 +13,12 @@ export type SearchResultsProps = {
 export class SearchResults {
   @Element() el: HTMLUListElement
 
-  @Event() oramaItemClick: EventEmitter<SearchItem>
+  @Event() oramaItemClick: EventEmitter<SearchResult>
 
-  @Prop() items: SearchResultsProps['items']
+  @Prop() sections: SearchResultBySection[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
 
-  handleItemClick = (item: SearchItem) => {
+  handleItemClick = (item: SearchResult) => {
     if (item?.path) {
       this.oramaItemClick.emit(item)
       window.location.href = item.path
@@ -35,7 +28,7 @@ export class SearchResults {
   }
 
   render() {
-    if (!this.items?.length) {
+    if (!this.sections.length) {
       return (
         <div class="results-empty">
           <orama-text as="h3" styledAs="span">
@@ -48,19 +41,32 @@ export class SearchResults {
     return (
       <Host>
         <ul class="list">
-          {this.items.map((item) => (
-            <li class="list-item" key={item.id}>
-              <button type="button" class="list-item-button" onClick={() => this.handleItemClick(item)}>
-                <div>
-                  <orama-text as="h3" styledAs="p">
-                    {item.title}
-                  </orama-text>
-                  <orama-text as="p" styledAs="span" class="collapsed">
-                    {item.description}
+          {this.sections.map((section) => (
+            <div key={section.section}>
+              {section.section && (
+                <div class="section-title-wrapper">
+                  <orama-text as="h2" styledAs="span">
+                    {section.section}
                   </orama-text>
                 </div>
-              </button>
-            </li>
+              )}
+              <ul class="list">
+                {section.items.map((result) => (
+                  <li class="list-item" key={result.id}>
+                    <button type="button" class="list-item-button" onClick={() => this.handleItemClick(result)}>
+                      <div>
+                        <orama-text as="h3" styledAs="p">
+                          {result.title}
+                        </orama-text>
+                        <orama-text as="p" styledAs="span" class="collapsed">
+                          {result.description}
+                        </orama-text>
+                      </div>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </ul>
       </Host>

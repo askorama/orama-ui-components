@@ -1,23 +1,21 @@
 # orama-search-results
 
-
-
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property     | Attribute     | Description | Type           | Default     |
-| ------------ | ------------- | ----------- | -------------- | ----------- |
-| `items`      | --            |             | `SearchItem[]` | `undefined` |
-| `searchTerm` | `search-term` |             | `string`       | `undefined` |
+| Property     | Attribute     | Description | Type                      | Default     |
+| ------------ | ------------- | ----------- | ------------------------- | ----------- |
+| `searchTerm` | `search-term` |             | `string`                  | `undefined` |
+| `sections`   | --            |             | `SearchResultBySection[]` | `[]`        |
 
 
 ## Events
 
-| Event            | Description | Type                                                                              |
-| ---------------- | ----------- | --------------------------------------------------------------------------------- |
-| `oramaItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path?: string; }>` |
+| Event            | Description | Type                                                                             |
+| ---------------- | ----------- | -------------------------------------------------------------------------------- |
+| `oramaItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path: string; }>` |
 
 
 ## Dependencies
