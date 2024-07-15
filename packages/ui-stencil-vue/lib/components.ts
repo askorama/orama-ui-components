@@ -51,6 +51,9 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
 ]);
 
 
+export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined);
+
+
 export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined);
 
 

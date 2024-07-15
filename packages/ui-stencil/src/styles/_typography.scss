@@ -5,6 +5,7 @@ $font-primary: 'Instrument Sans', sans-serif;
 $font-size-xs: pxToRem(12);
 $font-size-sm: pxToRem(14);
 $font-size-md: pxToRem(16);
+$font-size-lg: pxToRem(20);
 
 // FONT WEIGHT
 $font-weight-normal: 400;
@@ -19,6 +20,7 @@ $theme-typography: (
   '--font-size-xs': $font-size-xs,
   '--font-size-sm': $font-size-sm,
   '--font-size-md': $font-size-md,
+  '--font-size-lg': $font-size-lg,
   '--font-weight-normal': $font-weight-normal,
   '--font-weight-semibold': $font-weight-semibold,
   '--font-line-height-s': $font-line-height-s,

@@ -10,7 +10,6 @@
   z-index: 1000;
   flex-direction: column;
   justify-content: space-between;
-  padding: var(--spacing-s, $spacing-s) 0;
   &.hidden {
     display: none;
   }
