@@ -16,12 +16,12 @@
 
 ### Used by
 
- - [search-box](../search-box)
+ - [orama-navigation-bar](../internal/orama-navigation-bar)
 
 ### Graph
 ```mermaid
 graph TD;
-  search-box --> orama-toggler
+  orama-navigation-bar --> orama-toggler
   style orama-toggler fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

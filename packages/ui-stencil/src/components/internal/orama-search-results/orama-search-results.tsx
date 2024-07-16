@@ -12,9 +12,7 @@ export type SearchResultsProps = {
 })
 export class SearchResults {
   @Element() el: HTMLUListElement
-
   @Event() oramaItemClick: EventEmitter<SearchResult>
-
   @Prop() sections: SearchResultBySection[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
 

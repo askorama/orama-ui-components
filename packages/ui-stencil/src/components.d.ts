@@ -50,6 +50,8 @@ export namespace Components {
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
     }
+    interface OramaNavigationBar {
+    }
     interface OramaSearch {
     }
     interface OramaSearchResults {
@@ -156,6 +158,12 @@ declare global {
         prototype: HTMLOramaInputElement;
         new (): HTMLOramaInputElement;
     };
+    interface HTMLOramaNavigationBarElement extends Components.OramaNavigationBar, HTMLStencilElement {
+    }
+    var HTMLOramaNavigationBarElement: {
+        prototype: HTMLOramaNavigationBarElement;
+        new (): HTMLOramaNavigationBarElement;
+    };
     interface HTMLOramaSearchElement extends Components.OramaSearch, HTMLStencilElement {
     }
     var HTMLOramaSearchElement: {
@@ -217,6 +225,7 @@ declare global {
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
         "orama-facets": HTMLOramaFacetsElement;
         "orama-input": HTMLOramaInputElement;
+        "orama-navigation-bar": HTMLOramaNavigationBarElement;
         "orama-search": HTMLOramaSearchElement;
         "orama-search-results": HTMLOramaSearchResultsElement;
         "orama-text": HTMLOramaTextElement;
@@ -257,6 +266,8 @@ declare namespace LocalJSX {
         "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];
+    }
+    interface OramaNavigationBar {
     }
     interface OramaSearch {
     }
@@ -310,6 +321,7 @@ declare namespace LocalJSX {
         "orama-chat-user-message": OramaChatUserMessage;
         "orama-facets": OramaFacets;
         "orama-input": OramaInput;
+        "orama-navigation-bar": OramaNavigationBar;
         "orama-search": OramaSearch;
         "orama-search-results": OramaSearchResults;
         "orama-text": OramaText;
@@ -330,6 +342,7 @@ declare module "@stencil/core" {
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
             "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
+            "orama-navigation-bar": LocalJSX.OramaNavigationBar & JSXBase.HTMLAttributes<HTMLOramaNavigationBarElement>;
             "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
             "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;
             "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;

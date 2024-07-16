@@ -58,20 +58,7 @@ export class SearchBox {
     return (
       <Host>
         <div class={{ 'orama-container': true, hidden: !globalContext.open }}>
-          {/* NAVIGATION - to replace with component */}
-          <div style={{ display: 'flex', padding: '8px' }}>
-            <div style={{ flex: '1' }}>
-              <button type="button" onClick={() => (globalContext.open = false)}>
-                Back
-              </button>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center', flexGrow: '1' }}>
-              <orama-toggler />
-            </div>
-            <div style={{ display: 'flex', flex: '1', justifyContent: 'end' }}>
-              <div>...</div>
-            </div>
-          </div>
+          <orama-navigation-bar />
           {/* MAIN CONTENT */}
           <div class="main">
             <orama-search style={{ display: globalContext.selectedTab === 'search' ? 'flex' : 'none' }} />
