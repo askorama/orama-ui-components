@@ -21,9 +21,6 @@ const preview = {
     },
     backgrounds: {
       default: 'light',
-      onchange: (value) => {
-        console.log('backgrounds', value)
-      },
       values: [
         {
           name: 'dark',

@@ -13,8 +13,8 @@ export type Facet = { name: string; count: number }
  */
 export class OramaFacets {
   @Prop() facets: Facet[]
-  @Prop() onFacetClick: (facetName: string) => void
   @Prop() selectedFacet: string
+  @Prop() onFacetClick: (facetName: string) => void
 
   handleClick(facet: Facet) {
     this.onFacetClick(facet.name)
