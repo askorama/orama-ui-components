@@ -1,11 +1,9 @@
 import { defineCustomElements } from 'ui-stencil/loader'
 import 'ui-stencil/dist/orama-ui/orama-ui.css'
 import { html } from 'lit-html'
+import { DARK_THEME_BG, LIGTH_THEME_BG } from '../constants'
 
 defineCustomElements()
-
-const LIGTH_THEME_BG = '#fbfbfb'
-const DARK_THEME_BG = '#050505'
 
 const preview = {
   decorators: [
@@ -23,6 +21,9 @@ const preview = {
     },
     backgrounds: {
       default: 'light',
+      onchange: (value) => {
+        console.log('backgrounds', value)
+      },
       values: [
         {
           name: 'dark',

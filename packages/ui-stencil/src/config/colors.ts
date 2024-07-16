@@ -14,12 +14,12 @@ export const primitive = {
   gray900: '#151515',
   gray950: '#050505',
   purple500: '#8152EE',
-  purple700: '#6A4BB2'
+  purple700: '#6A4BB2',
 }
 
 export const sassVariables = {}
 
-const semantic = {
+const semanticColors = {
   light: {
     // TODO: placheholder primitives to be replaced
     '--text-color-primary': primitive.gray50,
@@ -40,7 +40,7 @@ const semantic = {
     '--icon-color-secondary': primitive.gray200,
     '--icon-color-tertiary': primitive.gray600,
     '--icon-color-inactive': primitive.gray500,
-    '--icon-color-accent': primitive.purple500
+    '--icon-color-accent': primitive.purple500,
   },
   dark: {
     '--text-color-primary': primitive.gray50,
@@ -61,10 +61,9 @@ const semantic = {
     '--icon-color-secondary': primitive.gray200,
     '--icon-color-tertiary': primitive.gray600,
     '--icon-color-inactive': primitive.gray500,
-    // TODO: check the primitive to use for accent
-    '--icon-color-accent': primitive.purple500
+    '--icon-color-accent': primitive.purple500,
   },
-  system: {}
+  system: {},
 }
 
-export default semantic
+export default semanticColors

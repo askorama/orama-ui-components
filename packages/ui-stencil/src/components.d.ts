@@ -12,6 +12,7 @@ import { InputProps } from "./components/internal/orama-input/orama-input";
 import { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
+import { TThemeOverrides } from "./config/theme";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
 export { TChatMessage } from "./context/chatContext";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
@@ -19,6 +20,7 @@ export { InputProps } from "./components/internal/orama-input/orama-input";
 export { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
+export { TThemeOverrides } from "./config/theme";
 export namespace Components {
     interface OramaButton {
         "as"?: ButtonProps['as'];
@@ -85,11 +87,11 @@ export namespace Components {
         "performInitialAnimation": boolean;
     }
     interface SearchBox {
-        "color": 'dark' | 'light' | 'system';
+        "colorScheme": 'dark' | 'light' | 'system';
         "facetProperty"?: string;
         "open"?: boolean;
         "resultMap"?: Partial<ResultMap>;
-        "themeConfig": { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
+        "themeConfig": Partial<TThemeOverrides>;
     }
     interface SearchBoxToggler {
     }
@@ -294,11 +296,11 @@ declare namespace LocalJSX {
         "performInitialAnimation"?: boolean;
     }
     interface SearchBox {
-        "color"?: 'dark' | 'light' | 'system';
+        "colorScheme"?: 'dark' | 'light' | 'system';
         "facetProperty"?: string;
         "open"?: boolean;
         "resultMap"?: Partial<ResultMap>;
-        "themeConfig"?: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } };
+        "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface SearchBoxToggler {
     }

@@ -85,7 +85,7 @@ export const OramaToggler = /*@__PURE__*/ defineContainer<JSX.OramaToggler>('ora
 
 export const SearchBox = /*@__PURE__*/ defineContainer<JSX.SearchBox>('search-box', undefined, [
   'themeConfig',
-  'color',
+  'colorScheme',
   'facetProperty',
   'open',
   'resultMap'
