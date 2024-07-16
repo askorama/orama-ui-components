@@ -22,11 +22,20 @@ export class SearchService {
       throw new OramaClientNotInitializedError()
     }
 
+    this.abortSearch()
+
     if (!term) {
+      searchState.results = []
+      searchState.count = 0
+      searchState.facets = []
+      searchState.highlightedIndex = -1
+
       return
     }
 
-    this.abortSearch()
+    searchState.loading = true
+
+    const latestAbortController = this.abortController
 
     // TODO: Maybe we would like to have a debounce here (Check with Michele)
     this.oramaClient
@@ -51,10 +60,19 @@ export class SearchService {
         { abortController: this.abortController },
       )
       .then((results) => {
+        if (latestAbortController.signal.aborted) {
+          return
+        }
+
         searchState.results = this.parserResults(results?.hits, searchState.resultMap)
         searchState.count = results?.count || 0
         searchState.facets = this.parseFacets(results?.facets, searchState.facetProperty)
         searchState.highlightedIndex = -1
+
+        searchState.loading = false
+      })
+      .catch(() => {
+        searchState.loading = false
       })
   }
 
