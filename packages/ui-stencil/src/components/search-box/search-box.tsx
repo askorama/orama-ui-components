@@ -1,10 +1,11 @@
-import { Component, Host, Prop, Watch, h, Listen } from '@stencil/core'
+import { Component, Host, Prop, Watch, h, Listen, Element, State } from '@stencil/core'
 import { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/GlobalContext'
 import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
+import type { TThemeOverrides } from '@/config/theme'
 import type { ResultMap } from '@/types'
 
 @Component({
@@ -13,11 +14,21 @@ import type { ResultMap } from '@/types'
   shadow: true,
 })
 export class SearchBox {
-  @Prop() themeConfig: { colors: { light: { primaryColor: string }; dark: { primaryColor: string } } }
-  @Prop() color: 'dark' | 'light' | 'system'
+  @Element() el: HTMLElement
+
+  @Prop() themeConfig: Partial<TThemeOverrides>
+  @Prop() colorScheme: 'dark' | 'light' | 'system' = 'light'
   @Prop() facetProperty?: string
   @Prop() open? = false
   @Prop() resultMap?: Partial<ResultMap> = {}
+
+  @State() systemScheme: 'light' | 'dark' = 'light'
+
+  @Watch('themeConfig')
+  @Watch('colorScheme')
+  watchHandler() {
+    this.updateTheme()
+  }
 
   @Watch('open')
   handleOpenChange(newValue: boolean) {
@@ -33,6 +44,49 @@ export class SearchBox {
   handleItemClick(event: CustomEvent) {
     // TODO: manage item click
     console.log('Item clicked', event.detail)
+  }
+
+  updateTheme() {
+    const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
+    const uiElement = document.querySelector('#orama-ui')
+
+    if (uiElement && scheme) {
+      uiElement.classList.remove('theme-light', 'theme-dark')
+      uiElement.classList.add(`theme-${scheme}`)
+    }
+
+    this.updateCssVariables(scheme)
+  }
+
+  updateCssVariables(scheme: 'light' | 'dark') {
+    const config = this.themeConfig
+    const root = document.querySelector('#orama-ui') as HTMLElement
+
+    if (root && config && scheme) {
+      if (config.colors?.[scheme]) {
+        for (const key of Object.keys(config.colors[scheme])) {
+          root.style.setProperty(`${key}`, config.colors[scheme][key])
+        }
+      }
+      if (config.typography) {
+        for (const key of Object.keys(config.typography)) {
+          root.style.setProperty(`${key}`, config.typography[key])
+        }
+      }
+    }
+  }
+
+  detectSystemColorScheme() {
+    const darkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    this.systemScheme = darkSchemeQuery.matches ? 'dark' : 'light'
+
+    darkSchemeQuery.addEventListener('change', (event) => {
+      this.systemScheme = event.matches ? 'dark' : 'light'
+      if (this.colorScheme === 'system') {
+        this.updateTheme()
+      }
+    })
   }
 
   componentWillLoad() {
@@ -52,6 +106,9 @@ export class SearchBox {
 
     searchState.searchService = new SearchService(oramaClient)
     chatContext.chatService = new ChatService(oramaClient)
+
+    this.updateTheme()
+    this.detectSystemColorScheme()
   }
 
   render() {
