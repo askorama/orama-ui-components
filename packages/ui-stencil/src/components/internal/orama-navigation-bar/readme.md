@@ -13,11 +13,13 @@
 
 ### Depends on
 
+- [orama-button](../orama-button)
 - [orama-toggler](../../orama-toggler)
 
 ### Graph
 ```mermaid
 graph TD;
+  orama-navigation-bar --> orama-button
   orama-navigation-bar --> orama-toggler
   search-box --> orama-navigation-bar
   style orama-navigation-bar fill:#f9f,stroke:#333,stroke-width:4px

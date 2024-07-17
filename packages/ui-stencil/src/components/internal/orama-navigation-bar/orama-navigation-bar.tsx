@@ -2,7 +2,6 @@ import { Component, Host, h } from '@stencil/core'
 import '@phosphor-icons/webcomponents/PhClock'
 import '@phosphor-icons/webcomponents/PhPlus'
 import '@phosphor-icons/webcomponents/PhCaretLeft'
-import { globalContext } from '@/context/GlobalContext'
 
 @Component({
   tag: 'orama-navigation-bar',
@@ -14,20 +13,20 @@ export class OramaNavigationBar {
     return (
       <Host>
         <div class="corner-section start">
-          <button class="navbar-button" type="button" onClick={() => (globalContext.open = false)}>
-            <ph-caret-left />
-          </button>
+          <orama-button type="button" variant="icon">
+            <ph-caret-left size="20px" />
+          </orama-button>
         </div>
         <div class="section center">
           <orama-toggler />
         </div>
         <div class="corner-section end">
-          <button class="navbar-button" type="button">
-            <ph-clock />
-          </button>
-          <button class="navbar-button" type="button">
-            <ph-plus />
-          </button>
+          <orama-button type="button" variant="icon">
+            <ph-clock size="20px" />
+          </orama-button>
+          <orama-button type="button" variant="icon">
+            <ph-plus size="20px" />
+          </orama-button>
         </div>
       </Host>
     )

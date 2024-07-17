@@ -25,22 +25,3 @@
     justify-content: flex-end;
   }
 }
-
-// TODO: We may want to create a Icon variant for button and use it here
-.navbar-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-
-  color: var(--icon-color-tertiary, text-color('tertiary'));
-  font-size: var(--font-size-lg, $font-size-lg);
-  padding: var(--spacing-s, $spacing-s);
-  border-radius: var(--radius-s, $radius-s);
-
-  &:hover {
-    background-color: var(--background-color-fourth, background-color('fourth'));
-  }
-}
