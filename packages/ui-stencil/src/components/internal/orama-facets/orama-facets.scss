@@ -7,22 +7,14 @@
   padding: var(--radius-l, $spacing-l);
 
   margin: 0;
+  overflow-x: auto;
 
   // TODO: check scroll styles
   // Maybe move somewhere else to reuse in some somponents, but not globally
   &::-webkit-scrollbar {
-    height: 0.3em;
+    height: 0em;
+    background-color: transparent;
   }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    // TODO: Should it be a variable?
-    background-color: #b2b2b285;
-    border-radius: var(--border-radius-l, $radius-l);
-  }
-
-  overflow-x: auto;
 }
 
 .facet-button {

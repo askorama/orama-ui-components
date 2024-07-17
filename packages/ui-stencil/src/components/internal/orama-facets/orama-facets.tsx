@@ -21,7 +21,7 @@ export class OramaFacets {
   }
 
   render() {
-    if (!this.facets || this.facets.length === 0) {
+    if (!this.facets || this.facets.every((facet) => !facet.count)) {
       return null
     }
 
