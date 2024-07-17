@@ -5,7 +5,7 @@ import { globalContext } from '@/context/GlobalContext'
   tag: 'orama-search-button',
   styleUrl: 'orama-search-button.scss',
 })
-export class SearchBoxToggler {
+export class SearchButton {
   render() {
     return (
       <Host>

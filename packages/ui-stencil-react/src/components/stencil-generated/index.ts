@@ -10,6 +10,7 @@ import type { JSX } from 'ui-stencil';
 export const OramaButton = /*@__PURE__*/createReactComponent<JSX.OramaButton, HTMLOramaButtonElement>('orama-button');
 export const OramaChat = /*@__PURE__*/createReactComponent<JSX.OramaChat, HTMLOramaChatElement>('orama-chat');
 export const OramaChatAssistentMessage = /*@__PURE__*/createReactComponent<JSX.OramaChatAssistentMessage, HTMLOramaChatAssistentMessageElement>('orama-chat-assistent-message');
+export const OramaChatBox = /*@__PURE__*/createReactComponent<JSX.OramaChatBox, HTMLOramaChatBoxElement>('orama-chat-box');
 export const OramaChatMessagesContainer = /*@__PURE__*/createReactComponent<JSX.OramaChatMessagesContainer, HTMLOramaChatMessagesContainerElement>('orama-chat-messages-container');
 export const OramaChatSuggestions = /*@__PURE__*/createReactComponent<JSX.OramaChatSuggestions, HTMLOramaChatSuggestionsElement>('orama-chat-suggestions');
 export const OramaChatUserMessage = /*@__PURE__*/createReactComponent<JSX.OramaChatUserMessage, HTMLOramaChatUserMessageElement>('orama-chat-user-message');

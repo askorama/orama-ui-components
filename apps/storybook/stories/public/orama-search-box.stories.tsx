@@ -37,10 +37,10 @@ export const SearchBox: Story = {
     themeConfig: {
       colors: {
         light: {
-          // '--text-color-primary': 'purple',
+          '--text-color-primary': '',
         },
         dark: {
-          // '--text-color-primary': 'pink',
+          '--text-color-primary': '',
         },
       },
     },

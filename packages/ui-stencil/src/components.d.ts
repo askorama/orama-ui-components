@@ -34,6 +34,8 @@ export namespace Components {
     interface OramaChatAssistentMessage {
         "message": TChatMessage;
     }
+    interface OramaChatBox {
+    }
     interface OramaChatMessagesContainer {
     }
     interface OramaChatSuggestions {
@@ -134,6 +136,12 @@ declare global {
     var HTMLOramaChatAssistentMessageElement: {
         prototype: HTMLOramaChatAssistentMessageElement;
         new (): HTMLOramaChatAssistentMessageElement;
+    };
+    interface HTMLOramaChatBoxElement extends Components.OramaChatBox, HTMLStencilElement {
+    }
+    var HTMLOramaChatBoxElement: {
+        prototype: HTMLOramaChatBoxElement;
+        new (): HTMLOramaChatBoxElement;
     };
     interface HTMLOramaChatMessagesContainerElement extends Components.OramaChatMessagesContainer, HTMLStencilElement {
     }
@@ -245,6 +253,7 @@ declare global {
         "orama-button": HTMLOramaButtonElement;
         "orama-chat": HTMLOramaChatElement;
         "orama-chat-assistent-message": HTMLOramaChatAssistentMessageElement;
+        "orama-chat-box": HTMLOramaChatBoxElement;
         "orama-chat-messages-container": HTMLOramaChatMessagesContainerElement;
         "orama-chat-suggestions": HTMLOramaChatSuggestionsElement;
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
@@ -273,6 +282,8 @@ declare namespace LocalJSX {
     }
     interface OramaChatAssistentMessage {
         "message"?: TChatMessage;
+    }
+    interface OramaChatBox {
     }
     interface OramaChatMessagesContainer {
     }
@@ -353,6 +364,7 @@ declare namespace LocalJSX {
         "orama-button": OramaButton;
         "orama-chat": OramaChat;
         "orama-chat-assistent-message": OramaChatAssistentMessage;
+        "orama-chat-box": OramaChatBox;
         "orama-chat-messages-container": OramaChatMessagesContainer;
         "orama-chat-suggestions": OramaChatSuggestions;
         "orama-chat-user-message": OramaChatUserMessage;
@@ -376,6 +388,7 @@ declare module "@stencil/core" {
             "orama-button": LocalJSX.OramaButton & JSXBase.HTMLAttributes<HTMLOramaButtonElement>;
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-chat-assistent-message": LocalJSX.OramaChatAssistentMessage & JSXBase.HTMLAttributes<HTMLOramaChatAssistentMessageElement>;
+            "orama-chat-box": LocalJSX.OramaChatBox & JSXBase.HTMLAttributes<HTMLOramaChatBoxElement>;
             "orama-chat-messages-container": LocalJSX.OramaChatMessagesContainer & JSXBase.HTMLAttributes<HTMLOramaChatMessagesContainerElement>;
             "orama-chat-suggestions": LocalJSX.OramaChatSuggestions & JSXBase.HTMLAttributes<HTMLOramaChatSuggestionsElement>;
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;

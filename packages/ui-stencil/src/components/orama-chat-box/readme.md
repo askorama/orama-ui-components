@@ -1,4 +1,4 @@
-# orama-chat
+# orama-chat-box
 
 
 
@@ -7,23 +7,14 @@
 
 ## Dependencies
 
-### Used by
-
- - [orama-chat-box](../../orama-chat-box)
- - [orama-search-box](../../orama-search-box)
-
 ### Depends on
 
-- [orama-chat-messages-container](../orama-chat-messages-container)
-- [orama-chat-suggestions](../orama-chat-suggestions)
-- [orama-logo-icon](../orama-logo-icon)
-- [orama-textarea](../orama-textarea)
-- [orama-button](../orama-button)
-- [orama-text](../orama-text)
+- [orama-chat](../internal/orama-chat)
 
 ### Graph
 ```mermaid
 graph TD;
+  orama-chat-box --> orama-chat
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-chat-suggestions
   orama-chat --> orama-logo-icon
@@ -34,9 +25,7 @@ graph TD;
   orama-chat-messages-container --> orama-chat-assistent-message
   orama-chat-assistent-message --> orama-button
   orama-chat-assistent-message --> orama-text
-  orama-chat-box --> orama-chat
-  orama-search-box --> orama-chat
-  style orama-chat fill:#f9f,stroke:#333,stroke-width:4px
+  style orama-chat-box fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
