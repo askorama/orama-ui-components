@@ -1,7 +1,7 @@
 import { Component, Host, State, h } from '@stencil/core'
 import { chatContext } from '@/context/chatContext'
-import '@phosphor-icons/webcomponents/PhPaperPlaneTilt'
-import '@phosphor-icons/webcomponents/PhStop'
+import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 
 // TODO: Hardcoding suggestions for now
 const SUGGESTIONS = ['How to get started?', 'What are the prices?', 'What is Orama?']

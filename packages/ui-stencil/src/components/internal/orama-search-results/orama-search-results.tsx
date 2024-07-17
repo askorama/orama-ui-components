@@ -1,6 +1,6 @@
 import { Component, Host, h, Element, Prop, Event, type EventEmitter } from '@stencil/core'
 import type { SearchResult, SearchResultBySection } from '@/types'
-import '@phosphor-icons/webcomponents/PhFiles'
+import '@phosphor-icons/webcomponents/dist/icons/PhFiles.mjs'
 
 export type SearchResultsProps = {
   sections: SearchResultBySection[]

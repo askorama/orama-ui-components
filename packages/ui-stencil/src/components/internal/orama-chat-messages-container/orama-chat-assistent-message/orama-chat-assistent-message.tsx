@@ -1,8 +1,8 @@
 import { Component, Host, Prop, h } from '@stencil/core'
 import type { TChatMessage } from '@/context/chatContext'
-import '@phosphor-icons/webcomponents/PhCopy'
-import '@phosphor-icons/webcomponents/PhArrowsClockwise'
-import '@phosphor-icons/webcomponents/PhThumbsDown'
+import '@phosphor-icons/webcomponents/dist/icons/PhCopy.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhArrowsClockwise.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhThumbsDown.mjs'
 import { copyToClipboard } from '@/utils/utils'
 
 @Component({

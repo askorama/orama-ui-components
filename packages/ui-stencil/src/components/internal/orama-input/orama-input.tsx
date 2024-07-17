@@ -1,6 +1,6 @@
 import { Component, Host, Prop, h, Element, State, Event, type EventEmitter } from '@stencil/core'
-import '@phosphor-icons/webcomponents/PhX'
-import '@phosphor-icons/webcomponents/PhMagnifyingGlass'
+import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
 import { getNonExplicitAttributes } from '@/utils/utils'
 
 type BaseInputProps = {

@@ -1,7 +1,7 @@
 import { Component, Host, h } from '@stencil/core'
-import '@phosphor-icons/webcomponents/PhClock'
-import '@phosphor-icons/webcomponents/PhPlus'
-import '@phosphor-icons/webcomponents/PhCaretLeft'
+import '@phosphor-icons/webcomponents/dist/icons/PhClock.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhPlus.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhCaretLeft.mjs'
 
 @Component({
   tag: 'orama-navigation-bar',

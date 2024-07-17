@@ -1,7 +1,7 @@
 import { Component, Host, Prop, h } from '@stencil/core'
 import { globalContext } from '@/context/GlobalContext'
-import '@phosphor-icons/webcomponents/PhMagnifyingGlass'
-import '@phosphor-icons/webcomponents/PhSparkle'
+import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhSparkle.mjs'
 
 @Component({
   tag: 'orama-toggler',
