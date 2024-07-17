@@ -4,7 +4,7 @@ import type { Components } from 'ui-stencil'
 import { fn } from '@storybook/test'
 
 const meta: Meta<Components.OramaFacets> = {
-  title: 'Internal/OramaFacets',
+  title: 'Internal/Facets',
   component: 'orama-facets',
 }
 
@@ -13,7 +13,7 @@ export default meta
 type Story = StoryObj<Components.OramaFacets>
 
 // More on writing stories with args: https://storybook.js.org/docs/html/writing-stories/args
-export const OramaFacets: Story = {
+export const Facets: Story = {
   args: {
     facets: [
       { name: 'FacetOne', count: 200 },

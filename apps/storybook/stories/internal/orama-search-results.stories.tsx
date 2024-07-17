@@ -2,7 +2,7 @@ import type { StoryObj, Meta } from '@storybook/html'
 import type { Components } from 'ui-stencil'
 
 const meta: Meta<Components.OramaSearchResults> = {
-  title: 'Internal/OramaSearchResults',
+  title: 'Internal/SearchResults',
   component: 'orama-search-results',
 }
 

@@ -9,7 +9,7 @@
 
 ### Used by
 
- - [search-box](../../search-box)
+ - [orama-search-box](../../orama-search-box)
 
 ### Depends on
 
@@ -33,7 +33,7 @@ graph TD;
   orama-chat-messages-container --> orama-chat-assistent-message
   orama-chat-assistent-message --> orama-button
   orama-chat-assistent-message --> orama-text
-  search-box --> orama-chat
+  orama-search-box --> orama-chat
   style orama-chat fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

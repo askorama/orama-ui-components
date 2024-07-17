@@ -1,13 +1,10 @@
-import { spread } from '@open-wc/lit-helpers'
 import type { StoryObj, Meta } from '@storybook/web-components'
 import type { Components } from 'ui-stencil'
-import { html } from 'lit-html'
-import { DARK_THEME_BG, LIGTH_THEME_BG } from '../constants'
-type Story = StoryObj<Components.SearchBox>
+type Story = StoryObj<Components.OramaSearchBox>
 
-const meta: Meta<Components.SearchBox> = {
+const meta: Meta<Components.OramaSearchBox> = {
   title: 'Public/SearchBox',
-  component: 'search-box',
+  component: 'orama-search-box',
   argTypes: {
     colorScheme: {
       options: ['light', 'dark', 'system'],

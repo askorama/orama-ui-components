@@ -16,7 +16,7 @@
 
 ### Used by
 
- - [orama-navigation-bar](../internal/orama-navigation-bar)
+ - [orama-navigation-bar](../orama-navigation-bar)
 
 ### Graph
 ```mermaid

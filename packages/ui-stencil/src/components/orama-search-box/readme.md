@@ -25,9 +25,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  search-box --> orama-navigation-bar
-  search-box --> orama-search
-  search-box --> orama-chat
+  orama-search-box --> orama-navigation-bar
+  orama-search-box --> orama-search
+  orama-search-box --> orama-chat
   orama-navigation-bar --> orama-button
   orama-navigation-bar --> orama-toggler
   orama-search --> orama-input
@@ -44,7 +44,7 @@ graph TD;
   orama-chat-messages-container --> orama-chat-assistent-message
   orama-chat-assistent-message --> orama-button
   orama-chat-assistent-message --> orama-text
-  style search-box fill:#f9f,stroke:#333,stroke-width:4px
+  style orama-search-box fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

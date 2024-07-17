@@ -9,8 +9,8 @@ import type { TThemeOverrides } from '@/config/theme'
 import type { ResultMap } from '@/types'
 
 @Component({
-  tag: 'search-box',
-  styleUrl: 'search-box.scss',
+  tag: 'orama-search-box',
+  styleUrl: 'orama-search-box.scss',
   shadow: true,
 })
 export class SearchBox {

@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers'
 import { html } from 'lit-html'
 
 const meta: Meta<Components.OramaButton> = {
-  title: 'Internal/OramaButton',
+  title: 'Internal/Button',
   component: 'orama-button',
   argTypes: {
     variant: {
@@ -20,7 +20,7 @@ type Story = StoryObj<Components.OramaButton>
 
 const Template = (content: string) => (args) => html`<orama-button ${spread(args)}>${content}</orama-button>`
 
-export const OramaPrimaryButton: Story = {
+export const Primary: Story = {
   render: Template('Primary button'),
   args: {
     variant: 'primary',
@@ -29,7 +29,7 @@ export const OramaPrimaryButton: Story = {
   },
 }
 
-export const OramaSecondaryButton: Story = {
+export const Secondary: Story = {
   render: Template('Secondary button'),
   args: {
     variant: 'secondary',
@@ -38,7 +38,7 @@ export const OramaSecondaryButton: Story = {
   },
 }
 
-export const OramaIconButton: Story = {
+export const IconButton: Story = {
   render: Template('🤯'),
   args: {
     variant: 'icon',

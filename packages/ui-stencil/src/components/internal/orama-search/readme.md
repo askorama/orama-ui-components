@@ -9,7 +9,7 @@
 
 ### Used by
 
- - [search-box](../../search-box)
+ - [orama-search-box](../../orama-search-box)
 
 ### Depends on
 
@@ -24,7 +24,7 @@ graph TD;
   orama-search --> orama-facets
   orama-search --> orama-search-results
   orama-search-results --> orama-text
-  search-box --> orama-search
+  orama-search-box --> orama-search
   style orama-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

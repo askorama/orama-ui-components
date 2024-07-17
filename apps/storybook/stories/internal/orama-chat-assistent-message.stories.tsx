@@ -2,14 +2,14 @@ import type { StoryObj, Meta } from '@storybook/web-components'
 import type { Components } from 'ui-stencil'
 
 const meta: Meta<Components.OramaChatAssistentMessage> = {
-  title: 'Internal/OramaChat',
+  title: 'Internal/Chat',
   component: 'orama-chat-assistent-message',
 } satisfies Meta
 
 export default meta
 type Story = StoryObj<Components.OramaChatAssistentMessage>
 
-export const OramaChatAssistentMessage: Story = {
+export const ChatAssistentMessage: Story = {
   args: {
     message: {
       role: 'assistant',

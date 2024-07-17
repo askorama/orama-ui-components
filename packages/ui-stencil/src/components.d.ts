@@ -9,18 +9,18 @@ import { ButtonProps } from "./components/internal/orama-button/orama-button";
 import { TChatMessage } from "./context/chatContext";
 import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
+import { TThemeOverrides } from "./config/theme";
 import { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
-import { TThemeOverrides } from "./config/theme";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
 export { TChatMessage } from "./context/chatContext";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
+export { TThemeOverrides } from "./config/theme";
 export { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
-export { TThemeOverrides } from "./config/theme";
 export namespace Components {
     interface OramaButton {
         "as"?: ButtonProps['as'];
@@ -64,6 +64,15 @@ export namespace Components {
     }
     interface OramaSearch {
     }
+    interface OramaSearchBox {
+        "colorScheme": 'dark' | 'light' | 'system';
+        "facetProperty"?: string;
+        "open"?: boolean;
+        "resultMap"?: Partial<ResultMap>;
+        "themeConfig": Partial<TThemeOverrides>;
+    }
+    interface OramaSearchButton {
+    }
     interface OramaSearchResults {
         "error": boolean;
         "loading": boolean;
@@ -97,15 +106,6 @@ export namespace Components {
     }
     interface OramaToggler {
         "performInitialAnimation": boolean;
-    }
-    interface SearchBox {
-        "colorScheme": 'dark' | 'light' | 'system';
-        "facetProperty"?: string;
-        "open"?: boolean;
-        "resultMap"?: Partial<ResultMap>;
-        "themeConfig": Partial<TThemeOverrides>;
-    }
-    interface SearchBoxToggler {
     }
 }
 export interface OramaInputCustomEvent<T> extends CustomEvent<T> {
@@ -194,6 +194,18 @@ declare global {
         prototype: HTMLOramaSearchElement;
         new (): HTMLOramaSearchElement;
     };
+    interface HTMLOramaSearchBoxElement extends Components.OramaSearchBox, HTMLStencilElement {
+    }
+    var HTMLOramaSearchBoxElement: {
+        prototype: HTMLOramaSearchBoxElement;
+        new (): HTMLOramaSearchBoxElement;
+    };
+    interface HTMLOramaSearchButtonElement extends Components.OramaSearchButton, HTMLStencilElement {
+    }
+    var HTMLOramaSearchButtonElement: {
+        prototype: HTMLOramaSearchButtonElement;
+        new (): HTMLOramaSearchButtonElement;
+    };
     interface HTMLOramaSearchResultsElementEventMap {
         "oramaItemClick": SearchResult;
     }
@@ -229,18 +241,6 @@ declare global {
         prototype: HTMLOramaTogglerElement;
         new (): HTMLOramaTogglerElement;
     };
-    interface HTMLSearchBoxElement extends Components.SearchBox, HTMLStencilElement {
-    }
-    var HTMLSearchBoxElement: {
-        prototype: HTMLSearchBoxElement;
-        new (): HTMLSearchBoxElement;
-    };
-    interface HTMLSearchBoxTogglerElement extends Components.SearchBoxToggler, HTMLStencilElement {
-    }
-    var HTMLSearchBoxTogglerElement: {
-        prototype: HTMLSearchBoxTogglerElement;
-        new (): HTMLSearchBoxTogglerElement;
-    };
     interface HTMLElementTagNameMap {
         "orama-button": HTMLOramaButtonElement;
         "orama-chat": HTMLOramaChatElement;
@@ -253,12 +253,12 @@ declare global {
         "orama-logo-icon": HTMLOramaLogoIconElement;
         "orama-navigation-bar": HTMLOramaNavigationBarElement;
         "orama-search": HTMLOramaSearchElement;
+        "orama-search-box": HTMLOramaSearchBoxElement;
+        "orama-search-button": HTMLOramaSearchButtonElement;
         "orama-search-results": HTMLOramaSearchResultsElement;
         "orama-text": HTMLOramaTextElement;
         "orama-textarea": HTMLOramaTextareaElement;
         "orama-toggler": HTMLOramaTogglerElement;
-        "search-box": HTMLSearchBoxElement;
-        "search-box-toggler": HTMLSearchBoxTogglerElement;
     }
 }
 declare namespace LocalJSX {
@@ -305,6 +305,15 @@ declare namespace LocalJSX {
     }
     interface OramaSearch {
     }
+    interface OramaSearchBox {
+        "colorScheme"?: 'dark' | 'light' | 'system';
+        "facetProperty"?: string;
+        "open"?: boolean;
+        "resultMap"?: Partial<ResultMap>;
+        "themeConfig"?: Partial<TThemeOverrides>;
+    }
+    interface OramaSearchButton {
+    }
     interface OramaSearchResults {
         "error"?: boolean;
         "loading"?: boolean;
@@ -340,15 +349,6 @@ declare namespace LocalJSX {
     interface OramaToggler {
         "performInitialAnimation"?: boolean;
     }
-    interface SearchBox {
-        "colorScheme"?: 'dark' | 'light' | 'system';
-        "facetProperty"?: string;
-        "open"?: boolean;
-        "resultMap"?: Partial<ResultMap>;
-        "themeConfig"?: Partial<TThemeOverrides>;
-    }
-    interface SearchBoxToggler {
-    }
     interface IntrinsicElements {
         "orama-button": OramaButton;
         "orama-chat": OramaChat;
@@ -361,12 +361,12 @@ declare namespace LocalJSX {
         "orama-logo-icon": OramaLogoIcon;
         "orama-navigation-bar": OramaNavigationBar;
         "orama-search": OramaSearch;
+        "orama-search-box": OramaSearchBox;
+        "orama-search-button": OramaSearchButton;
         "orama-search-results": OramaSearchResults;
         "orama-text": OramaText;
         "orama-textarea": OramaTextarea;
         "orama-toggler": OramaToggler;
-        "search-box": SearchBox;
-        "search-box-toggler": SearchBoxToggler;
     }
 }
 export { LocalJSX as JSX };
@@ -384,12 +384,12 @@ declare module "@stencil/core" {
             "orama-logo-icon": LocalJSX.OramaLogoIcon & JSXBase.HTMLAttributes<HTMLOramaLogoIconElement>;
             "orama-navigation-bar": LocalJSX.OramaNavigationBar & JSXBase.HTMLAttributes<HTMLOramaNavigationBarElement>;
             "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
+            "orama-search-box": LocalJSX.OramaSearchBox & JSXBase.HTMLAttributes<HTMLOramaSearchBoxElement>;
+            "orama-search-button": LocalJSX.OramaSearchButton & JSXBase.HTMLAttributes<HTMLOramaSearchButtonElement>;
             "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;
             "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;
             "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
             "orama-toggler": LocalJSX.OramaToggler & JSXBase.HTMLAttributes<HTMLOramaTogglerElement>;
-            "search-box": LocalJSX.SearchBox & JSXBase.HTMLAttributes<HTMLSearchBoxElement>;
-            "search-box-toggler": LocalJSX.SearchBoxToggler & JSXBase.HTMLAttributes<HTMLSearchBoxTogglerElement>;
         }
     }
 }
