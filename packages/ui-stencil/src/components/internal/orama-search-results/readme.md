@@ -7,15 +7,17 @@
 
 | Property     | Attribute     | Description | Type                      | Default     |
 | ------------ | ------------- | ----------- | ------------------------- | ----------- |
+| `error`      | `error`       |             | `boolean`                 | `false`     |
+| `loading`    | `loading`     |             | `boolean`                 | `false`     |
 | `searchTerm` | `search-term` |             | `string`                  | `undefined` |
 | `sections`   | --            |             | `SearchResultBySection[]` | `[]`        |
 
 
 ## Events
 
-| Event            | Description | Type                                                                             |
-| ---------------- | ----------- | -------------------------------------------------------------------------------- |
-| `oramaItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path: string; }>` |
+| Event              | Description | Type                                                                             |
+| ------------------ | ----------- | -------------------------------------------------------------------------------- |
+| `onOramaItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path: string; }>` |
 
 
 ## Dependencies

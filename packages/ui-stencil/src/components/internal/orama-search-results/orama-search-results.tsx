@@ -1,5 +1,6 @@
 import { Component, Host, h, Element, Prop, Event, type EventEmitter } from '@stencil/core'
 import type { SearchResult, SearchResultBySection } from '@/types'
+import '@phosphor-icons/webcomponents/PhFiles'
 
 export type SearchResultsProps = {
   sections: SearchResultBySection[]
@@ -12,21 +13,32 @@ export type SearchResultsProps = {
 })
 export class SearchResults {
   @Element() el: HTMLUListElement
-  @Event() oramaItemClick: EventEmitter<SearchResult>
+  @Event() onOramaItemClick: EventEmitter<SearchResult>
   @Prop() sections: SearchResultBySection[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
+  @Prop() loading = false
+  @Prop() error = false
 
   handleItemClick = (item: SearchResult) => {
     if (item?.path) {
-      this.oramaItemClick.emit(item)
+      this.onOramaItemClick.emit(item)
       window.location.href = item.path
     } else {
-      console.error('No path found')
+      throw new Error('No path found')
     }
   }
 
   render() {
-    if (!this.sections?.some((section) => section.items.length > 0)) {
+    if (!this.searchTerm) {
+      return null
+    }
+
+    if (this.error) {
+      // TODO: Implement
+      return <div>An error occurred while trying to search. Please try again.</div>
+    }
+
+    if (!this.loading && !this.sections?.some((section) => section.items.length > 0)) {
       return (
         <div class="results-empty">
           <orama-text as="h3" styledAs="span">
@@ -38,7 +50,7 @@ export class SearchResults {
 
     return (
       <Host>
-        <ul class="list">
+        <ul class="list section-list">
           {this.sections.map((section) => (
             <div key={section.section}>
               {section.section && (
@@ -48,10 +60,11 @@ export class SearchResults {
                   </orama-text>
                 </div>
               )}
-              <ul class="list">
+              <ul class="list section-item-list">
                 {section.items.map((result) => (
                   <li class="list-item" key={result.id}>
                     <button type="button" class="list-item-button" onClick={() => this.handleItemClick(result)}>
+                      <ph-files size="20px" />
                       <div>
                         <orama-text as="h3" styledAs="p">
                           {result.title}
