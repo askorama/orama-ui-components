@@ -44,6 +44,14 @@ export class ChatService {
       })
   }
 
+  abortAnswer = () => {
+    if (!this.answerSession) {
+      throw new OramaClientNotInitializedError()
+    }
+
+    this.answerSession.abortAnswer()
+  }
+
   // TODO
   resendLatest = () => {
     throw new Error('Not implemented')
