@@ -1,7 +1,7 @@
 import { Component, Host, Prop, h, Element, State, Event, type EventEmitter } from '@stencil/core'
 import '@phosphor-icons/webcomponents/PhX'
 import '@phosphor-icons/webcomponents/PhMagnifyingGlass'
-import { AttributeUtils } from '@/services/AttributeUtils'
+import { getNonExplicitAttributes } from '@/utils/utils'
 
 type BaseInputProps = {
   name?: string
@@ -80,7 +80,7 @@ export class Input {
       'default-value',
       'placeholder',
     ]
-    const inputProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps)
+    const inputProps = getNonExplicitAttributes(this.el, declaredProps)
 
     const isSearch = this.type === 'search'
 

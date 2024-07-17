@@ -1,5 +1,5 @@
 import { Component, Prop, h, Element } from '@stencil/core'
-import { AttributeUtils } from '../../../services/AttributeUtils'
+import { getNonExplicitAttributes } from '@/utils/utils'
 
 type BaseProps = {
   /** the optional class name */
@@ -44,7 +44,7 @@ export class OramaButton {
   render() {
     const Tag = this.as
     const declaredProps = ['as', 'class', 'variant']
-    const buttonProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps)
+    const buttonProps = getNonExplicitAttributes(this.el, declaredProps)
 
     const buttonClass = `button button--${this.variant} ${this.class}`
 

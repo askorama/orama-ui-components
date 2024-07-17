@@ -8,7 +8,9 @@ const meta: Meta<Components.OramaSearchBox> = {
   argTypes: {
     colorScheme: {
       options: ['light', 'dark', 'system'],
-      defaultValue: 'light',
+      table: {
+        defaultValue: { summary: 'light' },
+      },
       control: { type: 'radio' },
     },
   },
@@ -33,7 +35,6 @@ export const SearchBox: Story = {
     resultMap: {
       description: 'title',
     },
-    colorScheme: 'light',
     themeConfig: {
       colors: {
         light: {
@@ -43,6 +44,10 @@ export const SearchBox: Story = {
           '--text-color-primary': '',
         },
       },
+    },
+    cloudIndex: {
+      api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
+      endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
     },
   },
 }

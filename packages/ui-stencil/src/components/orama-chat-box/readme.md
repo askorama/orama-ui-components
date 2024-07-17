@@ -5,15 +5,24 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property     | Attribute | Description | Type                                     | Default     |
+| ------------ | --------- | ----------- | ---------------------------------------- | ----------- |
+| `cloudIndex` | --        |             | `{ api_key: string; endpoint: string; }` | `undefined` |
+
+
 ## Dependencies
 
 ### Depends on
 
+- [orama-text](../internal/orama-text)
 - [orama-chat](../internal/orama-chat)
 
 ### Graph
 ```mermaid
 graph TD;
+  orama-chat-box --> orama-text
   orama-chat-box --> orama-chat
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-chat-suggestions

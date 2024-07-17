@@ -1,4 +1,8 @@
-import { Component, Host, h } from '@stencil/core'
+import { Component, Host, h, Prop, Watch } from '@stencil/core'
+import { chatContext } from '@/context/chatContext'
+import { ChatService } from '@/services/ChatService'
+import { initOramaClient } from '@/utils/utils'
+import type { CloudIndexConfig } from '@/types'
 
 @Component({
   tag: 'orama-chat-box',
@@ -6,7 +10,27 @@ import { Component, Host, h } from '@stencil/core'
   shadow: true,
 })
 export class ChatBox {
+  @Prop() cloudIndex: CloudIndexConfig
+
+  @Watch('cloudIndex')
+  cloudIndexChanged() {
+    this.startChatService()
+  }
+
+  componentWillLoad() {
+    this.startChatService()
+  }
+
+  startChatService() {
+    const oramaClient = initOramaClient(this.cloudIndex)
+    chatContext.chatService = new ChatService(oramaClient)
+  }
+
   render() {
+    if (!chatContext.chatService) {
+      return <orama-text as="p">Unable to initialize chat service</orama-text>
+    }
+
     return (
       <Host>
         <orama-chat style={{ display: 'flex' }} />

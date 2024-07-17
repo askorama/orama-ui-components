@@ -7,18 +7,18 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonProps } from "./components/internal/orama-button/orama-button";
 import { TChatMessage } from "./context/chatContext";
+import { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
 import { TThemeOverrides } from "./config/theme";
-import { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
 export { TChatMessage } from "./context/chatContext";
+export { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
 export { TThemeOverrides } from "./config/theme";
-export { ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
@@ -35,6 +35,7 @@ export namespace Components {
         "message": TChatMessage;
     }
     interface OramaChatBox {
+        "cloudIndex": CloudIndexConfig;
     }
     interface OramaChatMessagesContainer {
     }
@@ -67,6 +68,7 @@ export namespace Components {
     interface OramaSearch {
     }
     interface OramaSearchBox {
+        "cloudIndex": CloudIndexConfig;
         "colorScheme": 'dark' | 'light' | 'system';
         "facetProperty"?: string;
         "open"?: boolean;
@@ -284,6 +286,7 @@ declare namespace LocalJSX {
         "message"?: TChatMessage;
     }
     interface OramaChatBox {
+        "cloudIndex"?: CloudIndexConfig;
     }
     interface OramaChatMessagesContainer {
     }
@@ -317,6 +320,7 @@ declare namespace LocalJSX {
     interface OramaSearch {
     }
     interface OramaSearchBox {
+        "cloudIndex"?: CloudIndexConfig;
         "colorScheme"?: 'dark' | 'light' | 'system';
         "facetProperty"?: string;
         "open"?: boolean;

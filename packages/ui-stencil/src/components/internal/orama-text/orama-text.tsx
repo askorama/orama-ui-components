@@ -1,5 +1,5 @@
 import { Component, Prop, h, State, Element } from '@stencil/core'
-// import { AttributeUtils } from '../../../services/AttributeUtils';
+import { getNonExplicitAttributes } from '@/utils/utils'
 
 export interface TextProps {
   /** it defines the HTML tag to be used */
@@ -33,8 +33,8 @@ export class OramaText implements TextProps {
 
   render() {
     const Tag = this.as
-    // const declaredProps = ['as', 'styled-as', 'class']
-    // const textProps = AttributeUtils.getNonExplicitAttributes(this.el, declaredProps)
+    const declaredProps = ['as', 'styled-as', 'class']
+    const textProps = getNonExplicitAttributes(this.el, declaredProps)
 
     return (
       <Tag
@@ -43,6 +43,7 @@ export class OramaText implements TextProps {
           [`text-${this.align}`]: !!this.align,
           [this.class]: !!this.class,
         }}
+        {...textProps}
       >
         <slot />
       </Tag>

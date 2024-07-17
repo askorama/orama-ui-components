@@ -13,3 +13,8 @@ export type SearchResultBySection = {
 }
 
 export type ResultMap = { [K in keyof Omit<SearchResult, 'id'> | 'section']?: string }
+
+export type CloudIndexConfig = {
+  api_key: string
+  endpoint: string
+}

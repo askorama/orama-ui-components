@@ -1,12 +1,13 @@
 import { Component, Host, Prop, Watch, h, Listen, Element, State } from '@stencil/core'
-import { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/GlobalContext'
 import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
 import type { TThemeOverrides } from '@/config/theme'
+import { initOramaClient } from '@/utils/utils'
 import type { ResultMap } from '@/types'
+import type { CloudIndexConfig } from '@/types'
 
 @Component({
   tag: 'orama-search-box',
@@ -21,8 +22,14 @@ export class SearchBox {
   @Prop() facetProperty?: string
   @Prop() open? = false
   @Prop() resultMap?: Partial<ResultMap> = {}
+  @Prop() cloudIndex: CloudIndexConfig
 
   @State() systemScheme: 'light' | 'dark' = 'light'
+
+  @Watch('cloudIndex')
+  cloudIndexChanged() {
+    this.startServices()
+  }
 
   @Watch('themeConfig')
   @Watch('colorScheme')
@@ -89,6 +96,12 @@ export class SearchBox {
     })
   }
 
+  startServices() {
+    const oramaClient = initOramaClient(this.cloudIndex)
+    searchState.searchService = new SearchService(oramaClient)
+    chatContext.chatService = new ChatService(oramaClient)
+  }
+
   componentWillLoad() {
     globalContext.open = this.open
 
@@ -99,24 +112,24 @@ export class SearchBox {
     searchState.facetProperty = this.facetProperty
     searchState.resultMap = this.resultMap
 
-    const oramaClient = new OramaClient({
-      api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
-      endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
-    })
-
-    searchState.searchService = new SearchService(oramaClient)
-    chatContext.chatService = new ChatService(oramaClient)
-
+    this.startServices()
     this.updateTheme()
     this.detectSystemColorScheme()
   }
 
   render() {
+    if (!searchState.searchService) {
+      return <orama-text as="p">Unable to initialize search service</orama-text>
+    }
+
+    if (!chatContext.chatService) {
+      return <orama-text as="p">Unable to initialize chat service</orama-text>
+    }
+
     return (
       <Host>
         <div class={{ 'orama-container': true, hidden: !globalContext.open }}>
           <orama-navigation-bar />
-          {/* MAIN CONTENT */}
           <div class="main">
             <orama-search style={{ display: globalContext.selectedTab === 'search' ? 'flex' : 'none' }} />
             <orama-chat style={{ display: globalContext.selectedTab === 'chat' ? 'flex' : 'none' }} />

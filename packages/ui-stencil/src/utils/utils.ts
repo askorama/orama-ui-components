@@ -1,3 +1,6 @@
+import { CloudIndexConfig } from '@/types'
+import { OramaClient } from '@oramacloud/client'
+
 export function format(first: string, middle: string, last: string): string {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '')
 }
@@ -20,4 +23,28 @@ export function copyToClipboard(text) {
     document.execCommand('copy')
     document.body.removeChild(textarea)
   }
+}
+
+export function getNonExplicitAttributes(element: HTMLElement, explicitProps: string[]): { [key: string]: string } {
+  const allAttributes = Array.from(element.attributes)
+  return allAttributes.reduce((acc, attr) => {
+    if (!explicitProps.includes(attr.name)) {
+      acc[attr.name] = attr.value
+    }
+    return acc
+  }, {})
+}
+
+export function validateCloudIndexConfig(config: CloudIndexConfig): void {
+  if (!config || !config.api_key || !config.endpoint) {
+    throw new Error('Invalid cloud index configuration. Please provide a valid api_key and endpoint')
+  }
+}
+
+export function initOramaClient(config: CloudIndexConfig): OramaClient | null {
+  validateCloudIndexConfig(config)
+  return new OramaClient({
+    api_key: config.api_key,
+    endpoint: config.endpoint,
+  })
 }
