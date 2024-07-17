@@ -14,6 +14,7 @@ export const OramaChatMessagesContainer = /*@__PURE__*/createReactComponent<JSX.
 export const OramaChatUserMessage = /*@__PURE__*/createReactComponent<JSX.OramaChatUserMessage, HTMLOramaChatUserMessageElement>('orama-chat-user-message');
 export const OramaFacets = /*@__PURE__*/createReactComponent<JSX.OramaFacets, HTMLOramaFacetsElement>('orama-facets');
 export const OramaInput = /*@__PURE__*/createReactComponent<JSX.OramaInput, HTMLOramaInputElement>('orama-input');
+export const OramaLogoIcon = /*@__PURE__*/createReactComponent<JSX.OramaLogoIcon, HTMLOramaLogoIconElement>('orama-logo-icon');
 export const OramaNavigationBar = /*@__PURE__*/createReactComponent<JSX.OramaNavigationBar, HTMLOramaNavigationBarElement>('orama-navigation-bar');
 export const OramaSearch = /*@__PURE__*/createReactComponent<JSX.OramaSearch, HTMLOramaSearchElement>('orama-search');
 export const OramaSearchResults = /*@__PURE__*/createReactComponent<JSX.OramaSearchResults, HTMLOramaSearchResultsElement>('orama-search-results');

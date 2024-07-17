@@ -9,7 +9,7 @@ const meta: Meta<Components.OramaButton> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'icon'],
     },
   },
 }
@@ -20,10 +20,29 @@ type Story = StoryObj<Components.OramaButton>
 
 const Template = (content: string) => (args) => html`<orama-button ${spread(args)}>${content}</orama-button>`
 
-export const OramaButton: Story = {
+export const OramaPrimaryButton: Story = {
   render: Template('Primary button'),
   args: {
     variant: 'primary',
     class: 'my-optional-class',
+    disabled: false,
+  },
+}
+
+export const OramaSecondaryButton: Story = {
+  render: Template('Secondary button'),
+  args: {
+    variant: 'secondary',
+    class: 'my-optional-class',
+    disabled: false,
+  },
+}
+
+export const OramaIconButton: Story = {
+  render: Template('🤯'),
+  args: {
+    variant: 'icon',
+    class: 'my-optional-class',
+    disabled: false,
   },
 }

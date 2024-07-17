@@ -1,3 +1,4 @@
+// TODO: We need to revisit this styles. There are some duplications and variables without fallback
 .button {
   display: inline-flex;
   gap: var(--spacing-s, $spacing-s);
@@ -7,9 +8,44 @@
   padding: var(--spacing-m, $spacing-m);
   cursor: pointer;
   font-family: var(--font-primary, font('primary'));
+
+  transition: all 0.2s;
+  transition-property: color, background-color, opacity;
 }
 
 .button--primary {
   background-color: var(--button-primary-background-color);
   color: var(--button-primary-text-color);
+
+  &:disabled {
+    background-color: var(--background-color-tertiary, background-color('tertiary'));
+    color: var(--text-color-tertiary);
+  }
+}
+
+.button--secondary {
+  &:disabled {
+    background-color: var(--background-color-tertiary, background-color('tertiary'));
+    color: var(--text-color-tertiary);
+  }
+}
+
+.button--icon {
+  background-color: transparent;
+  color: var(--icon-color-tertiary, text-color('tertiary'));
+  padding: var(--spacing-s, $spacing-s);
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-primary, font('primary'));
+
+  &:disabled {
+    opacity: 0.6;
+    background-color: var(--background-color-tertiary, background-color('tertiary'));
+  }
+
+  &:hover {
+    background-color: var(--background-color-tertiary, background-color('tertiary'));
+  }
 }

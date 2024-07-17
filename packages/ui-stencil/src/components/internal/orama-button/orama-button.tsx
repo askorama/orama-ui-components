@@ -5,7 +5,7 @@ type BaseProps = {
   /** the optional class name */
   class?: string
   /** the style variant of the button - default is primary */
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'icon'
 }
 
 type ConditionalProps =
@@ -26,6 +26,7 @@ export type ButtonProps = BaseProps & ConditionalProps
 @Component({
   tag: 'orama-button',
   styleUrl: 'orama-button.scss',
+  shadow: true,
 })
 
 /**
@@ -38,6 +39,7 @@ export class OramaButton {
   @Prop() class?: string
   @Prop() variant?: ButtonProps['variant'] = 'primary'
   @Prop() type?: ButtonProps['type']
+  @Prop() disabled?: boolean
 
   render() {
     const Tag = this.as
@@ -47,7 +49,7 @@ export class OramaButton {
     const buttonClass = `button button--${this.variant} ${this.class}`
 
     return (
-      <Tag class={buttonClass} {...buttonProps}>
+      <Tag class={buttonClass} {...buttonProps} disabled={this.disabled}>
         <slot />
       </Tag>
     )

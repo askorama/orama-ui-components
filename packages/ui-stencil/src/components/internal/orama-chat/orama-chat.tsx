@@ -1,5 +1,7 @@
 import { Component, Host, State, h } from '@stencil/core'
 import { chatContext } from '@/context/chatContext'
+import '@phosphor-icons/webcomponents/PhPaperPlaneTilt'
+import '@phosphor-icons/webcomponents/PhStop'
 
 @Component({
   tag: 'orama-chat',
@@ -19,11 +21,18 @@ export class OramaChat {
     this.inputValue = ''
   }
 
+  handleAbortAnswerClick = () => {
+    chatContext.chatService.abortAnswer()
+  }
+
   render() {
     return (
       <Host>
         {/* CHAT MESSAGES */}
-        <orama-chat-messages-container />
+        <div class="messages-container-wrapper">
+          <orama-chat-messages-container />
+          <orama-logo-icon />
+        </div>
 
         {/* CHAT INPUT */}
         <div class="chat-form-wrapper">
@@ -45,9 +54,24 @@ export class OramaChat {
                 placeholder="Ask me anything"
               >
                 <div slot="adornment-end">
-                  <orama-button type="submit" onClick={this.handleSubmit} onKeyDown={this.handleSubmit}>
-                    Ask
-                  </orama-button>
+                  {chatContext.isLoading ? (
+                    <orama-button
+                      type="submit"
+                      onClick={this.handleAbortAnswerClick}
+                      onKeyDown={this.handleAbortAnswerClick}
+                    >
+                      <ph-stop size={16} />
+                    </orama-button>
+                  ) : (
+                    <orama-button
+                      type="submit"
+                      onClick={this.handleSubmit}
+                      onKeyDown={this.handleSubmit}
+                      disabled={!this.inputValue}
+                    >
+                      <ph-paper-plane-tilt size={16} />
+                    </orama-button>
+                  )}
                 </div>
               </orama-textarea>
             </div>

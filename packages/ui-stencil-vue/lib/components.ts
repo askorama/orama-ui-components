@@ -12,7 +12,8 @@ export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama
   'as',
   'class',
   'variant',
-  'type'
+  'type',
+  'disabled'
 ]);
 
 
@@ -51,6 +52,11 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
 ]);
 
 
+export const OramaLogoIcon = /*@__PURE__*/ defineContainer<JSX.OramaLogoIcon>('orama-logo-icon', undefined, [
+  'size'
+]);
+
+
 export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined);
 
 
@@ -60,7 +66,9 @@ export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [
   'sections',
   'searchTerm',
-  'oramaItemClick'
+  'loading',
+  'error',
+  'onOramaItemClick'
 ]);
 
 

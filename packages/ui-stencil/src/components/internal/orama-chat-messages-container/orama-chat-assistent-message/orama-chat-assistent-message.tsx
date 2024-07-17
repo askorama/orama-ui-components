@@ -1,5 +1,9 @@
 import { Component, Host, Prop, h } from '@stencil/core'
 import type { TChatMessage } from '@/context/chatContext'
+import '@phosphor-icons/webcomponents/PhCopy'
+import '@phosphor-icons/webcomponents/PhArrowsClockwise'
+import '@phosphor-icons/webcomponents/PhThumbsDown'
+import { copyToClipboard } from '@/utils/utils'
 
 @Component({
   tag: 'orama-chat-assistent-message',
@@ -14,9 +18,19 @@ export class OramaChatAssistentMessage {
         <div class="message-wrapper">
           <div>{this.message.content}</div>
           <div class="message-actions">
-            <div>BTN</div>
-            <div>BTN</div>
-            <div>BTN</div>
+            <orama-button type="button" variant="icon">
+              {/* TODO: We need a feedback for copy to clipboard action  */}
+              <ph-copy
+                onClick={() => copyToClipboard(this.message.content)}
+                onKeyDown={() => copyToClipboard(this.message.content)}
+              />
+            </orama-button>
+            <orama-button type="button" variant="icon">
+              <ph-arrows-clockwise />
+            </orama-button>
+            <orama-button type="button" variant="icon">
+              <ph-thumbs-down />
+            </orama-button>
           </div>
         </div>
         <div class="sources-wrapper">
