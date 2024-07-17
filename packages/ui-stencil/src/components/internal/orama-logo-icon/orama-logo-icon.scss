@@ -1,0 +1,9 @@
+:host {
+  color: var(--background-color-secondary, background-color('secondary'));
+  display: inline-flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-primary, font('primary'));
+}
