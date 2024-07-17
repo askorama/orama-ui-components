@@ -9,9 +9,9 @@ const store = createStore({
   facetProperty: '', // TODO: consider to move to resultsMap
   results: [] as SearchResultBySection[],
   resultMap: {} as ResultMap,
-  // TODO: Provavel there ins't a good reason for this to be global
-  term: '',
   highlightedIndex: -1,
+  loading: false,
+  error: false,
   // TODO: Probable needs to be held in component property.
   // Lets queckly dicudd about this again.
   searchService: null as SearchService | null,

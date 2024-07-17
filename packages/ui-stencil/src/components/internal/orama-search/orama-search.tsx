@@ -1,5 +1,6 @@
-import { Component, Host, State, Watch, h } from '@stencil/core'
+import { Component, Host, Listen, State, Watch, h } from '@stencil/core'
 import { searchState } from '@/context/searchContext'
+import type { SearchResult } from '@/types'
 
 @Component({
   tag: 'orama-search',
@@ -19,9 +20,13 @@ export class OramaSearch {
     this.selectedFacet = facetName
   }
 
+  @Listen('oramaItemClick')
+  handleOramaItemClick(event: CustomEvent<SearchResult>) {
+    alert(`${event.detail.title} clicked`)
+  }
+
   onInputChange = (e: Event) => {
     this.searchValue = (e.target as HTMLInputElement).value
-    searchState.term = this.searchValue
   }
 
   render() {
@@ -41,7 +46,12 @@ export class OramaSearch {
             selectedFacet={this.selectedFacet}
             onFacetClick={this.onFacetClickHandler}
           />
-          <orama-search-results sections={searchState.results} />
+          <orama-search-results
+            sections={searchState.results}
+            searchTerm={this.searchValue}
+            loading={searchState.loading}
+            error={searchState.error}
+          />
         </div>
       </Host>
     )
