@@ -13,7 +13,7 @@ export type SearchResultsProps = {
 })
 export class SearchResults {
   @Element() el: HTMLUListElement
-  @Event() onOramaItemClick: EventEmitter<SearchResult>
+  @Event() oramaItemClick: EventEmitter<SearchResult>
   @Prop() sections: SearchResultBySection[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
   @Prop() loading = false
@@ -21,7 +21,7 @@ export class SearchResults {
 
   handleItemClick = (item: SearchResult) => {
     if (item?.path) {
-      this.onOramaItemClick.emit(item)
+      this.oramaItemClick.emit(item)
       window.location.href = item.path
     } else {
       throw new Error('No path found')

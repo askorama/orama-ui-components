@@ -9,7 +9,7 @@
 
 | Property  | Attribute | Description | Type                                                | Default     |
 | --------- | --------- | ----------- | --------------------------------------------------- | ----------- |
-| `message` | --        |             | `{ role: "user" \| "assistant"; content: string; }` | `undefined` |
+| `message` | --        |             | `{ role: "assistant" \| "user"; content: string; }` | `undefined` |
 
 
 ## Dependencies

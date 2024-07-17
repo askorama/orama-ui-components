@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event              | Description | Type                                                                             |
-| ------------------ | ----------- | -------------------------------------------------------------------------------- |
-| `onOramaItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path: string; }>` |
+| Event            | Description | Type                                                                             |
+| ---------------- | ----------- | -------------------------------------------------------------------------------- |
+| `oramaItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path: string; }>` |
 
 
 ## Dependencies

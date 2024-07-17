@@ -9,8 +9,8 @@
 
 | Property        | Attribute        | Description | Type                          | Default     |
 | --------------- | ---------------- | ----------- | ----------------------------- | ----------- |
+| `facetClicked`  | --               |             | `(facetName: string) => void` | `undefined` |
 | `facets`        | --               |             | `Facet[]`                     | `undefined` |
-| `onFacetClick`  | --               |             | `(facetName: string) => void` | `undefined` |
 | `selectedFacet` | `selected-facet` |             | `string`                      | `undefined` |
 
 

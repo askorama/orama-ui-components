@@ -3,6 +3,9 @@ import { chatContext } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/PhPaperPlaneTilt'
 import '@phosphor-icons/webcomponents/PhStop'
 
+// TODO: Hardcoding suggestions for now
+const SUGGESTIONS = ['How to get started?', 'What are the prices?', 'What is Orama?']
+
 @Component({
   tag: 'orama-chat',
   styleUrl: 'orama-chat.scss',
@@ -25,12 +28,21 @@ export class OramaChat {
     chatContext.chatService.abortAnswer()
   }
 
+  handleSuggestionClick = (suggestion: string) => {
+    chatContext.chatService.sendQuestion(suggestion)
+    this.inputValue = ''
+  }
+
   render() {
     return (
       <Host>
         {/* CHAT MESSAGES */}
         <div class="messages-container-wrapper">
           <orama-chat-messages-container />
+          {/* TODO: Provide a better animation */}
+          {!chatContext.messages.length && !chatContext.isLoading ? (
+            <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
+          ) : null}
           <orama-logo-icon />
         </div>
 

@@ -17,6 +17,7 @@ orama-chat {
 
 .chat-form-wrapper {
   padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
+  background-color: var(--background-color-tertiary, background-color('tertiary'));
 }
 
 .chat-input {

@@ -44,7 +44,7 @@ export class OramaSearch {
           <orama-facets
             facets={searchState.facets}
             selectedFacet={this.selectedFacet}
-            onFacetClick={this.onFacetClickHandler}
+            facetClicked={this.onFacetClickHandler}
           />
           <orama-search-results
             sections={searchState.results}

@@ -21,6 +21,6 @@ export const OramaFacets: Story = {
       { name: 'FacetThree', count: 74 },
     ],
     selectedFacet: 'FacetOne',
-    onFacetClick: fn(),
+    facetClicked: fn(),
   },
 }

@@ -1,0 +1,34 @@
+.suggestions-list {
+  display: flex;
+  align-items: center;
+  column-gap: var(--spacing-s, $spacing-s);
+  padding: var(--radius-s, $spacing-s) var(--radius-l, $spacing-l);
+
+  list-style: none;
+  margin: 0;
+  overflow-x: auto;
+
+  // TODO: check scroll styles
+  // Maybe move somewhere else to reuse in some somponents, but not globally
+  &::-webkit-scrollbar {
+    height: 0em;
+    background-color: transparent;
+  }
+}
+
+.suggestion-button {
+  @include span();
+  cursor: pointer;
+
+  border-radius: var(--radius-l, $radius-l);
+  border: 1px solid var(--border-color-primary, border-color('primary'));
+  padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
+  display: flex;
+  background-color: var(--background-color-primary, background-color('primary'));
+  width: max-content;
+  color: var(--text-color-secondary, text-color('secondary'));
+
+  @media (--md-min) {
+    padding: var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
+  }
+}

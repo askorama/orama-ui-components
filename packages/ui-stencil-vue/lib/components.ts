@@ -28,6 +28,12 @@ export const OramaChatAssistentMessage = /*@__PURE__*/ defineContainer<JSX.Orama
 export const OramaChatMessagesContainer = /*@__PURE__*/ defineContainer<JSX.OramaChatMessagesContainer>('orama-chat-messages-container', undefined);
 
 
+export const OramaChatSuggestions = /*@__PURE__*/ defineContainer<JSX.OramaChatSuggestions>('orama-chat-suggestions', undefined, [
+  'suggestions',
+  'suggestionClicked'
+]);
+
+
 export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatUserMessage>('orama-chat-user-message', undefined, [
   'message'
 ]);
@@ -36,7 +42,7 @@ export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatU
 export const OramaFacets = /*@__PURE__*/ defineContainer<JSX.OramaFacets>('orama-facets', undefined, [
   'facets',
   'selectedFacet',
-  'onFacetClick'
+  'facetClicked'
 ]);
 
 
@@ -68,7 +74,7 @@ export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchR
   'searchTerm',
   'loading',
   'error',
-  'onOramaItemClick'
+  'oramaItemClick'
 ]);
 
 

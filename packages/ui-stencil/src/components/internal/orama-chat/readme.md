@@ -14,6 +14,7 @@
 ### Depends on
 
 - [orama-chat-messages-container](../orama-chat-messages-container)
+- [orama-chat-suggestions](../orama-chat-suggestions)
 - [orama-logo-icon](../orama-logo-icon)
 - [orama-textarea](../orama-textarea)
 - [orama-button](../orama-button)
@@ -23,6 +24,7 @@
 ```mermaid
 graph TD;
   orama-chat --> orama-chat-messages-container
+  orama-chat --> orama-chat-suggestions
   orama-chat --> orama-logo-icon
   orama-chat --> orama-textarea
   orama-chat --> orama-button
