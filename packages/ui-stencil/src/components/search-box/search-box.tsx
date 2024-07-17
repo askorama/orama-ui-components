@@ -122,9 +122,10 @@ export class SearchBox {
             <orama-chat style={{ display: globalContext.selectedTab === 'chat' ? 'flex' : 'none' }} />
           </div>
           {/* FOOTER - to replace with component */}
-          <div class="footer" style={{ textAlign: 'center' }}>
+          {/* TODO: Hidden footer for now */}
+          {/* <div class="footer" style={{ textAlign: 'center' }}>
             <orama-text as="span">Orama logo</orama-text>
-          </div>
+          </div> */}
         </div>
       </Host>
     )
