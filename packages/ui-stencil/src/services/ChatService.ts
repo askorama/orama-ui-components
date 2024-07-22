@@ -15,12 +15,13 @@ export class ChatService {
       throw new OramaClientNotInitializedError()
     }
 
+    // TODO: Fix on Orama Client: message event supposed to be emitted as soon as a question is made.
+    chatContext.messages = [...chatContext.messages, { role: 'user', content: term }]
+
     if (!this.answerSession) {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
           onMessageChange: (messages) => {
-            // TODO: Fix on Orama Client: message event supposed to be emitted as soon as a question is made.
-            // And at least user message should be available right away
             chatContext.messages = [...messages]
           },
           onMessageLoading: (loading) => (chatContext.isLoading = loading),
