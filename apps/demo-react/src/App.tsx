@@ -1,7 +1,5 @@
 import './App.css'
-import { defineCustomElements, OramaSearchBox } from 'ui-stencil-react'
-
-// import {} from 'ui-stencil-react'
+import { defineCustomElements, OramaChatBox } from 'ui-stencil-react'
 
 void defineCustomElements()
 
@@ -14,9 +12,14 @@ function App() {
         </section>
 
         <section>
-          <h2>Stencil Components</h2>
+          <h2>ChatBox</h2>
           <div className="component-row">
-            <OramaSearchBox />
+            <OramaChatBox
+              index={{
+                api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
+                endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
+              }}
+            />
           </div>
         </section>
       </main>

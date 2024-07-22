@@ -116,8 +116,14 @@ section {
   margin-bottom: 1rem;
 }
 
+main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .component-row {
-  background-color: #ddd;
-  padding: 1rem;
-  border-radius: 1rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
