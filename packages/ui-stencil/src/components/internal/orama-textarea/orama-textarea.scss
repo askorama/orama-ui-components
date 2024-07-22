@@ -37,6 +37,7 @@ textarea {
   font-family: inherit;
   color: var(--text-color-primary, text-color('primary'));
   width: 100%;
+  font-size: var(--font-size-sm, $font-size-sm);
 
   transition: height 0.1s;
 
@@ -59,5 +60,9 @@ textarea {
   &::-webkit-scrollbar-thumb {
     background-color: #b2b2b285;
     border-radius: var(--border-radius-l, $radius-l);
+  }
+
+  @media (--sm-min) {
+    font-size: var(--font-size-md, $font-size-md);
   }
 }

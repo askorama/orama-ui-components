@@ -39,7 +39,6 @@ graph TD;
   orama-search-results --> orama-text
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-chat-suggestions
-  orama-chat --> orama-logo-icon
   orama-chat --> orama-textarea
   orama-chat --> orama-button
   orama-chat --> orama-text

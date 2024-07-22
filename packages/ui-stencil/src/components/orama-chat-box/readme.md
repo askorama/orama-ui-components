@@ -26,7 +26,6 @@ graph TD;
   orama-chat-box --> orama-chat
   orama-chat --> orama-chat-messages-container
   orama-chat --> orama-chat-suggestions
-  orama-chat --> orama-logo-icon
   orama-chat --> orama-textarea
   orama-chat --> orama-button
   orama-chat --> orama-text

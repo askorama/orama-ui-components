@@ -43,7 +43,8 @@ export class OramaChat {
           {!chatContext.messages.length && !chatContext.isLoading ? (
             <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
           ) : null}
-          <orama-logo-icon />
+          {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
+          {/* <orama-logo-icon /> */}
         </div>
 
         {/* CHAT INPUT */}

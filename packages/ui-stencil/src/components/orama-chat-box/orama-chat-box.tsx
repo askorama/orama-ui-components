@@ -32,7 +32,8 @@ export class ChatBox {
     }
 
     return (
-      <Host>
+      // TODO: only dark theme supported to start
+      <Host id="orama-ui" class="theme-dark">
         <orama-chat style={{ display: 'flex' }} />
       </Host>
     )

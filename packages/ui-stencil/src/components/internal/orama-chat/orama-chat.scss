@@ -3,7 +3,8 @@ orama-chat {
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
-  background: linear-gradient(180deg, var(--background-ai-gradient-one) 0%, var(--background-ai-gradient-two) 50%);
+  // background: linear-gradient(180deg, var(--background-ai-gradient-one) 0%, var(--background-ai-gradient-two) 50%);
+  background: var(--background-color-primary, background-color('primary'));
 }
 
 .messages-container-wrapper {
@@ -17,7 +18,7 @@ orama-chat {
 
 .chat-form-wrapper {
   padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
-  background-color: var(--background-color-tertiary, background-color('tertiary'));
+  // background-color: var(--background-color-tertiary, background-color('tertiary'));
 }
 
 .chat-input {
