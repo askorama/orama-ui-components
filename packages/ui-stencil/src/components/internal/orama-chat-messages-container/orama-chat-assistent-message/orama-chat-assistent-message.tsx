@@ -8,6 +8,7 @@ import { copyToClipboard } from '@/utils/utils'
 @Component({
   tag: 'orama-chat-assistent-message',
   styleUrl: 'orama-chat-assistent-message.scss',
+  shadow: true,
 })
 export class OramaChatAssistentMessage {
   @Prop() message: TChatMessage
@@ -16,7 +17,7 @@ export class OramaChatAssistentMessage {
     return (
       <Host>
         <div class="message-wrapper">
-          <div>{this.message.content}</div>
+          <orama-markdown content={this.message.content} />
           <div class="message-actions">
             <orama-button type="button" variant="icon">
               {/* TODO: We need a feedback for copy to clipboard action  */}

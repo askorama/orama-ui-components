@@ -63,6 +63,9 @@ export namespace Components {
     interface OramaLogoIcon {
         "size": number;
     }
+    interface OramaMarkdown {
+        "content": string;
+    }
     interface OramaNavigationBar {
     }
     interface OramaSearch {
@@ -192,6 +195,12 @@ declare global {
         prototype: HTMLOramaLogoIconElement;
         new (): HTMLOramaLogoIconElement;
     };
+    interface HTMLOramaMarkdownElement extends Components.OramaMarkdown, HTMLStencilElement {
+    }
+    var HTMLOramaMarkdownElement: {
+        prototype: HTMLOramaMarkdownElement;
+        new (): HTMLOramaMarkdownElement;
+    };
     interface HTMLOramaNavigationBarElement extends Components.OramaNavigationBar, HTMLStencilElement {
     }
     var HTMLOramaNavigationBarElement: {
@@ -262,6 +271,7 @@ declare global {
         "orama-facets": HTMLOramaFacetsElement;
         "orama-input": HTMLOramaInputElement;
         "orama-logo-icon": HTMLOramaLogoIconElement;
+        "orama-markdown": HTMLOramaMarkdownElement;
         "orama-navigation-bar": HTMLOramaNavigationBarElement;
         "orama-search": HTMLOramaSearchElement;
         "orama-search-box": HTMLOramaSearchBoxElement;
@@ -314,6 +324,9 @@ declare namespace LocalJSX {
     }
     interface OramaLogoIcon {
         "size"?: number;
+    }
+    interface OramaMarkdown {
+        "content"?: string;
     }
     interface OramaNavigationBar {
     }
@@ -375,6 +388,7 @@ declare namespace LocalJSX {
         "orama-facets": OramaFacets;
         "orama-input": OramaInput;
         "orama-logo-icon": OramaLogoIcon;
+        "orama-markdown": OramaMarkdown;
         "orama-navigation-bar": OramaNavigationBar;
         "orama-search": OramaSearch;
         "orama-search-box": OramaSearchBox;
@@ -399,6 +413,7 @@ declare module "@stencil/core" {
             "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-logo-icon": LocalJSX.OramaLogoIcon & JSXBase.HTMLAttributes<HTMLOramaLogoIconElement>;
+            "orama-markdown": LocalJSX.OramaMarkdown & JSXBase.HTMLAttributes<HTMLOramaMarkdownElement>;
             "orama-navigation-bar": LocalJSX.OramaNavigationBar & JSXBase.HTMLAttributes<HTMLOramaNavigationBarElement>;
             "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
             "orama-search-box": LocalJSX.OramaSearchBox & JSXBase.HTMLAttributes<HTMLOramaSearchBoxElement>;
