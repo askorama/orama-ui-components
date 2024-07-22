@@ -68,6 +68,11 @@ export const OramaLogoIcon = /*@__PURE__*/ defineContainer<JSX.OramaLogoIcon>('o
 ]);
 
 
+export const OramaMarkdown = /*@__PURE__*/ defineContainer<JSX.OramaMarkdown>('orama-markdown', undefined, [
+  'content'
+]);
+
+
 export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined);
 
 
