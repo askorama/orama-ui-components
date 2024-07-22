@@ -10,6 +10,8 @@ export interface TextProps {
   class?: string
   /** optionally change text alignment */
   align?: 'left' | 'center' | 'right'
+  /** show as inactive */
+  inactive?: boolean
 }
 @Component({
   tag: 'orama-text',
@@ -27,6 +29,7 @@ export class OramaText implements TextProps {
   @Prop() styledAs?: TextProps['styledAs']
   @Prop() class?: string
   @Prop() align?: TextProps['align']
+  @Prop() inactive?: TextProps['inactive']
 
   @State() defaultStyle: string =
     this.styledAs === 'span' || this.styledAs === 'small' || this.styledAs === 'p' ? this.styledAs : this.as
@@ -41,6 +44,7 @@ export class OramaText implements TextProps {
         class={{
           [this.defaultStyle]: true,
           [`text-${this.align}`]: !!this.align,
+          'text-inactive': !!this.inactive,
           [this.class]: !!this.class,
         }}
         {...textProps}

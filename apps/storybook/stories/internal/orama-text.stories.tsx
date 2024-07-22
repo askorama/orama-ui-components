@@ -50,3 +50,11 @@ export const Small: Story = {
     class: 'my-optional-class',
   },
 }
+
+export const Inactive: Story = {
+  render: Template('This is an inactive paragraph'),
+  args: {
+    as: 'p',
+    inactive: true,
+  },
+}

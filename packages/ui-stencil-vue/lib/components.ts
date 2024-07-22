@@ -108,7 +108,8 @@ export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-tex
   'as',
   'styledAs',
   'class',
-  'align'
+  'align',
+  'inactive'
 ]);
 
 

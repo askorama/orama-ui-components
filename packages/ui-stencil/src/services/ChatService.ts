@@ -14,6 +14,7 @@ export class ChatService {
     if (!this.oramaClient) {
       throw new OramaClientNotInitializedError()
     }
+    chatContext.error = false
 
     // TODO: Fix on Orama Client: message event supposed to be emitted as soon as a question is made.
     chatContext.messages = [...chatContext.messages, { role: 'user', content: term }]

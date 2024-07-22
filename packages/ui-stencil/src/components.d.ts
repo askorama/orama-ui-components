@@ -102,6 +102,10 @@ export namespace Components {
          */
         "class"?: string;
         /**
+          * show as inactive
+         */
+        "inactive"?: TextProps['inactive'];
+        /**
           * it defines how it should look like
          */
         "styledAs"?: TextProps['styledAs'];
@@ -373,6 +377,10 @@ declare namespace LocalJSX {
           * the optional class name
          */
         "class"?: string;
+        /**
+          * show as inactive
+         */
+        "inactive"?: TextProps['inactive'];
         /**
           * it defines how it should look like
          */

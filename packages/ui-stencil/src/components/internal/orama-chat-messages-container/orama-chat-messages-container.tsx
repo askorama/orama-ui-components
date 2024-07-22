@@ -1,5 +1,6 @@
 import { Component, Host, h } from '@stencil/core'
 import { chatContext } from '@/context/chatContext'
+import '@phosphor-icons/webcomponents/dist/icons/PhWarning.mjs'
 
 @Component({
   tag: 'orama-chat-messages-container',
@@ -22,6 +23,14 @@ export class OramaChatMessagesContainer {
           {chatContext.isLoading && (
             <div class="message-wrapper">
               <orama-dots-loader />
+            </div>
+          )}
+          {chatContext.error && (
+            <div class="message-error">
+              <ph-warning size={16} />
+              <orama-text styledAs="span" inactive>
+                An error occurred while trying to search. Please try again.
+              </orama-text>
             </div>
           )}
         </div>
