@@ -13,9 +13,9 @@ export default meta
 type Story = StoryObj<Components.OramaTextarea>
 
 export const TextArea: Story = {
-  render: ({ ...args }) =>
+  render: ({ minRows, maxRows, placeholder }) =>
     html`
-  <orama-textarea ${spread(args)}>
+  <orama-textarea min-rows="${minRows}" max-rows="${maxRows}" placeholder="${placeholder}">
     <div slot="adornment-start"><button>Start</button></div>
     <div slot="adornment-end"><button>End</button></div>
   </orama-textarea>
