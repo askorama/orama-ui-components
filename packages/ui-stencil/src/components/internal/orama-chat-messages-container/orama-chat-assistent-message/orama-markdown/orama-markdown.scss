@@ -3,7 +3,7 @@ pre > code {
 }
 
 :host {
-  color: var(--text-color-secondary, text-color(-secondary));
+  color: var(--text-color-secondary, text-color(secondary));
 }
 
 .orama-markdown-code {

@@ -6,6 +6,7 @@
     "build": "turbo run build",
     "clean": "turbo run clean",
     "dev": "turbo run dev --filter=ui-stencil --filter=storybook",
+    "dev:all": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "maintenance": "turbo run maintenance"
@@ -19,5 +20,10 @@
     "prettier": "^3.3.2",
     "turbo": "^2.0.5"
   },
-  "packageManager": "pnpm@7.15.0"
+  "engines": {
+    "node": ">=20",
+    "yarn": "Please use pnpm instead of Yarn to install dependencies",
+    "pnpm": ">=8.10.0"
+  },
+  "packageManager": "pnpm@8.10.0"
 }
