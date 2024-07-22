@@ -2,6 +2,7 @@
 $font-primary: 'Instrument Sans', sans-serif;
 
 // FONT SIZE
+$font-size-xxs: pxToRem(10);
 $font-size-xs: pxToRem(12);
 $font-size-sm: pxToRem(14);
 $font-size-md: pxToRem(16);
@@ -17,6 +18,7 @@ $font-line-height-m: 1.5;
 
 $theme-typography: (
   '--font-primary': $font-primary,
+  '--font-size-xxs': $font-size-xxs,
   '--font-size-xs': $font-size-xs,
   '--font-size-sm': $font-size-sm,
   '--font-size-md': $font-size-md,

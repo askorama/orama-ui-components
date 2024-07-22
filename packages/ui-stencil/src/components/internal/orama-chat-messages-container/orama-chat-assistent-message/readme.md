@@ -20,12 +20,14 @@
 
 ### Depends on
 
+- [orama-markdown](orama-markdown)
 - [orama-button](../../orama-button)
 - [orama-text](../../orama-text)
 
 ### Graph
 ```mermaid
 graph TD;
+  orama-chat-assistent-message --> orama-markdown
   orama-chat-assistent-message --> orama-button
   orama-chat-assistent-message --> orama-text
   orama-chat-messages-container --> orama-chat-assistent-message
