@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core'
+import { Component, Host, Listen, Prop, State, h } from '@stencil/core'
 import type { TChatMessage } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhCopy.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowsClockwise.mjs'
@@ -13,24 +13,57 @@ import { copyToClipboard } from '@/utils/utils'
 export class OramaChatAssistentMessage {
   @Prop() message: TChatMessage
 
+  @State() isCopied = false
+  handleCopyToClipboard = () => {
+    this.isCopied = true
+    setTimeout(() => (this.isCopied = false), 1000)
+    copyToClipboard(this.message.content)
+  }
+
+  @State() isRetrying = false
+  handleRetryMessage = () => {
+    // todo: replace with actual retry logic
+    setTimeout(() => (this.isRetrying = false), 2000)
+    this.isRetrying = !this.isRetrying
+  }
+
+  @State() isDisliked = false
+  handleDislikeMessage = () => {
+    this.isDisliked = !this.isDisliked
+  }
+
   render() {
     return (
       <Host>
         <div class="message-wrapper">
           <orama-markdown content={this.message.content} />
           <div class="message-actions">
-            <orama-button type="button" variant="icon">
-              {/* TODO: We need a feedback for copy to clipboard action  */}
-              <ph-copy
-                onClick={() => copyToClipboard(this.message.content)}
-                onKeyDown={() => copyToClipboard(this.message.content)}
-              />
+            <orama-button
+              type="button"
+              variant="icon"
+              onClick={this.handleCopyToClipboard}
+              onKeyDown={this.handleCopyToClipboard}
+            >
+              {this.isCopied ? <ph-copy weight="fill" /> : <ph-copy />}
+              {this.isCopied && <span class="tooltip">Copied!</span>}
             </orama-button>
-            <orama-button type="button" variant="icon">
-              <ph-arrows-clockwise />
+            <orama-button
+              type="button"
+              variant="icon"
+              onClick={this.handleRetryMessage}
+              onKeyDown={this.handleRetryMessage}
+            >
+              <span class={this.isRetrying ? 'retrying' : ''}>
+                {this.isRetrying ? <ph-arrows-clockwise weight="fill" /> : <ph-arrows-clockwise />}
+              </span>
             </orama-button>
-            <orama-button type="button" variant="icon">
-              <ph-thumbs-down />
+            <orama-button
+              type="button"
+              variant="icon"
+              onClick={this.handleDislikeMessage}
+              onKeyDown={this.handleDislikeMessage}
+            >
+              {this.isDisliked ? <ph-thumbs-down weight="fill" /> : <ph-thumbs-down />}
             </orama-button>
           </div>
         </div>

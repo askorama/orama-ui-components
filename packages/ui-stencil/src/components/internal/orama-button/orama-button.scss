@@ -1,5 +1,6 @@
 // TODO: We need to revisit this styles. There are some duplications and variables without fallback
 .button {
+  position: relative;
   display: inline-flex;
   gap: var(--spacing-s, $spacing-s);
   align-items: center;

@@ -1,4 +1,4 @@
-import { CloudIndexConfig } from '@/types'
+import type { CloudIndexConfig } from '@/types'
 import { OramaClient } from '@oramacloud/client'
 
 export function format(first: string, middle: string, last: string): string {
