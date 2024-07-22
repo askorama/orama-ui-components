@@ -35,7 +35,7 @@ export namespace Components {
         "message": TChatMessage;
     }
     interface OramaChatBox {
-        "cloudIndex": CloudIndexConfig;
+        "index": CloudIndexConfig;
     }
     interface OramaChatMessagesContainer {
     }
@@ -296,7 +296,7 @@ declare namespace LocalJSX {
         "message"?: TChatMessage;
     }
     interface OramaChatBox {
-        "cloudIndex"?: CloudIndexConfig;
+        "index"?: CloudIndexConfig;
     }
     interface OramaChatMessagesContainer {
     }

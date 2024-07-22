@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property     | Attribute | Description | Type                                     | Default     |
-| ------------ | --------- | ----------- | ---------------------------------------- | ----------- |
-| `cloudIndex` | --        |             | `{ api_key: string; endpoint: string; }` | `undefined` |
+| Property | Attribute | Description | Type                                     | Default     |
+| -------- | --------- | ----------- | ---------------------------------------- | ----------- |
+| `index`  | --        |             | `{ api_key: string; endpoint: string; }` | `undefined` |
 
 
 ## Dependencies

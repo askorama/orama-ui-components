@@ -28,6 +28,13 @@
   background-color: var(--background-color-primary, background-color('primary'));
   width: max-content;
   color: var(--text-color-secondary, text-color('secondary'));
+  transition: background-color 0.2s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--background-color-tertiary, background-color('tertiary'));
+    }
+  }
 
   @media (--md-min) {
     padding: var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);

@@ -2,6 +2,10 @@ pre > code {
   position: relative;
 }
 
+:host {
+  color: var(--text-color-secondary, text-color(-secondary));
+}
+
 .orama-markdown-code {
   border-radius: 0 0 var(--radius-s, $radius-s) var(--radius-s, $radius-s);
 }

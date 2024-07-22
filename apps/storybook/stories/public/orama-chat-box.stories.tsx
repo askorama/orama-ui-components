@@ -11,9 +11,9 @@ type Story = StoryObj<Components.OramaChatBox>
 
 export const ChatBox: Story = {
   args: {
-    cloudIndex: {
-      api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
-      endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
+    index: {
+      api_key: '6kHcoevr3zkbBmC2hHqlcNQrOgejS4ds',
+      endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign',
     },
   },
 }

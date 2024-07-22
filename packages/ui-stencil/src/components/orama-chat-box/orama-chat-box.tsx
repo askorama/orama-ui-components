@@ -10,10 +10,10 @@ import type { CloudIndexConfig } from '@/types'
   shadow: true,
 })
 export class ChatBox {
-  @Prop() cloudIndex: CloudIndexConfig
+  @Prop() index: CloudIndexConfig
 
   @Watch('cloudIndex')
-  cloudIndexChanged() {
+  indexChanged() {
     this.startChatService()
   }
 
@@ -22,7 +22,7 @@ export class ChatBox {
   }
 
   startChatService() {
-    const oramaClient = initOramaClient(this.cloudIndex)
+    const oramaClient = initOramaClient(this.index)
     chatContext.chatService = new ChatService(oramaClient)
   }
 

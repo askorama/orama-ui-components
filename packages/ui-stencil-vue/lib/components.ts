@@ -26,7 +26,7 @@ export const OramaChatAssistentMessage = /*@__PURE__*/ defineContainer<JSX.Orama
 
 
 export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('orama-chat-box', undefined, [
-  'cloudIndex'
+  'index'
 ]);
 
 
