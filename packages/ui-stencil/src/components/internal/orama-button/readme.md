@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                                 | Default     |
-| ---------- | ---------- | ----------- | ------------------------------------ | ----------- |
-| `as`       | `as`       |             | `"a" \| "button"`                    | `'button'`  |
-| `class`    | `class`    |             | `string`                             | `undefined` |
-| `disabled` | `disabled` |             | `boolean`                            | `undefined` |
-| `type`     | `type`     |             | `"button" \| "reset" \| "submit"`    | `undefined` |
-| `variant`  | `variant`  |             | `"icon" \| "primary" \| "secondary"` | `'primary'` |
+| Property      | Attribute      | Description | Type                                 | Default     |
+| ------------- | -------------- | ----------- | ------------------------------------ | ----------- |
+| `as`          | `as`           |             | `"a" \| "button"`                    | `'button'`  |
+| `class`       | `class`        |             | `string`                             | `undefined` |
+| `disabled`    | `disabled`     |             | `boolean`                            | `undefined` |
+| `type`        | `type`         |             | `"button" \| "reset" \| "submit"`    | `undefined` |
+| `variant`     | `variant`      |             | `"icon" \| "primary" \| "secondary"` | `'primary'` |
+| `withTooltip` | `with-tooltip` |             | `string`                             | `undefined` |
 
 
 ## Dependencies

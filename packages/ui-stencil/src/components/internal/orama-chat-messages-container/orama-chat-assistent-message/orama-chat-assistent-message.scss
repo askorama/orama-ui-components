@@ -59,3 +59,16 @@ orama-chat-assistent-message {
     white-space: nowrap;
   }
 }
+
+.retrying {
+  animation: rotate360 2s ease-in-out 1;
+}
+
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

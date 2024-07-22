@@ -28,6 +28,7 @@ export namespace Components {
         "disabled"?: boolean;
         "type"?: ButtonProps['type'];
         "variant"?: ButtonProps['variant'];
+        "withTooltip"?: string;
     }
     interface OramaChat {
     }
@@ -302,6 +303,7 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "type"?: ButtonProps['type'];
         "variant"?: ButtonProps['variant'];
+        "withTooltip"?: string;
     }
     interface OramaChat {
     }
