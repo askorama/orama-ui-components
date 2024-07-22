@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "turbo run build",
+    "build:storybook": "turbo run build --filter=storybook",
     "clean": "turbo run clean",
     "dev": "turbo run dev --filter=ui-stencil --filter=storybook",
     "dev:all": "turbo run dev",
