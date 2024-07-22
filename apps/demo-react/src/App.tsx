@@ -1,5 +1,5 @@
 import './App.css'
-import { defineCustomElements, SearchBox } from 'ui-stencil-react'
+import { defineCustomElements, OramaSearchBox } from 'ui-stencil-react'
 
 // import {} from 'ui-stencil-react'
 
@@ -16,7 +16,7 @@ function App() {
         <section>
           <h2>Stencil Components</h2>
           <div className="component-row">
-            <SearchBox />
+            <OramaSearchBox />
           </div>
         </section>
       </main>
