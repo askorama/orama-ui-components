@@ -29,6 +29,7 @@ export class OramaChatAssistentMessage {
 
   @State() isDisliked = false
   handleDislikeMessage = () => {
+    // todo: replace with actual dislike logic
     this.isDisliked = !this.isDisliked
   }
 
