@@ -44,9 +44,9 @@ export class OramaChatAssistentMessage {
               variant="icon"
               onClick={this.handleCopyToClipboard}
               onKeyDown={this.handleCopyToClipboard}
+              withTooltip={this.isCopied ? 'Copied!' : undefined}
             >
-              {this.isCopied ? <ph-copy weight="fill" /> : <ph-copy />}
-              {this.isCopied && <span class="tooltip">Copied!</span>}
+              <ph-copy />
             </orama-button>
             <orama-button
               type="button"

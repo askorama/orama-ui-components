@@ -13,7 +13,8 @@ export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama
   'class',
   'variant',
   'type',
-  'disabled'
+  'disabled',
+  'withTooltip'
 ]);
 
 

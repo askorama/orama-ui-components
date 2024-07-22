@@ -40,6 +40,7 @@ export class OramaButton {
   @Prop() variant?: ButtonProps['variant'] = 'primary'
   @Prop() type?: ButtonProps['type']
   @Prop() disabled?: boolean
+  @Prop() withTooltip?: string
 
   render() {
     const Tag = this.as
@@ -51,6 +52,7 @@ export class OramaButton {
     return (
       <Tag class={buttonClass} {...buttonProps} disabled={this.disabled}>
         <slot />
+        {this.withTooltip && <span class="button__tooltip">{this.withTooltip}</span>}
       </Tag>
     )
   }
