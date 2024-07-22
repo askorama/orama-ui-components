@@ -22,9 +22,12 @@ export class ChatService {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
           onMessageChange: (messages) => {
+            chatContext.isLoading = false
             chatContext.messages = [...messages]
           },
-          onMessageLoading: (loading) => (chatContext.isLoading = loading),
+          onMessageLoading: (loading) => {
+            chatContext.isLoading = loading
+          },
           onSourceChange: (sources) => {
             console.log(sources)
           },

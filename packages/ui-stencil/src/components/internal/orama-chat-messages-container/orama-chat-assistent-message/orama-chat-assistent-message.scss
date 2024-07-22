@@ -8,13 +8,13 @@ orama-chat-assistent-message {
   border-radius: var(--radius-m, $radius-m);
   padding: var(--spacing-m, $spacing-m);
   margin: 0 var(--spacing-l, $spacing-l);
+}
 
-  .message-actions {
-    display: flex;
-    margin-top: var(--spacing-xl, $spacing-xl);
-    gap: var(--spacing-s, $spacing-s);
-    justify-content: end;
-  }
+.message-actions {
+  display: flex;
+  margin-top: var(--spacing-xl, $spacing-xl);
+  gap: var(--spacing-s, $spacing-s);
+  justify-content: end;
 }
 
 .sources-wrapper {

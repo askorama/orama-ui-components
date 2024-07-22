@@ -17,8 +17,8 @@ import type { CloudIndexConfig } from '@/types'
 export class SearchBox {
   @Element() el: HTMLElement
 
-  @Prop() themeConfig: Partial<TThemeOverrides>
-  @Prop() colorScheme: 'dark' | 'light' | 'system' = 'light'
+  @Prop() themeConfig?: Partial<TThemeOverrides>
+  @Prop() colorScheme?: 'dark' | 'light' | 'system' = 'light'
   @Prop() facetProperty?: string
   @Prop() open? = false
   @Prop() resultMap?: Partial<ResultMap> = {}

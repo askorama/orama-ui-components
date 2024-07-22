@@ -1,0 +1,35 @@
+.dots-loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: pxToRem(6);
+  height: pxToRem(6);
+  margin: 0 var(--spacing-xs, $spacing-xs);
+  background-color: var(--text-color-primary, text-color(primary));
+  border-radius: 50%;
+  animation: dot-slide-up 1.4s infinite both;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes dot-slide-up {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: translate3d(0, 0, 0);
+  }
+  40% {
+    opacity: 1;
+    transform: translate3d(0, -4px, 0);
+  }
+}

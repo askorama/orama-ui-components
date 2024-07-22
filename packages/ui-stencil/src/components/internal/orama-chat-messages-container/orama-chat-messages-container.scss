@@ -25,3 +25,10 @@ orama-chat-messages-container {
   margin: var(--spacing-l, $spacing-l) 0;
   gap: var(--spacing-l, $spacing-l);
 }
+
+.message-wrapper {
+  background: var(--background-color-secondary, background-color('secondary'));
+  border-radius: var(--radius-m, $radius-m);
+  padding: var(--spacing-m, $spacing-m);
+  margin: 0 var(--spacing-l, $spacing-l);
+}

@@ -19,6 +19,11 @@ export class OramaChatMessagesContainer {
               <orama-chat-assistent-message key={index} message={{ ...message }} />
             ),
           )}
+          {chatContext.isLoading && (
+            <div class="message-wrapper">
+              <orama-dots-loader />
+            </div>
+          )}
         </div>
       </Host>
     )
