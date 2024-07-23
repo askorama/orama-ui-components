@@ -1,9 +1,9 @@
-import { defineCustomElements } from 'ui-stencil/loader'
+// import { defineCustomElements } from 'ui-stencil/loader'
 import 'ui-stencil/dist/orama-ui/orama-ui.css'
 import { html } from 'lit-html'
 import { DARK_THEME_BG, LIGTH_THEME_BG } from '../constants'
 
-defineCustomElements()
+// defineCustomElements()
 
 const preview = {
   decorators: [
