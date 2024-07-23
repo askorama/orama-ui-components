@@ -7,7 +7,7 @@
     <section>
       <h2>Stencil Components</h2>
       <div class="component-row">
-        <my-button />
+        <orama-chat-box />
       </div>
     </section>
   </main>
