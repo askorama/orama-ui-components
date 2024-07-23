@@ -7,7 +7,7 @@
     "build:storybook": "turbo run build --filter=storybook",
     "clean": "turbo run clean",
     "dev": "turbo run dev --filter=ui-stencil --filter=storybook",
-    "dev:storybook": "turbo run dev --filter=storybook",
+    "dev:demo": "turbo run dev --filter=demo-react --filter=demo-vue --filter=demo-angular",
     "dev:all": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
