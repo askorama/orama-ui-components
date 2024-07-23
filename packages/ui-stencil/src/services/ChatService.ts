@@ -30,7 +30,7 @@ export class ChatService {
             chatContext.isLoading = loading
           },
           onSourceChange: (sources) => {
-            console.log(sources)
+            console.log('***sources***', sources)
           },
         },
       })
