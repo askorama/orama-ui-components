@@ -2,7 +2,7 @@
   "name": "@orama/react-components",
   "version": "0.0.1",
   "description": "React components for Orama Cloud",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "author": "",
   "main": "dist/index.js",
   "module": "dist/index.js",

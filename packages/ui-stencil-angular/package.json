@@ -3,6 +3,7 @@
   "name": "@orama/angular-components",
   "version": "0.0.1",
   "description": "Angular components for Orama Cloud",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "npx -p @angular/cli ng build component-library",
     "clean": "rm -rf node_modules .turbo",
