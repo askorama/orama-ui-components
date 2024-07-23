@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
-#orama-ui {
+// selector id starts with orama-ui
+[id^='orama-ui'] {
   @include font-smoothing();
   font-weight: normal;
   text-rendering: optimizeLegibility;
