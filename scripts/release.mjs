@@ -7,7 +7,6 @@ const packages = [
   'ui-stencil',
   'ui-stencil-react',
   'ui-stencil-angular',
-  'ui-stencil-react',
   'ui-stencil-vue',
 ]
 
