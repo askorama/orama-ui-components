@@ -23,4 +23,8 @@
   &.theme-dark {
     @include mapToCustomProperties($theme-colors-dark);
   }
+
+  .sr-only {
+    @include screen-reader-only();
+  }
 }

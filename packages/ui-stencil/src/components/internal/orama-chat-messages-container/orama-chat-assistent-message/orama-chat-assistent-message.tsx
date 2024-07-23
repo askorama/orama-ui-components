@@ -45,6 +45,7 @@ export class OramaChatAssistentMessage {
               onClick={this.handleCopyToClipboard}
               onKeyDown={this.handleCopyToClipboard}
               withTooltip={this.isCopied ? 'Copied!' : undefined}
+              aria-label="Copy message"
             >
               <ph-copy />
             </orama-button>
@@ -53,6 +54,7 @@ export class OramaChatAssistentMessage {
               variant="icon"
               onClick={this.handleRetryMessage}
               onKeyDown={this.handleRetryMessage}
+              aria-label="Retry message"
             >
               <span class={this.isRetrying ? 'retrying' : ''}>
                 {this.isRetrying ? <ph-arrows-clockwise weight="fill" /> : <ph-arrows-clockwise />}
@@ -63,14 +65,14 @@ export class OramaChatAssistentMessage {
               variant="icon"
               onClick={this.handleDislikeMessage}
               onKeyDown={this.handleDislikeMessage}
+              aria-label="Dislike message"
             >
               {this.isDisliked ? <ph-thumbs-down weight="fill" /> : <ph-thumbs-down />}
             </orama-button>
           </div>
         </div>
         <div class="sources-wrapper">
-          {/* TODO: We need to have a way to display this title only for screen readers so we can improve accessibility */}
-          {/* <h2>Sources</h2> */}
+          <h2 class="sr-only">Sources</h2>
           <div class="source">
             <orama-text as="h3" styledAs="span" class="source-title">
               Title title title
