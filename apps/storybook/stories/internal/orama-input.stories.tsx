@@ -1,7 +1,7 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
 import { html } from 'lit-html'
 
-import type { Components } from 'ui-stencil'
+import type { Components } from '@orama/wc-components'
 const meta: Meta<Components.OramaInput> = {
   title: 'Internal/Form',
   component: 'orama-input',

@@ -1,7 +1,8 @@
 {
-  "private": true,
-  "name": "ui-stencil-angular",
-  "version": "0.0.0",
+  "private": false,
+  "name": "@orama/angular-components",
+  "version": "0.0.1",
+  "description": "Angular components for Orama Cloud",
   "scripts": {
     "build": "npx -p @angular/cli ng build component-library",
     "clean": "rm -rf node_modules .turbo",
@@ -21,7 +22,7 @@
     "@angular/router": "^18.0.5",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.3",
-    "ui-stencil": "workspace:*",
+    "@orama/wc-components": "workspace:*",
     "zone.js": "~0.14.7"
   },
   "devDependencies": {

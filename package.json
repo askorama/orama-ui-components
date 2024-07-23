@@ -11,7 +11,8 @@
     "dev:all": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
-    "maintenance": "turbo run maintenance"
+    "maintenance": "turbo run maintenance",
+    "publish:packages": "node scripts/release.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",

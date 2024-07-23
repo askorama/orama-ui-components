@@ -1,5 +1,5 @@
 import './App.css'
-import { defineCustomElements, OramaChatBox } from 'ui-stencil-react'
+import { defineCustomElements, OramaChatBox } from '@orama/react-components'
 
 void defineCustomElements()
 

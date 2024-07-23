@@ -11,7 +11,7 @@ import { angularOutputTarget } from '@stencil/angular-output-target'
 import { vueOutputTarget } from '@stencil/vue-output-target'
 
 const namespace = 'orama-ui'
-const componentCorePackage = 'ui-stencil'
+const componentCorePackage = '@orama/wc-components'
 
 export const config: Config = {
   namespace,

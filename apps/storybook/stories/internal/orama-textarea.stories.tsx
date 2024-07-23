@@ -1,7 +1,7 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
 import { html } from 'lit-html'
 import { spread } from '@open-wc/lit-helpers'
-import type { Components } from 'ui-stencil'
+import type { Components } from '@orama/wc-components'
 
 const meta: Meta<Components.OramaTextarea> = {
   title: 'Internal/Form',

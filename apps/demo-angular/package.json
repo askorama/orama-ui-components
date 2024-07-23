@@ -21,8 +21,8 @@
     "@angular/router": "^18.0.5",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.3",
-    "ui-stencil": "workspace:*",
-    "ui-stencil-angular": "workspace:*",
+    "@orama/wc-components": "workspace:*",
+    "@orama/angular-components": "workspace:*",
     "zone.js": "~0.14.7"
   },
   "devDependencies": {

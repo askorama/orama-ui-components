@@ -1,5 +1,5 @@
 import type { StoryObj, Meta } from '@storybook/html'
-import type { Components } from 'ui-stencil'
+import type { Components } from '@orama/wc-components'
 
 const meta: Meta<Components.OramaSearchResults> = {
   title: 'Internal/SearchResults',

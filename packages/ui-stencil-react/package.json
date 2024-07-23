@@ -1,7 +1,7 @@
 {
-  "name": "ui-stencil-react",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@orama/react-components",
+  "version": "0.0.1",
+  "description": "React components for Orama Cloud",
   "license": "ISC",
   "author": "",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
   },
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "ui-stencil": "workspace:*"
+    "@orama/wc-components": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@storybook/web-components": "^8.2.3",
-    "ui-stencil": "workspace:*"
+    "@orama/wc-components": "workspace:*"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",

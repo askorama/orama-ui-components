@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ui-stencil-vue": "workspace:*",
+    "@orama/vue-components": "workspace:*",
     "vue": "^3.4.30"
   },
   "devDependencies": {

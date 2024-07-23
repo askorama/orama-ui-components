@@ -1,5 +1,5 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
-import type { Components } from 'ui-stencil'
+import type { Components } from '@orama/wc-components'
 import { spread } from '@open-wc/lit-helpers'
 import { html } from 'lit-html'
 

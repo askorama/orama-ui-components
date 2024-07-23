@@ -1,5 +1,5 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
-import type { Components } from 'ui-stencil'
+import type { Components } from '@orama/wc-components'
 import { fn } from '@storybook/test'
 
 const meta: Meta<Components.OramaChatSuggestions> = {

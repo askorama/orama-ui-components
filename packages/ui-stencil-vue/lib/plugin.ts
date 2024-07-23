@@ -1,5 +1,5 @@
 import type { Plugin } from 'vue'
-import { defineCustomElements } from 'ui-stencil/loader'
+import { defineCustomElements } from '@orama/wc-components/loader'
 
 export const ComponentLibrary: Plugin = {
   async install() {
@@ -10,4 +10,4 @@ export const ComponentLibrary: Plugin = {
 export * from './components'
 export * from './plugin'
 
-import 'ui-stencil/dist/orama-ui/orama-ui.css'
+import '@orama/wc-components/dist/orama-ui/orama-ui.css'
