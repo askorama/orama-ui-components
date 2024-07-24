@@ -8,21 +8,27 @@ import { createStore } from '@stencil/store'
 //   content: string
 // }
 
-// TODO: this should be imported from orama-client
-export type TChatMessage = {
-  role: 'user' | 'assistant'
-  content: string
-  // messageBlocks: TChatMessageBlock[]
+// TODO;: this type should be imported from orama-client
+export enum TAnswerStatus {
+  idle = 'idle',
+  loading = 'loading',
+  streaming = 'streaming',
+  error = 'error',
+  done = 'done',
 }
 
-// TODO;: this type should be imported from orama-client
-export type TAnswerStatus = 'idle' | 'loading' | 'streaming' | 'error' | 'done'
+export type TSource = {
+  title: string
+  description?: string
+  path: string
+}
 
 export type TChatInteraction = {
   query: string
   response?: string
-  sources?: any[] // fix type
+  sources?: TSource[]
   status: TAnswerStatus
+  interactionId?: string
 }
 
 const { state: chatContext } = createStore({

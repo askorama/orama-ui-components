@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type                                                                            | Default     |
-| ------------- | --------- | ----------- | ------------------------------------------------------------------------------- | ----------- |
-| `interaction` | --        |             | `{ query: string; response?: string; sources?: any[]; status: TAnswerStatus; }` | `undefined` |
+| Property      | Attribute | Description | Type                                                                                                        | Default     |
+| ------------- | --------- | ----------- | ----------------------------------------------------------------------------------------------------------- | ----------- |
+| `interaction` | --        |             | `{ query: string; response?: string; sources?: TSource[]; status: TAnswerStatus; interactionId?: string; }` | `undefined` |
 
 
 ## Dependencies

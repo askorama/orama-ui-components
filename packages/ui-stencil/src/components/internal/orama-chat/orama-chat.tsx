@@ -1,5 +1,5 @@
 import { Component, Host, State, h } from '@stencil/core'
-import { chatContext } from '@/context/chatContext'
+import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 
@@ -37,7 +37,7 @@ export class OramaChat {
     // get latest interactions
     const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
     const lastInteractionStatus = lastInteraction?.status
-    const lastInteractionCompleted = lastInteractionStatus === 'done' || lastInteractionStatus === 'error'
+    const lastInteractionStreaming = lastInteractionStatus === TAnswerStatus.streaming
 
     return (
       <Host>
@@ -72,7 +72,15 @@ export class OramaChat {
                 placeholder="Ask me anything"
               >
                 <div slot="adornment-end">
-                  {lastInteractionCompleted ? (
+                  {lastInteractionStreaming ? (
+                    <orama-button
+                      type="submit"
+                      onClick={this.handleAbortAnswerClick}
+                      onKeyDown={this.handleAbortAnswerClick}
+                    >
+                      <ph-stop size={16} />
+                    </orama-button>
+                  ) : (
                     <orama-button
                       type="submit"
                       onClick={this.handleSubmit}
@@ -80,14 +88,6 @@ export class OramaChat {
                       disabled={!this.inputValue}
                     >
                       <ph-paper-plane-tilt size={16} />
-                    </orama-button>
-                  ) : (
-                    <orama-button
-                      type="submit"
-                      onClick={this.handleAbortAnswerClick}
-                      onKeyDown={this.handleAbortAnswerClick}
-                    >
-                      <ph-stop size={16} />
                     </orama-button>
                   )}
                 </div>

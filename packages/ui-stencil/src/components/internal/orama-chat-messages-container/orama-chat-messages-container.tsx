@@ -8,7 +8,6 @@ import '@phosphor-icons/webcomponents/dist/icons/PhWarning.mjs'
 })
 export class OramaChatMessagesContainer {
   render() {
-    console.log('chatContext.interactions', chatContext.interactions)
     return (
       <Host>
         <div class="messages-container">

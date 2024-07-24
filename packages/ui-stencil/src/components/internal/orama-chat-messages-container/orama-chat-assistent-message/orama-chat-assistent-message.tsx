@@ -1,8 +1,9 @@
-import { Component, Host, Listen, Prop, State, h } from '@stencil/core'
-import type { TChatInteraction, TChatMessage } from '@/context/chatContext'
+import { Component, Host, Prop, State, h } from '@stencil/core'
+import type { TChatInteraction } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhCopy.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowsClockwise.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhThumbsDown.mjs'
+import { chatContext } from '@/context/chatContext'
 import { copyToClipboard } from '@/utils/utils'
 
 @Component({
@@ -34,6 +35,9 @@ export class OramaChatAssistentMessage {
   }
 
   render() {
+    const isLastInteraction =
+      this.interaction.interactionId === chatContext.interactions[chatContext.interactions.length - 1].interactionId
+
     if (this.interaction.status === 'loading') {
       return (
         <div class="message-wrapper">
@@ -68,17 +72,19 @@ export class OramaChatAssistentMessage {
                 >
                   <ph-copy />
                 </orama-button>
-                <orama-button
-                  type="button"
-                  variant="icon"
-                  onClick={this.handleRetryMessage}
-                  onKeyDown={this.handleRetryMessage}
-                  aria-label="Retry message"
-                >
-                  <span class={this.isRetrying ? 'retrying' : ''}>
-                    {this.isRetrying ? <ph-arrows-clockwise weight="fill" /> : <ph-arrows-clockwise />}
-                  </span>
-                </orama-button>
+                {isLastInteraction && (
+                  <orama-button
+                    type="button"
+                    variant="icon"
+                    onClick={this.handleRetryMessage}
+                    onKeyDown={this.handleRetryMessage}
+                    aria-label="Retry message"
+                  >
+                    <span class={this.isRetrying ? 'retrying' : ''}>
+                      {this.isRetrying ? <ph-arrows-clockwise weight="fill" /> : <ph-arrows-clockwise />}
+                    </span>
+                  </orama-button>
+                )}
                 <orama-button
                   type="button"
                   variant="icon"
@@ -96,14 +102,14 @@ export class OramaChatAssistentMessage {
               <h2 class="sr-only">Sources</h2>
               {this.interaction.sources.map((source, index) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                <div class="source" key={`source-${index}`}>
+                <a href={source.path} class="source" key={`source-${index}`} target="_blank" rel="noopener noreferrer">
                   <orama-text as="h3" styledAs="span" class="source-title">
                     {source.title}
                   </orama-text>
                   <orama-text as="p" styledAs="span" class="source-subtitle">
                     {source.description}
                   </orama-text>
-                </div>
+                </a>
               ))}
             </div>
           )}

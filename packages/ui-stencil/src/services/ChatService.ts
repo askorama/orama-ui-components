@@ -1,6 +1,6 @@
 import type { OramaClient, AnswerSession } from '@oramacloud/client'
 import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
-import { chatContext, type TAnswerStatus } from '@/context/chatContext'
+import { chatContext, TAnswerStatus } from '@/context/chatContext'
 
 export class ChatService {
   oramaClient: OramaClient
@@ -17,7 +17,7 @@ export class ChatService {
     chatContext.error = false
 
     // TODO: possibly fix on Orama Client
-    chatContext.interactions = [...chatContext.interactions, { query: term, status: 'loading' }]
+    chatContext.interactions = [...chatContext.interactions, { query: term, status: TAnswerStatus.loading }]
 
     if (!this.answerSession) {
       this.answerSession = this.oramaClient.createAnswerSession({
@@ -33,17 +33,20 @@ export class ChatService {
               return {
                 title: source.document?.title,
                 description: source.document?.content,
+                path: source.document?.path,
               }
             })
+
+            console.log('latest sources', latestState.sources)
 
             let answerStatus = 'loading' as TAnswerStatus
 
             if (loading && response) {
-              answerStatus = 'streaming'
+              answerStatus = TAnswerStatus.streaming
             }
 
             if (!loading && response) {
-              answerStatus = 'done'
+              answerStatus = TAnswerStatus.done
             }
 
             chatContext.interactions = chatContext.interactions.map((interaction, index) => {
@@ -52,6 +55,7 @@ export class ChatService {
                   ...interaction,
                   response,
                   sources,
+                  interactionId: latestState.interactionId,
                   status: answerStatus,
                 }
               }
