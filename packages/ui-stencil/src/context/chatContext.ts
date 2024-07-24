@@ -32,10 +32,8 @@ export type TChatInteraction = {
 }
 
 const { state: chatContext } = createStore({
-  // TODO: Evaluate if we need to have a error object/string instead of just a boolean
   chatService: null as ChatService | null,
   interactions: [] as TChatInteraction[],
-  error: false,
 })
 
 export { chatContext }

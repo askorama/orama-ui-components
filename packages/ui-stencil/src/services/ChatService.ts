@@ -14,7 +14,6 @@ export class ChatService {
     if (!this.oramaClient) {
       throw new OramaClientNotInitializedError()
     }
-    chatContext.error = false
 
     // TODO: possibly fix on Orama Client
     chatContext.interactions = [...chatContext.interactions, { query: term, status: TAnswerStatus.loading }]
@@ -66,7 +65,6 @@ export class ChatService {
       })
     }
 
-    chatContext.error = false
     return this.answerSession.ask({ term: term }).catch((error) => {
       chatContext.interactions = chatContext.interactions.map((interaction, index) => {
         if (index === chatContext.interactions.length - 1) {
