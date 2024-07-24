@@ -12,7 +12,11 @@ export class OramaChatUserMessage {
   render() {
     return (
       <Host>
-        <div class="message-wrapper">{this.interaction.query}</div>
+        <div class="message-wrapper">
+          <orama-text as="h2" class="chat-question">
+            {this.interaction.query}
+          </orama-text>
+        </div>
       </Host>
     )
   }
