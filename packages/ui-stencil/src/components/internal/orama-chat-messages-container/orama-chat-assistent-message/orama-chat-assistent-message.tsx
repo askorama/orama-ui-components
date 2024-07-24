@@ -57,66 +57,68 @@ export class OramaChatAssistentMessage {
       )
     }
 
-    if (this.interaction.response) {
-      return (
-        <Host>
-          <div class="message-wrapper">
-            <orama-markdown content={this.interaction.response} />
-            {this.interaction.status === 'done' && (
-              <div class="message-actions">
+    if (!this.interaction.response) {
+      return
+    }
+
+    return (
+      <Host>
+        <div class="message-wrapper">
+          <orama-markdown content={this.interaction.response} />
+          {this.interaction.status === 'done' && (
+            <div class="message-actions">
+              <orama-button
+                type="button"
+                variant="icon"
+                onClick={this.handleCopyToClipboard}
+                onKeyDown={this.handleCopyToClipboard}
+                withTooltip={this.isCopied ? 'Copied!' : undefined}
+                aria-label="Copy message"
+              >
+                <ph-copy />
+              </orama-button>
+              {isLastInteraction && (
                 <orama-button
                   type="button"
                   variant="icon"
-                  onClick={this.handleCopyToClipboard}
-                  onKeyDown={this.handleCopyToClipboard}
-                  withTooltip={this.isCopied ? 'Copied!' : undefined}
-                  aria-label="Copy message"
+                  onClick={this.handleRetryMessage}
+                  onKeyDown={this.handleRetryMessage}
+                  aria-label="Retry message"
                 >
-                  <ph-copy />
+                  <span class={this.isRetrying ? 'retrying' : ''}>
+                    {this.isRetrying ? <ph-arrows-clockwise weight="fill" /> : <ph-arrows-clockwise />}
+                  </span>
                 </orama-button>
-                {isLastInteraction && (
-                  <orama-button
-                    type="button"
-                    variant="icon"
-                    onClick={this.handleRetryMessage}
-                    onKeyDown={this.handleRetryMessage}
-                    aria-label="Retry message"
-                  >
-                    <span class={this.isRetrying ? 'retrying' : ''}>
-                      {this.isRetrying ? <ph-arrows-clockwise weight="fill" /> : <ph-arrows-clockwise />}
-                    </span>
-                  </orama-button>
-                )}
-                <orama-button
-                  type="button"
-                  variant="icon"
-                  onClick={this.handleDislikeMessage}
-                  onKeyDown={this.handleDislikeMessage}
-                  aria-label="Dislike message"
-                >
-                  {this.isDisliked ? <ph-thumbs-down weight="fill" /> : <ph-thumbs-down />}
-                </orama-button>
-              </div>
-            )}
-          </div>
-          {!!this.interaction.sources?.length && this.interaction.status === 'done' && (
-            <div class="sources-wrapper">
-              <h2 class="sr-only">Sources</h2>
-              {this.interaction.sources.map((source, index) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                <a href={source.path} class="source" key={`source-${index}`} target="_blank" rel="noopener noreferrer">
-                  <orama-text as="h3" styledAs="span" class="source-title">
-                    {source.title}
-                  </orama-text>
-                  <orama-text as="p" styledAs="span" class="source-subtitle">
-                    {source.description}
-                  </orama-text>
-                </a>
-              ))}
+              )}
+              <orama-button
+                type="button"
+                variant="icon"
+                onClick={this.handleDislikeMessage}
+                onKeyDown={this.handleDislikeMessage}
+                aria-label="Dislike message"
+              >
+                {this.isDisliked ? <ph-thumbs-down weight="fill" /> : <ph-thumbs-down />}
+              </orama-button>
             </div>
           )}
-        </Host>
-      )
-    }
+        </div>
+        {!!this.interaction.sources?.length && this.interaction.status === 'done' && (
+          <div class="sources-wrapper">
+            <h2 class="sr-only">Sources</h2>
+            {this.interaction.sources.map((source, index) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+              <a href={source.path} class="source" key={`source-${index}`} target="_blank" rel="noopener noreferrer">
+                <orama-text as="h3" styledAs="span" class="source-title">
+                  {source.title}
+                </orama-text>
+                <orama-text as="p" styledAs="span" class="source-subtitle">
+                  {source.description}
+                </orama-text>
+              </a>
+            ))}
+          </div>
+        )}
+      </Host>
+    )
   }
 }

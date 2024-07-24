@@ -36,8 +36,6 @@ export class ChatService {
               }
             })
 
-            console.log('latest state', latestState)
-
             let answerStatus = 'loading' as TAnswerStatus
 
             if (loading && response) {
@@ -88,7 +86,6 @@ export class ChatService {
   }
 
   regenerateLatest = async () => {
-    console.log('regenerating latest')
     if (!this.answerSession) {
       throw new OramaClientNotInitializedError()
     }
