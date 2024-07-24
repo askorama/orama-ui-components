@@ -19,10 +19,6 @@ orama-chat-assistent-message {
 
 .sources-wrapper {
   display: flex;
-
-  // TODO: Remove None display when the time comes
-  display: none;
-
   margin-top: var(--spacing-s, $spacing-s);
   padding: 0 var(--spacing-l, $spacing-l);
   gap: var(--spacing-s, $spacing-s);
@@ -62,6 +58,10 @@ orama-chat-assistent-message {
 
 .retrying {
   animation: rotate360 2s ease-in-out 1;
+}
+
+.sr-only {
+  @include screen-reader-only();
 }
 
 @keyframes rotate360 {

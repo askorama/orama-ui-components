@@ -1,5 +1,5 @@
 import { Component, Host, Prop, h } from '@stencil/core'
-import type { TChatMessage } from '@/context/chatContext'
+import type { TChatInteraction, TChatMessage } from '@/context/chatContext'
 
 @Component({
   tag: 'orama-chat-user-message',
@@ -7,12 +7,12 @@ import type { TChatMessage } from '@/context/chatContext'
   shadow: true,
 })
 export class OramaChatUserMessage {
-  @Prop() message: TChatMessage
+  @Prop() interaction: TChatInteraction
 
   render() {
     return (
       <Host>
-        <div class="message-wrapper">{this.message.content}</div>
+        <div class="message-wrapper">{this.interaction.query}</div>
       </Host>
     )
   }

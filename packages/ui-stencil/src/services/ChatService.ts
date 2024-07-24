@@ -1,6 +1,6 @@
 import type { OramaClient, AnswerSession } from '@oramacloud/client'
 import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
-import { chatContext } from '@/context/chatContext'
+import { chatContext, type TAnswerStatus } from '@/context/chatContext'
 
 export class ChatService {
   oramaClient: OramaClient
@@ -16,37 +16,57 @@ export class ChatService {
     }
     chatContext.error = false
 
-    // TODO: Fix on Orama Client: message event supposed to be emitted as soon as a question is made.
-    chatContext.messages = [...chatContext.messages, { role: 'user', content: term }]
+    // TODO: possibly fix on Orama Client
+    chatContext.interactions = [...chatContext.interactions, { query: term, status: 'loading' }]
 
     if (!this.answerSession) {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
-          onMessageChange: (messages) => {
-            chatContext.isLoading = false
-            chatContext.messages = [...messages]
-          },
-          onMessageLoading: (loading) => {
-            chatContext.isLoading = loading
-          },
-          onSourceChange: (sources) => {
-            console.log('***sources***', sources)
+          onStateChange: (state) => {
+            const latestState = state[state.length - 1]
+
+            const loading = latestState.loading
+            const response = latestState.response
+
+            const sources = (latestState.sources as any)?.map((source) => {
+              // TODO: this should depend on the source type
+              return {
+                title: source.document?.title,
+                description: source.document?.content,
+              }
+            })
+
+            let answerStatus = 'loading' as TAnswerStatus
+
+            if (loading && response) {
+              answerStatus = 'streaming'
+            }
+
+            if (!loading && response) {
+              answerStatus = 'done'
+            }
+
+            chatContext.interactions = chatContext.interactions.map((interaction, index) => {
+              if (index === chatContext.interactions.length - 1) {
+                return {
+                  ...interaction,
+                  response,
+                  sources,
+                  status: answerStatus,
+                }
+              }
+              return interaction
+            })
           },
         },
       })
     }
 
-    chatContext.isLoading = true
     chatContext.error = false
-    return this.answerSession
-      .ask({ term: term })
-      .catch((error) => {
-        chatContext.error = true
-        console.error(error)
-      })
-      .finally(() => {
-        chatContext.isLoading = false
-      })
+    return this.answerSession.ask({ term: term }).catch((error) => {
+      chatContext.error = true
+      console.error(error)
+    })
   }
 
   abortAnswer = () => {

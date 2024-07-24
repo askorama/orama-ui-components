@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                                                | Default     |
-| --------- | --------- | ----------- | --------------------------------------------------- | ----------- |
-| `message` | --        |             | `{ role: "assistant" \| "user"; content: string; }` | `undefined` |
+| Property      | Attribute | Description | Type                                                                            | Default     |
+| ------------- | --------- | ----------- | ------------------------------------------------------------------------------- | ----------- |
+| `interaction` | --        |             | `{ query: string; response?: string; sources?: any[]; status: TAnswerStatus; }` | `undefined` |
 
 
 ## Dependencies
