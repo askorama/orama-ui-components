@@ -37,7 +37,7 @@ export class ChatService {
               }
             })
 
-            console.log('latest sources', latestState.sources)
+            console.log('latest state', latestState)
 
             let answerStatus = 'loading' as TAnswerStatus
 
@@ -68,7 +68,15 @@ export class ChatService {
 
     chatContext.error = false
     return this.answerSession.ask({ term: term }).catch((error) => {
-      chatContext.error = true
+      chatContext.interactions = chatContext.interactions.map((interaction, index) => {
+        if (index === chatContext.interactions.length - 1) {
+          return {
+            ...interaction,
+            status: TAnswerStatus.error,
+          }
+        }
+        return interaction
+      })
       console.error(error)
     })
   }
@@ -81,8 +89,12 @@ export class ChatService {
     this.answerSession.abortAnswer()
   }
 
-  // TODO
-  resendLatest = () => {
-    throw new Error('Not implemented')
+  regenerateLatest = async () => {
+    console.log('regenerating latest')
+    if (!this.answerSession) {
+      throw new OramaClientNotInitializedError()
+    }
+
+    this.answerSession.regenerateLast({ stream: false })
   }
 }

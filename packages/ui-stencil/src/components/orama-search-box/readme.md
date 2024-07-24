@@ -44,7 +44,6 @@ graph TD;
   orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message
-  orama-chat-messages-container --> orama-text
   orama-chat-assistent-message --> orama-dots-loader
   orama-chat-assistent-message --> orama-text
   orama-chat-assistent-message --> orama-markdown

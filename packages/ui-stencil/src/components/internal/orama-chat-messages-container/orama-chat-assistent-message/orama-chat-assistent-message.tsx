@@ -3,6 +3,7 @@ import type { TChatInteraction } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhCopy.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowsClockwise.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhThumbsDown.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhWarning.mjs'
 import { chatContext } from '@/context/chatContext'
 import { copyToClipboard } from '@/utils/utils'
 
@@ -24,8 +25,8 @@ export class OramaChatAssistentMessage {
   @State() isRetrying = false
   handleRetryMessage = () => {
     // todo: replace with actual retry logic
-    setTimeout(() => (this.isRetrying = false), 2000)
     this.isRetrying = !this.isRetrying
+    chatContext.chatService?.regenerateLatest()
   }
 
   @State() isDisliked = false
@@ -47,7 +48,8 @@ export class OramaChatAssistentMessage {
     }
     if (this.interaction.status === 'error') {
       return (
-        <div class="message-wrapper">
+        <div class="message-error">
+          <ph-warning size={16} />
           <orama-text styledAs="span" inactive>
             An error occurred while trying to search. Please try again.
           </orama-text>

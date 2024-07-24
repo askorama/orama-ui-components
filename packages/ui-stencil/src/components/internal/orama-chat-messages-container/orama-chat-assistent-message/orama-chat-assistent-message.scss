@@ -10,6 +10,19 @@ orama-chat-assistent-message {
   margin: 0 var(--spacing-l, $spacing-l);
 }
 
+.message-error {
+  text-align: center;
+  padding: var(--spacing-l, $spacing-l) var(--spacing-s, $spacing-s);
+  background: var(--background-color-secondary, background-color('secondary'));
+  border-radius: var(--radius-m, $radius-m);
+  margin: 0 var(--spacing-l, $spacing-l);
+
+  ph-warning {
+    display: block;
+    color: var(--text-color-inactive, text-color('inactive'));
+  }
+}
+
 .message-actions {
   display: flex;
   margin-top: var(--spacing-xl, $spacing-xl);
