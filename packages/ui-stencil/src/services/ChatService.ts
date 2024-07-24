@@ -92,4 +92,13 @@ export class ChatService {
 
     this.answerSession.regenerateLast({ stream: false })
   }
+
+  resetChat = async () => {
+    if (!this.answerSession) {
+      throw new OramaClientNotInitializedError()
+    }
+
+    this.answerSession.clearSession()
+    chatContext.interactions = []
+  }
 }

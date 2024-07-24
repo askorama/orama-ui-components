@@ -31,12 +31,14 @@ export namespace Components {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "placeholder"?: string;
     }
     interface OramaChatAssistentMessage {
         "interaction": TChatInteraction;
     }
     interface OramaChatBox {
         "index": CloudIndexConfig;
+        "placeholder"?: any;
     }
     interface OramaChatMessagesContainer {
     }
@@ -306,12 +308,14 @@ declare namespace LocalJSX {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "placeholder"?: string;
     }
     interface OramaChatAssistentMessage {
         "interaction"?: TChatInteraction;
     }
     interface OramaChatBox {
         "index"?: CloudIndexConfig;
+        "placeholder"?: any;
     }
     interface OramaChatMessagesContainer {
     }

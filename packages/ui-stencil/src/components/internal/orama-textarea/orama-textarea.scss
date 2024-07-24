@@ -2,7 +2,7 @@ orama-textarea {
   position: relative;
   display: flex;
   align-items: center;
-  padding: var(--spacing-xs, $spacing-xs) var(--spacing-xs, $spacing-xs) var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
+  padding: var(--spacing-m, $spacing-m);
   border-radius: var(--radius-l, $radius-l);
   border: 1px solid var(--border-color-primary, border-color('primary'));
   background: var(--background-color-secondary, background-color('secondary'));

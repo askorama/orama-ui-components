@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property      | Attribute     | Description | Type     | Default             |
+| ------------- | ------------- | ----------- | -------- | ------------------- |
+| `placeholder` | `placeholder` |             | `string` | `'Ask me anything'` |
+
+
 ## Dependencies
 
 ### Used by

@@ -36,6 +36,11 @@ export class OramaChatAssistentMessage {
   }
 
   render() {
+    // When we clear the section for some reasin this component tries to render once more and it reaises an error
+    if (!chatContext.interactions.length) {
+      return
+    }
+
     const isLastInteraction =
       this.interaction.interactionId === chatContext.interactions[chatContext.interactions.length - 1].interactionId
 

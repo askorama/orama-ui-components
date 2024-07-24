@@ -1,16 +1,21 @@
-import { Component, Host, State, h } from '@stencil/core'
+import { Component, Host, Prop, State, h } from '@stencil/core'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 
 // TODO: Hardcoding suggestions for now
-const SUGGESTIONS = ['How to get started?', 'What are the prices?', 'What is Orama?']
+const SUGGESTIONS = [
+  'Why is Orama better than other search or AI solutions?',
+  'How does Orama ensure correct answers?',
+  'What are the steps to implement?',
+]
 
 @Component({
   tag: 'orama-chat',
   styleUrl: 'orama-chat.scss',
 })
 export class OramaChat {
+  @Prop() placeholder?: string = 'Ask me anything'
   @State() inputValue = ''
 
   handleSubmit = (e: Event) => {
@@ -69,7 +74,7 @@ export class OramaChat {
                 onInput={(e: Event) => {
                   this.inputValue = (e.target as HTMLInputElement).value
                 }}
-                placeholder="Ask me anything"
+                placeholder={this.placeholder}
               >
                 <div slot="adornment-end">
                   {lastInteractionStreaming ? (
