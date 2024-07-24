@@ -22,7 +22,7 @@ export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-cha
 
 
 export const OramaChatAssistentMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatAssistentMessage>('orama-chat-assistent-message', undefined, [
-  'message'
+  'interaction'
 ]);
 
 
@@ -41,7 +41,7 @@ export const OramaChatSuggestions = /*@__PURE__*/ defineContainer<JSX.OramaChatS
 
 
 export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatUserMessage>('orama-chat-user-message', undefined, [
-  'message'
+  'interaction'
 ]);
 
 

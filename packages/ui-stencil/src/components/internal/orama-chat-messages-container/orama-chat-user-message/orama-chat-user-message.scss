@@ -3,9 +3,22 @@
   justify-content: end;
   color: var(--text-color-primary, text-color('primary'));
   padding: 0 var(--spacing-l, $spacing-l);
+
+  @media (--sm-min) {
+    justify-content: start;
+  }
 }
 
 .message-wrapper {
   border-radius: var(--radius-s, $radius-s);
   padding: var(--radius-s, $radius-s) var(--radius-m, $radius-m);
+}
+
+.chat-question {
+  font-weight: 400;
+
+  @media (--sm-min) {
+    margin-bottom: var(--spacing-l, $spacing-l);
+    font-size: pxToRem(20);
+  }
 }

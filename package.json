@@ -6,7 +6,7 @@
     "build": "turbo run build",
     "build:storybook": "turbo run build --filter=storybook",
     "clean": "turbo run clean",
-    "dev": "turbo run dev --filter=ui-stencil --filter=storybook",
+    "dev": "turbo run dev --filter=@orama/wc-components --filter=storybook",
     "dev:demo": "turbo run dev --filter=demo-react --filter=demo-vue --filter=demo-angular",
     "dev:all": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",

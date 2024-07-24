@@ -9,12 +9,12 @@
 
 ### Used by
 
- - [orama-chat-messages-container](../orama-chat-messages-container)
+ - [orama-chat-assistent-message](../orama-chat-messages-container/orama-chat-assistent-message)
 
 ### Graph
 ```mermaid
 graph TD;
-  orama-chat-messages-container --> orama-dots-loader
+  orama-chat-assistent-message --> orama-dots-loader
   style orama-dots-loader fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

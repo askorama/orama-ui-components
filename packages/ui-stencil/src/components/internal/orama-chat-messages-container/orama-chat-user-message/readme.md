@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                                                | Default     |
-| --------- | --------- | ----------- | --------------------------------------------------- | ----------- |
-| `message` | --        |             | `{ role: "assistant" \| "user"; content: string; }` | `undefined` |
+| Property      | Attribute | Description | Type                                                                                                        | Default     |
+| ------------- | --------- | ----------- | ----------------------------------------------------------------------------------------------------------- | ----------- |
+| `interaction` | --        |             | `{ query: string; response?: string; sources?: TSource[]; status: TAnswerStatus; interactionId?: string; }` | `undefined` |
 
 
 ## Dependencies
@@ -18,9 +18,14 @@
 
  - [orama-chat-messages-container](..)
 
+### Depends on
+
+- [orama-text](../../orama-text)
+
 ### Graph
 ```mermaid
 graph TD;
+  orama-chat-user-message --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   style orama-chat-user-message fill:#f9f,stroke:#333,stroke-width:4px
 ```

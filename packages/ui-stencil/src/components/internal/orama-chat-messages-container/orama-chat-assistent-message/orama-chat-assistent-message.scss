@@ -10,6 +10,19 @@ orama-chat-assistent-message {
   margin: 0 var(--spacing-l, $spacing-l);
 }
 
+.message-error {
+  text-align: center;
+  padding: var(--spacing-l, $spacing-l) var(--spacing-s, $spacing-s);
+  background: var(--background-color-secondary, background-color('secondary'));
+  border-radius: var(--radius-m, $radius-m);
+  margin: 0 var(--spacing-l, $spacing-l);
+
+  ph-warning {
+    display: block;
+    color: var(--text-color-inactive, text-color('inactive'));
+  }
+}
+
 .message-actions {
   display: flex;
   margin-top: var(--spacing-xl, $spacing-xl);
@@ -19,10 +32,6 @@ orama-chat-assistent-message {
 
 .sources-wrapper {
   display: flex;
-
-  // TODO: Remove None display when the time comes
-  display: none;
-
   margin-top: var(--spacing-s, $spacing-s);
   padding: 0 var(--spacing-l, $spacing-l);
   gap: var(--spacing-s, $spacing-s);
@@ -36,6 +45,7 @@ orama-chat-assistent-message {
   width: 180px;
   flex-grow: 0;
   flex-shrink: 0;
+  text-decoration: none;
 
   & ::after {
     content: '';
@@ -62,6 +72,10 @@ orama-chat-assistent-message {
 
 .retrying {
   animation: rotate360 2s ease-in-out 1;
+}
+
+.sr-only {
+  @include screen-reader-only();
 }
 
 @keyframes rotate360 {

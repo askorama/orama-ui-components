@@ -1,5 +1,5 @@
 import { Component, Host, State, h } from '@stencil/core'
-import { chatContext } from '@/context/chatContext'
+import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 
@@ -34,13 +34,18 @@ export class OramaChat {
   }
 
   render() {
+    // get latest interactions
+    const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
+    const lastInteractionStatus = lastInteraction?.status
+    const lastInteractionStreaming = lastInteractionStatus === TAnswerStatus.streaming
+
     return (
       <Host>
         {/* CHAT MESSAGES */}
         <div class="messages-container-wrapper">
           <orama-chat-messages-container />
           {/* TODO: Provide a better animation */}
-          {!chatContext.messages.length && !chatContext.isLoading ? (
+          {!chatContext.interactions?.length ? (
             <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
           ) : null}
           {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
@@ -67,7 +72,7 @@ export class OramaChat {
                 placeholder="Ask me anything"
               >
                 <div slot="adornment-end">
-                  {chatContext.isLoading ? (
+                  {lastInteractionStreaming ? (
                     <orama-button
                       type="submit"
                       onClick={this.handleAbortAnswerClick}

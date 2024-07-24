@@ -8,18 +8,32 @@ import { createStore } from '@stencil/store'
 //   content: string
 // }
 
-export type TChatMessage = {
-  role: 'user' | 'assistant'
-  content: string
-  // messageBlocks: TChatMessageBlock[]
+// TODO;: this type should be imported from orama-client
+export enum TAnswerStatus {
+  idle = 'idle',
+  loading = 'loading',
+  streaming = 'streaming',
+  error = 'error',
+  done = 'done',
+}
+
+export type TSource = {
+  title: string
+  description?: string
+  path: string
+}
+
+export type TChatInteraction = {
+  query: string
+  response?: string
+  sources?: TSource[]
+  status: TAnswerStatus
+  interactionId?: string
 }
 
 const { state: chatContext } = createStore({
-  messages: [] as TChatMessage[],
-  isLoading: false,
-  // TODO: Evaluate if we need to have a error object/string instead of just a boolean
-  error: false,
   chatService: null as ChatService | null,
+  interactions: [] as TChatInteraction[],
 })
 
 export { chatContext }
