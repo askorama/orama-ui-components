@@ -77,7 +77,7 @@ export class OramaChatAssistentMessage {
           <orama-markdown content={this.interaction.response} />
 
           <div class={{ 'message-actions': true, hidden: this.interaction.status !== TAnswerStatus.done }}>
-            {this.interaction.latest && this.interaction.status === 'done' && (
+            {this.interaction.latest && (
               <orama-button
                 type="button"
                 variant="icon"

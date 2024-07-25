@@ -48,7 +48,7 @@
 .source {
   position: relative;
   overflow: hidden;
-  width: 195px;
+  width: pxToRem(195);
   flex-grow: 0;
   flex-shrink: 0;
   text-decoration: none;

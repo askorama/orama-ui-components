@@ -18,9 +18,8 @@ export class OramaChatMessagesContainer {
     return (
       <Host>
         <div class="messages-container">
-          {this.interactions.map((interaction, index) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-            <div key={`interaction-${index}`}>
+          {this.interactions.map((interaction) => (
+            <div key={interaction.interactionId}>
               <orama-chat-user-message interaction={{ ...interaction }} />
               <orama-chat-assistent-message interaction={{ ...interaction }} />
               {interaction.latest && interaction.status === 'done' && interaction.relatedQueries?.length && (
