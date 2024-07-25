@@ -75,40 +75,39 @@ export class OramaChatAssistentMessage {
         )}
         <div class="message-wrapper">
           <orama-markdown content={this.interaction.response} />
-          {this.interaction.status === TAnswerStatus.done && (
-            <div class="message-actions">
-              {this.interaction.latest && this.interaction.status === 'done' && (
-                <orama-button
-                  type="button"
-                  variant="icon"
-                  onClick={this.handleRetryMessage}
-                  onKeyDown={this.handleRetryMessage}
-                  aria-label="Retry message"
-                >
-                  <ph-arrows-clockwise size="16px" />
-                </orama-button>
-              )}
+
+          <div class={{ 'message-actions': true, hidden: this.interaction.status !== TAnswerStatus.done }}>
+            {this.interaction.latest && this.interaction.status === 'done' && (
               <orama-button
                 type="button"
                 variant="icon"
-                onClick={this.handleCopyToClipboard}
-                onKeyDown={this.handleCopyToClipboard}
-                withTooltip={this.isCopied ? 'Copied!' : undefined}
-                aria-label="Copy message"
+                onClick={this.handleRetryMessage}
+                onKeyDown={this.handleRetryMessage}
+                aria-label="Retry message"
               >
-                <ph-copy size="16px" />
+                <ph-arrows-clockwise size="16px" />
               </orama-button>
-              <orama-button
-                type="button"
-                variant="icon"
-                onClick={this.handleDislikeMessage}
-                onKeyDown={this.handleDislikeMessage}
-                aria-label="Dislike message"
-              >
-                {this.isDisliked ? <ph-thumbs-down weight="fill" size="16px" /> : <ph-thumbs-down size="16px" />}
-              </orama-button>
-            </div>
-          )}
+            )}
+            <orama-button
+              type="button"
+              variant="icon"
+              onClick={this.handleCopyToClipboard}
+              onKeyDown={this.handleCopyToClipboard}
+              withTooltip={this.isCopied ? 'Copied!' : undefined}
+              aria-label="Copy message"
+            >
+              <ph-copy size="16px" />
+            </orama-button>
+            <orama-button
+              type="button"
+              variant="icon"
+              onClick={this.handleDislikeMessage}
+              onKeyDown={this.handleDislikeMessage}
+              aria-label="Dislike message"
+            >
+              {this.isDisliked ? <ph-thumbs-down weight="fill" size="16px" /> : <ph-thumbs-down size="16px" />}
+            </orama-button>
+          </div>
         </div>
       </Host>
     )

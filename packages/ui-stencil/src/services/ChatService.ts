@@ -15,6 +15,8 @@ export class ChatService {
       throw new OramaClientNotInitializedError()
     }
 
+    chatContext.lockScrollOnBottom = true
+
     // TODO: possibly fix on Orama Client
     chatContext.interactions = [...chatContext.interactions, { query: term, status: TAnswerStatus.loading }]
 
@@ -100,6 +102,8 @@ export class ChatService {
     }
 
     this.answerSession.clearSession()
+    // TODO: Not sure if this is the right place to do it
+    chatContext.lockScrollOnBottom = true
     chatContext.interactions = []
   }
 }

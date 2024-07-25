@@ -1,7 +1,8 @@
-import { Component, Fragment, Host, Prop, State, h } from '@stencil/core'
+import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhArrowCircleDown.mjs'
 
 // TODO: Hardcoding suggestions for now
 const SUGGESTIONS = [
@@ -10,6 +11,8 @@ const SUGGESTIONS = [
   'What are the steps to implement?',
 ]
 
+const BOTTOM_THRESHOLD = 1
+
 @Component({
   tag: 'orama-chat',
   styleUrl: 'orama-chat.scss',
@@ -17,6 +20,83 @@ const SUGGESTIONS = [
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
   @State() inputValue = ''
+  messagesContainerRef!: HTMLElement
+  isScrolling = false
+  prevScrollTop = 0
+  scrollTarget = 0
+
+  isScrollOnBottom = () => {
+    const scrollableHeight = this.messagesContainerRef.scrollHeight - this.messagesContainerRef.clientHeight
+
+    return this.messagesContainerRef.scrollTop + BOTTOM_THRESHOLD >= scrollableHeight
+  }
+
+  scrollToBottom = (options = { animated: true }) => {
+    if (this.messagesContainerRef) {
+      if (!options.animated) {
+        this.messagesContainerRef.scrollTop = this.messagesContainerRef.scrollHeight
+
+        chatContext.lockScrollOnBottom = true
+        return
+      }
+
+      this.isScrolling = true
+      const startTime = performance.now()
+      const startPosition = this.messagesContainerRef.scrollTop
+
+      const duration = 300 // Custom duration in milliseconds
+
+      const animateScroll = (currentTime: number) => {
+        if (!this.messagesContainerRef || !this.isScrolling) {
+          return
+        }
+        const scrollTarget = this.messagesContainerRef.scrollHeight - this.messagesContainerRef.clientHeight
+        const elapsedTime = currentTime - startTime
+        const scrollProgress = Math.min(1, elapsedTime / duration)
+        const easeFunction = this.easeInOutQuad(scrollProgress)
+        const scrollTo = startPosition + (scrollTarget - startPosition) * easeFunction
+
+        this.messagesContainerRef.scrollTo(0, scrollTo)
+
+        if (elapsedTime < duration) {
+          requestAnimationFrame(animateScroll)
+        } else {
+          this.isScrolling = false
+        }
+      }
+
+      requestAnimationFrame(animateScroll)
+    }
+  }
+
+  // Easing function for smooth scroll animation
+  easeInOutQuad = (t: number) => {
+    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+  }
+
+  recalculateLockOnBottom = () => {
+    // Get the current scroll position
+    const currentScrollTop = this.messagesContainerRef.scrollTop
+
+    const scrollOnBottom = this.isScrollOnBottom()
+
+    chatContext.lockScrollOnBottom = scrollOnBottom
+    if (scrollOnBottom) {
+      this.isScrolling = false
+    }
+
+    // Update the previous scroll position
+    this.prevScrollTop = currentScrollTop
+  }
+
+  handleWheel = (e: WheelEvent) => {
+    this.recalculateLockOnBottom()
+  }
+
+  componentDidLoad() {
+    this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
+    this.recalculateLockOnBottom()
+  }
 
   handleSubmit = (e: Event) => {
     e.preventDefault()
@@ -44,20 +124,38 @@ export class OramaChat {
     const lastInteractionStatus = lastInteraction?.status
     const lastInteractionStreaming = lastInteractionStatus === TAnswerStatus.streaming
 
+    if (chatContext.lockScrollOnBottom && !this.isScrolling) {
+      this.scrollToBottom({ animated: false })
+    }
+
     return (
       <Host>
         {/* CHAT MESSAGES */}
-        <div class="messages-container-wrapper">
-          {chatContext.interactions?.length ? (
-            <orama-chat-messages-container interactions={chatContext.interactions} />
-          ) : null}
+        <div class={'messages-container-wrapper-non-scrollable'}>
+          <div class="messages-container-wrapper" ref={(ref) => (this.messagesContainerRef = ref)}>
+            {chatContext.interactions?.length ? (
+              <orama-chat-messages-container interactions={chatContext.interactions} />
+            ) : null}
 
-          {/* TODO: Provide a better animation */}
-          {!chatContext.interactions?.length ? (
-            <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
-          ) : null}
-          {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
-          {/* <orama-logo-icon /> */}
+            {/* TODO: Provide a better animation */}
+            {!chatContext.interactions?.length ? (
+              <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
+            ) : null}
+            {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
+            {/* <orama-logo-icon /> */}
+          </div>
+          {!chatContext.lockScrollOnBottom && (
+            <button
+              class="lock-scroll-on-bottom-button-wrapper"
+              type="button"
+              onClick={() => {
+                chatContext.lockScrollOnBottom = true
+                this.scrollToBottom({ animated: true })
+              }}
+            >
+              <ph-arrow-circle-down size={'18px'} />
+            </button>
+          )}
         </div>
 
         {/* CHAT INPUT */}
