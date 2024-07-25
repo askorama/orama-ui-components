@@ -27,13 +27,16 @@ export type TChatInteraction = {
   query: string
   response?: string
   sources?: TSource[]
+  latest?: boolean
   status: TAnswerStatus
   interactionId?: string
+  relatedQueries?: string[]
 }
 
-const { state: chatContext } = createStore({
+const { state: chatContext, ...chatStore } = createStore({
   chatService: null as ChatService | null,
   interactions: [] as TChatInteraction[],
+  lockScrollOnBottom: true as boolean,
 })
 
-export { chatContext }
+export { chatContext, chatStore }

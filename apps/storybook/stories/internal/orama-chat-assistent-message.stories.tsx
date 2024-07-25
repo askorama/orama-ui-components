@@ -93,43 +93,66 @@ Ready to start writing?  Either start changing stuff on the left or
 
 export const ChatAssistentMessage: Story = {
   args: {
-    message: {
-      role: 'assistant',
-      content: MARKDOWN_MESSAGE,
+    interaction: {
+      query: 'What is the capital of France?',
+      response: MARKDOWN_MESSAGE,
+      sources: [
+        {
+          title: 'Paris',
+          description: 'The capital of France',
+          path: 'https://en.wikipedia.org/wiki/Paris',
+        },
+      ],
+      // biome-ignore lint/suspicious/noExplicitAny: Enum is rasing error here...
+      status: 'done' as any,
+      interactionId: '123',
+      latest: true,
     },
   },
 }
 
 export const ChatAssistentMessageWithFakeRendering: StoryWithFakeRendering = {
-  render: ({ message, steps, frequency }) => {
-    let fakeStreamingMessage = ''
+  render: ({ interaction, steps, frequency }) => {
+    const fakeStreamingMessage = interaction.response
     let count = 0
 
     const intervalId = setInterval(() => {
       if (count >= MARKDOWN_MESSAGE.length) {
         clearInterval(intervalId)
+        // biome-ignore lint/suspicious/noExplicitAny: Enum giving error
+        interaction.status = 'done' as any
       }
 
-      fakeStreamingMessage = message.content.substring(0, count)
+      interaction.response = fakeStreamingMessage.substring(0, count)
 
       // biome-ignore lint/suspicious/noExplicitAny: Let me be, Typescript...
       const element = document.getElementById('fake-stream-assistent-message') as any
-      element.message = {
-        role: 'assistant',
-        content: fakeStreamingMessage,
+      element.interaction = {
+        ...interaction,
       }
 
       count = count + steps
     }, frequency)
 
-    return html`<orama-chat-assistent-message id="fake-stream-assistent-message" .message=${fakeStreamingMessage}></orama-chat-assistent-message>`
+    return html`<orama-chat-assistent-message id="fake-stream-assistent-message" .interaction=${fakeStreamingMessage}></orama-chat-assistent-message>`
   },
   args: {
     steps: 20,
     frequency: 50,
-    message: {
-      role: 'assistant',
-      content: MARKDOWN_MESSAGE,
+    interaction: {
+      query: 'Example question from the user',
+      response: MARKDOWN_MESSAGE,
+      sources: [
+        {
+          title: 'Paris',
+          description: 'The capital of France',
+          path: 'https://en.wikipedia.org/wiki/Paris',
+        },
+      ],
+      // biome-ignore lint/suspicious/noExplicitAny: Enum giving error
+      status: 'streaming' as any,
+      interactionId: '123',
+      latest: true,
     },
   },
 }

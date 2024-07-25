@@ -1,4 +1,5 @@
 orama-chat {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -14,6 +15,49 @@ orama-chat {
   display: flex;
   flex-direction: column;
   overflow: auto;
+
+  // Maybe move somewhere else to reuse in some somponents, but not globally
+  &::-webkit-scrollbar {
+    width: 0.3em;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    // TODO: Should it be a variable?
+    background-color: #b2b2b285;
+    border-radius: var(--border-radius-l, $radius-l);
+  }
+}
+
+.messages-container-wrapper-non-scrollable {
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.lock-scroll-on-bottom-button-wrapper {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-s, $spacing-s);
+  background-color: var(--background-color-tertiary, background-color('tertiary'));
+  color: var(--icon-color-tertiary, text-color('tertiary'));
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-primary, font('primary'));
+  border-radius: 50%;
 }
 
 .chat-form-wrapper {

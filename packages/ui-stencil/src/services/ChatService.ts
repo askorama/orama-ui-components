@@ -15,6 +15,8 @@ export class ChatService {
       throw new OramaClientNotInitializedError()
     }
 
+    chatContext.lockScrollOnBottom = true
+
     // TODO: possibly fix on Orama Client
     chatContext.interactions = [...chatContext.interactions, { query: term, status: TAnswerStatus.loading }]
 
@@ -27,6 +29,7 @@ export class ChatService {
             const loading = latestState.loading
             const response = latestState.response
 
+            // biome-ignore lint/suspicious/noExplicitAny: Client should expose this type
             const sources = (latestState.sources as any)?.map((source) => {
               // TODO: this should depend on the source type
               return {
@@ -36,13 +39,11 @@ export class ChatService {
               }
             })
 
-            let answerStatus = 'loading' as TAnswerStatus
+            let answerStatus = TAnswerStatus.loading
 
             if (loading && response) {
               answerStatus = TAnswerStatus.streaming
-            }
-
-            if (!loading && response) {
+            } else if (!loading && response) {
               answerStatus = TAnswerStatus.done
             }
 
@@ -54,16 +55,18 @@ export class ChatService {
                   sources,
                   interactionId: latestState.interactionId,
                   status: answerStatus,
+                  latest: true,
                 }
               }
-              return interaction
+              return { ...interaction, latest: false }
             })
           },
         },
       })
     }
 
-    return this.answerSession.ask({ term: term }).catch((error) => {
+    // TODO: WE may want to reveive ask props as a Service prop instead of enforcing it here
+    return this.answerSession.ask({ term: term, related: { howMany: 3, format: 'question' } }).catch((error) => {
       chatContext.interactions = chatContext.interactions.map((interaction, index) => {
         if (index === chatContext.interactions.length - 1) {
           return {
@@ -91,5 +94,16 @@ export class ChatService {
     }
 
     this.answerSession.regenerateLast({ stream: false })
+  }
+
+  resetChat = async () => {
+    if (!this.answerSession) {
+      throw new OramaClientNotInitializedError()
+    }
+
+    this.answerSession.clearSession()
+    // TODO: Not sure if this is the right place to do it
+    chatContext.lockScrollOnBottom = true
+    chatContext.interactions = []
   }
 }

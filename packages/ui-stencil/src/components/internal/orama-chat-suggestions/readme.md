@@ -18,11 +18,13 @@
 ### Used by
 
  - [orama-chat](../orama-chat)
+ - [orama-chat-messages-container](../orama-chat-messages-container)
 
 ### Graph
 ```mermaid
 graph TD;
   orama-chat --> orama-chat-suggestions
+  orama-chat-messages-container --> orama-chat-suggestions
   style orama-chat-suggestions fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

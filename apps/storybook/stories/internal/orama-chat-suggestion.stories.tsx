@@ -13,7 +13,11 @@ type Story = StoryObj<Components.OramaChatSuggestions>
 
 export const ChatSuggestions: Story = {
   args: {
-    suggestions: ['How to get started?', 'What are the prices?', 'What is Orama?'],
+    suggestions: [
+      'Why is Orama better than other search or AI solutions?',
+      'How does Orama ensure correct answers?',
+      'What are the steps to implement?',
+    ],
     suggestionClicked: fn(),
   },
 }

@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property      | Attribute     | Description | Type     | Default             |
+| ------------- | ------------- | ----------- | -------- | ------------------- |
+| `placeholder` | `placeholder` |             | `string` | `'Ask me anything'` |
+
+
 ## Dependencies
 
 ### Used by
@@ -30,6 +37,7 @@ graph TD;
   orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message
+  orama-chat-messages-container --> orama-chat-suggestions
   orama-chat-user-message --> orama-text
   orama-chat-assistent-message --> orama-dots-loader
   orama-chat-assistent-message --> orama-text

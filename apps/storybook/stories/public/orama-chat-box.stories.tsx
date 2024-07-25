@@ -36,5 +36,6 @@ export const ChatBox: Story = {
       api_key: demoIndexes.orama.api_key,
       endpoint: demoIndexes.orama.endpoint,
     },
+    placeholder: 'What do you want to learn about Orama?',
   },
 }

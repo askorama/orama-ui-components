@@ -31,14 +31,17 @@ export namespace Components {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "placeholder"?: string;
     }
     interface OramaChatAssistentMessage {
         "interaction": TChatInteraction;
     }
     interface OramaChatBox {
         "index": CloudIndexConfig;
+        "placeholder"?: any;
     }
     interface OramaChatMessagesContainer {
+        "interactions": TChatInteraction[];
     }
     interface OramaChatSuggestions {
         "suggestionClicked": (suggestion: string) => void;
@@ -306,14 +309,17 @@ declare namespace LocalJSX {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "placeholder"?: string;
     }
     interface OramaChatAssistentMessage {
         "interaction"?: TChatInteraction;
     }
     interface OramaChatBox {
         "index"?: CloudIndexConfig;
+        "placeholder"?: any;
     }
     interface OramaChatMessagesContainer {
+        "interactions"?: TChatInteraction[];
     }
     interface OramaChatSuggestions {
         "suggestionClicked"?: (suggestion: string) => void;

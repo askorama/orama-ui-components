@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 400px;
+}
+
+.header {
+  padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
+  background: var(--background-color-primary, background-color('primary'));
+  text-align: end;
+  transition: opacity 0.2s;
+
+  &.hidden button {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs, $spacing-xs);
+    color: var(--text-color-tertiary, text-color('tertiary'));
+    font-size: var(--font-size-sm, $font-size-sm);
+    transition: color 0.2s;
+    padding: var(--spacing-2xs, $spacing-2xs) var(--spacing-xs, $spacing-xs);
+    transition: background-color 0.2s;
+    border-radius: var(--radius-s, $radius-s);
+
+    &:hover {
+      color: var(--text-color-tertiary, text-color('tertiary'));
+      background-color: var(--background-color-tertiary, background-color('tertiary'));
+    }
+  }
+}
+
+orama-chat {
+  display: flex;
+  flex-grow: 1;
+}

@@ -2,7 +2,6 @@ orama-chat-messages-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: var(--spacing-l, $spacing-l);
   overflow-y: auto;
 
   // Maybe move somewhere else to reuse in some somponents, but not globally
@@ -23,7 +22,7 @@ orama-chat-messages-container {
   display: flex;
   flex-direction: column;
   margin: var(--spacing-l, $spacing-l) 0;
-  gap: var(--spacing-l, $spacing-l);
+  gap: var(--spacing-xl, $spacing-xl);
 }
 
 .message-wrapper {
@@ -31,4 +30,8 @@ orama-chat-messages-container {
   border-radius: var(--radius-m, $radius-m);
   padding: var(--spacing-m, $spacing-m);
   margin: 0 var(--spacing-l, $spacing-l);
+}
+
+.suggestions-wrapper {
+  margin-top: var(--spacing-xl, $spacing-xl);
 }
