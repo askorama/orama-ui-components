@@ -1,4 +1,4 @@
-import { Component, Host, Prop, Watch, h } from '@stencil/core'
+import { Component, Host, Prop, h } from '@stencil/core'
 import { chatContext, type TChatInteraction } from '@/context/chatContext'
 
 @Component({
