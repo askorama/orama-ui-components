@@ -4,7 +4,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhCopy.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowsClockwise.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhThumbsDown.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhWarning.mjs'
-import { chatContext } from '@/context/chatContext'
+import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import { copyToClipboard } from '@/utils/utils'
 
 @Component({
@@ -22,10 +22,7 @@ export class OramaChatAssistentMessage {
     copyToClipboard(this.interaction.response)
   }
 
-  @State() isRetrying = false
   handleRetryMessage = () => {
-    // todo: replace with actual retry logic
-    this.isRetrying = !this.isRetrying
     chatContext.chatService?.regenerateLatest()
   }
 
@@ -36,14 +33,6 @@ export class OramaChatAssistentMessage {
   }
 
   render() {
-    // When we clear the section for some reasin this component tries to render once more and it reaises an error
-    if (!chatContext.interactions.length) {
-      return
-    }
-
-    const isLastInteraction =
-      this.interaction.interactionId === chatContext.interactions[chatContext.interactions.length - 1].interactionId
-
     if (this.interaction.status === 'loading') {
       return (
         <div class="message-wrapper">
@@ -70,19 +59,9 @@ export class OramaChatAssistentMessage {
       <Host>
         <div class="message-wrapper">
           <orama-markdown content={this.interaction.response} />
-          {this.interaction.status === 'done' && (
+          {this.interaction.status === TAnswerStatus.done && (
             <div class="message-actions">
-              <orama-button
-                type="button"
-                variant="icon"
-                onClick={this.handleCopyToClipboard}
-                onKeyDown={this.handleCopyToClipboard}
-                withTooltip={this.isCopied ? 'Copied!' : undefined}
-                aria-label="Copy message"
-              >
-                <ph-copy />
-              </orama-button>
-              {isLastInteraction && (
+              {this.interaction.latest && this.interaction.status === 'done' && (
                 <orama-button
                   type="button"
                   variant="icon"

@@ -27,6 +27,7 @@ export type TChatInteraction = {
   query: string
   response?: string
   sources?: TSource[]
+  latest?: boolean
   status: TAnswerStatus
   interactionId?: string
 }

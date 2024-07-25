@@ -27,6 +27,7 @@ export class ChatService {
             const loading = latestState.loading
             const response = latestState.response
 
+            // biome-ignore lint/suspicious/noExplicitAny: Client should expose this type
             const sources = (latestState.sources as any)?.map((source) => {
               // TODO: this should depend on the source type
               return {
@@ -36,13 +37,11 @@ export class ChatService {
               }
             })
 
-            let answerStatus = 'loading' as TAnswerStatus
+            let answerStatus = TAnswerStatus.loading
 
             if (loading && response) {
               answerStatus = TAnswerStatus.streaming
-            }
-
-            if (!loading && response) {
+            } else if (!loading && response) {
               answerStatus = TAnswerStatus.done
             }
 
@@ -54,9 +53,10 @@ export class ChatService {
                   sources,
                   interactionId: latestState.interactionId,
                   status: answerStatus,
+                  latest: true,
                 }
               }
-              return interaction
+              return { ...interaction, latest: false }
             })
           },
         },
