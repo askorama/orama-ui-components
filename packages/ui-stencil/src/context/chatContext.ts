@@ -36,6 +36,7 @@ export type TChatInteraction = {
 const { state: chatContext, ...chatStore } = createStore({
   chatService: null as ChatService | null,
   interactions: [] as TChatInteraction[],
+  sourceBaseURL: '' as string,
   lockScrollOnBottom: true as boolean,
 })
 

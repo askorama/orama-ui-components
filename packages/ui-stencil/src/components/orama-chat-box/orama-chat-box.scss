@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  max-height: 400px;
+  // todo: this is probabily to fix, since now it's not meant for generic purpose, but to be used in orama website
+  max-height: pxToRem(613);
 }
 
 .header {

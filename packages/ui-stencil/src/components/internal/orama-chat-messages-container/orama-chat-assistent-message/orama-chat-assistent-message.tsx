@@ -61,8 +61,14 @@ export class OramaChatAssistentMessage {
           <div class="sources-wrapper">
             <h2 class="sr-only">Sources</h2>
             {this.interaction.sources.map((source, index) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-              <a href={source.path} class="source" key={`source-${index}`} target="_blank" rel="noopener noreferrer">
+              <a
+                href={`${chatContext.sourceBaseURL}${source.path}`}
+                class="source"
+                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                key={`source-${index}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <orama-text as="h3" styledAs="span" class="source-title">
                   {source.title}
                 </orama-text>

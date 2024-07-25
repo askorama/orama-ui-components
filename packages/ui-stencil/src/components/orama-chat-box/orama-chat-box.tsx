@@ -12,6 +12,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowClockwise.mjs'
 })
 export class ChatBox {
   @Prop() index: CloudIndexConfig
+  @Prop() sourceBaseURL?
   @Prop() placeholder?
 
   @Watch('cloudIndex')
@@ -43,7 +44,7 @@ export class ChatBox {
             <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
           </button>
         </div>
-        <orama-chat placeholder={this.placeholder} />
+        <orama-chat placeholder={this.placeholder} sourceBaseURL={this.sourceBaseURL} />
       </Host>
     )
   }
