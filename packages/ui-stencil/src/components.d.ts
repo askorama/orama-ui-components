@@ -41,6 +41,7 @@ export namespace Components {
         "placeholder"?: any;
     }
     interface OramaChatMessagesContainer {
+        "interactions": TChatInteraction[];
     }
     interface OramaChatSuggestions {
         "suggestionClicked": (suggestion: string) => void;
@@ -318,6 +319,7 @@ declare namespace LocalJSX {
         "placeholder"?: any;
     }
     interface OramaChatMessagesContainer {
+        "interactions"?: TChatInteraction[];
     }
     interface OramaChatSuggestions {
         "suggestionClicked"?: (suggestion: string) => void;

@@ -31,3 +31,7 @@ orama-chat-messages-container {
   padding: var(--spacing-m, $spacing-m);
   margin: 0 var(--spacing-l, $spacing-l);
 }
+
+.suggestions-wrapper {
+  margin-top: var(--spacing-xl, $spacing-xl);
+}

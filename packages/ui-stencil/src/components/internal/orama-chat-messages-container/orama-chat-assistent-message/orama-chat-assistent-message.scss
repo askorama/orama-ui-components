@@ -1,7 +1,6 @@
 :host {
   display: block;
   color: var(--text-color-secondary, text-color('secondary'));
-  margin-top: var(--spacing-l, $spacing-l);
 }
 
 .message-wrapper {

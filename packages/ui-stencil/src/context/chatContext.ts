@@ -30,6 +30,7 @@ export type TChatInteraction = {
   latest?: boolean
   status: TAnswerStatus
   interactionId?: string
+  relatedQueries?: string[]
 }
 
 const { state: chatContext } = createStore({

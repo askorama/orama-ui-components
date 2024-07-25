@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, h } from '@stencil/core'
+import { Component, Fragment, Host, Prop, State, h } from '@stencil/core'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
@@ -48,7 +48,10 @@ export class OramaChat {
       <Host>
         {/* CHAT MESSAGES */}
         <div class="messages-container-wrapper">
-          <orama-chat-messages-container />
+          {chatContext.interactions?.length ? (
+            <orama-chat-messages-container interactions={chatContext.interactions} />
+          ) : null}
+
           {/* TODO: Provide a better animation */}
           {!chatContext.interactions?.length ? (
             <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />

@@ -34,7 +34,9 @@ export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('ora
 ]);
 
 
-export const OramaChatMessagesContainer = /*@__PURE__*/ defineContainer<JSX.OramaChatMessagesContainer>('orama-chat-messages-container', undefined);
+export const OramaChatMessagesContainer = /*@__PURE__*/ defineContainer<JSX.OramaChatMessagesContainer>('orama-chat-messages-container', undefined, [
+  'interactions'
+]);
 
 
 export const OramaChatSuggestions = /*@__PURE__*/ defineContainer<JSX.OramaChatSuggestions>('orama-chat-suggestions', undefined, [
