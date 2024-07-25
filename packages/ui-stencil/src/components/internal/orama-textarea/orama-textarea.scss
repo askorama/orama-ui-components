@@ -2,11 +2,11 @@ orama-textarea {
   position: relative;
   display: flex;
   align-items: center;
-  padding: var(--spacing-m, $spacing-m);
   border-radius: var(--radius-l, $radius-l);
   border: 1px solid var(--border-color-primary, border-color('primary'));
   background: var(--background-color-secondary, background-color('secondary'));
   box-shadow: 0px 4px 24px 0px var(--textarea-shadow-color, white);
+  padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
 }
 
 ::slotted([slot='adornment-start']) {
@@ -37,6 +37,7 @@ textarea {
   font-family: inherit;
   color: var(--text-color-primary, text-color('primary'));
   width: 100%;
+  padding: var(--spacing-s, $spacing-s) 0;
   font-size: var(--font-size-sm, $font-size-sm);
 
   transition: height 0.1s;
