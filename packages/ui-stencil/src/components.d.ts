@@ -32,6 +32,7 @@ export namespace Components {
     }
     interface OramaChat {
         "placeholder"?: string;
+        "sourceBaseURL"?: string;
     }
     interface OramaChatAssistentMessage {
         "interaction": TChatInteraction;
@@ -39,6 +40,7 @@ export namespace Components {
     interface OramaChatBox {
         "index": CloudIndexConfig;
         "placeholder"?: any;
+        "sourceBaseURL"?: any;
     }
     interface OramaChatMessagesContainer {
         "interactions": TChatInteraction[];
@@ -310,6 +312,7 @@ declare namespace LocalJSX {
     }
     interface OramaChat {
         "placeholder"?: string;
+        "sourceBaseURL"?: string;
     }
     interface OramaChatAssistentMessage {
         "interaction"?: TChatInteraction;
@@ -317,6 +320,7 @@ declare namespace LocalJSX {
     interface OramaChatBox {
         "index"?: CloudIndexConfig;
         "placeholder"?: any;
+        "sourceBaseURL"?: any;
     }
     interface OramaChatMessagesContainer {
         "interactions"?: TChatInteraction[];

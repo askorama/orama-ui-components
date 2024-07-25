@@ -19,6 +19,7 @@ const BOTTOM_THRESHOLD = 1
 })
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
+  @Prop() sourceBaseURL?: string = ''
   @State() inputValue = ''
   messagesContainerRef!: HTMLElement
   isScrolling = false
@@ -96,6 +97,7 @@ export class OramaChat {
   componentDidLoad() {
     this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
     this.recalculateLockOnBottom()
+    chatContext.sourceBaseURL = this.sourceBaseURL
   }
 
   handleSubmit = (e: Event) => {
@@ -201,7 +203,7 @@ export class OramaChat {
             </div>
           </form>
           <orama-text as="p" styledAs="small" align="center">
-            Orama can make mistakes. Lorem ipsum dolor sit amet
+            Orama can make mistakes. Please verify the information.
           </orama-text>
         </div>
       </Host>
