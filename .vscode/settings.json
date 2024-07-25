@@ -36,6 +36,7 @@
     "**/.angular": true,
     "**/.stencil": true,
     "**/.vscode": true,
+    "**/.vercel": true,
     "**/build": true,
     "**/dist": true,
     "**/node_modules": true,
