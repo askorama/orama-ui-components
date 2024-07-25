@@ -3,8 +3,8 @@ import type { Components } from '@orama/wc-components'
 
 const demoIndexes = {
   orama: {
-    api_key: '6kHcoevr3zkbBmC2hHqlcNQrOgejS4ds',
-    endpoint: 'https://cloud.orama.run/v1/indexes/orama-docs-pgjign',
+    api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
+    endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
   },
   recipes: {
     api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
@@ -32,10 +32,6 @@ type Story = StoryObj<Components.OramaChatBox>
 
 export const ChatBox: Story = {
   args: {
-    index: {
-      api_key: demoIndexes.orama.api_key,
-      endpoint: demoIndexes.orama.endpoint,
-    },
     placeholder: 'What do you want to learn about Orama?',
   },
 }

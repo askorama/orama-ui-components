@@ -54,6 +54,7 @@ export class ChatService {
                   response,
                   sources,
                   interactionId: latestState.interactionId,
+                  relatedQueries: latestState.relatedQueries,
                   status: answerStatus,
                   latest: true,
                 }
