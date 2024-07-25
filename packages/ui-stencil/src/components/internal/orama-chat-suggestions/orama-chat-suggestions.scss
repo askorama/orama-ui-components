@@ -4,7 +4,6 @@
 
 .suggestions-list {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-m, $spacing-m);
   padding: var(--radius-s, $spacing-s) var(--radius-l, $spacing-l);
@@ -22,6 +21,7 @@
 
   @media (--sm-min) {
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 

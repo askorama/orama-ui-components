@@ -23,7 +23,6 @@ const meta: Meta<Components.OramaChatBox> = {
       options: Object.keys(demoIndexes),
       mapping: demoIndexes,
       control: { type: 'select' },
-      defaultValue: 'orama',
     },
   },
 } satisfies Meta
@@ -35,5 +34,9 @@ export const ChatBox: Story = {
   args: {
     placeholder: 'What do you want to learn about Orama?',
     sourceBaseURL: 'https://docs.orama.com',
+    index: {
+      api_key: demoIndexes.orama.api_key,
+      endpoint: demoIndexes.orama.endpoint,
+    },
   },
 }
