@@ -43,7 +43,7 @@ export class ChatBox {
             <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
           </button>
         </div>
-        <orama-chat style={{ display: 'flex' }} placeholder={this.placeholder} />
+        <orama-chat placeholder={this.placeholder} />
       </Host>
     )
   }

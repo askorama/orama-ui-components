@@ -57,36 +57,7 @@ export class OramaChatAssistentMessage {
 
     return (
       <Host>
-        <div class="message-wrapper">
-          <orama-markdown content={this.interaction.response} />
-          {this.interaction.status === TAnswerStatus.done && (
-            <div class="message-actions">
-              {this.interaction.latest && this.interaction.status === 'done' && (
-                <orama-button
-                  type="button"
-                  variant="icon"
-                  onClick={this.handleRetryMessage}
-                  onKeyDown={this.handleRetryMessage}
-                  aria-label="Retry message"
-                >
-                  <span class={this.isRetrying ? 'retrying' : ''}>
-                    {this.isRetrying ? <ph-arrows-clockwise weight="fill" /> : <ph-arrows-clockwise />}
-                  </span>
-                </orama-button>
-              )}
-              <orama-button
-                type="button"
-                variant="icon"
-                onClick={this.handleDislikeMessage}
-                onKeyDown={this.handleDislikeMessage}
-                aria-label="Dislike message"
-              >
-                {this.isDisliked ? <ph-thumbs-down weight="fill" /> : <ph-thumbs-down />}
-              </orama-button>
-            </div>
-          )}
-        </div>
-        {!!this.interaction.sources?.length && this.interaction.status === 'done' && (
+        {!!this.interaction.sources?.length && (
           <div class="sources-wrapper">
             <h2 class="sr-only">Sources</h2>
             {this.interaction.sources.map((source, index) => (
@@ -102,6 +73,43 @@ export class OramaChatAssistentMessage {
             ))}
           </div>
         )}
+        <div class="message-wrapper">
+          <orama-markdown content={this.interaction.response} />
+          {this.interaction.status === TAnswerStatus.done && (
+            <div class="message-actions">
+              {this.interaction.latest && this.interaction.status === 'done' && (
+                <orama-button
+                  type="button"
+                  variant="icon"
+                  onClick={this.handleRetryMessage}
+                  onKeyDown={this.handleRetryMessage}
+                  aria-label="Retry message"
+                >
+                  <ph-arrows-clockwise size="16px" />
+                </orama-button>
+              )}
+              <orama-button
+                type="button"
+                variant="icon"
+                onClick={this.handleCopyToClipboard}
+                onKeyDown={this.handleCopyToClipboard}
+                withTooltip={this.isCopied ? 'Copied!' : undefined}
+                aria-label="Copy message"
+              >
+                <ph-copy size="16px" />
+              </orama-button>
+              <orama-button
+                type="button"
+                variant="icon"
+                onClick={this.handleDislikeMessage}
+                onKeyDown={this.handleDislikeMessage}
+                aria-label="Dislike message"
+              >
+                {this.isDisliked ? <ph-thumbs-down weight="fill" size="16px" /> : <ph-thumbs-down size="16px" />}
+              </orama-button>
+            </div>
+          )}
+        </div>
       </Host>
     )
   }
