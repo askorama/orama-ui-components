@@ -166,7 +166,7 @@ export class OramaMarkdown {
         evaluate if we need this inside our codebase or keep it in a CDN */}
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/night-owl.min.css"
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/atom-one-dark.min.css"
         />
         <div
           ref={(ref) => {

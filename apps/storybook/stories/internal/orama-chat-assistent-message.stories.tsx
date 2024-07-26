@@ -53,41 +53,41 @@ Ready to start writing?  Either start changing stuff on the left or
 [Markdown]: http://daringfireball.net/projects/markdown/
 
 \`\`\`javascript
-  function helloWorld() {
-    console.log('Hello World!')
-  }
+function helloWorld() {
+  console.log('Hello World!')
+}
 \`\`\`
 
 \`\`\`javascript
-  function helloWorld() {
-    console.log('Hello World!')
-  }
+function helloWorld() {
+  console.log('Hello World!')
+}
 \`\`\`
 
 \`\`\`typescript
-  function helloWorld() : void {
-    console.log('Hello World!')
-  }
+function helloWorld() : void {
+  console.log('Hello World!')
+}
 \`\`\`
 
 \`\`\`cpp
-  for(int i = 0; i < 10; i++) {
-    cout << "Hello World!" << endl;
-  }
+for(int i = 0; i < 10; i++) {
+  cout << "Hello World!" << endl;
+}
 \`\`\`
 
 \`\`\`c
-  for(int i = 0; i < 10; i++) {
-    cout << "Hello World!" << endl;
-  }
+for(int i = 0; i < 10; i++) {
+  cout << "Hello World!" << endl;
+}
 \`\`\`
 
 \`\`\`java
-  class HelloWorld {
-    public static void main(String[] args) {
-      System.out.println("Hello World!");
-    }
+class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
   }
+}
 \`\`\`
 `
 
