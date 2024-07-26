@@ -51,6 +51,7 @@ export const config: Config = {
   plugins: [
     sass({
       injectGlobalPaths: ['src/styles/abstracts.scss'],
+      includePaths: ['src/styles'],
     }),
     postcss({
       plugins: [
