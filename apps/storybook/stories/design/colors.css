@@ -18,8 +18,8 @@
 
 .color-block {
   width: 100%;
-  min-width: 240px;
-  height: 60px;
+  min-width: 220px;
+  height: 40px;
   margin-bottom: 6px;
   display: flex;
   flex-direction: column;
