@@ -61,28 +61,44 @@ const renderColorBlock = (color, label) => html`
   </div>
 `
 
-const ColorsStory = (args, context) => {
-  const semanticColors = getSemanticColors(context.globals?.backgrounds?.value === DARK_THEME_BG ? 'dark' : 'light')
-  const elementColors = getElementsColors(context.globals?.backgrounds?.value === DARK_THEME_BG ? 'dark' : 'light')
-
+const PrimitiveColors = () => {
   return html`
   <div style="padding: 20px; max-width: 1200px; margin: 0 auto; color: var(--text-color-primary)">
     <section>
       <h2>Primitive Colors</h2>
       <p>These are the basic colors used throughout the design system. They serve as the foundation for creating more complex color schemes.</p>
-      <p>These colors are used to create the semantic and element colors. You can apply them directly to elements only when you need to apply the same color regardless of the theme.</p>
+      <p>These colors are used to create the semantic and element colors. You must avoid using these colors directly in the UI, unless you need an element to always have a specific color regardless of the theme.</p>
       <div class="color-container">
         ${Object.keys(primitiveColors).map((key) => renderPrimitiveBlock(primitiveColors[key], key))}
       </div>
     </section>
+  </div>
+`
+}
+
+const SemanticColors = (args, context) => {
+  const semanticColors = getSemanticColors(context.globals?.backgrounds?.value === DARK_THEME_BG ? 'dark' : 'light')
+
+  return html`
+  <div style="padding: 20px; max-width: 1200px; margin: 0 auto; color: var(--text-color-primary)">
     <section>
       <h2>Semantic Colors</h2>
       <p>These colors convey specific meanings and are used to enhance
       user experience by providing visual cues. For example, the background, text colors, borders, and shadows.</p>
+      <p>You must always use these colors instead of the primitive colors to ensure consistency across the application and to make it easier to switch between themes.</p>
       <div class="color-container">
         ${Object.keys(semanticColors).map((key) => renderColorBlock(semanticColors[key], key))}
       </div>
     </section>
+  </div>
+`
+}
+
+const ElementColors = (args, context) => {
+  const elementColors = getElementsColors(context.globals?.backgrounds?.value === DARK_THEME_BG ? 'dark' : 'light')
+
+  return html`
+  <div style="padding: 20px; max-width: 1200px; margin: 0 auto; color: var(--text-color-primary)">
     <section>
       <h2>Element Colors</h2>
       <p>These colors are specific to UI elements like buttons, alerts, and other
@@ -100,4 +116,19 @@ export default {
   component: 'colors-story',
 } as Meta
 
-export const Colors: StoryObj = ColorsStory.bind({})
+type Story = StoryObj
+
+export const Primitive: Story = {
+  render: PrimitiveColors.bind({}),
+  args: {},
+}
+
+export const Semantic: Story = {
+  render: SemanticColors.bind({}),
+  args: {},
+}
+
+export const Element: Story = {
+  render: ElementColors.bind({}),
+  args: {},
+}

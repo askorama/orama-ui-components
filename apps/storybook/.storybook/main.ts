@@ -8,8 +8,9 @@ const config: StorybookConfig = {
   docs: {},
   previewHead: (head) => `
    ${head}
-  <script type="module" src="assets/orama-ui.esm.js"></script>
-  <link rel="stylesheet" href="assets/orama-ui.css" />
+    <script type="module" src="assets/orama-ui.esm.js"></script>
+    <link rel="stylesheet" href="assets/orama-ui.css" />
+
   `,
 }
 export default config
