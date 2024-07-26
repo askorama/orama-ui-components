@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property        | Attribute           | Description | Type     | Default             |
-| --------------- | ------------------- | ----------- | -------- | ------------------- |
-| `placeholder`   | `placeholder`       |             | `string` | `'Ask me anything'` |
-| `sourceBaseURL` | `source-base-u-r-l` |             | `string` | `''`                |
+| Property        | Attribute         | Description | Type     | Default             |
+| --------------- | ----------------- | ----------- | -------- | ------------------- |
+| `placeholder`   | `placeholder`     |             | `string` | `'Ask me anything'` |
+| `sourceBaseUrl` | `source-base-url` |             | `string` | `''`                |
 
 
 ## Dependencies

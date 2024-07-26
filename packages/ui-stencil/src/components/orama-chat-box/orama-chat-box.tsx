@@ -12,8 +12,8 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowClockwise.mjs'
 })
 export class ChatBox {
   @Prop() index: CloudIndexConfig
-  @Prop() sourceBaseURL?
-  @Prop() placeholder?
+  @Prop() sourceBaseUrl?: string
+  @Prop() placeholder?: string
 
   @Watch('cloudIndex')
   indexChanged() {
@@ -35,16 +35,9 @@ export class ChatBox {
     }
 
     return (
-      // TODO: only dark theme supported to start
+      // * Note: only dark theme supported at the moment
       <Host id="orama-ui-chatbox" class="theme-dark">
-        {/* TODO: Maybe inside chat instead? */}
-        <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
-          {/* TODO: Maybe should be a orama-button variant? */}
-          <button type="button" onClick={() => chatContext.chatService.resetChat()}>
-            <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
-          </button>
-        </div>
-        <orama-chat placeholder={this.placeholder} sourceBaseURL={this.sourceBaseURL} />
+        <orama-chat placeholder={this.placeholder} sourceBaseUrl={this.sourceBaseUrl} />
       </Host>
     )
   }

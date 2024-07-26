@@ -58,7 +58,7 @@ textarea {
     width: 95%;
   }
 
-  &:focus {
+  &:focus-visible {
     border-color: var(--border-color-accent, border-color('accent'));
     outline: none;
   }

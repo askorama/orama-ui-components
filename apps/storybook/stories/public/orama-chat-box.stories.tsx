@@ -33,7 +33,7 @@ type Story = StoryObj<Components.OramaChatBox>
 export const ChatBox: Story = {
   args: {
     placeholder: 'What do you want to learn about Orama?',
-    sourceBaseURL: 'https://docs.orama.com',
+    sourceBaseUrl: 'https://docs.orama.com',
     index: {
       api_key: demoIndexes.orama.api_key,
       endpoint: demoIndexes.orama.endpoint,

@@ -19,7 +19,7 @@ const BOTTOM_THRESHOLD = 1
 })
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
-  @Prop() sourceBaseURL?: string = ''
+  @Prop() sourceBaseUrl?: string = ''
   @State() inputValue = ''
   messagesContainerRef!: HTMLElement
   isScrolling = false
@@ -97,7 +97,7 @@ export class OramaChat {
   componentDidLoad() {
     this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
     this.recalculateLockOnBottom()
-    chatContext.sourceBaseURL = this.sourceBaseURL
+    chatContext.sourceBaseURL = this.sourceBaseUrl
   }
 
   handleSubmit = (e: Event) => {
@@ -121,7 +121,6 @@ export class OramaChat {
   }
 
   render() {
-    // get latest interactions
     const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
     const lastInteractionStatus = lastInteraction?.status
     const lastInteractionStreaming = lastInteractionStatus === TAnswerStatus.streaming
@@ -130,8 +129,18 @@ export class OramaChat {
       this.scrollToBottom({ animated: false })
     }
 
+    // ? Question: Maybe should be a orama-button variant?
     return (
       <Host>
+        <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
+          <button
+            type="button"
+            onClick={() => chatContext.chatService.resetChat()}
+            aria-hidden={chatContext.interactions?.length === 0}
+          >
+            <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
+          </button>
+        </div>
         {/* CHAT MESSAGES */}
         <div class={'messages-container-wrapper-non-scrollable'}>
           <div class="messages-container-wrapper" ref={(ref) => (this.messagesContainerRef = ref)}>
