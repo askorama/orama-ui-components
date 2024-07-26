@@ -31,7 +31,6 @@ const getSemanticColors = (theme) => {
 const semanticColorsLight = getSemanticColors('light')
 const semanticColorsDark = getSemanticColors('dark')
 
-// element colors are all the colors under light and dark that are not semantic colors
 const getElementsColors = (theme) => {
   return Object.keys(colors).reduce((acc, key) => {
     if (typeof colors[key] !== 'object') {
@@ -39,7 +38,6 @@ const getElementsColors = (theme) => {
     }
     if (key === theme) {
       for (const colorKey of Object.keys(colors[key])) {
-        // include only the colors that don't start with the semantic color keys
         if (!semanticColorKeys.some((semanticColorKey) => colorKey.startsWith(semanticColorKey))) {
           acc[colorKey] = colors[key][colorKey]
         }
@@ -53,22 +51,27 @@ const elementColorsLight = getElementsColors('light')
 const elementColorsDark = getElementsColors('dark')
 
 const renderColorBlock = (color, label) => html`
-  <div class="color-block" style="background-color: ${color}">
-    <div class="color-label">${label}</div>
-    <div class="color-value">${color}</div>
+  <div class="color-wrapper">
+    <div class="color-block" style="background-color: ${color}"></div>
+    <span class="color-label">${label}</span>
+    <span class="color-value">${color}</span>
   </div>
 `
 
 const ColorsStory = () => html`
-  <div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+  <div style="padding: 20px; max-width: 1200px; margin: 0 auto; color: var(--text-color-primary)">
     <section>
       <h2>Primitive Colors</h2>
+      <p>These are the basic colors used throughout the design system. They serve as the foundation for creating more complex color schemes.</p>
+      <p>These colors are used to create the semantic and element colors. You can apply them directly to elements only when you need to apply the same color regardless of the theme.</p>
       <div class="color-container">
         ${Object.keys(primitiveColors).map((key) => renderColorBlock(primitiveColors[key], key))}
       </div>
     </section>
     <section>
       <h2>Semantic Colors</h2>
+      <p>These colors convey specific meanings and are used to enhance
+      user experience by providing visual cues. For example, the background, text colors, borders, and shadows.</p>
       <h3>Light Theme</h3> 
       <div class="color-container">
         ${Object.keys(semanticColorsLight).map((key) => renderColorBlock(semanticColorsLight[key], key))}
@@ -80,6 +83,8 @@ const ColorsStory = () => html`
     </section>
     <section>
       <h2>Element Colors</h2>
+      <p>These colors are specific to UI elements like buttons, alerts, and other
+      components. They are derived from the primitive colors and ensure consistency across the application.</p>
       <h3>Light Theme</h3>
       <div class="color-container">
         ${Object.keys(elementColorsLight).map((key) => renderColorBlock(elementColorsLight[key], key))}
@@ -88,26 +93,6 @@ const ColorsStory = () => html`
       <div class="color-container">
         ${Object.keys(elementColorsDark).map((key) => renderColorBlock(elementColorsDark[key], key))}
       </div>
-    </section>
-    <section>
-      <h2>How to Use and Add Tokens</h2>
-      <p>
-        <strong>Primitive Colors:</strong> These are the basic colors used throughout the design system.
-        They serve as the foundation for creating more complex color schemes.
-      </p>
-      <p>
-        <strong>Semantic Colors:</strong> These colors convey specific meanings and are used to enhance
-        user experience by providing visual cues. For example, the background, text colors, borders, and shadows.
-      </p>
-      <p>
-        <strong>Element Colors:</strong> These colors are specific to UI elements like buttons, alerts, and other
-        components. They are derived from the primitive colors and ensure consistency across the application.
-      </p>
-      <p>
-        <strong>Adding Tokens:</strong> To add a new color token, update the respective color object in the codebase.
-        Ensure to follow the naming conventions and maintain consistency. Once added, these tokens can be used in
-        your stylesheets or inline styles.
-      </p>
     </section>
   </div>
 `

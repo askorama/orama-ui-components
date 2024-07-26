@@ -1,23 +1,44 @@
+@import '@orama/wc-components/src/styles/abstracts.scss';
+
 .color-container {
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
 }
+
+.color-wrapper {
+  border: 1px solid #e0e0e0;
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .color-block {
-  width: 100px;
-  height: 100px;
-  margin: 10px;
+  width: 100%;
+  min-width: 240px;
+  height: 60px;
+  margin-bottom: 6px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+
   text-align: center;
   border-radius: 5px;
+  border: 1px solid #ddd;
 }
 .color-label {
   font-size: 12px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
+  display: block;
+  font-weight: 600;
+  color: var(--text-color-primary, text-color(primary));
 }
 .color-value {
-  font-size: 10px;
+  font-size: 12px;
+  color: var(--text-color-primary, text-color(primary));
+  margin-bottom: 4px;
 }
