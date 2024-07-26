@@ -52,7 +52,6 @@
     "jest-cli": "^29.7.0",
     "postcss": "^8.4.39",
     "postcss-functions": "^4.0.2",
-    "postcss-js": "^4.0.1",
     "postcss-preset-env": "^9.5.15",
     "postcss-scss": "^4.0.9",
     "puppeteer": "^22.12.1",

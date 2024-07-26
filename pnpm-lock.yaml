@@ -348,9 +348,6 @@ importers:
       postcss-functions:
         specifier: ^4.0.2
         version: 4.0.2(postcss@8.4.39)
-      postcss-js:
-        specifier: ^4.0.1
-        version: 4.0.1(postcss@8.4.39)
       postcss-preset-env:
         specifier: ^9.5.15
         version: 9.5.15(postcss@8.4.39)
@@ -9133,11 +9130,6 @@ packages:
       tslib: 2.6.3
     dev: true
 
-  /camelcase-css@2.0.1:
-    resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
-    engines: {node: '>= 6'}
-    dev: true
-
   /camelcase@5.3.1:
     resolution: {integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==}
     engines: {node: '>=6'}
@@ -16020,16 +16012,6 @@ packages:
     resolution: {integrity: sha512-1+7tUeH7DFY42DBg7xv+K8QxnCUtrb4KWwJztaBVUQ5Rky0qBVrBijGRri4KYdHhwgM5h5AfFU3DbF94f/QtAA==}
     dependencies:
       postcss: 6.0.23
-    dev: true
-
-  /postcss-js@4.0.1(postcss@8.4.39):
-    resolution: {integrity: sha512-dDLF8pEO191hJMtlHFPRa8xsizHaM82MLfNkUHdUtVEV3tgTp5oj+8qbEqYM57SLfc74KSbw//4SeJma2LRVIw==}
-    engines: {node: ^12 || ^14 || >= 16}
-    peerDependencies:
-      postcss: ^8.4.21
-    dependencies:
-      camelcase-css: 2.0.1
-      postcss: 8.4.39
     dev: true
 
   /postcss-lab-function@6.0.17(postcss@8.4.39):
