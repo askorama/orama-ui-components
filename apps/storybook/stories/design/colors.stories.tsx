@@ -1,8 +1,10 @@
 import { html } from 'lit-html'
 import type { Meta, StoryObj } from '@storybook/web-components'
 import colors from '@orama/wc-components/src/config/colors'
-import { DARK_THEME_BG } from '../../constants'
+// import { DARK_THEME_BG } from '../../constants'
 import './colors.css'
+
+const DARK_THEME_BG = '#212121'
 
 const primitiveColors = Object.keys(colors).reduce((acc, key) => {
   if (typeof colors[key] === 'string') {
