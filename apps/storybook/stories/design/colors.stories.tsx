@@ -1,7 +1,8 @@
 import { html } from 'lit-html'
 import type { Meta, StoryObj } from '@storybook/web-components'
-import './colors.css'
 import colors from '@orama/wc-components/src/config/colors'
+import { DARK_THEME_BG } from '../../constants'
+import './colors.css'
 
 const primitiveColors = Object.keys(colors).reduce((acc, key) => {
   if (typeof colors[key] === 'string') {
@@ -28,9 +29,6 @@ const getSemanticColors = (theme) => {
   }, {})
 }
 
-const semanticColorsLight = getSemanticColors('light')
-const semanticColorsDark = getSemanticColors('dark')
-
 const getElementsColors = (theme) => {
   return Object.keys(colors).reduce((acc, key) => {
     if (typeof colors[key] !== 'object') {
@@ -47,10 +45,7 @@ const getElementsColors = (theme) => {
   }, {})
 }
 
-const elementColorsLight = getElementsColors('light')
-const elementColorsDark = getElementsColors('dark')
-
-const renderColorBlock = (color, label) => html`
+const renderPrimitiveBlock = (color, label) => html`
   <div class="color-wrapper">
     <div class="color-block" style="background-color: ${color}"></div>
     <span class="color-label">${label}</span>
@@ -58,44 +53,47 @@ const renderColorBlock = (color, label) => html`
   </div>
 `
 
-const ColorsStory = () => html`
+const renderColorBlock = (color, label) => html`
+  <div class="color-wrapper">
+    <div class="color-block" style="background-color: var(${label})"></div>
+    <span class="color-label">${label}</span>
+    <span class="color-value">${color}</span>
+  </div>
+`
+
+const ColorsStory = (args, context) => {
+  const semanticColors = getSemanticColors(context.globals?.backgrounds?.value === DARK_THEME_BG ? 'dark' : 'light')
+  const elementColors = getElementsColors(context.globals?.backgrounds?.value === DARK_THEME_BG ? 'dark' : 'light')
+
+  return html`
   <div style="padding: 20px; max-width: 1200px; margin: 0 auto; color: var(--text-color-primary)">
     <section>
       <h2>Primitive Colors</h2>
       <p>These are the basic colors used throughout the design system. They serve as the foundation for creating more complex color schemes.</p>
       <p>These colors are used to create the semantic and element colors. You can apply them directly to elements only when you need to apply the same color regardless of the theme.</p>
       <div class="color-container">
-        ${Object.keys(primitiveColors).map((key) => renderColorBlock(primitiveColors[key], key))}
+        ${Object.keys(primitiveColors).map((key) => renderPrimitiveBlock(primitiveColors[key], key))}
       </div>
     </section>
     <section>
       <h2>Semantic Colors</h2>
       <p>These colors convey specific meanings and are used to enhance
       user experience by providing visual cues. For example, the background, text colors, borders, and shadows.</p>
-      <h3>Light Theme</h3> 
       <div class="color-container">
-        ${Object.keys(semanticColorsLight).map((key) => renderColorBlock(semanticColorsLight[key], key))}
-      </div>
-      <h3>Dark Theme</h3>
-      <div class="color-container">
-        ${Object.keys(semanticColorsDark).map((key) => renderColorBlock(semanticColorsDark[key], key))}
+        ${Object.keys(semanticColors).map((key) => renderColorBlock(semanticColors[key], key))}
       </div>
     </section>
     <section>
       <h2>Element Colors</h2>
       <p>These colors are specific to UI elements like buttons, alerts, and other
       components. They are derived from the primitive colors and ensure consistency across the application.</p>
-      <h3>Light Theme</h3>
       <div class="color-container">
-        ${Object.keys(elementColorsLight).map((key) => renderColorBlock(elementColorsLight[key], key))}
-      </div>
-      <h3>Dark Theme</h3>
-      <div class="color-container">
-        ${Object.keys(elementColorsDark).map((key) => renderColorBlock(elementColorsDark[key], key))}
+        ${Object.keys(elementColors).map((key) => renderColorBlock(elementColors[key], key))}
       </div>
     </section>
   </div>
 `
+}
 
 export default {
   title: 'Design Tokens/Colors',
