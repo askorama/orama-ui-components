@@ -14,10 +14,20 @@ const SUPPORTED_HLJS_LANGUAGES = Object.fromEntries<{ error: boolean; retries: n
   SUPPORTED_HLJS_LANGUAGES_ARRAY.map((language) => [language, { error: false, retries: 0 }]),
 )
 
+// This is used for the cases the a known language returned by the LLM
+// should be highlighted as another language
+const LANGUAGES_MAPPING: Record<string, string> = {
+  html: 'xml',
+}
+
 marked.use({
   useNewRenderer: true,
   renderer: {
     code: (token) => {
+      const mappedLanguage = LANGUAGES_MAPPING[token.lang] || token.lang
+      // Some "languages" like HTML should be rendererd as XML. Reasons are still unclear.
+      const actualLanguage = SUPPORTED_HLJS_LANGUAGES[mappedLanguage] ? mappedLanguage : 'plaintext'
+
       const pre = document.createElement('pre')
       pre.classList.add('orama-markdown-pre')
       const codeTitle = document.createElement('div')
@@ -26,15 +36,19 @@ marked.use({
 
       const code = document.createElement('code')
       code.classList.add('orama-markdown-code')
-      code.classList.add(`language-${token.lang}`)
+      code.classList.add(`language-${actualLanguage}`)
       code.classList.add('hljs')
 
       pre.appendChild(code)
 
-      const hljsLanguage = hljs.getLanguage(token.lang)
+      const hljsLanguage = hljs.getLanguage(actualLanguage)
       if (hljsLanguage) {
-        codeTitle.innerHTML = hljsLanguage.name
-        code.innerHTML = hljs.highlight(token.text, { language: token.lang, ignoreIllegals: true }).value
+        if (actualLanguage === 'plaintext') {
+          codeTitle.innerHTML = ''
+        } else {
+          codeTitle.innerHTML = hljsLanguage.name
+        }
+        code.innerHTML = hljs.highlight(token.text, { language: actualLanguage, ignoreIllegals: true }).value
         code.dataset.highlighted = 'yes'
       } else {
         codeTitle.innerHTML = ' '
@@ -74,7 +88,7 @@ async function loadLanguageAndHighlight(language: string): Promise<boolean> {
 
   try {
     const response = await fetch(
-      `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/${language}.min.js`,
+      `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/languages/${language}.min.js`,
     )
 
     if (!response.ok) {
@@ -166,7 +180,7 @@ export class OramaMarkdown {
         evaluate if we need this inside our codebase or keep it in a CDN */}
         <link
           rel="stylesheet"
-          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/atom-one-dark.min.css"
+          href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/atom-one-dark.min.css"
         />
         <div
           ref={(ref) => {
