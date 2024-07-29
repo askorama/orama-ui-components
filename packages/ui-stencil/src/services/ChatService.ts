@@ -17,49 +17,38 @@ export class ChatService {
 
     chatContext.lockScrollOnBottom = true
 
-    // TODO: possibly fix on Orama Client
-    chatContext.interactions = [...chatContext.interactions, { query: term, status: TAnswerStatus.loading }]
-
     if (!this.answerSession) {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
           onStateChange: (state) => {
-            const latestState = state[state.length - 1]
+            chatContext.interactions = state.map((interaction, index) => {
+              let answerStatus = TAnswerStatus.loading
 
-            const loading = latestState.loading
-            const response = latestState.response
-
-            // biome-ignore lint/suspicious/noExplicitAny: Client should expose this type
-            const sources = (latestState.sources as any)?.map((source) => {
-              // TODO: this should depend on the source type
-              return {
-                title: source.document?.title,
-                description: source.document?.content,
-                path: source.document?.path,
+              if (interaction.loading && interaction.response) {
+                answerStatus = TAnswerStatus.streaming
+              } else if (!interaction.loading && interaction.response) {
+                answerStatus = TAnswerStatus.done
               }
-            })
 
-            let answerStatus = TAnswerStatus.loading
-
-            if (loading && response) {
-              answerStatus = TAnswerStatus.streaming
-            } else if (!loading && response) {
-              answerStatus = TAnswerStatus.done
-            }
-
-            chatContext.interactions = chatContext.interactions.map((interaction, index) => {
-              if (index === chatContext.interactions.length - 1) {
+              // biome-ignore lint/suspicious/noExplicitAny: Client should expose this type
+              const sources = (interaction.sources as any)?.map((source) => {
+                // TODO: this should depend on the source type
                 return {
-                  ...interaction,
-                  response,
-                  sources,
-                  interactionId: latestState.interactionId,
-                  relatedQueries: latestState.relatedQueries,
-                  status: answerStatus,
-                  latest: true,
+                  title: source.document?.title,
+                  description: source.document?.content,
+                  path: source.document?.path,
                 }
+              })
+
+              return {
+                query: interaction.query,
+                interactionId: interaction.interactionId,
+                response: interaction.response,
+                relatedQueries: interaction.relatedQueries,
+                status: answerStatus,
+                latest: state.length - 1 === index,
+                sources,
               }
-              return { ...interaction, latest: false }
             })
           },
         },
@@ -105,6 +94,5 @@ export class ChatService {
     this.answerSession.clearSession()
     // TODO: Not sure if this is the right place to do it
     chatContext.lockScrollOnBottom = true
-    chatContext.interactions = []
   }
 }
