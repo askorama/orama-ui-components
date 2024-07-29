@@ -9,34 +9,24 @@
   padding: 4px;
   border-radius: 5px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  column-gap: 8px;
 }
 
 .color-block {
-  width: 100%;
-  min-width: 220px;
+  width: 40px;
   height: 40px;
-  margin-bottom: 6px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-  border-radius: 5px;
+  border-radius: 4px;
   border: 1px solid #ddd;
 }
 .color-label {
   font-size: 12px;
-  margin-bottom: 4px;
   display: block;
-  font-weight: 600;
   color: var(--text-color-primary);
 }
 .color-value {
   font-size: 12px;
   color: var(--text-color-primary);
-  margin-bottom: 4px;
 }

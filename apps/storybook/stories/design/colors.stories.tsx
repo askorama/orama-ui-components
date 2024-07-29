@@ -57,16 +57,20 @@ const getElementsColors = (theme) => {
 const renderPrimitiveBlock = (color, label) => html`
   <div class="color-wrapper">
     <div class="color-block" style="background-color: ${color}"></div>
-    <span class="color-label">${label}</span>
-    <span class="color-value">${color}</span>
+    <div>
+      <span class="color-label"><b>${label}</b></span>
+      <span class="color-value">${color}</span>
+    </div>
   </div>
 `
 
 const renderColorBlock = (color, label) => html`
   <div class="color-wrapper">
     <div class="color-block" style="background-color: var(${label})"></div>
-    <span class="color-label">${label}</span>
-    <span class="color-value">${color}</span>
+    <div>
+      <span class="color-label"><b>${label}:</b> ${Object.entries(primitiveColors).find(([key, val]) => val === color)?.[0]}</span>
+      <span class="color-value">${color}</span>
+    </div>
   </div>
 `
 
