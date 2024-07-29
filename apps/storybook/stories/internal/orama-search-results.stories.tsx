@@ -4,6 +4,7 @@ import type { Components } from '@orama/wc-components'
 const meta: Meta<Components.OramaSearchResults> = {
   title: 'Components/Internal/SearchResults',
   component: 'orama-search-results',
+  tags: ['autodocs'],
 }
 
 export default meta

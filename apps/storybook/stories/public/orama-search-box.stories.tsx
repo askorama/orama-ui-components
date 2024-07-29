@@ -5,6 +5,7 @@ type Story = StoryObj<Components.OramaSearchBox>
 const meta: Meta<Components.OramaSearchBox> = {
   title: 'Components/Public/SearchBox',
   component: 'orama-search-box',
+  tags: ['autodocs'],
   argTypes: {
     colorScheme: {
       options: ['light', 'dark', 'system'],

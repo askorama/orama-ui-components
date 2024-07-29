@@ -5,6 +5,7 @@ import type { Components } from '@orama/wc-components'
 const meta: Meta<Components.OramaChatAssistentMessage> = {
   title: 'Components/Internal/Chat',
   component: 'orama-chat-assistent-message',
+  tags: ['autodocs'],
 } satisfies Meta
 
 export default meta

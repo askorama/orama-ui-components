@@ -4,6 +4,7 @@ import type { Components } from '@orama/wc-components'
 const meta: Meta<Components.OramaDotsLoader> = {
   title: 'Components/Internal/DotsLoader',
   component: 'orama-dots-loader',
+  tags: ['autodocs'],
 }
 
 export default meta
