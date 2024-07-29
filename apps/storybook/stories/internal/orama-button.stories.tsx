@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers'
 import { html } from 'lit-html'
 
 const meta: Meta<Components.OramaButton> = {
-  title: 'Internal/Button',
+  title: 'Components/Internal/Button',
   component: 'orama-button',
   argTypes: {
     variant: {

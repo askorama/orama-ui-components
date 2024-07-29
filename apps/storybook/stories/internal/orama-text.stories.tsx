@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers'
 import { html } from 'lit-html'
 
 const meta: Meta<Components.OramaText> = {
-  title: 'Internal/Typography',
+  title: 'Components/Internal/Typography',
   tags: ['autodocs'],
 
   argTypes: {

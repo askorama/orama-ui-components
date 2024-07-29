@@ -2,7 +2,7 @@ import type { StoryObj, Meta } from '@storybook/web-components'
 import type { Components } from '@orama/wc-components'
 
 const meta: Meta<Components.OramaToggler> = {
-  title: 'Internal/Toggle',
+  title: 'Components/Internal/Toggle',
   component: 'orama-toggler',
 } satisfies Meta
 

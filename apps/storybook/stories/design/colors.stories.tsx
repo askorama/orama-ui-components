@@ -29,6 +29,15 @@ const getSemanticColors = (theme) => {
   }, {})
 }
 
+const getSingleSemanticColorsByTheme = (themeSemanticColors, semanticKey) => {
+  return Object.keys(themeSemanticColors).reduce((acc, key) => {
+    if (key.startsWith(semanticKey)) {
+      acc[key] = themeSemanticColors[key]
+    }
+    return acc
+  }, {})
+}
+
 const getElementsColors = (theme) => {
   return Object.keys(colors).reduce((acc, key) => {
     if (typeof colors[key] !== 'object') {
@@ -67,7 +76,7 @@ const PrimitiveColors = () => {
     <section>
       <h2>Primitive Colors</h2>
       <p>These are the basic colors used throughout the design system. They serve as the foundation for creating more complex color schemes.</p>
-      <p>These colors are used to create the semantic and element colors. You must avoid using these colors directly in the UI, unless you need an element to always have a specific color regardless of the theme.</p>
+      <p>These colors are used to create the semantic and element colors. Avoid using these colors directly in the UI, unless you need an element to always have a specific color regardless of the theme.</p>
       <div class="color-container">
         ${Object.keys(primitiveColors).map((key) => renderPrimitiveBlock(primitiveColors[key], key))}
       </div>
@@ -78,6 +87,11 @@ const PrimitiveColors = () => {
 
 const SemanticColors = (args, context) => {
   const semanticColors = getSemanticColors(context.globals?.backgrounds?.value === DARK_THEME_BG ? 'dark' : 'light')
+  const textColors = getSingleSemanticColorsByTheme(semanticColors, '--text')
+  const backgroundColors = getSingleSemanticColorsByTheme(semanticColors, '--background')
+  const borderColors = getSingleSemanticColorsByTheme(semanticColors, '--border')
+  const shadowColors = getSingleSemanticColorsByTheme(semanticColors, '--shadow')
+  const iconColors = getSingleSemanticColorsByTheme(semanticColors, '--icon')
 
   return html`
   <div style="padding: 20px; max-width: 1200px; margin: 0 auto; color: var(--text-color-primary)">
@@ -86,8 +100,25 @@ const SemanticColors = (args, context) => {
       <p>These colors convey specific meanings and are used to enhance
       user experience by providing visual cues. For example, the background, text colors, borders, and shadows.</p>
       <p>You must always use these colors instead of the primitive colors to ensure consistency across the application and to make it easier to switch between themes.</p>
+      <h3>Text colors</h3>
       <div class="color-container">
-        ${Object.keys(semanticColors).map((key) => renderColorBlock(semanticColors[key], key))}
+        ${Object.keys(textColors).map((key) => renderColorBlock(textColors[key], key))}
+      </div>
+      <h3>Background colors</h3>
+      <div class="color-container">
+        ${Object.keys(backgroundColors).map((key) => renderColorBlock(backgroundColors[key], key))}
+      </div>
+      <h3>Border colors</h3>
+      <div class="color-container">
+        ${Object.keys(borderColors).map((key) => renderColorBlock(borderColors[key], key))}
+      </div>
+      <h3>Shadow colors</h3>
+      <div class="color-container">
+        ${Object.keys(shadowColors).map((key) => renderColorBlock(shadowColors[key], key))}
+      </div>
+      <h3>Icon colors</h3>
+      <div class="color-container">
+        ${Object.keys(iconColors).map((key) => renderColorBlock(iconColors[key], key))}
       </div>
     </section>
   </div>

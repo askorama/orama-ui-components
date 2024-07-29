@@ -4,7 +4,7 @@ import type { Components } from '@orama/wc-components'
 import { fn } from '@storybook/test'
 
 const meta: Meta<Components.OramaFacets> = {
-  title: 'Internal/Facets',
+  title: 'Components/Internal/Facets',
   component: 'orama-facets',
 }
 

@@ -3,7 +3,7 @@ import type { Components } from '@orama/wc-components'
 import { fn } from '@storybook/test'
 
 const meta: Meta<Components.OramaChatSuggestions> = {
-  title: 'Internal/Chat',
+  title: 'Components/Internal/Chat',
   component: 'orama-chat-suggestions',
 }
 

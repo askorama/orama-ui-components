@@ -3,7 +3,7 @@ import { html } from 'lit-html'
 
 import type { Components } from '@orama/wc-components'
 const meta: Meta<Components.OramaInput> = {
-  title: 'Internal/Form',
+  title: 'Components/Internal/Form',
   component: 'orama-input',
   tags: ['autodocs'],
   argTypes: {

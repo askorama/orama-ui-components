@@ -16,7 +16,7 @@ const demoIndexes = {
   },
 }
 const meta: Meta<Components.OramaChatBox> = {
-  title: 'Public/ChatBox',
+  title: 'Components/Public/ChatBox',
   component: 'orama-chat-box',
   argTypes: {
     index: {
