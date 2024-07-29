@@ -1,6 +1,6 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { DIRECTIVES } from './stencil-generated';
-import { defineCustomElements } from '@orama/wc-components/loader';
+import { NgModule, APP_INITIALIZER } from '@angular/core'
+import { DIRECTIVES } from './stencil-generated'
+import { defineCustomElements } from '@orama/wc-components/loader'
 
 @NgModule({
   declarations: [...DIRECTIVES],

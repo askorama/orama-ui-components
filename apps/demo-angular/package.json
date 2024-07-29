@@ -6,7 +6,7 @@
     "build": "ng build",
     "clean": "rm -rf node_modules .turbo dist",
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve",
     "test": "ng test",
     "watch": "ng build --watch --configuration development"
   },
