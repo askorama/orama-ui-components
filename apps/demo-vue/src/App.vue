@@ -7,7 +7,10 @@
     <section>
       <h2>Stencil Components</h2>
       <div class="component-row">
-        <orama-chat-box />
+        <orama-chat-box :index="{
+          api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
+          endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
+      }" />
       </div>
     </section>
   </main>
