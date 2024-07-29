@@ -6,16 +6,16 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonProps } from "./components/internal/orama-button/orama-button";
+import { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
 import { TChatInteraction } from "./context/chatContext";
-import { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
 import { TThemeOverrides } from "./config/theme";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
+export { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
 export { TChatInteraction } from "./context/chatContext";
-export { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection } from "./types/index";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
 export { TThemeOverrides } from "./config/theme";
@@ -33,6 +33,7 @@ export namespace Components {
     interface OramaChat {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
     }
     interface OramaChatAssistentMessage {
         "interaction": TChatInteraction;
@@ -41,6 +42,7 @@ export namespace Components {
         "index": CloudIndexConfig;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
     }
     interface OramaChatMessagesContainer {
         "interactions": TChatInteraction[];
@@ -313,6 +315,7 @@ declare namespace LocalJSX {
     interface OramaChat {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
     }
     interface OramaChatAssistentMessage {
         "interaction"?: TChatInteraction;
@@ -321,6 +324,7 @@ declare namespace LocalJSX {
         "index"?: CloudIndexConfig;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
     }
     interface OramaChatMessagesContainer {
         "interactions"?: TChatInteraction[];

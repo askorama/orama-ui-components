@@ -3,6 +3,7 @@ import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowCircleDown.mjs'
+import { SourcesMap } from '@/types'
 
 // TODO: Hardcoding suggestions for now
 const SUGGESTIONS = [
@@ -20,6 +21,7 @@ const BOTTOM_THRESHOLD = 1
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
   @Prop() sourceBaseUrl?: string = ''
+  @Prop() sourcesMap?: SourcesMap
   @State() inputValue = ''
   messagesContainerRef!: HTMLElement
   isScrolling = false
@@ -98,6 +100,10 @@ export class OramaChat {
     this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
     this.recalculateLockOnBottom()
     chatContext.sourceBaseURL = this.sourceBaseUrl
+    chatContext.sourcesMap = {
+      ...chatContext.sourcesMap,
+      ...this.sourcesMap,
+    }
   }
 
   handleSubmit = (e: Event) => {

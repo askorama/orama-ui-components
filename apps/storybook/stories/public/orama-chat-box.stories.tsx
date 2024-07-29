@@ -15,7 +15,8 @@ const demoIndexes = {
     endpoint: 'https://cloud.orama.foo/v1/indexes/videogames-rk139h',
   },
 }
-const meta: Meta<Components.OramaChatBox> = {
+
+const meta: Meta = {
   title: 'Components/Public/ChatBox',
   component: 'orama-chat-box',
   tags: ['autodocs'],
@@ -38,6 +39,11 @@ export const ChatBox: Story = {
     index: {
       api_key: demoIndexes.orama.api_key,
       endpoint: demoIndexes.orama.endpoint,
+    },
+    sourcesMap: {
+      title: 'title',
+      description: 'description',
+      path: 'path',
     },
   },
 }

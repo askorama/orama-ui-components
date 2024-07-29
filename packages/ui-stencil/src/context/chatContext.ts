@@ -1,5 +1,6 @@
 import type { ChatService } from '@/services/ChatService'
 import { createStore } from '@stencil/store'
+import type { SourcesMap } from '@/types'
 
 // TODO: Seems like there is no message type being exported from orama-client rn
 // export type TChatMessageBlock = {
@@ -26,7 +27,7 @@ export type TSource = {
 export type TChatInteraction = {
   query: string
   response?: string
-  sources?: TSource[]
+  sources?: any // should be Results<any> from orama-client
   latest?: boolean
   status: TAnswerStatus
   interactionId?: string
@@ -37,6 +38,11 @@ const { state: chatContext, ...chatStore } = createStore({
   chatService: null as ChatService | null,
   interactions: [] as TChatInteraction[],
   sourceBaseURL: '' as string,
+  sourcesMap: {
+    title: 'title',
+    description: 'description',
+    path: 'path',
+  } as SourcesMap,
   lockScrollOnBottom: true as boolean,
 })
 

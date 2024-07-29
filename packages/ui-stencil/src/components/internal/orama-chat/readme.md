@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type     | Default             |
-| --------------- | ----------------- | ----------- | -------- | ------------------- |
-| `placeholder`   | `placeholder`     |             | `string` | `'Ask me anything'` |
-| `sourceBaseUrl` | `source-base-url` |             | `string` | `''`                |
+| Property        | Attribute         | Description | Type                                                       | Default             |
+| --------------- | ----------------- | ----------- | ---------------------------------------------------------- | ------------------- |
+| `placeholder`   | `placeholder`     |             | `string`                                                   | `'Ask me anything'` |
+| `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `''`                |
+| `sourcesMap`    | --                |             | `{ title?: string; description?: string; path?: string; }` | `undefined`         |
 
 
 ## Dependencies
