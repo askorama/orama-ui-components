@@ -1,0 +1,15 @@
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 24px;
+  gap: 16px;
+}
+
+@media (min-width: 1024px) {
+  .boxes {
+    flex-wrap: wrap;
+  }
+  .box {
+    width: 30%;
+  }
+}

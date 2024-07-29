@@ -1,0 +1,32 @@
+.color-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.color-wrapper {
+  border: 1px solid #e0e0e0;
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  column-gap: 8px;
+}
+
+.color-block {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+.color-label {
+  font-size: 12px;
+  display: block;
+  color: var(--text-color-primary);
+}
+.color-value {
+  font-size: 12px;
+  color: var(--text-color-primary);
+}

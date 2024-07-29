@@ -1,4 +1,6 @@
-// Primitive colors
+/**
+* * PRIMITIVE COLORS
+*/
 $gray50: #fbfbfb;
 $gray100: #efefef;
 $gray200: #dadada;
@@ -17,6 +19,7 @@ $purple500: #8152ee;
 $purple700: #432d77;
 
 /**
+* * SEMANTIC AND ELEMENT COLOR MAP FOR LIGHT THEME
 * in order to use one of the colors included in the palette map;
 *  use the functions text-color(key), background-color(key), border-color(key)
 * ie: text-color('primary')
@@ -29,6 +32,7 @@ $palette: (
     primary: $gray900,
     secondary: $gray600,
     tertiary: $gray500,
+    accent: $purple300,
     inactive: $gray500,
     reverse: white,
   ),
@@ -52,13 +56,30 @@ $palette: (
     inactive: $gray500,
     accent: $purple500,
   ),
+  shadow: (
+    primary: white,
+  ),
+  'button-text': (
+    primary: $purple100,
+    inactive: $gray500,
+    // todo: value to check with Angela
+  ),
+  'button-background': (
+    primary: $purple500,
+    inactive: $gray100,
+    // todo: value to check with Angela
+  ),
 );
 
+/**
+* * SEMANTIC AND ELEMENT COLOR MAP FOR DARK THEME
+*/
 $paletteDark: (
   text: (
     primary: $gray50,
     secondary: $gray200,
     tertiary: $gray600,
+    accent: $purple300,
     inactive: $gray500,
     reverse: black,
   ),
@@ -82,60 +103,44 @@ $paletteDark: (
     inactive: $gray500,
     accent: $purple500,
   ),
+  shadow: (
+    primary: black,
+  ),
+  'button-text': (
+    primary: $gray100,
+  ),
+  'button-background': (
+    primary: $purple700,
+  ),
 );
 
-// TODO: should be imported by the config/colors.ts file
-// TODO: review --background-ai-gradient-one and --background-ai-gradient-two with Angela
-$theme-colors-light: (
-  '--text-color-primary': text-color('primary'),
-  '--text-color-secondary': text-color('secondary'),
-  '--text-color-tertiary': text-color('tertiary'),
-  '--text-color-inactive': text-color('inactive'),
-  '--text-color-reverse': text-color('reverse'),
-  '--background-color-primary': background-color('primary'),
-  '--background-color-secondary': background-color('secondary'),
-  '--background-color-tertiary': background-color('tertiary'),
-  '--background-color-fourth': background-color('fourth'),
-  '--background-ai-gradient-one': background-color('primary'),
-  '--background-ai-gradient-two': #ece7f5,
-  '--background-color-reverse': background-color('reverse'),
-  '--border-color-primary': border-color('primary'),
-  '--border-color-secondary': border-color('secondary'),
-  '--border-color-tertiary': border-color('tertiary'),
-  '--border-color-accent': border-color('accent'),
-  '--icon-color-primary': icon-color('primary'),
-  '--icon-color-secondary': icon-color('secondary'),
-  '--icon-color-tertiary': icon-color('tertiary'),
-  '--icon-color-inactive': icon-color('inactive'),
-  '--icon-color-accent': icon-color('accent'),
-  '--textarea-shadow-color': white,
-  '--button-primary-background-color': $purple500,
-  '--button-primary-text-color': $purple100,
-);
+:export {
+  gray50: $gray50;
+  gray100: $gray100;
+  gray200: $gray200;
+  gray300: $gray300;
+  gray400: $gray400;
+  gray500: $gray500;
+  gray600: $gray600;
+  gray700: $gray700;
+  gray800: $gray800;
+  gray900: $gray900;
+  gray950: $gray950;
+  purple100: $purple100;
+  purple200: $purple200;
+  purple300: $purple300;
+  purple500: $purple500;
+  purple700: $purple700;
 
-$theme-colors-dark: (
-  '--text-color-primary': text-color('primary', $paletteDark),
-  '--text-color-secondary': text-color('secondary', $paletteDark),
-  '--text-color-tertiary': text-color('tertiary', $paletteDark),
-  '--text-color-inactive': text-color('inactive', $paletteDark),
-  '--text-color-reverse': text-color('reverse', $paletteDark),
-  '--background-color-primary': background-color('primary', $paletteDark),
-  '--background-color-secondary': background-color('secondary', $paletteDark),
-  '--background-color-tertiary': background-color('tertiary', $paletteDark),
-  '--background-color-fourth': background-color('fourth', $paletteDark),
-  '--background-color-reverse': background-color('reverse', $paletteDark),
-  '--background-ai-gradient-one': background-color('primary', $paletteDark),
-  '--background-ai-gradient-two': #251e37,
-  '--border-color-primary': border-color('primary', $paletteDark),
-  '--border-color-secondary': border-color('secondary', $paletteDark),
-  '--border-color-tertiary': border-color('tertiary', $paletteDark),
-  '--border-color-accent': border-color('accent', $paletteDark),
-  '--icon-color-primary': icon-color('primary', $paletteDark),
-  '--icon-color-secondary': icon-color('secondary', $paletteDark),
-  '--icon-color-tertiary': icon-color('tertiary', $paletteDark),
-  '--icon-color-inactive': icon-color('inactive', $paletteDark),
-  '--icon-color-accent': icon-color('accent', $paletteDark),
-  '--textarea-shadow-color': black,
-  '--button-primary-background-color': $purple700,
-  '--button-primary-text-color': $gray100,
-);
+  @each $key, $value in $palette {
+    @each $subkey, $subvalue in $value {
+      --#{$key}-color-#{$subkey}-light: #{$subvalue};
+    }
+  }
+
+  @each $key, $value in $paletteDark {
+    @each $subkey, $subvalue in $value {
+      --#{$key}-color-#{$subkey}-dark: #{$subvalue};
+    }
+  }
+}

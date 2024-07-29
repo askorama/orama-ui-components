@@ -3,7 +3,7 @@ import type { Components } from '@orama/wc-components'
 type Story = StoryObj<Components.OramaSearchBox>
 
 const meta: Meta<Components.OramaSearchBox> = {
-  title: 'Public/SearchBox',
+  title: 'Components/Public/SearchBox',
   component: 'orama-search-box',
   argTypes: {
     colorScheme: {

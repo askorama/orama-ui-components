@@ -28,7 +28,6 @@
 .suggestion-button {
   @include span();
   cursor: pointer;
-
   border-radius: var(--radius-l, $radius-l);
   border: 1px solid var(--border-color-primary, border-color('primary'));
   padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
@@ -42,6 +41,11 @@
     &:hover {
       background-color: var(--background-color-tertiary, background-color('tertiary'));
     }
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid var(--border-color-accent, border-color('accent'));
   }
 
   @media (--md-min) {

@@ -28,8 +28,8 @@
 }
 
 .button--primary {
-  background-color: var(--button-primary-background-color);
-  color: var(--button-primary-text-color);
+  background-color: var(--button-background-color-primary, button-background-color('primary'));
+  color: var(--button-text-color-primary, button-text-color('primary'));
 
   &:disabled {
     background-color: var(--background-color-tertiary, background-color('tertiary'));

@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property        | Attribute           | Description | Type                                     | Default     |
-| --------------- | ------------------- | ----------- | ---------------------------------------- | ----------- |
-| `index`         | --                  |             | `{ api_key: string; endpoint: string; }` | `undefined` |
-| `placeholder`   | `placeholder`       |             | `any`                                    | `undefined` |
-| `sourceBaseURL` | `source-base-u-r-l` |             | `any`                                    | `undefined` |
+| Property        | Attribute         | Description | Type                                     | Default     |
+| --------------- | ----------------- | ----------- | ---------------------------------------- | ----------- |
+| `index`         | --                |             | `{ api_key: string; endpoint: string; }` | `undefined` |
+| `placeholder`   | `placeholder`     |             | `string`                                 | `undefined` |
+| `sourceBaseUrl` | `source-base-url` |             | `string`                                 | `undefined` |
 
 
 ## Dependencies

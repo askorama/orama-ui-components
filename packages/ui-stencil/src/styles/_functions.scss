@@ -39,6 +39,21 @@
   @return palette('icon', $role, $palette);
 }
 
+/* ===BUTTON TEXT COLOR FUNCTION=== */
+@function button-text-color($role: 'primary', $palette: $palette) {
+  @return palette('button-text', $role, $palette);
+}
+
+// ===BUTTON BACKGROUND COLOR FUNCTION===
+@function button-background-color($role: 'primary', $palette: $palette) {
+  @return palette('button-background', $role, $palette);
+}
+
+/* ===TEXTAREA SHAODW COLOR FUNCTION=== */
+@function shadow-color($role: 'primary', $palette: $palette) {
+  @return palette('shadow', $role, $palette);
+}
+
 /* ===GETTING BREAKPOINT VALUE FROM MAP=== */
 @function breakpoint($size) {
   @if map-has-key($breakpoints, $size) {
