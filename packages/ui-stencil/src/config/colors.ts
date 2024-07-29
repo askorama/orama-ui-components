@@ -39,7 +39,9 @@ export default {
     "--icon-color-accent": "#8152ee",
     "--shadow-color-primary": "white",
     "--button-text-color-primary": "#f7f6f9",
-    "--button-background-color-primary": "#8152ee"
+    "--button-text-color-inactive": "#99989d",
+    "--button-background-color-primary": "#8152ee",
+    "--button-background-color-inactive": "#efefef"
   },
   "dark": {
     "--text-color-primary": "#fbfbfb",

@@ -61,9 +61,13 @@ $palette: (
   ),
   'button-text': (
     primary: $purple100,
+    inactive: $gray500,
+    // todo: value to check with Angela
   ),
   'button-background': (
     primary: $purple500,
+    inactive: $gray100,
+    // todo: value to check with Angela
   ),
 );
 
