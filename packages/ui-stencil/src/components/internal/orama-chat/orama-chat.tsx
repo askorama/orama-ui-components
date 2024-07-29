@@ -100,6 +100,12 @@ export class OramaChat {
     chatContext.sourceBaseURL = this.sourceBaseUrl
   }
 
+  componentDidUpdate() {
+    if (chatContext.lockScrollOnBottom && !this.isScrolling) {
+      this.scrollToBottom({ animated: false })
+    }
+  }
+
   handleSubmit = (e: Event) => {
     e.preventDefault()
 
@@ -124,10 +130,6 @@ export class OramaChat {
     const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
     const lastInteractionStatus = lastInteraction?.status
     const lastInteractionStreaming = lastInteractionStatus === TAnswerStatus.streaming
-
-    if (chatContext.lockScrollOnBottom && !this.isScrolling) {
-      this.scrollToBottom({ animated: false })
-    }
 
     // ? Question: Maybe should be a orama-button variant?
     return (
