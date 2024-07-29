@@ -52,10 +52,20 @@ Ready to start writing?  Either start changing stuff on the left or
 [Marked]: https://github.com/markedjs/marked/
 [Markdown]: http://daringfireball.net/projects/markdown/
 
-\`\`\`javascript
-function helloWorld() {
-  console.log('Hello World!')
-}
+\`\`\`html
+<html>
+  <head>
+    <title>Hello World</title>
+  </head>
+  <body>
+  <script>
+    function helloWorld() {
+      console.log('Hello World!')
+    }
+  </script>
+    <h1>Hello World</h1>
+  </body>
+</html>
 \`\`\`
 
 \`\`\`javascript
@@ -83,6 +93,15 @@ for(int i = 0; i < 10; i++) {
 \`\`\`
 
 \`\`\`java
+class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+  }
+}
+\`\`\`
+
+\`\`\`unsuported
+<h1>Hello World</h1>
 class HelloWorld {
   public static void main(String[] args) {
     System.out.println("Hello World!");
