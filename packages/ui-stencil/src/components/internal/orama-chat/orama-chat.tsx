@@ -2,7 +2,7 @@ import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
-import '@phosphor-icons/webcomponents/dist/icons/PhArrowCircleDown.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
 
 // TODO: Hardcoding suggestions for now
 const SUGGESTIONS = [
@@ -166,7 +166,7 @@ export class OramaChat {
                 this.scrollToBottom({ animated: true })
               }}
             >
-              <ph-arrow-circle-down size={'18px'} />
+              <ph-arrow-down size={'18px'} />
             </button>
           )}
         </div>

@@ -57,7 +57,8 @@ orama-chat {
   justify-content: center;
   align-items: center;
   font-family: var(--font-primary, font('primary'));
-  border-radius: 50%;
+  margin: var(--spacing-xs, $spacing-xs);
+  border-radius: var(--radius-m, $radius-m);
 }
 
 .chat-form-wrapper {
