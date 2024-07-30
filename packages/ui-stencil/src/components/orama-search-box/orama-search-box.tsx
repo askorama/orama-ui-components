@@ -22,12 +22,12 @@ export class SearchBox {
   @Prop() facetProperty?: string
   @Prop() open? = false
   @Prop() resultMap?: Partial<ResultMap> = {}
-  @Prop() cloudIndex: CloudIndexConfig
+  @Prop() index: CloudIndexConfig
 
   @State() systemScheme: 'light' | 'dark' = 'light'
 
-  @Watch('cloudIndex')
-  cloudIndexChanged() {
+  @Watch('index')
+  indexChanged() {
     this.startServices()
   }
 
@@ -97,7 +97,7 @@ export class SearchBox {
   }
 
   startServices() {
-    const oramaClient = initOramaClient(this.cloudIndex)
+    const oramaClient = initOramaClient(this.index)
     searchState.searchService = new SearchService(oramaClient)
     chatContext.chatService = new ChatService(oramaClient)
   }
@@ -132,7 +132,10 @@ export class SearchBox {
           <orama-navigation-bar />
           <div class="main">
             <orama-search style={{ display: globalContext.selectedTab === 'search' ? 'flex' : 'none' }} />
-            <orama-chat style={{ display: globalContext.selectedTab === 'chat' ? 'flex' : 'none' }} />
+            <orama-chat
+              style={{ display: globalContext.selectedTab === 'chat' ? 'flex' : 'none' }}
+              showClearChat={false}
+            />
           </div>
           {/* FOOTER - to replace with component */}
           {/* TODO: Hidden footer for now */}

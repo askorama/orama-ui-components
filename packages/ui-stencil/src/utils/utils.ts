@@ -35,16 +35,16 @@ export function getNonExplicitAttributes(element: HTMLElement, explicitProps: st
   }, {})
 }
 
-export function validateCloudIndexConfig(config: CloudIndexConfig): void {
-  if (!config || !config.api_key || !config.endpoint) {
+export function validateCloudIndexConfig(index: CloudIndexConfig): void {
+  if (!index || !index.api_key || !index.endpoint) {
     throw new Error('Invalid cloud index configuration. Please provide a valid api_key and endpoint')
   }
 }
 
-export function initOramaClient(config: CloudIndexConfig): OramaClient | null {
-  validateCloudIndexConfig(config)
+export function initOramaClient(index: CloudIndexConfig): OramaClient | null {
+  validateCloudIndexConfig(index)
   return new OramaClient({
-    api_key: config.api_key,
-    endpoint: config.endpoint,
+    api_key: index.api_key,
+    endpoint: index.endpoint,
   })
 }

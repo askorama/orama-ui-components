@@ -22,6 +22,7 @@ export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
   @Prop() sourceBaseUrl?: string = ''
   @Prop() sourcesMap?: SourcesMap
+  @Prop() showClearChat?: boolean = true
   @State() inputValue = ''
   messagesContainerRef!: HTMLElement
   isScrolling = false
@@ -140,15 +141,17 @@ export class OramaChat {
     // ? Question: Maybe should be a orama-button variant?
     return (
       <Host>
-        <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
-          <button
-            type="button"
-            onClick={() => chatContext.chatService.resetChat()}
-            aria-hidden={chatContext.interactions?.length === 0}
-          >
-            <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
-          </button>
-        </div>
+        {this.showClearChat && (
+          <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
+            <button
+              type="button"
+              onClick={() => chatContext.chatService.resetChat()}
+              aria-hidden={chatContext.interactions?.length === 0}
+            >
+              <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
+            </button>
+          </div>
+        )}
         {/* CHAT MESSAGES */}
         <div class={'messages-container-wrapper-non-scrollable'}>
           <div class="messages-container-wrapper" ref={(ref) => (this.messagesContainerRef = ref)}>

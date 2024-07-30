@@ -32,6 +32,7 @@ export namespace Components {
     }
     interface OramaChat {
         "placeholder"?: string;
+        "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
     }
@@ -81,9 +82,9 @@ export namespace Components {
     interface OramaSearch {
     }
     interface OramaSearchBox {
-        "cloudIndex": CloudIndexConfig;
         "colorScheme"?: 'dark' | 'light' | 'system';
         "facetProperty"?: string;
+        "index": CloudIndexConfig;
         "open"?: boolean;
         "resultMap"?: Partial<ResultMap>;
         "themeConfig"?: Partial<TThemeOverrides>;
@@ -314,6 +315,7 @@ declare namespace LocalJSX {
     }
     interface OramaChat {
         "placeholder"?: string;
+        "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
     }
@@ -364,9 +366,9 @@ declare namespace LocalJSX {
     interface OramaSearch {
     }
     interface OramaSearchBox {
-        "cloudIndex"?: CloudIndexConfig;
         "colorScheme"?: 'dark' | 'light' | 'system';
         "facetProperty"?: string;
+        "index"?: CloudIndexConfig;
         "open"?: boolean;
         "resultMap"?: Partial<ResultMap>;
         "themeConfig"?: Partial<TThemeOverrides>;

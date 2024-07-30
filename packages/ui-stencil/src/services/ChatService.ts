@@ -21,6 +21,7 @@ export class ChatService {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
           onStateChange: (state) => {
+            console.log('-----onStateChange', state)
             chatContext.interactions = state.map((interaction, index) => {
               let answerStatus = TAnswerStatus.loading
 
@@ -80,10 +81,13 @@ export class ChatService {
   }
 
   resetChat = async () => {
+    console.log('resetChat')
     if (!this.answerSession) {
+      console.log('**+No answer session')
       throw new OramaClientNotInitializedError()
     }
 
+    console.log('>>>clear answer session')
     this.answerSession.clearSession()
     // TODO: Not sure if this is the right place to do it
     chatContext.lockScrollOnBottom = true
