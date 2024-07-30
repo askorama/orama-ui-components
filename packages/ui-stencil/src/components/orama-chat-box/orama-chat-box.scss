@@ -1,11 +1,3 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  // todo: this is probabily to fix, since now it's not meant for generic purpose, but to be used in orama website
-  max-height: pxToRem(613);
-}
-
 .header {
   padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
   background: var(--background-color-primary, background-color('primary'));
