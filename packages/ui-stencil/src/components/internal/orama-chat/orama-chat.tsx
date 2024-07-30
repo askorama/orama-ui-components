@@ -1,9 +1,9 @@
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
+import type { SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
-import '@phosphor-icons/webcomponents/dist/icons/PhArrowCircleDown.mjs'
-import { SourcesMap } from '@/types'
+import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
 
 // TODO: Hardcoding suggestions for now
 const SUGGESTIONS = [
@@ -106,6 +106,12 @@ export class OramaChat {
     }
   }
 
+  componentDidUpdate() {
+    if (chatContext.lockScrollOnBottom && !this.isScrolling) {
+      this.scrollToBottom({ animated: false })
+    }
+  }
+
   handleSubmit = (e: Event) => {
     e.preventDefault()
 
@@ -130,10 +136,6 @@ export class OramaChat {
     const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
     const lastInteractionStatus = lastInteraction?.status
     const lastInteractionStreaming = lastInteractionStatus === TAnswerStatus.streaming
-
-    if (chatContext.lockScrollOnBottom && !this.isScrolling) {
-      this.scrollToBottom({ animated: false })
-    }
 
     // ? Question: Maybe should be a orama-button variant?
     return (
@@ -170,7 +172,7 @@ export class OramaChat {
                 this.scrollToBottom({ animated: true })
               }}
             >
-              <ph-arrow-circle-down size={'18px'} />
+              <ph-arrow-down size={'18px'} />
             </button>
           )}
         </div>
