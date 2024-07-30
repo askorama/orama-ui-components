@@ -9,7 +9,8 @@ export const Basics = () => (
         Named entities that store visual design properties. Used to ensure a scalable and consistent visual system for
         UI development.
       </p>
-      <a href="/">Design tokens</a>
+      // Link to the design tokens mdx page
+      <a href="?path=/docs/design-tokens-introduction--docs">Design tokens</a>
     </div>
     <div className="box">
       <h3 className="box__title">Components</h3>
