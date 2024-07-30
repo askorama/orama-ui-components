@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Usage/Frameworks/Angular" />
+
+# Angular
+
+We offer an Angular version of every public component so you can use them in your Angular projects.
+
+## Installation
+
+To add the Orama UI Kit to your Angulat project, run:
+
+```bash
+npm install @orama/angular-components
+```
+You can use pnpm or yarn if you prefer.
+
+## Usage
+
+In your `app.module.ts` file, import the component definition:
+
+```tsx
+import { ComponentLibraryModule } from '@orama/angular-components/dist/component-library'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, ComponentLibraryModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: []
+})
+```
+
+In order to apply the global styles to your Angular project, you need to import the styles in your Angular project's styles.css or styles.scss
+
+```css
+@import '~@orama/angular-components/dist/component-library/styles.css';
+```
+
+You can then use the components you need in your project:
+
+```html
+<orama-chat-box
+  [index]="{
+    api_key: 'your index api key',
+    endpoint: 'your index endpoint',  
+  }"
+></orama-chat-box>
+```

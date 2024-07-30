@@ -4,6 +4,7 @@ import type { Components } from '@orama/wc-components'
 const meta: Meta<Components.OramaToggler> = {
   title: 'Components/Internal/Toggle',
   component: 'orama-toggler',
+  tags: ['autodocs'],
 } satisfies Meta
 
 export default meta

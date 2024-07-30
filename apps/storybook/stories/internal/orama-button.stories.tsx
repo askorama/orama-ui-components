@@ -6,6 +6,7 @@ import { html } from 'lit-html'
 const meta: Meta<Components.OramaButton> = {
   title: 'Components/Internal/Button',
   component: 'orama-button',
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: { type: 'select' },

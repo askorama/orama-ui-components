@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Usage/Frameworks/Vue" />
+
+# Vue
+
+We offer an Angular version of every public component so you can use them in your Angular projects.
+
+## Installation
+
+To add the Orama UI Kit to your Angulat project, run:
+
+```bash
+npm install @orama/vue-components
+```
+You can use pnpm or yarn if you prefer.
+
+## Usage
+
+In your `app.module.ts` file, import the component definition:
+
+```tsx
+import { ComponentLibraryModule } from '@orama/angular-components/dist/component-library'
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, ComponentLibraryModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: []
+})
+```
+
+We have to make sure that the global styles are referenced in the Angular project. 
+You can do this by importing the styles in your Angular project's styles.css or styles.scss
+
+```css
+@import '@orama/wc-components/dist/orama-ui/orama-ui.css';
+```
+
+You can then use the components you need in your project:
+
+```html
+<orama-chat-box
+  [index]="{
+    api_key: 'your index api key',
+    endpoint: 'your index endpoint',  
+  }"
+></orama-chat-box>
+```

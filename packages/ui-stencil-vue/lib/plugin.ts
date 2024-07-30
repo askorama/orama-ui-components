@@ -1,13 +1,9 @@
-import type { Plugin } from 'vue'
+import type { App, Plugin } from 'vue'
 import { defineCustomElements } from '@orama/wc-components/loader'
+import { defineContainer } from './vue-component-lib/utils'
 
 export const ComponentLibrary: Plugin = {
-  async install() {
-    defineCustomElements()
+  install(app: App) {
+    defineContainer(null, defineCustomElements)
   },
 }
-
-export * from './components'
-export * from './plugin'
-
-import '@orama/wc-components/dist/orama-ui/orama-ui.css'

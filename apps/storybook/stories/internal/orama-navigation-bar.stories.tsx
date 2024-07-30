@@ -4,6 +4,7 @@ import type { Components } from '@orama/wc-components'
 const meta: Meta<Components.OramaNavigationBar> = {
   title: 'Components/Internal/NavigationBar',
   component: 'orama-navigation-bar',
+  tags: ['autodocs'],
 }
 
 export default meta

@@ -6,6 +6,7 @@ import { fn } from '@storybook/test'
 const meta: Meta<Components.OramaFacets> = {
   title: 'Components/Internal/Facets',
   component: 'orama-facets',
+  tags: ['autodocs'],
 }
 
 export default meta

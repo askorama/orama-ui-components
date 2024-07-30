@@ -4,6 +4,7 @@ orama-chat {
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
+  // todo: this is probabily to fix, since now it's not meant for generic purpose, but to be used in orama website
   max-height: pxToRem(613);
   // background: linear-gradient(180deg, var(--background-ai-gradient-one) 0%, var(--background-ai-gradient-two) 50%);
   background: var(--background-color-primary, background-color('primary'));

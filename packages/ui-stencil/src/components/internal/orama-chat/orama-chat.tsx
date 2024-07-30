@@ -1,5 +1,6 @@
 import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
+import type { SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
@@ -20,6 +21,8 @@ const BOTTOM_THRESHOLD = 1
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
   @Prop() sourceBaseUrl?: string = ''
+  @Prop() sourcesMap?: SourcesMap
+  @Prop() showClearChat?: boolean = true
   @State() inputValue = ''
   messagesContainerRef!: HTMLElement
   isScrolling = false
@@ -98,6 +101,10 @@ export class OramaChat {
     this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
     this.recalculateLockOnBottom()
     chatContext.sourceBaseURL = this.sourceBaseUrl
+    chatContext.sourcesMap = {
+      ...chatContext.sourcesMap,
+      ...this.sourcesMap,
+    }
   }
 
   componentDidUpdate() {
@@ -134,15 +141,17 @@ export class OramaChat {
     // ? Question: Maybe should be a orama-button variant?
     return (
       <Host>
-        <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
-          <button
-            type="button"
-            onClick={() => chatContext.chatService.resetChat()}
-            aria-hidden={chatContext.interactions?.length === 0}
-          >
-            <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
-          </button>
-        </div>
+        {this.showClearChat && (
+          <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
+            <button
+              type="button"
+              onClick={() => chatContext.chatService.resetChat()}
+              aria-hidden={chatContext.interactions?.length === 0}
+            >
+              <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
+            </button>
+          </div>
+        )}
         {/* CHAT MESSAGES */}
         <div class={'messages-container-wrapper-non-scrollable'}>
           <div class="messages-container-wrapper" ref={(ref) => (this.messagesContainerRef = ref)}>

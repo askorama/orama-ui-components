@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type     | Default             |
-| --------------- | ----------------- | ----------- | -------- | ------------------- |
-| `placeholder`   | `placeholder`     |             | `string` | `'Ask me anything'` |
-| `sourceBaseUrl` | `source-base-url` |             | `string` | `''`                |
+| Property        | Attribute         | Description | Type                                                       | Default             |
+| --------------- | ----------------- | ----------- | ---------------------------------------------------------- | ------------------- |
+| `placeholder`   | `placeholder`     |             | `string`                                                   | `'Ask me anything'` |
+| `showClearChat` | `show-clear-chat` |             | `boolean`                                                  | `true`              |
+| `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `''`                |
+| `sourcesMap`    | --                |             | `{ title?: string; path?: string; description?: string; }` | `undefined`         |
 
 
 ## Dependencies

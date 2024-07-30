@@ -21,6 +21,7 @@ export class ChatService {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
           onStateChange: (state) => {
+            console.log('-----onStateChange', state)
             chatContext.interactions = state.map((interaction, index) => {
               let answerStatus = TAnswerStatus.loading
 
@@ -31,14 +32,7 @@ export class ChatService {
               }
 
               // biome-ignore lint/suspicious/noExplicitAny: Client should expose this type
-              const sources = (interaction.sources as any)?.map((source) => {
-                // TODO: this should depend on the source type
-                return {
-                  title: source.document?.title,
-                  description: source.document?.content,
-                  path: source.document?.path,
-                }
-              })
+              const sources = (interaction.sources as any)?.map((source) => source.document)
 
               return {
                 query: interaction.query,
@@ -87,10 +81,13 @@ export class ChatService {
   }
 
   resetChat = async () => {
+    console.log('resetChat')
     if (!this.answerSession) {
+      console.log('**+No answer session')
       throw new OramaClientNotInitializedError()
     }
 
+    console.log('>>>clear answer session')
     this.answerSession.clearSession()
     // TODO: Not sure if this is the right place to do it
     chatContext.lockScrollOnBottom = true

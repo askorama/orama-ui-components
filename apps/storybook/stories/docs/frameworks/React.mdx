@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Usage/Frameworks/React" />
+
+# React
+
+We offer a React version of every public component so you can use them in your React projects.
+
+## Installation
+
+To add the Orama UI Kit to your React project, run:
+
+```bash
+npm install @orama/react-components
+```
+You can use pnpm or yarn if you prefer.
+
+## Usage
+
+In your `App.tsx` file, import the component definition and use it in your JSX:
+
+```tsx
+import { defineCustomElements } from '@orama/react-components'
+
+void defineCustomElements()
+```
+
+You can then import and use the components you need in your project:
+
+```tsx
+import { OramaChatBox } from '@orama/react-components'
+
+export const App = () => (
+  <OramaChatBox
+    index={{
+      api_key: 'your index api key',
+      endpoint: 'your index endpoint',
+    }}
+  />
+)
+```

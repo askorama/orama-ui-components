@@ -5,6 +5,7 @@ type Story = StoryObj<Components.OramaSearchBox>
 const meta: Meta<Components.OramaSearchBox> = {
   title: 'Components/Public/SearchBox',
   component: 'orama-search-box',
+  tags: ['autodocs'],
   argTypes: {
     colorScheme: {
       options: ['light', 'dark', 'system'],
@@ -45,7 +46,7 @@ export const SearchBox: Story = {
         },
       },
     },
-    cloudIndex: {
+    index: {
       api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
       endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
     },

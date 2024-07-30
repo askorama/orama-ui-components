@@ -5,6 +5,7 @@ import { fn } from '@storybook/test'
 const meta: Meta<Components.OramaChatSuggestions> = {
   title: 'Components/Internal/Chat',
   component: 'orama-chat-suggestions',
+  tags: ['autodocs'],
 }
 
 export default meta

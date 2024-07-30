@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type                                     | Default     |
-| --------------- | ----------------- | ----------- | ---------------------------------------- | ----------- |
-| `index`         | --                |             | `{ api_key: string; endpoint: string; }` | `undefined` |
-| `placeholder`   | `placeholder`     |             | `string`                                 | `undefined` |
-| `sourceBaseUrl` | `source-base-url` |             | `string`                                 | `undefined` |
+| Property        | Attribute         | Description | Type                                                       | Default     |
+| --------------- | ----------------- | ----------- | ---------------------------------------------------------- | ----------- |
+| `index`         | --                |             | `{ api_key: string; endpoint: string; }`                   | `undefined` |
+| `placeholder`   | `placeholder`     |             | `string`                                                   | `undefined` |
+| `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `undefined` |
+| `sourcesMap`    | --                |             | `{ title?: string; path?: string; description?: string; }` | `undefined` |
 
 
 ## Dependencies

@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Design Tokens/Theming" />
+
+# Theming with Design Tokens
+
+Design tokens are a critical part of ensuring consistency and scalability in your design system. This guide shows how to avoid hardcoding values for colors, spacings, and typography by using tokens, while also supporting theme-specific styles using CSS custom properties.
+
+## Global styles
+
+We're using global styles that are available to all components and allow theme customization by exposing CSS custom properties.
+
+We use the `mapToCustomProperties(map)` mixin to apply custom properties from a map of key-value pairs.
+Theme switcher classes `.theme-light` and `.theme-dark` are used to apply the color tokens and they must be applied to the host element.
+As an extra layer of safety, to avoid any possible collisions with same named custom properties defined in the hosting application under the same class name, we use the `id^='orama-ui'` selector to scope the custom properties, therefore all shadow hosts must have an id starting with `orama-ui`.
+
+
+```css
+[id^='orama-ui'] {
+  @include mapToCustomProperties($theme-light); // light theme is the default
+  @include mapToCustomProperties($theme-typography);
+  // other global styles...
+
+  &.theme-dark {
+    @include mapToCustomProperties($theme-dark);
+  }
+}
+```
+
+## Colors
+Instead of hardcoding color values, we use tokens defined in the global styles with support for themes. This approach allows you to easily switch between themes and maintain consistency across your application.
+
+When applying styles in your components, use the CSS custom properties with a fallback to the Sass function, that provide a fallback value from a predefined palette:
+
+```css
+.my-component {
+  color: var(--text-color-primary, text-color(primary));
+  border: 1px solid var(--border-color-secondary, border-color(secondary));
+  background-color: var(--background-color-primary, background-color(primary));
+
+}
+```
+
+## Spacings
+ 
+Similar to colors, we define spacings using tokens:
+
+```css
+.my-component {
+  margin: var(--spacing-s, $spacing-s);
+}
+```
+
+We don't use the Sass function to fallback for spacings, as we don't expect to change them based on color scheme. We use plain sass variables for spacings.
+
+## Typography
+
+Typography values should also use tokens for consistency across themes:
+
+```css
+.my-component {
+  font-size: var(--font-size-xs, $font-size-xs);
+  line-height: var(--font-line-height-s, $font-line-height-s);
+}
+```
+
+## Radius
+
+Border radius values should also use tokens for consistency across themes:
+
+```css
+.my-component {
+  border-radius: var(--radius-s, $radius-s);
+}
+```
+
+By following these practices, you ensure that your styles are consistent, maintainable, and easy to update across your entire application while supporting theme-specific custom properties.

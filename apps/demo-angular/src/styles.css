@@ -1,3 +1,5 @@
+  @import '~@orama/angular-components/dist/component-library/styles.css';
+
 /* You can add global styles to this file, and also import other style files */
 #root {
   background-color: #fff;
@@ -115,10 +117,4 @@ h2 {
 }
 section {
   margin-bottom: 1rem;
-}
-
-.component-row {
-  background-color: #ddd;
-  padding: 1rem;
-  border-radius: 1rem;
 }

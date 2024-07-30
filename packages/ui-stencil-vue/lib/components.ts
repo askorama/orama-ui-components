@@ -20,7 +20,9 @@ export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama
 
 export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-chat', undefined, [
   'placeholder',
-  'sourceBaseUrl'
+  'sourceBaseUrl',
+  'sourcesMap',
+  'showClearChat'
 ]);
 
 
@@ -32,7 +34,8 @@ export const OramaChatAssistentMessage = /*@__PURE__*/ defineContainer<JSX.Orama
 export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('orama-chat-box', undefined, [
   'index',
   'sourceBaseUrl',
-  'placeholder'
+  'placeholder',
+  'sourcesMap'
 ]);
 
 
@@ -96,7 +99,7 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
   'facetProperty',
   'open',
   'resultMap',
-  'cloudIndex'
+  'index'
 ]);
 
 
