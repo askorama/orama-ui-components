@@ -10,7 +10,7 @@ Design tokens are a critical part of ensuring consistency and scalability in you
 
 We're using global styles that are available to all components and allow theme customization by exposing CSS custom properties.
 
-We use the `mapToCustomProperties(map)` mixin to apply custom properties from a map of key-value pairs. This mixin generates CSS custom properties for each key-value pair in the map, using the key as the property name and the value as the property value.
+We use the `mapToCustomProperties(map)` mixin to apply custom properties from a map of key-value pairs.
 Theme switcher classes `.theme-light` and `.theme-dark` are used to apply the color tokens and they must be applied to the host element.
 As an extra layer of safety, to avoid any possible collisions with same named custom properties defined in the hosting application under the same class name, we use the `id^='orama-ui'` selector to scope the custom properties, therefore all shadow hosts must have an id starting with `orama-ui`.
 
