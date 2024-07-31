@@ -8,8 +8,16 @@ import { DARK_THEME_BG, LIGTH_THEME_BG } from '../constants'
 const preview = {
   decorators: [
     (story, context) => {
-      const classTheme = context.globals?.backgrounds?.value === DARK_THEME_BG ? 'theme-dark' : 'theme-light'
-      return html`<div id="orama-ui" class="${classTheme}">${story()}</div>`
+      const bgTheme = context.globals?.backgrounds?.value === DARK_THEME_BG ? 'theme-dark' : 'theme-light'
+      const heightValue = context.parameters?.layout === 'set-height' ? '613px' : 'auto'
+      return html`
+        <style>
+          orama-chat-box {
+            height: ${heightValue};
+          }
+        </style>
+        <div id="orama-ui" class="${bgTheme}">${story()}</div>
+      `
     },
   ],
   parameters: {

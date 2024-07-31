@@ -136,6 +136,7 @@ export class OramaChat {
   render() {
     const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
     const lastInteractionStatus = lastInteraction?.status
+    const lastInteractionStreaming = lastInteractionStatus === TAnswerStatus.streaming
 
     // ? Question: Maybe should be a orama-button variant?
     return (
@@ -153,16 +154,17 @@ export class OramaChat {
         )}
         {/* CHAT MESSAGES */}
         <div class={'messages-container-wrapper-non-scrollable'}>
-          <div class="messages-container-wrapper" ref={(ref) => (this.messagesContainerRef = ref)}>
+          <div
+            class={`messages-container-wrapper ${!chatContext.interactions?.length ? 'isEmpty' : ''}`}
+            ref={(ref) => (this.messagesContainerRef = ref)}
+          >
             {chatContext.interactions?.length ? (
               <orama-chat-messages-container interactions={chatContext.interactions} />
             ) : null}
 
             {/* TODO: Provide a better animation */}
             {!chatContext.interactions?.length ? (
-              <div class="suggestions-wrapper">
-                <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
-              </div>
+              <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
             ) : null}
             {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
             {/* <orama-logo-icon /> */}
@@ -201,7 +203,7 @@ export class OramaChat {
                 placeholder={this.placeholder}
               >
                 <div slot="adornment-end">
-                  {[TAnswerStatus.streaming, TAnswerStatus.loading].includes(lastInteractionStatus) ? (
+                  {lastInteractionStreaming ? (
                     <orama-button
                       type="submit"
                       onClick={this.handleAbortAnswerClick}

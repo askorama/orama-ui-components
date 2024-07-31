@@ -183,7 +183,6 @@ export class OramaMarkdown {
           href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/atom-one-dark.min.css"
         />
         <div
-          class="orama-markdown-wrapper"
           ref={(ref) => {
             this.divElement = ref
           }}

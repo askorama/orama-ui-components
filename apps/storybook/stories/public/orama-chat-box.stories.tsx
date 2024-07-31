@@ -27,6 +27,9 @@ const meta: Meta = {
       control: { type: 'select' },
     },
   },
+  parameters: {
+    layout: 'set-height',
+  },
 } satisfies Meta
 
 export default meta
