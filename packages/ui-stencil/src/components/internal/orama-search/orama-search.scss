@@ -2,11 +2,20 @@ orama-search {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: var(--spacing-s, $spacing-s) 0;
+
+  @media (--md-max) {
+    padding: var(--spacing-s, $spacing-s) 0;
+  }
 }
 
 orama-input {
-  padding: 0 var(--spacing-l, $spacing-l);
+  @media (--md-min) {
+    margin: 0;
+  }
+
+  @media (--md-max) {
+    padding: 0 var(--spacing-l, $spacing-l);
+  }
 }
 
 .result-wrapper {

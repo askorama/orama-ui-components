@@ -3,6 +3,10 @@
   align-items: center;
   padding: var(--spacing-s, $spacing-s) var(--spacing-l, $spacing-l);
   background-color: var(--background-color-primary, background-color('primary'));
+
+  @media (--md-min) {
+    display: none;
+  }
 }
 
 .corner-section {

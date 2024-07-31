@@ -128,7 +128,7 @@ export class SearchBox {
 
     return (
       <Host>
-        <div class={{ 'orama-container': true, hidden: !globalContext.open }}>
+        <div class={{ 'inner-container': true, hidden: !globalContext.open }}>
           <orama-navigation-bar />
           <div class="main">
             <orama-search style={{ display: globalContext.selectedTab === 'search' ? 'flex' : 'none' }} />
