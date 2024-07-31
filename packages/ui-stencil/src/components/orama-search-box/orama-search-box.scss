@@ -1,9 +1,10 @@
 :host {
-  display: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: var(--backdrop-color-primary, palette('backdrop', 'primary'));
 }
 
 .inner-container {
@@ -24,7 +25,6 @@
     max-width: pxToRem(615);
     height: 58vh;
     max-height: pxToRem(400);
-    position: fixed;
     top: 50%;
     transform: translate3d(0, -50%, 0);
     border-radius: var(--radius-m, $radius-m);

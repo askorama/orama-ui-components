@@ -27,6 +27,7 @@ $theme-colors-light: (
   '--icon-color-accent': icon-color('accent'),
   '--button-text-color-primary': button-text-color('primary'),
   '--button-background-color-primary': button-background-color('primary'),
+  '--backdrop-color-primary': palette('backdrop', 'primary'),
 );
 
 $theme-colors-dark: (
@@ -55,4 +56,5 @@ $theme-colors-dark: (
   '--shadow-color-primary': shadow-color('primary', $paletteDark),
   '--button-text-color-primary': button-text-color('primary', $paletteDark),
   '--button-background-color-primary': button-background-color('primary', $paletteDark),
+  '--backdrop-color-primary': palette('backdrop', 'primary', $paletteDark),
 );

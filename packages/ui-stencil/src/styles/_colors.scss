@@ -69,6 +69,9 @@ $palette: (
     inactive: $gray100,
     // todo: value to check with Angela
   ),
+  'backdrop': (
+    primary: rgba(black, 0.7),
+  ),
 );
 
 /**
@@ -111,6 +114,9 @@ $paletteDark: (
   ),
   'button-background': (
     primary: $purple700,
+  ),
+  'backdrop': (
+    primary: rgba(black, 0.7),
   ),
 );
 

@@ -9,10 +9,6 @@ orama-search {
 }
 
 orama-input {
-  @media (--md-min) {
-    margin: 0;
-  }
-
   @media (--md-max) {
     padding: 0 var(--spacing-l, $spacing-l);
   }

@@ -41,7 +41,8 @@ export default {
     "--button-text-color-primary": "#f7f6f9",
     "--button-text-color-inactive": "#99989d",
     "--button-background-color-primary": "#8152ee",
-    "--button-background-color-inactive": "#efefef"
+    "--button-background-color-inactive": "#efefef",
+    "--backdrop-color-primary": "rgba(0, 0, 0, 0.7)"
   },
   "dark": {
     "--text-color-primary": "#fbfbfb",
@@ -66,6 +67,7 @@ export default {
     "--icon-color-accent": "#8152ee",
     "--shadow-color-primary": "black",
     "--button-text-color-primary": "#efefef",
-    "--button-background-color-primary": "#432d77"
+    "--button-background-color-primary": "#432d77",
+    "--backdrop-color-primary": "rgba(0, 0, 0, 0.7)"
   }
 };
