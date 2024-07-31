@@ -4,11 +4,11 @@ import { Meta } from '@storybook/blocks';
 
 # Vue
 
-We offer an Angular version of every public component so you can use them in your Angular projects.
+We offer a Vue version of every public component so you can use them in your Angular projects.
 
 ## Installation
 
-To add the Orama UI Kit to your Angulat project, run:
+To add the Orama UI Kit to your Vue project, run:
 
 ```bash
 npm install @orama/vue-components
@@ -17,34 +17,23 @@ You can use pnpm or yarn if you prefer.
 
 ## Usage
 
-In your `app.module.ts` file, import the component definition:
+In your `main.ts` file, import the component definition:
 
 ```tsx
-import { ComponentLibraryModule } from '@orama/angular-components/dist/component-library'
+import { createApp } from 'vue'
+import { ComponentLibrary } from '@orama/vue-components'
+import App from './App.vue'
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ComponentLibraryModule],
-  providers: [],
-  bootstrap: [AppComponent],
-  schemas: []
-})
-```
-
-We have to make sure that the global styles are referenced in the Angular project. 
-You can do this by importing the styles in your Angular project's styles.css or styles.scss
-
-```css
-@import '@orama/wc-components/dist/orama-ui/orama-ui.css';
+createApp(App).use(ComponentLibrary).mount('#app')
 ```
 
 You can then use the components you need in your project:
 
 ```html
 <orama-chat-box
-  [index]="{
-    api_key: 'your index api key',
-    endpoint: 'your index endpoint',  
+  :index="{
+    api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
+    endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
   }"
-></orama-chat-box>
+/>
 ```
