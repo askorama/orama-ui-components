@@ -25,7 +25,6 @@
 
 .message-actions {
   display: flex;
-  margin-top: var(--spacing-m, $spacing-m);
   gap: var(--spacing-s, $spacing-s);
   justify-content: end;
   transition: opacity 0.2s ease-in-out;
