@@ -75,6 +75,14 @@ orama-chat {
   margin-bottom: var(--spacing-s, $spacing-s);
 }
 
+.suggestions-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: end;
+  overflow-x: auto;
+}
+
 orama-logo-icon {
   z-index: -1;
   position: absolute;
