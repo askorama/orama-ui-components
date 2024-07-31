@@ -38,7 +38,12 @@ export class ChatBox {
     return (
       // * Note: only dark theme supported at the moment
       <Host id="orama-ui-chatbox" class="theme-dark">
-        <orama-chat placeholder={this.placeholder} sourceBaseUrl={this.sourceBaseUrl} sourcesMap={this.sourcesMap} />
+        <orama-chat
+          placeholder={this.placeholder}
+          sourceBaseUrl={this.sourceBaseUrl}
+          sourcesMap={this.sourcesMap}
+          style={{ minHeight: '400px' }}
+        />
       </Host>
     )
   }

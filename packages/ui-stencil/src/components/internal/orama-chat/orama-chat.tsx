@@ -161,7 +161,9 @@ export class OramaChat {
 
             {/* TODO: Provide a better animation */}
             {!chatContext.interactions?.length ? (
-              <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
+              <div class="suggestions-wrapper">
+                <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
+              </div>
             ) : null}
             {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
             {/* <orama-logo-icon /> */}
