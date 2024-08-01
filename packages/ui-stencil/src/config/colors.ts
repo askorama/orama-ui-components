@@ -68,6 +68,6 @@ export default {
     "--shadow-color-primary": "black",
     "--button-text-color-primary": "#efefef",
     "--button-background-color-primary": "#432d77",
-    "--backdrop-color-primary": "rgba(0, 0, 0, 0.7)"
+    "--backdrop-background-color-primary": "rgba(0, 0, 0, 0.7)"
   }
 };

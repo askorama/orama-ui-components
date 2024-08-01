@@ -3,8 +3,33 @@ const sass = require('sass')
 const postcss = require('postcss')
 const postcssScss = require('postcss-scss')
 
-// Path to your SCSS file
-const scssFilePath = './src/styles/_colors.scss'
+const scssFilePath = './src/styles/_tempColors.scss'
+
+function createTempColorsFile() {
+  const colorsContent = fs.readFileSync('./src/styles/_colors.scss', 'utf-8')
+  const primitiveColors = colorsContent.match(/(\$[a-zA-Z0-9-]+:.*;)/g).join('\n')
+  const primitiveColorsToExport = primitiveColors.replace(/\$/g, '').replace(/;/g, ';').replace(/:/g, ':')
+
+  const tempColorsContent = `
+  @import 'colors';
+
+  :export {
+    ${primitiveColorsToExport}
+    @each $key, $value in $palette {
+      @each $subkey, $subvalue in $value {
+        --#{$key}-color-#{$subkey}-light: #{$subvalue};
+      }
+    }
+
+    @each $key, $value in $paletteDark {
+      @each $subkey, $subvalue in $value {
+        --#{$key}-color-#{$subkey}-dark: #{$subvalue};
+      }
+    }
+  }
+  `
+  fs.writeFileSync('./src/styles/_tempColors.scss', tempColorsContent, 'utf-8')
+}
 
 // Function to compile SCSS to CSS
 function compileScss(filePath) {
@@ -58,6 +83,7 @@ async function extractExportVariables(css) {
 // Main function
 ;(async () => {
   try {
+    createTempColorsFile()
     const css = compileScss(scssFilePath)
     const variables = await extractExportVariables(css)
 
@@ -69,6 +95,8 @@ async function extractExportVariables(css) {
 
     // Write the JavaScript file
     fs.writeFileSync('./src/config/colors.ts', `${comment}\n${jsContent}`, 'utf-8')
+    // remove the temporary file
+    fs.unlinkSync(scssFilePath)
     console.log('SCSS :export variables have been extracted to _colors.js')
   } catch (error) {
     console.error('Error extracting SCSS :export variables:', error)

@@ -1,3 +1,8 @@
+/*
+!IMPORTANT: Make sure to also run 'pnpm convert-scss-to-js' if you make changes to this file
+TODO: We'll make this task automatic in the future
+*/
+
 /**
 * * PRIMITIVE COLORS
 */
@@ -115,38 +120,7 @@ $paletteDark: (
   'button-background': (
     primary: $purple700,
   ),
-  'backdrop': (
+  'backdrop-background': (
     primary: rgba(black, 0.7),
   ),
 );
-
-:export {
-  gray50: $gray50;
-  gray100: $gray100;
-  gray200: $gray200;
-  gray300: $gray300;
-  gray400: $gray400;
-  gray500: $gray500;
-  gray600: $gray600;
-  gray700: $gray700;
-  gray800: $gray800;
-  gray900: $gray900;
-  gray950: $gray950;
-  purple100: $purple100;
-  purple200: $purple200;
-  purple300: $purple300;
-  purple500: $purple500;
-  purple700: $purple700;
-
-  @each $key, $value in $palette {
-    @each $subkey, $subvalue in $value {
-      --#{$key}-color-#{$subkey}-light: #{$subvalue};
-    }
-  }
-
-  @each $key, $value in $paletteDark {
-    @each $subkey, $subvalue in $value {
-      --#{$key}-color-#{$subkey}-dark: #{$subvalue};
-    }
-  }
-}
