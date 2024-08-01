@@ -143,6 +143,13 @@ export class SearchBox {
             <orama-text as="span">Orama logo</orama-text>
           </div> */}
         </div>
+        {/* TODO: find a way to add orama-chat only once */}
+        <div class={{ 'slide-container': true, 'slide-up': globalContext.showChat }}>
+          <orama-chat
+            style={{ display: globalContext.showChat ? 'flex' : 'none', height: '95vh' }}
+            showClearChat={false}
+          />
+        </div>
       </Host>
     )
   }

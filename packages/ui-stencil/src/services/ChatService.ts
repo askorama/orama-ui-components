@@ -21,7 +21,6 @@ export class ChatService {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
           onStateChange: (state) => {
-            console.log('-----onStateChange', state)
             chatContext.interactions = state.map((interaction, index) => {
               let answerStatus = TAnswerStatus.loading
 

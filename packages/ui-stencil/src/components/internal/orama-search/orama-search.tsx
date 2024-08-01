@@ -1,6 +1,7 @@
 import { Component, Host, Listen, State, Watch, h, Element } from '@stencil/core'
 import { searchState } from '@/context/searchContext'
 import type { SearchResult } from '@/types'
+import { globalContext } from '@/context/GlobalContext'
 
 @Component({
   tag: 'orama-search',
@@ -30,9 +31,12 @@ export class OramaSearch {
     this.searchValue = (e.target as HTMLInputElement).value
   }
 
+  onChatButtonClick = () => {
+    globalContext.showChat = true
+  }
+
   handleSubmit = (e: Event) => {
     e.preventDefault()
-    // trigger click on chat button
     const chatButton = this.el.querySelector('orama-chat-button') as HTMLElement
     chatButton.click()
   }
@@ -53,8 +57,8 @@ export class OramaSearch {
             active={!!this.searchValue}
             label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
             class="chat-button"
-            onClick={() => alert('Chat clicked')}
-            onKeyPress={() => alert('Chat key pressed')}
+            onClick={this.onChatButtonClick}
+            onKeyPress={this.onChatButtonClick}
           />
         </form>
         <div class="result-wrapper">
