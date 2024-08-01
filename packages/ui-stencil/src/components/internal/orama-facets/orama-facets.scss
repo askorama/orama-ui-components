@@ -15,6 +15,10 @@
     height: 0em;
     background-color: transparent;
   }
+
+  @media (--md-min) {
+    padding: var(--radius-l, $spacing-l) 0;
+  }
 }
 
 .facet-button {

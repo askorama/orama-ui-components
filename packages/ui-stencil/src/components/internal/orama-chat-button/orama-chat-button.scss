@@ -78,14 +78,14 @@
     }
 
     &:after {
-      filter: blur(4px);
+      filter: blur(3px);
       width: 100%;
       height: 100%;
     }
   }
 }
 
-.icon {
+.icon-star {
   display: flex;
   padding: var(--spacing-s, $spacing-s);
   align-items: center;
@@ -100,4 +100,18 @@
   .is-highlighted & {
     animation: steam 1.5s linear 1 forwards;
   }
+}
+
+.icon-enter {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs, $spacing-xs);
+  border-radius: var(--radius-xs, $radius-xs);
+  border: 0.7px solid var(--border-color-primary, border-color('primary'));
+  justify-self: flex-end;
+}
+
+.label {
+  flex-grow: 1;
+  text-align: left;
 }

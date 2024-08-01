@@ -22,7 +22,7 @@ orama-input {
     padding-right: var(--spacing-2xl, $spacing-2xl);
 
     @media (--md-min) {
-      padding-left: var(--spacing-2xl, $spacing-2xl);
+      padding-left: var(--spacing-3xl, $spacing-3xl);
     }
   }
 
@@ -82,7 +82,7 @@ orama-input {
 .search-icon {
   display: none;
   position: absolute;
-  left: var(--spacing-m, $spacing-m);
+  left: var(--spacing-l, $spacing-l);
   top: 50%;
   transform: translate3d(0, -50%, 0);
   color: var(--icon-color-inactive, icon-color('inactive'));

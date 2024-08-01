@@ -32,10 +32,19 @@ orama-input {
     background-color: #b2b2b285;
     border-radius: var(--border-radius-l, $radius-l);
   }
+
+  @media (--md-min) {
+    padding: 0 var(--spacing-m, $spacing-m);
+  }
 }
 
 .chat-button {
   @media (--md-max) {
     display: none;
   }
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
 }

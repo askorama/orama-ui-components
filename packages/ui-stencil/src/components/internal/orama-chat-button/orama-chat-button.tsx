@@ -1,6 +1,7 @@
 import { Component, Prop, h, Element, Host, Watch } from '@stencil/core'
 import { Icon } from '@/components/internal/icons'
 import { getNonExplicitAttributes } from '@/utils/utils'
+import '@phosphor-icons/webcomponents/dist/icons/PhArrowBendDownLeft.mjs'
 
 @Component({
   tag: 'orama-chat-button',
@@ -41,10 +42,13 @@ export class OramaChatButton {
           {...buttonProps}
           type="button"
         >
-          <span class="icon">
+          <span class="icon-star">
             <Icon name="star" size={14} color="blue" />
           </span>
-          {this.label}
+          <span class="label">{this.label}</span>
+          <span class="icon-enter">
+            <ph-arrow-bend-down-left size={12} />
+          </span>
         </button>
       </Host>
     )
