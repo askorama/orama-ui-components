@@ -4,12 +4,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--backdrop-color-primary, palette('backdrop', 'primary'));
 }
 
 .inner-container {
   display: flex;
-  background-color: var(--background-color-primary, background('primary'));
+  background-color: var(--background-color-secondary, background('seconday'));
   position: fixed;
   inset: 0;
   z-index: 1000;

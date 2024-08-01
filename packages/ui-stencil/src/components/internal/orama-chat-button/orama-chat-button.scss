@@ -1,0 +1,22 @@
+:host {
+  padding: var(--spacing-s, $spacing-s);
+}
+
+.chat-button {
+  @include paragraph();
+  display: flex;
+  width: 100%;
+  padding: var(--spacing-s, $spacing-s);
+  align-items: center;
+  gap: var(--spacing-s, $spacing-s);
+  cursor: pointer;
+  border-radius: var(--spacing-s, $spacing-s);
+  border: 1px solid transparent;
+  background-color: transparent;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--background-color-tertiary, background-color('tertiary'));
+    }
+  }
+}

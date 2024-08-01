@@ -40,6 +40,11 @@ export class OramaSearch {
           labelForScreenReaders="Search..."
           placeholder="Search..."
         />
+        <orama-chat-button
+          label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
+          onClick={() => alert('Chat clicked')}
+          onKeyPress={() => alert('Chat key pressed')}
+        />
         <div class="result-wrapper">
           <orama-facets
             facets={searchState.facets}

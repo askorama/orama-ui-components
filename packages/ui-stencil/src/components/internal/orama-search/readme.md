@@ -14,6 +14,7 @@
 ### Depends on
 
 - [orama-input](../orama-input)
+- [orama-chat-button](../orama-chat-button)
 - [orama-facets](../orama-facets)
 - [orama-search-results](../orama-search-results)
 
@@ -21,6 +22,7 @@
 ```mermaid
 graph TD;
   orama-search --> orama-input
+  orama-search --> orama-chat-button
   orama-search --> orama-facets
   orama-search --> orama-search-results
   orama-search-results --> orama-text
