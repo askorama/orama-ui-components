@@ -143,12 +143,27 @@ export class SearchBox {
             <orama-text as="span">Orama logo</orama-text>
           </div> */}
         </div>
+        {/* TODO: probabily we can use one state variable rather than showChat and selectedTab */}
         {/* TODO: find a way to add orama-chat only once */}
+        {globalContext.showChat && (
+          <orama-button
+            onClick={() => {
+              globalContext.showChat = false
+            }}
+            onKeyDown={() => {
+              globalContext.showChat = false
+            }}
+          >
+            Close (placeholder)
+          </orama-button>
+        )}
         <div class={{ 'slide-container': true, 'slide-up': globalContext.showChat }}>
-          <orama-chat
-            style={{ display: globalContext.showChat ? 'flex' : 'none', height: '95vh' }}
-            showClearChat={false}
-          />
+          <div class="slide-container-inner">
+            <orama-chat
+              style={{ display: globalContext.showChat ? 'flex' : 'none', height: '95vh' }}
+              showClearChat={false}
+            />
+          </div>
         </div>
       </Host>
     )

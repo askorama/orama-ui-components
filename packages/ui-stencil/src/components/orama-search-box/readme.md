@@ -23,6 +23,7 @@
 - [orama-navigation-bar](../internal/orama-navigation-bar)
 - [orama-search](../internal/orama-search)
 - [orama-chat](../internal/orama-chat)
+- [orama-button](../internal/orama-button)
 
 ### Graph
 ```mermaid
@@ -31,6 +32,7 @@ graph TD;
   orama-search-box --> orama-navigation-bar
   orama-search-box --> orama-search
   orama-search-box --> orama-chat
+  orama-search-box --> orama-button
   orama-navigation-bar --> orama-button
   orama-navigation-bar --> orama-toggler
   orama-search --> orama-input
