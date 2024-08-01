@@ -48,6 +48,7 @@ export class ChatService {
       })
     }
 
+    // TODO: ABORT/ERROR/STOP should emmit onStateChange event. Keeping the lines below as a reference
     // TODO: WE may want to reveive ask props as a Service prop instead of enforcing it here
     return this.answerSession.ask({ term: term, related: { howMany: 3, format: 'question' } }).catch((error) => {
       chatContext.interactions = chatContext.interactions.map((interaction, index) => {

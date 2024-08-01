@@ -6,6 +6,13 @@ import { marked } from 'marked'
 // biome-ignore lint/suspicious/noExplicitAny: Let me be, TypeScript
 ;(window as any).hljs = hljs
 
+DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+  if ('href' in node) {
+    node.setAttribute('target', '_parent')
+    node.setAttribute('rel', 'noopener')
+  }
+})
+
 /**
  * In order to keep the bundle size small, we are loading the languages grammars by fecthing hljs's CDN dynamically.
  * This file is used as a in-memory static global variable to store the languages grammars references and fetching states.
@@ -183,6 +190,7 @@ export class OramaMarkdown {
           href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/atom-one-dark.min.css"
         />
         <div
+          class="orama-markdown-wrapper"
           ref={(ref) => {
             this.divElement = ref
           }}

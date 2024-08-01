@@ -4,8 +4,7 @@ orama-chat {
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
-  // todo: this is probabily to fix, since now it's not meant for generic purpose, but to be used in orama website
-  max-height: pxToRem(613);
+  height: 100%;
   // background: linear-gradient(180deg, var(--background-ai-gradient-one) 0%, var(--background-ai-gradient-two) 50%);
   background: var(--background-color-primary, background-color('primary'));
 }
@@ -29,6 +28,10 @@ orama-chat {
     // TODO: Should it be a variable?
     background-color: #b2b2b285;
     border-radius: var(--border-radius-l, $radius-l);
+  }
+
+  &.isEmpty {
+    justify-content: flex-end;
   }
 }
 
@@ -70,6 +73,14 @@ orama-chat {
 
 .chat-input {
   margin-bottom: var(--spacing-s, $spacing-s);
+}
+
+.suggestions-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: end;
+  overflow-x: auto;
 }
 
 orama-logo-icon {

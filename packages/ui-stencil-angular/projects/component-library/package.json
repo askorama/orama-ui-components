@@ -1,6 +1,6 @@
 {
   "name": "@orama/angular-components",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": "^16.1.0",
     "@angular/core": "^16.1.0",

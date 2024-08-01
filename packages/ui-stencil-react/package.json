@@ -1,14 +1,12 @@
 {
   "name": "@orama/react-components",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "React components for Orama Cloud",
   "license": "Apache-2.0",
   "author": "",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "npm run tsc",
     "clean": "rm -rf node_modules .turbo",
