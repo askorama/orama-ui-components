@@ -41,7 +41,9 @@ export class OramaChatButton {
           {...buttonProps}
           type="button"
         >
-          <Icon name="star" size={14} color="blue" />
+          <span class="icon">
+            <Icon name="star" size={14} color="blue" />
+          </span>
           {this.label}
         </button>
       </Host>

@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--backdrop-color-primary, palette('backdrop', 'primary'));
+  background-color: var(--backdrop-background-color-primary, palette('backdrop-background', 'primary'));
 }
 
 .inner-container {

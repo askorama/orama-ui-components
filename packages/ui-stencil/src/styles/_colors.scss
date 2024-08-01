@@ -1,5 +1,5 @@
 /*
-!IMPORTANT: Make sure to also run 'pnpm convert-scss-to-js' if you make changes to this file
+!IMPORTANT: Make sure to also run 'pnpm convert-scss-to-js' if you make changes to this file to make sure the changes are reflected in storybook as well
 TODO: We'll make this task automatic in the future
 */
 
@@ -21,6 +21,7 @@ $purple100: #f7f6f9;
 $purple200: #eee9f6;
 $purple300: #ae8ff7;
 $purple500: #8152ee;
+$purple600: #6a4bb2;
 $purple700: #432d77;
 
 /**
@@ -74,8 +75,20 @@ $palette: (
     inactive: $gray100,
     // todo: value to check with Angela
   ),
-  'backdrop': (
+  'backdrop-background': (
     primary: rgba(black, 0.7),
+  ),
+  'chat-button-border': (
+    gradientOne: $purple200,
+    gradientTwo: $purple200,
+    gradientThree: $purple300,
+    gradientFour: $purple300,
+    gradientFive: $purple200,
+    gradientSix: $purple200,
+  ),
+  'chat-button-background': (
+    gradientOne: $purple300,
+    gradientTwo: rgba(255, 255, 255, 0),
   ),
 );
 
@@ -122,5 +135,17 @@ $paletteDark: (
   ),
   'backdrop-background': (
     primary: rgba(black, 0.7),
+  ),
+  'chat-button-border': (
+    gradientOne: $gray800,
+    gradientTwo: $gray800,
+    gradientThree: $purple300,
+    gradientFour: $purple300,
+    gradientFive: $gray800,
+    gradientSix: $gray800,
+  ),
+  'chat-button-background': (
+    gradientOne: $purple600,
+    gradientTwo: rgba(106, 75, 178, 0),
   ),
 );

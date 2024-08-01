@@ -5,6 +5,18 @@
   }
 }
 
+@keyframes steam {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 75% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 :host {
   padding: var(--spacing-s, $spacing-s);
   border-bottom: 1px solid var(--border-color-primary, border-color('primary'));
@@ -29,21 +41,16 @@
     }
   }
 
+  &:focus-visible {
+    outline: none;
+    border: 1px solid var(--border-color-accent, border-color('accent'));
+  }
+
   &.is-active {
     background: var(--background-color-tertiary, background-color('tertiary'));
   }
 
   &.is-highlighted {
-    background: var(--background-color-tertiary, background-color('tertiary'));
-
-    // TODO: this should be tokenized
-    --gradient-color: var(--background-color-tertiary, background-color('tertiary'));
-    --gradient-color-2: var(--background-color-tertiary, background-color('tertiary'));
-    --gradient-color-3: var(--text-color-accent, text-color('accent'));
-    --gradient-color-4: var(--text-color-accent, text-color('accent'));
-    --gradient-color-5: var(--background-color-tertiary, background-color('tertiary'));
-    --gradient-color-6: var(--background-color-tertiary, background-color('tertiary'));
-
     &::before,
     &:after {
       content: '';
@@ -58,12 +65,12 @@
       overflow: hidden;
       background: linear-gradient(
         to right,
-        var(--gradient-color) 20%,
-        var(--gradient-color-2) 40%,
-        var(--gradient-color-3) 50%,
-        var(--gradient-color-4) 55%,
-        var(--gradient-color-5) 70%,
-        var(--gradient-color-6) 100%
+        var(--chat-button-border-color-gradientOne, palette('chat-button-border', 'gradientOne')) 0%,
+        var(--chat-button-border-color-gradientTwo, palette('chat-button-border', 'gradientTwo')) 20%,
+        var(--chat-button-border-color-gradientThree, palette('chat-button-border', 'gradientThree')) 40%,
+        var(--chat-button-border-color-gradientFour, palette('chat-button-border', 'gradientFour')) 60%,
+        var(--chat-button-border-color-gradientFive, palette('chat-button-border', 'gradientFive')) 80%,
+        var(--chat-button-border-color-gradientSix, palette('chat-button-border', 'gradientSix')) 100%
       );
       background-size: 200% auto;
 
@@ -71,9 +78,26 @@
     }
 
     &:after {
-      filter: blur(3px);
+      filter: blur(4px);
       width: 100%;
       height: 100%;
     }
+  }
+}
+
+.icon {
+  display: flex;
+  padding: var(--spacing-s, $spacing-s);
+  align-items: center;
+  border-radius: var(--radius-xs, $radius-xs);
+  background: linear-gradient(
+    79deg,
+    var(--chat-button-background-color-gradientOne, palette('chat-button-background', 'gradientOne')) -45%,
+    var(--chat-button-backgroun-color-gradientTwo, palette('chat-button-background', 'gradientTwo')) 75%
+  );
+  background-size: 200% auto;
+
+  .is-highlighted & {
+    animation: steam 1.5s linear 1 forwards;
   }
 }
