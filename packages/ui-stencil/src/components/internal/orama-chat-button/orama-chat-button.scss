@@ -1,5 +1,13 @@
+@keyframes shine {
+  to {
+    background-position: 200% center;
+    opacity: 0;
+  }
+}
+
 :host {
   padding: var(--spacing-s, $spacing-s);
+  border-bottom: 1px solid var(--border-color-primary, border-color('primary'));
 }
 
 .chat-button {
@@ -12,11 +20,60 @@
   cursor: pointer;
   border-radius: var(--spacing-s, $spacing-s);
   border: 1px solid transparent;
-  background-color: transparent;
+  background: transparent;
+  position: relative;
 
   @media (hover: hover) {
     &:hover {
-      background-color: var(--background-color-tertiary, background-color('tertiary'));
+      background: var(--background-color-tertiary, background-color('tertiary'));
+    }
+  }
+
+  &.is-active {
+    background: var(--background-color-tertiary, background-color('tertiary'));
+  }
+
+  &.is-highlighted {
+    background: var(--background-color-tertiary, background-color('tertiary'));
+
+    // TODO: this should be tokenized
+    --gradient-color: var(--background-color-tertiary, background-color('tertiary'));
+    --gradient-color-2: var(--background-color-tertiary, background-color('tertiary'));
+    --gradient-color-3: var(--text-color-accent, text-color('accent'));
+    --gradient-color-4: var(--text-color-accent, text-color('accent'));
+    --gradient-color-5: var(--background-color-tertiary, background-color('tertiary'));
+    --gradient-color-6: var(--background-color-tertiary, background-color('tertiary'));
+
+    &::before,
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      border-radius: var(--spacing-s, $spacing-s);
+      top: -2px;
+      left: -2px;
+      z-index: -1;
+      height: calc(100% + 4px);
+      width: calc(100% + 4px);
+      overflow: hidden;
+      background: linear-gradient(
+        to right,
+        var(--gradient-color) 20%,
+        var(--gradient-color-2) 40%,
+        var(--gradient-color-3) 50%,
+        var(--gradient-color-4) 55%,
+        var(--gradient-color-5) 70%,
+        var(--gradient-color-6) 100%
+      );
+      background-size: 200% auto;
+
+      animation: shine 1.5s linear 1 forwards;
+    }
+
+    &:after {
+      filter: blur(3px);
+      width: 100%;
+      height: 100%;
     }
   }
 }

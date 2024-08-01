@@ -1,4 +1,5 @@
-import { Component, Prop, h, Element, Host } from '@stencil/core'
+import { Component, Prop, h, Element, Host, Watch } from '@stencil/core'
+import { Icon } from '@/components/internal/icons'
 import { getNonExplicitAttributes } from '@/utils/utils'
 
 @Component({
@@ -13,7 +14,17 @@ export class OramaChatButton {
   @Element() el: HTMLButtonElement
 
   @Prop() label: string
+  @Prop() active?: boolean = false
+  @Prop() highlight?: boolean = false
   @Prop() class?: string
+
+  @Watch('active')
+  @Watch('highlight')
+  highlightButton() {
+    if (this.active && !this.highlight) {
+      this.highlight = true
+    }
+  }
 
   render() {
     const declaredProps = ['label', 'onClick', 'class']
@@ -21,7 +32,16 @@ export class OramaChatButton {
 
     return (
       <Host class={this.class}>
-        <button class="chat-button" {...buttonProps} type="button">
+        <button
+          class={{
+            'chat-button': true,
+            'is-active': this.active,
+            'is-highlighted': this.highlight,
+          }}
+          {...buttonProps}
+          type="button"
+        >
+          <Icon name="star" size={14} color="blue" />
           {this.label}
         </button>
       </Host>

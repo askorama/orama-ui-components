@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `class`  | `class`   |             | `string` | `undefined` |
-| `label`  | `label`   |             | `string` | `undefined` |
+| Property    | Attribute   | Description | Type      | Default     |
+| ----------- | ----------- | ----------- | --------- | ----------- |
+| `active`    | `active`    |             | `boolean` | `false`     |
+| `class`     | `class`     |             | `string`  | `undefined` |
+| `highlight` | `highlight` |             | `boolean` | `false`     |
+| `label`     | `label`     |             | `string`  | `undefined` |
 
 
 ## Dependencies

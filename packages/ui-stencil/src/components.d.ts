@@ -46,7 +46,9 @@ export namespace Components {
         "sourcesMap"?: SourcesMap;
     }
     interface OramaChatButton {
+        "active"?: boolean;
         "class"?: string;
+        "highlight"?: boolean;
         "label": string;
     }
     interface OramaChatMessagesContainer {
@@ -340,7 +342,9 @@ declare namespace LocalJSX {
         "sourcesMap"?: SourcesMap;
     }
     interface OramaChatButton {
+        "active"?: boolean;
         "class"?: string;
+        "highlight"?: boolean;
         "label"?: string;
     }
     interface OramaChatMessagesContainer {

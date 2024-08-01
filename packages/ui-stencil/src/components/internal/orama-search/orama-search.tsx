@@ -41,7 +41,9 @@ export class OramaSearch {
           placeholder="Search..."
         />
         <orama-chat-button
+          active={!!this.searchValue}
           label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
+          class="chat-button"
           onClick={() => alert('Chat clicked')}
           onKeyPress={() => alert('Chat key pressed')}
         />

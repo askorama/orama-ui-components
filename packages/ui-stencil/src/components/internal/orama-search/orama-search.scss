@@ -33,3 +33,9 @@ orama-input {
     border-radius: var(--border-radius-l, $radius-l);
   }
 }
+
+.chat-button {
+  @media (--md-max) {
+    display: none;
+  }
+}
