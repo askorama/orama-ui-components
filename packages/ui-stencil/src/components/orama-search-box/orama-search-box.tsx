@@ -1,9 +1,10 @@
-import { Component, Host, Prop, Watch, h, Listen, Element, State } from '@stencil/core'
+import { Component, Host, Prop, Watch, h, Listen, Element, State, Fragment } from '@stencil/core'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/GlobalContext'
 import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
+import { windowWidthListener } from '@/services/WindowService'
 import type { TThemeOverrides } from '@/config/theme'
 import { initOramaClient } from '@/utils/utils'
 import type { ColorScheme, ResultMap } from '@/types'
@@ -25,7 +26,8 @@ export class SearchBox {
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() index: CloudIndexConfig
 
-  @State() systemScheme: 'light' | 'dark' = 'light'
+  @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
+  @State() windowWidth: number
 
   @Watch('index')
   indexChanged() {
@@ -63,10 +65,10 @@ export class SearchBox {
       uiElement.classList.add(`theme-${scheme}`)
     }
 
-    this.updateCssVariables(scheme)
+    this.updateCssVariables(scheme as ColorScheme)
   }
 
-  updateCssVariables(scheme: 'light' | 'dark') {
+  updateCssVariables(scheme: ColorScheme) {
     const config = this.themeConfig
     const root = document.querySelector('#orama-ui') as HTMLElement
 
@@ -118,6 +120,19 @@ export class SearchBox {
     this.detectSystemColorScheme()
   }
 
+  connectedCallback() {
+    this.windowWidth = windowWidthListener.width
+    windowWidthListener.addEventListener('widthChange', this.updateWindowWidth)
+  }
+
+  disconnectedCallback() {
+    windowWidthListener.removeEventListener('widthChange', this.updateWindowWidth)
+  }
+
+  private updateWindowWidth = (event: CustomEvent) => {
+    this.windowWidth = event.detail
+  }
+
   render() {
     if (!searchState.searchService) {
       return <orama-text as="p">Unable to initialize search service</orama-text>
@@ -132,40 +147,40 @@ export class SearchBox {
         <div class={{ 'inner-container': true, hidden: !globalContext.open }}>
           <orama-navigation-bar />
           <div class="main">
-            <orama-search class={`${globalContext.selectedTab === 'search' ? 'search-active' : 'search-inactive'}`} />
-            {/* TODO: add this only on mobile < 1024px */}
-            <orama-chat
-              class={`${globalContext.selectedTab === 'chat' ? 'section-active' : 'section-inactive'}`}
-              showClearChat={false}
-            />
+            <orama-search class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`} />
+            {this.windowWidth <= 1024 && (
+              <orama-chat
+                class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
+                showClearChat={false}
+              />
+            )}
           </div>
           <orama-footer colorScheme={this.colorScheme} />
         </div>
-        {/* TODO: probabily we can use one state variable rather than showChat and selectedTab */}
-        {/* TODO: find a way to add orama-chat only once */}
-        {globalContext.showChat && (
-          <button
-            onClick={() => {
-              globalContext.showChat = false
-            }}
-            onKeyDown={() => {
-              globalContext.showChat = false
-            }}
-            type="button"
-            class="close-button"
-            aria-label="Close chat"
-          >
-            <ph-x size="18" />
-          </button>
+        {this.windowWidth > 1024 && (
+          <Fragment>
+            {globalContext.currentTask === 'chat' && (
+              <button
+                onClick={() => {
+                  globalContext.currentTask = 'search'
+                }}
+                onKeyDown={() => {
+                  globalContext.currentTask = 'search'
+                }}
+                type="button"
+                class="close-button"
+                aria-label="Close chat"
+              >
+                <ph-x size="18" />
+              </button>
+            )}
+            <div class={{ 'slide-container': true, 'slide-up': globalContext.currentTask === 'chat' }}>
+              <div class="slide-container-inner">
+                <orama-chat showClearChat={false} />
+              </div>
+            </div>
+          </Fragment>
         )}
-        <div class={{ 'slide-container': true, 'slide-up': globalContext.showChat }}>
-          <div class="slide-container-inner">
-            <orama-chat
-              style={{ display: globalContext.showChat ? 'flex' : 'none', height: '95vh' }}
-              showClearChat={false}
-            />
-          </div>
-        </div>
       </Host>
     )
   }

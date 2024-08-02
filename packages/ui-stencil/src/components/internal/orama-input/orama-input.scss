@@ -23,6 +23,7 @@ orama-input {
 
     @media (--md-min) {
       padding-left: var(--spacing-3xl, $spacing-3xl);
+      background: var(--background-color-primary, background-color('primary'));
     }
   }
 

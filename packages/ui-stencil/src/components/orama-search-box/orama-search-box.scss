@@ -20,7 +20,7 @@
 
 .inner-container {
   display: flex;
-  background-color: var(--background-color-secondary, background('secondary'));
+  background-color: var(--background-color-primary, background('primary'));
   position: fixed;
   inset: 0;
   z-index: $zindex-search-modal;
@@ -96,11 +96,15 @@
   width: 80%;
   margin: 0 auto;
   max-width: pxToRem(840);
+
+  orama-chat {
+    height: 95vh;
+  }
 }
 
 .close-button {
   position: fixed;
-  right: pxToRem(120);
+  right: pxToRem(80);
   top: 1vh;
   cursor: pointer;
   border: 0;

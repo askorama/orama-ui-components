@@ -32,7 +32,7 @@ export class OramaSearch {
   }
 
   onChatButtonClick = () => {
-    globalContext.showChat = true
+    globalContext.currentTask = 'chat'
   }
 
   handleSubmit = (e: Event) => {

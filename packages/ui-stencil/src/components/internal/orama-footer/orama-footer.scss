@@ -1,8 +1,10 @@
-.footer {
+:host {
   display: flex;
   align-items: center;
   padding: var(--spacing-m, $spacing-m);
   justify-content: space-between;
+  background-color: var(--background-color-primary, background-color('primary'));
+  border-radius: 0 0 var(--radius-m, $radius-m) var(--radius-m, $radius-m);
 }
 
 .powered-by {
