@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-m, $spacing-m);
+  justify-content: space-between;
+}
+
+.powered-by {
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+  flex-grow: 1;
+  justify-content: right;
+  gap: var(--spacing-s, $spacing-s);
+}
+
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  max-width: pxToRem(62);
+}

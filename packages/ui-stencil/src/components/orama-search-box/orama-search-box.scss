@@ -60,6 +60,14 @@
   overflow: hidden;
 }
 
+.section-active {
+  display: flex;
+}
+
+.section-inactive {
+  display: none;
+}
+
 .slide-container {
   position: fixed;
   bottom: 0;

@@ -89,7 +89,7 @@
       );
       background-size: 150% auto;
 
-      animation: shine 1.2s linear 1 forwards;
+      animation: shine 1s linear 1 forwards;
     }
 
     &:after {
@@ -113,7 +113,7 @@
   background-size: 200% auto;
 
   .is-highlighted & {
-    animation: steam 1.2s linear 1 forwards;
+    animation: steam 1.4s linear 1 forwards;
   }
 }
 

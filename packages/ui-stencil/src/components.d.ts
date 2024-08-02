@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonProps } from "./components/internal/orama-button/orama-button";
-import { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
+import { CloudIndexConfig, ColorScheme, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
 import { TChatInteraction } from "./context/chatContext";
 import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
@@ -14,7 +14,7 @@ import { TThemeOverrides } from "./config/theme";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
-export { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
+export { CloudIndexConfig, ColorScheme, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
 export { TChatInteraction } from "./context/chatContext";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
@@ -68,6 +68,10 @@ export namespace Components {
         "facets": Facet[];
         "selectedFacet": string;
     }
+    interface OramaFooter {
+        "class"?: string;
+        "colorScheme"?: ColorScheme;
+    }
     interface OramaInput {
         "defaultValue": InputProps['defaultValue'];
         "label"?: InputProps['label'];
@@ -88,7 +92,7 @@ export namespace Components {
     interface OramaSearch {
     }
     interface OramaSearchBox {
-        "colorScheme"?: 'dark' | 'light' | 'system';
+        "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index": CloudIndexConfig;
         "open"?: boolean;
@@ -205,6 +209,12 @@ declare global {
         prototype: HTMLOramaFacetsElement;
         new (): HTMLOramaFacetsElement;
     };
+    interface HTMLOramaFooterElement extends Components.OramaFooter, HTMLStencilElement {
+    }
+    var HTMLOramaFooterElement: {
+        prototype: HTMLOramaFooterElement;
+        new (): HTMLOramaFooterElement;
+    };
     interface HTMLOramaInputElementEventMap {
         "oramaInputChanged": string;
     }
@@ -304,6 +314,7 @@ declare global {
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
         "orama-dots-loader": HTMLOramaDotsLoaderElement;
         "orama-facets": HTMLOramaFacetsElement;
+        "orama-footer": HTMLOramaFooterElement;
         "orama-input": HTMLOramaInputElement;
         "orama-logo-icon": HTMLOramaLogoIconElement;
         "orama-markdown": HTMLOramaMarkdownElement;
@@ -364,6 +375,10 @@ declare namespace LocalJSX {
         "facets"?: Facet[];
         "selectedFacet"?: string;
     }
+    interface OramaFooter {
+        "class"?: string;
+        "colorScheme"?: ColorScheme;
+    }
     interface OramaInput {
         "defaultValue"?: InputProps['defaultValue'];
         "label"?: InputProps['label'];
@@ -385,7 +400,7 @@ declare namespace LocalJSX {
     interface OramaSearch {
     }
     interface OramaSearchBox {
-        "colorScheme"?: 'dark' | 'light' | 'system';
+        "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "open"?: boolean;
@@ -444,6 +459,7 @@ declare namespace LocalJSX {
         "orama-chat-user-message": OramaChatUserMessage;
         "orama-dots-loader": OramaDotsLoader;
         "orama-facets": OramaFacets;
+        "orama-footer": OramaFooter;
         "orama-input": OramaInput;
         "orama-logo-icon": OramaLogoIcon;
         "orama-markdown": OramaMarkdown;
@@ -471,6 +487,7 @@ declare module "@stencil/core" {
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
             "orama-dots-loader": LocalJSX.OramaDotsLoader & JSXBase.HTMLAttributes<HTMLOramaDotsLoaderElement>;
             "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
+            "orama-footer": LocalJSX.OramaFooter & JSXBase.HTMLAttributes<HTMLOramaFooterElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-logo-icon": LocalJSX.OramaLogoIcon & JSXBase.HTMLAttributes<HTMLOramaLogoIconElement>;
             "orama-markdown": LocalJSX.OramaMarkdown & JSXBase.HTMLAttributes<HTMLOramaMarkdownElement>;

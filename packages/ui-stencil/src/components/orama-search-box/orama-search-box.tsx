@@ -6,7 +6,7 @@ import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
 import type { TThemeOverrides } from '@/config/theme'
 import { initOramaClient } from '@/utils/utils'
-import type { ResultMap } from '@/types'
+import type { ColorScheme, ResultMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 
@@ -19,7 +19,7 @@ export class SearchBox {
   @Element() el: HTMLElement
 
   @Prop() themeConfig?: Partial<TThemeOverrides>
-  @Prop() colorScheme?: 'dark' | 'light' | 'system' = 'light'
+  @Prop() colorScheme?: ColorScheme = 'light'
   @Prop() facetProperty?: string
   @Prop() open? = false
   @Prop() resultMap?: Partial<ResultMap> = {}
@@ -132,17 +132,14 @@ export class SearchBox {
         <div class={{ 'inner-container': true, hidden: !globalContext.open }}>
           <orama-navigation-bar />
           <div class="main">
-            <orama-search style={{ display: globalContext.selectedTab === 'search' ? 'flex' : 'none' }} />
+            <orama-search class={`${globalContext.selectedTab === 'search' ? 'search-active' : 'search-inactive'}`} />
+            {/* TODO: add this only on mobile < 1024px */}
             <orama-chat
-              style={{ display: globalContext.selectedTab === 'chat' ? 'flex' : 'none' }}
+              class={`${globalContext.selectedTab === 'chat' ? 'section-active' : 'section-inactive'}`}
               showClearChat={false}
             />
           </div>
-          {/* FOOTER - to replace with component */}
-          {/* TODO: Hidden footer for now */}
-          {/* <div class="footer" style={{ textAlign: 'center' }}>
-            <orama-text as="span">Orama logo</orama-text>
-          </div> */}
+          <orama-footer colorScheme={this.colorScheme} />
         </div>
         {/* TODO: probabily we can use one state variable rather than showChat and selectedTab */}
         {/* TODO: find a way to add orama-chat only once */}

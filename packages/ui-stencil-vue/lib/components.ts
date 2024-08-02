@@ -73,6 +73,12 @@ export const OramaFacets = /*@__PURE__*/ defineContainer<JSX.OramaFacets>('orama
 ]);
 
 
+export const OramaFooter = /*@__PURE__*/ defineContainer<JSX.OramaFooter>('orama-footer', undefined, [
+  'class',
+  'colorScheme'
+]);
+
+
 export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-input', undefined, [
   'name',
   'size',
