@@ -1,7 +1,22 @@
 @keyframes shine {
+  from {
+    background-position: 0% 50%;
+  }
   to {
-    background-position: 200% center;
+    background-position: 150% center;
     opacity: 0;
+  }
+}
+
+@keyframes animBg {
+  0% {
+    background: var(--background-color-tertiary, background-color('tertiary'));
+  }
+  70% {
+    background: var(--background-color-tertiary, background-color('tertiary'));
+  }
+  100% {
+    background: transparent;
   }
 }
 
@@ -72,9 +87,9 @@
         var(--chat-button-border-color-gradientFive, palette('chat-button-border', 'gradientFive')) 80%,
         var(--chat-button-border-color-gradientSix, palette('chat-button-border', 'gradientSix')) 100%
       );
-      background-size: 200% auto;
+      background-size: 150% auto;
 
-      animation: shine 1.5s linear 1 forwards;
+      animation: shine 1.2s linear 1 forwards;
     }
 
     &:after {
@@ -98,7 +113,7 @@
   background-size: 200% auto;
 
   .is-highlighted & {
-    animation: steam 1.5s linear 1 forwards;
+    animation: steam 1.2s linear 1 forwards;
   }
 }
 

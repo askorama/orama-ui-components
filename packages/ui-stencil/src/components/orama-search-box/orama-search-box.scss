@@ -1,3 +1,14 @@
+@keyframes showIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 :host {
   position: fixed;
   top: 0;
@@ -77,4 +88,16 @@
   width: 80%;
   margin: 0 auto;
   max-width: pxToRem(840);
+}
+
+.close-button {
+  position: fixed;
+  right: pxToRem(120);
+  top: 1vh;
+  cursor: pointer;
+  border: 0;
+  background-color: transparent;
+  color: var(--icon-color-primary, icon-color('primary'));
+  opacity: 0;
+  animation: showIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s forwards;
 }

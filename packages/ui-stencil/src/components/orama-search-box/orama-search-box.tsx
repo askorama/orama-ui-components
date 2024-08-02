@@ -8,6 +8,7 @@ import type { TThemeOverrides } from '@/config/theme'
 import { initOramaClient } from '@/utils/utils'
 import type { ResultMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
+import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 
 @Component({
   tag: 'orama-search-box',
@@ -146,16 +147,19 @@ export class SearchBox {
         {/* TODO: probabily we can use one state variable rather than showChat and selectedTab */}
         {/* TODO: find a way to add orama-chat only once */}
         {globalContext.showChat && (
-          <orama-button
+          <button
             onClick={() => {
               globalContext.showChat = false
             }}
             onKeyDown={() => {
               globalContext.showChat = false
             }}
+            type="button"
+            class="close-button"
+            aria-label="Close chat"
           >
-            Close (placeholder)
-          </orama-button>
+            <ph-x size="18" />
+          </button>
         )}
         <div class={{ 'slide-container': true, 'slide-up': globalContext.showChat }}>
           <div class="slide-container-inner">
