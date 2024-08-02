@@ -16,6 +16,7 @@ export class OramaSearch {
   @Watch('selectedFacet')
   handleSearchValueChange() {
     searchState.searchService.search(this.searchValue, this.selectedFacet)
+    globalContext.currentTerm = this.searchValue
   }
 
   onFacetClickHandler = (facetName: string) => {

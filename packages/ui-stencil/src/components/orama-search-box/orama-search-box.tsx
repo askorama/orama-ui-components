@@ -151,6 +151,7 @@ export class SearchBox {
             {this.windowWidth <= 1024 && (
               <orama-chat
                 class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
+                defaultTerm={globalContext.currentTerm}
                 showClearChat={false}
               />
             )}
@@ -176,7 +177,7 @@ export class SearchBox {
             )}
             <div class={{ 'slide-container': true, 'slide-up': globalContext.currentTask === 'chat' }}>
               <div class="slide-container-inner">
-                <orama-chat showClearChat={false} />
+                <orama-chat showClearChat={false} defaultTerm={globalContext.currentTerm} />
               </div>
             </div>
           </Fragment>

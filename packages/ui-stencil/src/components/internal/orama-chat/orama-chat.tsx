@@ -4,6 +4,7 @@ import type { SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
+import { globalContext } from '@/context/GlobalContext'
 
 // TODO: Hardcoding suggestions for now
 const SUGGESTIONS = [
@@ -23,7 +24,15 @@ export class OramaChat {
   @Prop() sourceBaseUrl?: string = ''
   @Prop() sourcesMap?: SourcesMap
   @Prop() showClearChat?: boolean = true
+  @Prop() defaultTerm?: string
+
   @State() inputValue = ''
+
+  @Watch('defaultTerm')
+  handleDefaultTermChange() {
+    this.inputValue = this.defaultTerm
+  }
+
   messagesContainerRef!: HTMLElement
   isScrolling = false
   prevScrollTop = 0
@@ -95,6 +104,10 @@ export class OramaChat {
 
   handleWheel = (e: WheelEvent) => {
     this.recalculateLockOnBottom()
+  }
+
+  componentWillLoad() {
+    this.inputValue = this.defaultTerm || ''
   }
 
   componentDidLoad() {

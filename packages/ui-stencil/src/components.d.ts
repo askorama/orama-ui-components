@@ -31,6 +31,7 @@ export namespace Components {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "defaultTerm"?: string;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -338,6 +339,7 @@ declare namespace LocalJSX {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "defaultTerm"?: string;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;

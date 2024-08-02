@@ -10,7 +10,6 @@ export class WindowService extends EventTarget {
 
   private handleResize() {
     this._width = window.innerWidth
-    console.log('WindowService: handleResize', this._width)
     this.dispatchEvent(new CustomEvent('widthChange', { detail: this._width }))
   }
 

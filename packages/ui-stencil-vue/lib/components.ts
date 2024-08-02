@@ -22,7 +22,8 @@ export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-cha
   'placeholder',
   'sourceBaseUrl',
   'sourcesMap',
-  'showClearChat'
+  'showClearChat',
+  'defaultTerm'
 ]);
 
 
