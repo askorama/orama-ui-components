@@ -21,6 +21,7 @@ export const OramaFooter = /*@__PURE__*/createReactComponent<JSX.OramaFooter, HT
 export const OramaInput = /*@__PURE__*/createReactComponent<JSX.OramaInput, HTMLOramaInputElement>('orama-input');
 export const OramaLogoIcon = /*@__PURE__*/createReactComponent<JSX.OramaLogoIcon, HTMLOramaLogoIconElement>('orama-logo-icon');
 export const OramaMarkdown = /*@__PURE__*/createReactComponent<JSX.OramaMarkdown, HTMLOramaMarkdownElement>('orama-markdown');
+export const OramaModal = /*@__PURE__*/createReactComponent<JSX.OramaModal, HTMLOramaModalElement>('orama-modal');
 export const OramaNavigationBar = /*@__PURE__*/createReactComponent<JSX.OramaNavigationBar, HTMLOramaNavigationBarElement>('orama-navigation-bar');
 export const OramaSearch = /*@__PURE__*/createReactComponent<JSX.OramaSearch, HTMLOramaSearchElement>('orama-search');
 export const OramaSearchBox = /*@__PURE__*/createReactComponent<JSX.OramaSearchBox, HTMLOramaSearchBoxElement>('orama-search-box');

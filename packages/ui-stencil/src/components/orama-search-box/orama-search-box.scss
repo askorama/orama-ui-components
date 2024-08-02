@@ -9,38 +9,8 @@
   }
 }
 
-:host {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--backdrop-background-color-primary, palette('backdrop-background', 'primary'));
-}
-
-.inner-container {
-  display: flex;
-  background-color: var(--background-color-primary, background('primary'));
-  position: fixed;
-  inset: 0;
-  z-index: $zindex-search-modal;
-  flex-direction: column;
-  justify-content: space-between;
-  &.hidden {
-    display: none;
-  }
-
+.modal {
   @media (--md-min) {
-    width: 80%;
-    margin: 0 auto;
-    max-width: pxToRem(615);
-    height: 58vh;
-    max-height: pxToRem(400);
-    top: 50%;
-    transform: translate3d(0, -50%, 0);
-    border-radius: var(--radius-m, $radius-m);
-    padding: 0;
-
     orama-input {
       padding: 0;
       margin: 0;

@@ -9,6 +9,7 @@ import { globalContext } from '@/context/GlobalContext'
 })
 export class OramaSearch {
   @Element() el: HTMLElement
+
   @State() searchValue = ''
   @State() selectedFacet = ''
 

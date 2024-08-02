@@ -103,6 +103,12 @@ export const OramaMarkdown = /*@__PURE__*/ defineContainer<JSX.OramaMarkdown>('o
 ]);
 
 
+export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-modal', undefined, [
+  'isOpen',
+  'title'
+]);
+
+
 export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined);
 
 

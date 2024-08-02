@@ -20,6 +20,7 @@
 ### Depends on
 
 - [orama-text](../internal/orama-text)
+- [orama-modal](../internal/orama-modal)
 - [orama-navigation-bar](../internal/orama-navigation-bar)
 - [orama-search](../internal/orama-search)
 - [orama-chat](../internal/orama-chat)
@@ -29,6 +30,7 @@
 ```mermaid
 graph TD;
   orama-search-box --> orama-text
+  orama-search-box --> orama-modal
   orama-search-box --> orama-navigation-bar
   orama-search-box --> orama-search
   orama-search-box --> orama-chat

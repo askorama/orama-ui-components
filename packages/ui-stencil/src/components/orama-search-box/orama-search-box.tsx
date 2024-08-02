@@ -29,6 +29,9 @@ export class SearchBox {
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number
 
+  private firstFocusableElement: HTMLElement
+  private lastFocusableElement: HTMLElement
+
   @Watch('index')
   indexChanged() {
     this.startServices()
@@ -54,6 +57,13 @@ export class SearchBox {
   handleItemClick(event: CustomEvent) {
     // TODO: manage item click
     console.log('Item clicked', event.detail)
+  }
+
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      globalContext.open = false
+    }
   }
 
   updateTheme() {
@@ -142,9 +152,10 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
+    // TODO: extract modal as layout layer
     return (
-      <Host>
-        <div class={{ 'inner-container': true, hidden: !globalContext.open }}>
+      <Fragment>
+        <orama-modal isOpen={this.open} class="modal">
           <orama-navigation-bar />
           <div class="main">
             <orama-search class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`} />
@@ -157,8 +168,10 @@ export class SearchBox {
               />
             )}
           </div>
+          {/* this should be part of modal content */}
           <orama-footer colorScheme={this.colorScheme} />
-        </div>
+        </orama-modal>
+        {/* TODO: Create a Slider component to extract layout layer */}
         {this.windowWidth > 1024 && (
           <Fragment>
             {globalContext.currentTask === 'chat' && (
@@ -187,7 +200,7 @@ export class SearchBox {
             </div>
           </Fragment>
         )}
-      </Host>
+      </Fragment>
     )
   }
 }
