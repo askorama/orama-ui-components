@@ -32,6 +32,7 @@ export namespace Components {
     }
     interface OramaChat {
         "defaultTerm"?: string;
+        "focusInput"?: boolean;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -340,6 +341,7 @@ declare namespace LocalJSX {
     }
     interface OramaChat {
         "defaultTerm"?: string;
+        "focusInput"?: boolean;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;

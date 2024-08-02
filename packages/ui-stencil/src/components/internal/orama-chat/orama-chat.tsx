@@ -4,7 +4,6 @@ import type { SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
-import { globalContext } from '@/context/GlobalContext'
 
 // TODO: Hardcoding suggestions for now
 const SUGGESTIONS = [
@@ -25,6 +24,7 @@ export class OramaChat {
   @Prop() sourcesMap?: SourcesMap
   @Prop() showClearChat?: boolean = true
   @Prop() defaultTerm?: string
+  @Prop() focusInput?: boolean = false
 
   @State() inputValue = ''
 
@@ -33,10 +33,23 @@ export class OramaChat {
     this.inputValue = this.defaultTerm
   }
 
+  @Watch('focusInput')
+  focusInputWatcher() {
+    this.handleFocus()
+  }
+
   messagesContainerRef!: HTMLElement
+  textareaRef!: HTMLOramaTextareaElement
   isScrolling = false
   prevScrollTop = 0
   scrollTarget = 0
+
+  handleFocus = () => {
+    if (this.focusInput) {
+      console.log('focusInput')
+      this.textareaRef.focus()
+    }
+  }
 
   isScrollOnBottom = () => {
     const scrollableHeight = this.messagesContainerRef.scrollHeight - this.messagesContainerRef.clientHeight
@@ -108,6 +121,7 @@ export class OramaChat {
 
   componentWillLoad() {
     this.inputValue = this.defaultTerm || ''
+    this.handleFocus()
   }
 
   componentDidLoad() {
@@ -202,7 +216,8 @@ export class OramaChat {
           <form onSubmit={this.handleSubmit}>
             <div class="chat-input">
               <orama-textarea
-                autoFocus
+                ref={(ref) => (this.textareaRef = ref)}
+                autoFocus={this.focusInput}
                 maxRows={4}
                 value={this.inputValue}
                 onKeyDown={(e: KeyboardEvent) => {

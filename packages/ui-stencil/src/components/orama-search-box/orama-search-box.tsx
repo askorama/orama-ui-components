@@ -153,6 +153,7 @@ export class SearchBox {
                 class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
                 defaultTerm={globalContext.currentTerm}
                 showClearChat={false}
+                focusInput={globalContext.currentTask === 'chat'}
               />
             )}
           </div>
@@ -177,7 +178,11 @@ export class SearchBox {
             )}
             <div class={{ 'slide-container': true, 'slide-up': globalContext.currentTask === 'chat' }}>
               <div class="slide-container-inner">
-                <orama-chat showClearChat={false} defaultTerm={globalContext.currentTerm} />
+                <orama-chat
+                  showClearChat={false}
+                  defaultTerm={globalContext.currentTerm}
+                  focusInput={globalContext.currentTask === 'chat'}
+                />
               </div>
             </div>
           </Fragment>
