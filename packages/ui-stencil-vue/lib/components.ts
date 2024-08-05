@@ -22,7 +22,9 @@ export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-cha
   'placeholder',
   'sourceBaseUrl',
   'sourcesMap',
-  'showClearChat'
+  'showClearChat',
+  'defaultTerm',
+  'focusInput'
 ]);
 
 
@@ -36,6 +38,14 @@ export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('ora
   'sourceBaseUrl',
   'placeholder',
   'sourcesMap'
+]);
+
+
+export const OramaChatButton = /*@__PURE__*/ defineContainer<JSX.OramaChatButton>('orama-chat-button', undefined, [
+  'label',
+  'active',
+  'highlight',
+  'class'
 ]);
 
 
@@ -65,6 +75,12 @@ export const OramaFacets = /*@__PURE__*/ defineContainer<JSX.OramaFacets>('orama
 ]);
 
 
+export const OramaFooter = /*@__PURE__*/ defineContainer<JSX.OramaFooter>('orama-footer', undefined, [
+  'class',
+  'colorScheme'
+]);
+
+
 export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-input', undefined, [
   'name',
   'size',
@@ -84,6 +100,12 @@ export const OramaLogoIcon = /*@__PURE__*/ defineContainer<JSX.OramaLogoIcon>('o
 
 export const OramaMarkdown = /*@__PURE__*/ defineContainer<JSX.OramaMarkdown>('orama-markdown', undefined, [
   'content'
+]);
+
+
+export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-modal', undefined, [
+  'open',
+  'mainTitle'
 ]);
 
 
@@ -115,9 +137,16 @@ export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchR
 ]);
 
 
+export const OramaSlidingPanel = /*@__PURE__*/ defineContainer<JSX.OramaSlidingPanel>('orama-sliding-panel', undefined, [
+  'open',
+  'closed'
+]);
+
+
 export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
   'styledAs',
+  'bold',
   'class',
   'align',
   'inactive'

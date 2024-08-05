@@ -1,0 +1,132 @@
+@keyframes shine {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 150% center;
+    opacity: 0;
+  }
+}
+
+@keyframes animBg {
+  0% {
+    background: var(--background-color-tertiary, background-color('tertiary'));
+  }
+  70% {
+    background: var(--background-color-tertiary, background-color('tertiary'));
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 75% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+:host {
+  padding: var(--spacing-s, $spacing-s);
+  border-bottom: 1px solid var(--border-color-primary, border-color('primary'));
+}
+
+.chat-button {
+  @include paragraph();
+  display: flex;
+  width: 100%;
+  padding: var(--spacing-s, $spacing-s);
+  align-items: center;
+  gap: var(--spacing-s, $spacing-s);
+  cursor: pointer;
+  border-radius: var(--spacing-s, $spacing-s);
+  border: 1px solid transparent;
+  background: transparent;
+  position: relative;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--background-color-tertiary, background-color('tertiary'));
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid var(--border-color-accent, border-color('accent'));
+  }
+
+  &.is-active {
+    background: var(--background-color-tertiary, background-color('tertiary'));
+  }
+
+  &.is-highlighted {
+    &::before,
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      border-radius: var(--spacing-s, $spacing-s);
+      top: -2px;
+      left: -2px;
+      z-index: -1;
+      height: calc(100% + 4px);
+      width: calc(100% + 4px);
+      overflow: hidden;
+      background: linear-gradient(
+        to right,
+        var(--chat-button-border-color-gradientOne, palette('chat-button-border', 'gradientOne')) 0%,
+        var(--chat-button-border-color-gradientTwo, palette('chat-button-border', 'gradientTwo')) 20%,
+        var(--chat-button-border-color-gradientThree, palette('chat-button-border', 'gradientThree')) 40%,
+        var(--chat-button-border-color-gradientFour, palette('chat-button-border', 'gradientFour')) 60%,
+        var(--chat-button-border-color-gradientFive, palette('chat-button-border', 'gradientFive')) 80%,
+        var(--chat-button-border-color-gradientSix, palette('chat-button-border', 'gradientSix')) 100%
+      );
+      background-size: 150% auto;
+
+      animation: shine 1s linear 1 forwards;
+    }
+
+    &:after {
+      filter: blur(3px);
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.icon-star {
+  display: flex;
+  padding: var(--spacing-s, $spacing-s);
+  align-items: center;
+  border-radius: var(--radius-xs, $radius-xs);
+  background: linear-gradient(
+    79deg,
+    var(--chat-button-background-color-gradientOne, palette('chat-button-background', 'gradientOne')) -45%,
+    var(--chat-button-backgroun-color-gradientTwo, palette('chat-button-background', 'gradientTwo')) 75%
+  );
+  background-size: 200% auto;
+
+  .is-highlighted & {
+    animation: steam 1.4s linear 1 forwards;
+  }
+}
+
+.icon-enter {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs, $spacing-xs);
+  border-radius: var(--radius-xs, $radius-xs);
+  border: 0.7px solid var(--border-color-primary, border-color('primary'));
+  justify-self: flex-end;
+}
+
+.label {
+  flex-grow: 1;
+  text-align: left;
+}

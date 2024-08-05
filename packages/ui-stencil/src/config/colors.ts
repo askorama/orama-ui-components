@@ -41,7 +41,16 @@ export default {
     "--button-text-color-primary": "#f7f6f9",
     "--button-text-color-inactive": "#99989d",
     "--button-background-color-primary": "#8152ee",
-    "--button-background-color-inactive": "#efefef"
+    "--button-background-color-inactive": "#efefef",
+    "--backdrop-background-color-primary": "rgba(0, 0, 0, 0.7)",
+    "--chat-button-border-color-gradientOne": "#eee9f6",
+    "--chat-button-border-color-gradientTwo": "#eee9f6",
+    "--chat-button-border-color-gradientThree": "#ae8ff7",
+    "--chat-button-border-color-gradientFour": "#ae8ff7",
+    "--chat-button-border-color-gradientFive": "#eee9f6",
+    "--chat-button-border-color-gradientSix": "#eee9f6",
+    "--chat-button-background-color-gradientOne": "#8152ee",
+    "--chat-button-background-color-gradientTwo": "rgba(225, 225, 225, 0)"
   },
   "dark": {
     "--text-color-primary": "#fbfbfb",
@@ -66,6 +75,15 @@ export default {
     "--icon-color-accent": "#8152ee",
     "--shadow-color-primary": "black",
     "--button-text-color-primary": "#efefef",
-    "--button-background-color-primary": "#432d77"
+    "--button-background-color-primary": "#432d77",
+    "--backdrop-background-color-primary": "rgba(0, 0, 0, 0.7)",
+    "--chat-button-border-color-gradientOne": "#212121",
+    "--chat-button-border-color-gradientTwo": "#212121",
+    "--chat-button-border-color-gradientThree": "#ae8ff7",
+    "--chat-button-border-color-gradientFour": "#ae8ff7",
+    "--chat-button-border-color-gradientFive": "#212121",
+    "--chat-button-border-color-gradientSix": "#212121",
+    "--chat-button-background-color-gradientOne": "#8152ee",
+    "--chat-button-background-color-gradientTwo": "rgba(106, 75, 178, 0)"
   }
 };

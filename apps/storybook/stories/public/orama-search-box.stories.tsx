@@ -3,9 +3,8 @@ import type { Components } from '@orama/wc-components'
 type Story = StoryObj<Components.OramaSearchBox>
 
 const meta: Meta<Components.OramaSearchBox> = {
-  title: 'Components/Public/SearchBox',
+  title: 'Components/SearchBox',
   component: 'orama-search-box',
-  tags: ['autodocs'],
   argTypes: {
     colorScheme: {
       options: ['light', 'dark', 'system'],
@@ -36,6 +35,7 @@ export const SearchBox: Story = {
     resultMap: {
       description: 'title',
     },
+    colorScheme: 'dark',
     themeConfig: {
       colors: {
         light: {

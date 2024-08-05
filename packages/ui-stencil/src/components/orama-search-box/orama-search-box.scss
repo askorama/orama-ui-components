@@ -1,17 +1,25 @@
-:host {
-  display: block;
+@keyframes showIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.orama-container {
-  display: flex;
-  background-color: var(--background-color-primary, background('primary'));
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  flex-direction: column;
-  justify-content: space-between;
-  &.hidden {
-    display: none;
+.modal {
+  @media (--md-min) {
+    orama-input {
+      padding: 0;
+      margin: 0;
+      border-radius: 0;
+    }
+
+    input[type='search'] {
+      border-radius: var(--radius-m, $radius-m) var(--radius-m, $radius-m) 0 0;
+    }
   }
 }
 
@@ -20,4 +28,12 @@
   flex-direction: column;
   flex-grow: 1;
   overflow: hidden;
+}
+
+.section-active {
+  display: flex;
+}
+
+.section-inactive {
+  display: none;
 }

@@ -17,9 +17,8 @@ const demoIndexes = {
 }
 
 const meta: Meta = {
-  title: 'Components/Public/ChatBox',
+  title: 'Components/ChatBox',
   component: 'orama-chat-box',
-  tags: ['autodocs'],
   argTypes: {
     index: {
       options: Object.keys(demoIndexes),

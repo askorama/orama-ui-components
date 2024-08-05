@@ -1,0 +1,4 @@
+@import 'colors';
+
+$theme-colors-light: generate-theme-map($palette);
+$theme-colors-dark: generate-theme-map($paletteDark);

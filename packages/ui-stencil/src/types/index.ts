@@ -5,6 +5,8 @@ export type SearchResult = {
   path: string
 }
 
+export type ColorScheme = 'dark' | 'light' | 'system'
+
 export type SearchResultWithScore = SearchResult & { score: number }
 
 export type SearchResultBySection = {

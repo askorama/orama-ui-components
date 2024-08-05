@@ -23,11 +23,32 @@ export class OramaChat {
   @Prop() sourceBaseUrl?: string = ''
   @Prop() sourcesMap?: SourcesMap
   @Prop() showClearChat?: boolean = true
+  @Prop() defaultTerm?: string
+  @Prop() focusInput?: boolean = false
+
   @State() inputValue = ''
+
+  @Watch('defaultTerm')
+  handleDefaultTermChange() {
+    this.inputValue = this.defaultTerm
+  }
+
+  @Watch('focusInput')
+  focusInputWatcher() {
+    this.handleFocus()
+  }
+
   messagesContainerRef!: HTMLElement
+  textareaRef!: HTMLOramaTextareaElement
   isScrolling = false
   prevScrollTop = 0
   scrollTarget = 0
+
+  handleFocus = () => {
+    if (this.focusInput) {
+      this.textareaRef.focus()
+    }
+  }
 
   isScrollOnBottom = () => {
     const scrollableHeight = this.messagesContainerRef.scrollHeight - this.messagesContainerRef.clientHeight
@@ -95,6 +116,11 @@ export class OramaChat {
 
   handleWheel = (e: WheelEvent) => {
     this.recalculateLockOnBottom()
+  }
+
+  componentWillLoad() {
+    this.inputValue = this.defaultTerm || ''
+    this.handleFocus()
   }
 
   componentDidLoad() {
@@ -189,7 +215,8 @@ export class OramaChat {
           <form onSubmit={this.handleSubmit}>
             <div class="chat-input">
               <orama-textarea
-                autoFocus
+                ref={(ref) => (this.textareaRef = ref)}
+                autoFocus={this.focusInput}
                 maxRows={4}
                 value={this.inputValue}
                 onKeyDown={(e: KeyboardEvent) => {

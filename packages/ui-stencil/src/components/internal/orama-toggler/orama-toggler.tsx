@@ -29,10 +29,10 @@ export class OramaToggler {
         <button
           type="button"
           class={{
-            selected: globalContext.selectedTab === 'search',
+            selected: globalContext.currentTask === 'search',
             animate: !this.firstRender || this.performInitialAnimation,
           }}
-          onClick={() => (globalContext.selectedTab = 'search')}
+          onClick={() => (globalContext.currentTask = 'search')}
         >
           <span>Search</span>
           <ph-magnifying-glass size={16} />
@@ -40,10 +40,10 @@ export class OramaToggler {
         <button
           type="button"
           class={{
-            selected: globalContext.selectedTab === 'chat',
+            selected: globalContext.currentTask === 'chat',
             animate: !this.firstRender || this.performInitialAnimation,
           }}
-          onClick={() => (globalContext.selectedTab = 'chat')}
+          onClick={() => (globalContext.currentTask = 'chat')}
         >
           <ph-sparkle size={16} />
           <span>Ask AI</span>

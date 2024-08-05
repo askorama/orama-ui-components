@@ -2,11 +2,16 @@ orama-search {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: var(--spacing-s, $spacing-s) 0;
+
+  @media (--md-max) {
+    padding: var(--spacing-s, $spacing-s) 0;
+  }
 }
 
 orama-input {
-  padding: 0 var(--spacing-l, $spacing-l);
+  @media (--md-max) {
+    padding: 0 var(--spacing-l, $spacing-l);
+  }
 }
 
 .result-wrapper {
@@ -27,4 +32,19 @@ orama-input {
     background-color: #b2b2b285;
     border-radius: var(--border-radius-l, $radius-l);
   }
+
+  @media (--md-min) {
+    padding: 0 var(--spacing-m, $spacing-m);
+  }
+}
+
+.chat-button {
+  @media (--md-max) {
+    display: none;
+  }
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
 }

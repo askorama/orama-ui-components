@@ -1,12 +1,13 @@
-import { Component, Host, Prop, Watch, h, Listen, Element, State } from '@stencil/core'
+import { Component, Prop, Watch, h, Listen, Element, State, Fragment } from '@stencil/core'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/GlobalContext'
 import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
+import { windowWidthListener } from '@/services/WindowService'
 import type { TThemeOverrides } from '@/config/theme'
 import { initOramaClient } from '@/utils/utils'
-import type { ResultMap } from '@/types'
+import type { ColorScheme, ResultMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
 
 @Component({
@@ -18,13 +19,14 @@ export class SearchBox {
   @Element() el: HTMLElement
 
   @Prop() themeConfig?: Partial<TThemeOverrides>
-  @Prop() colorScheme?: 'dark' | 'light' | 'system' = 'light'
+  @Prop() colorScheme?: ColorScheme = 'light'
   @Prop() facetProperty?: string
   @Prop() open? = false
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() index: CloudIndexConfig
 
-  @State() systemScheme: 'light' | 'dark' = 'light'
+  @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
+  @State() windowWidth: number
 
   @Watch('index')
   indexChanged() {
@@ -53,6 +55,13 @@ export class SearchBox {
     console.log('Item clicked', event.detail)
   }
 
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      globalContext.open = false
+    }
+  }
+
   updateTheme() {
     const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
     const uiElement = document.querySelector('#orama-ui')
@@ -62,10 +71,10 @@ export class SearchBox {
       uiElement.classList.add(`theme-${scheme}`)
     }
 
-    this.updateCssVariables(scheme)
+    this.updateCssVariables(scheme as ColorScheme)
   }
 
-  updateCssVariables(scheme: 'light' | 'dark') {
+  updateCssVariables(scheme: ColorScheme) {
     const config = this.themeConfig
     const root = document.querySelector('#orama-ui') as HTMLElement
 
@@ -108,13 +117,25 @@ export class SearchBox {
     // TODO: We probable want to keep these props below whithin the respective service
     // instance property. I seems to make sense to pass it as initialization prop.
     // Same goes for any other Chat init prop. Lets talk about it as well, please.
-
     searchState.facetProperty = this.facetProperty
     searchState.resultMap = this.resultMap
 
     this.startServices()
     this.updateTheme()
     this.detectSystemColorScheme()
+  }
+
+  connectedCallback() {
+    this.windowWidth = windowWidthListener.width
+    windowWidthListener.addEventListener('widthChange', this.updateWindowWidth)
+  }
+
+  disconnectedCallback() {
+    windowWidthListener.removeEventListener('widthChange', this.updateWindowWidth)
+  }
+
+  private updateWindowWidth = (event: CustomEvent) => {
+    this.windowWidth = event.detail
   }
 
   render() {
@@ -127,23 +148,37 @@ export class SearchBox {
     }
 
     return (
-      <Host>
-        <div class={{ 'orama-container': true, hidden: !globalContext.open }}>
+      <Fragment>
+        <orama-modal open={this.open} class="modal">
           <orama-navigation-bar />
           <div class="main">
-            <orama-search style={{ display: globalContext.selectedTab === 'search' ? 'flex' : 'none' }} />
-            <orama-chat
-              style={{ display: globalContext.selectedTab === 'chat' ? 'flex' : 'none' }}
-              showClearChat={false}
-            />
+            <orama-search class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`} />
+            {this.windowWidth <= 1024 && (
+              <orama-chat
+                class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
+                defaultTerm={globalContext.currentTerm}
+                showClearChat={false}
+                focusInput={globalContext.currentTask === 'chat'}
+              />
+            )}
           </div>
-          {/* FOOTER - to replace with component */}
-          {/* TODO: Hidden footer for now */}
-          {/* <div class="footer" style={{ textAlign: 'center' }}>
-            <orama-text as="span">Orama logo</orama-text>
-          </div> */}
-        </div>
-      </Host>
+          <orama-footer colorScheme={this.colorScheme} />
+        </orama-modal>
+        {this.windowWidth > 1024 && (
+          <orama-sliding-panel
+            open={globalContext.currentTask === 'chat'}
+            closed={() => {
+              globalContext.currentTask = 'search'
+            }}
+          >
+            <orama-chat
+              showClearChat={false}
+              defaultTerm={globalContext.currentTerm}
+              focusInput={globalContext.currentTask === 'chat'}
+            />
+          </orama-sliding-panel>
+        )}
+      </Fragment>
     )
   }
 }

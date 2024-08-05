@@ -1,3 +1,8 @@
+/*
+!IMPORTANT: Make sure to also run 'pnpm convert-scss-to-js' if you make changes to this file to make sure the changes are reflected in storybook as well
+TODO: We'll make this task automatic in the future
+*/
+
 /**
 * * PRIMITIVE COLORS
 */
@@ -16,6 +21,7 @@ $purple100: #f7f6f9;
 $purple200: #eee9f6;
 $purple300: #ae8ff7;
 $purple500: #8152ee;
+$purple600: #6a4bb2;
 $purple700: #432d77;
 
 /**
@@ -69,6 +75,21 @@ $palette: (
     inactive: $gray100,
     // todo: value to check with Angela
   ),
+  'backdrop-background': (
+    primary: rgba(black, 0.7),
+  ),
+  'chat-button-border': (
+    gradientOne: $purple200,
+    gradientTwo: $purple200,
+    gradientThree: $purple300,
+    gradientFour: $purple300,
+    gradientFive: $purple200,
+    gradientSix: $purple200,
+  ),
+  'chat-button-background': (
+    gradientOne: $purple300,
+    gradientTwo: rgba(255, 255, 255, 0),
+  ),
 );
 
 /**
@@ -112,35 +133,19 @@ $paletteDark: (
   'button-background': (
     primary: $purple700,
   ),
+  'backdrop-background': (
+    primary: rgba(black, 0.7),
+  ),
+  'chat-button-border': (
+    gradientOne: $gray800,
+    gradientTwo: $gray800,
+    gradientThree: $purple300,
+    gradientFour: $purple500,
+    gradientFive: $gray800,
+    gradientSix: $gray800,
+  ),
+  'chat-button-background': (
+    gradientOne: $purple600,
+    gradientTwo: rgba(106, 75, 178, 0),
+  ),
 );
-
-:export {
-  gray50: $gray50;
-  gray100: $gray100;
-  gray200: $gray200;
-  gray300: $gray300;
-  gray400: $gray400;
-  gray500: $gray500;
-  gray600: $gray600;
-  gray700: $gray700;
-  gray800: $gray800;
-  gray900: $gray900;
-  gray950: $gray950;
-  purple100: $purple100;
-  purple200: $purple200;
-  purple300: $purple300;
-  purple500: $purple500;
-  purple700: $purple700;
-
-  @each $key, $value in $palette {
-    @each $subkey, $subvalue in $value {
-      --#{$key}-color-#{$subkey}-light: #{$subvalue};
-    }
-  }
-
-  @each $key, $value in $paletteDark {
-    @each $subkey, $subvalue in $value {
-      --#{$key}-color-#{$subkey}-dark: #{$subvalue};
-    }
-  }
-}

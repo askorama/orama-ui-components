@@ -20,12 +20,20 @@ export class OramaTextarea {
   textarea!: HTMLTextAreaElement
   shadowTextarea!: HTMLTextAreaElement
 
-  componentDidLoad() {}
+  @Watch('autoFocus')
+  handleAutoFocusChange() {
+    if (this.autoFocus) {
+      this.textarea.focus()
+    }
+  }
 
   componetWillLoad() {
     this.startAdornmentWidth = this.getNamedSlotWidth('adornment-start')
     this.endAdornmentWidth = this.getNamedSlotWidth('adornment-end')
     this.syncHeight()
+    if (this.autoFocus) {
+      this.textarea.focus()
+    }
   }
 
   getNamedSlotWidth(slotName: string) {
@@ -137,7 +145,6 @@ export class OramaTextarea {
 
         <textarea
           {...this.getAllProps()}
-          autoFocus={this.autoFocus}
           value={this.value}
           onInput={this.handleChange}
           ref={(el) => (this.textarea = el as HTMLTextAreaElement)}

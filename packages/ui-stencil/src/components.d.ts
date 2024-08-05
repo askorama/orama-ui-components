@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonProps } from "./components/internal/orama-button/orama-button";
-import { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
+import { CloudIndexConfig, ColorScheme, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
 import { TChatInteraction } from "./context/chatContext";
 import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
@@ -14,7 +14,7 @@ import { TThemeOverrides } from "./config/theme";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
-export { CloudIndexConfig, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
+export { CloudIndexConfig, ColorScheme, ResultMap, SearchResult, SearchResultBySection, SourcesMap } from "./types/index";
 export { TChatInteraction } from "./context/chatContext";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
@@ -31,6 +31,8 @@ export namespace Components {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "defaultTerm"?: string;
+        "focusInput"?: boolean;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -44,6 +46,12 @@ export namespace Components {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+    }
+    interface OramaChatButton {
+        "active"?: boolean;
+        "class"?: string;
+        "highlight"?: boolean;
+        "label": string;
     }
     interface OramaChatMessagesContainer {
         "interactions": TChatInteraction[];
@@ -62,6 +70,10 @@ export namespace Components {
         "facets": Facet[];
         "selectedFacet": string;
     }
+    interface OramaFooter {
+        "class"?: string;
+        "colorScheme"?: ColorScheme;
+    }
     interface OramaInput {
         "defaultValue": InputProps['defaultValue'];
         "label"?: InputProps['label'];
@@ -77,12 +89,16 @@ export namespace Components {
     interface OramaMarkdown {
         "content": string;
     }
+    interface OramaModal {
+        "mainTitle": string;
+        "open": boolean;
+    }
     interface OramaNavigationBar {
     }
     interface OramaSearch {
     }
     interface OramaSearchBox {
-        "colorScheme"?: 'dark' | 'light' | 'system';
+        "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index": CloudIndexConfig;
         "open"?: boolean;
@@ -97,6 +113,10 @@ export namespace Components {
         "searchTerm": SearchResultsProps['searchTerm'];
         "sections": SearchResultBySection[];
     }
+    interface OramaSlidingPanel {
+        "closed": () => void;
+        "open": boolean;
+    }
     interface OramaText {
         /**
           * optionally change text alignment
@@ -106,6 +126,7 @@ export namespace Components {
           * it defines the HTML tag to be used
          */
         "as"?: TextProps['as'];
+        "bold"?: boolean;
         /**
           * the optional class name
          */
@@ -163,6 +184,12 @@ declare global {
         prototype: HTMLOramaChatBoxElement;
         new (): HTMLOramaChatBoxElement;
     };
+    interface HTMLOramaChatButtonElement extends Components.OramaChatButton, HTMLStencilElement {
+    }
+    var HTMLOramaChatButtonElement: {
+        prototype: HTMLOramaChatButtonElement;
+        new (): HTMLOramaChatButtonElement;
+    };
     interface HTMLOramaChatMessagesContainerElement extends Components.OramaChatMessagesContainer, HTMLStencilElement {
     }
     var HTMLOramaChatMessagesContainerElement: {
@@ -193,6 +220,12 @@ declare global {
         prototype: HTMLOramaFacetsElement;
         new (): HTMLOramaFacetsElement;
     };
+    interface HTMLOramaFooterElement extends Components.OramaFooter, HTMLStencilElement {
+    }
+    var HTMLOramaFooterElement: {
+        prototype: HTMLOramaFooterElement;
+        new (): HTMLOramaFooterElement;
+    };
     interface HTMLOramaInputElementEventMap {
         "oramaInputChanged": string;
     }
@@ -221,6 +254,12 @@ declare global {
     var HTMLOramaMarkdownElement: {
         prototype: HTMLOramaMarkdownElement;
         new (): HTMLOramaMarkdownElement;
+    };
+    interface HTMLOramaModalElement extends Components.OramaModal, HTMLStencilElement {
+    }
+    var HTMLOramaModalElement: {
+        prototype: HTMLOramaModalElement;
+        new (): HTMLOramaModalElement;
     };
     interface HTMLOramaNavigationBarElement extends Components.OramaNavigationBar, HTMLStencilElement {
     }
@@ -263,6 +302,12 @@ declare global {
         prototype: HTMLOramaSearchResultsElement;
         new (): HTMLOramaSearchResultsElement;
     };
+    interface HTMLOramaSlidingPanelElement extends Components.OramaSlidingPanel, HTMLStencilElement {
+    }
+    var HTMLOramaSlidingPanelElement: {
+        prototype: HTMLOramaSlidingPanelElement;
+        new (): HTMLOramaSlidingPanelElement;
+    };
     interface HTMLOramaTextElement extends Components.OramaText, HTMLStencilElement {
     }
     var HTMLOramaTextElement: {
@@ -286,19 +331,23 @@ declare global {
         "orama-chat": HTMLOramaChatElement;
         "orama-chat-assistent-message": HTMLOramaChatAssistentMessageElement;
         "orama-chat-box": HTMLOramaChatBoxElement;
+        "orama-chat-button": HTMLOramaChatButtonElement;
         "orama-chat-messages-container": HTMLOramaChatMessagesContainerElement;
         "orama-chat-suggestions": HTMLOramaChatSuggestionsElement;
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
         "orama-dots-loader": HTMLOramaDotsLoaderElement;
         "orama-facets": HTMLOramaFacetsElement;
+        "orama-footer": HTMLOramaFooterElement;
         "orama-input": HTMLOramaInputElement;
         "orama-logo-icon": HTMLOramaLogoIconElement;
         "orama-markdown": HTMLOramaMarkdownElement;
+        "orama-modal": HTMLOramaModalElement;
         "orama-navigation-bar": HTMLOramaNavigationBarElement;
         "orama-search": HTMLOramaSearchElement;
         "orama-search-box": HTMLOramaSearchBoxElement;
         "orama-search-button": HTMLOramaSearchButtonElement;
         "orama-search-results": HTMLOramaSearchResultsElement;
+        "orama-sliding-panel": HTMLOramaSlidingPanelElement;
         "orama-text": HTMLOramaTextElement;
         "orama-textarea": HTMLOramaTextareaElement;
         "orama-toggler": HTMLOramaTogglerElement;
@@ -314,6 +363,8 @@ declare namespace LocalJSX {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "defaultTerm"?: string;
+        "focusInput"?: boolean;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -327,6 +378,12 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+    }
+    interface OramaChatButton {
+        "active"?: boolean;
+        "class"?: string;
+        "highlight"?: boolean;
+        "label"?: string;
     }
     interface OramaChatMessagesContainer {
         "interactions"?: TChatInteraction[];
@@ -345,6 +402,10 @@ declare namespace LocalJSX {
         "facets"?: Facet[];
         "selectedFacet"?: string;
     }
+    interface OramaFooter {
+        "class"?: string;
+        "colorScheme"?: ColorScheme;
+    }
     interface OramaInput {
         "defaultValue"?: InputProps['defaultValue'];
         "label"?: InputProps['label'];
@@ -361,12 +422,16 @@ declare namespace LocalJSX {
     interface OramaMarkdown {
         "content"?: string;
     }
+    interface OramaModal {
+        "mainTitle"?: string;
+        "open"?: boolean;
+    }
     interface OramaNavigationBar {
     }
     interface OramaSearch {
     }
     interface OramaSearchBox {
-        "colorScheme"?: 'dark' | 'light' | 'system';
+        "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "open"?: boolean;
@@ -382,6 +447,10 @@ declare namespace LocalJSX {
         "searchTerm"?: SearchResultsProps['searchTerm'];
         "sections"?: SearchResultBySection[];
     }
+    interface OramaSlidingPanel {
+        "closed"?: () => void;
+        "open"?: boolean;
+    }
     interface OramaText {
         /**
           * optionally change text alignment
@@ -391,6 +460,7 @@ declare namespace LocalJSX {
           * it defines the HTML tag to be used
          */
         "as"?: TextProps['as'];
+        "bold"?: boolean;
         /**
           * the optional class name
          */
@@ -419,19 +489,23 @@ declare namespace LocalJSX {
         "orama-chat": OramaChat;
         "orama-chat-assistent-message": OramaChatAssistentMessage;
         "orama-chat-box": OramaChatBox;
+        "orama-chat-button": OramaChatButton;
         "orama-chat-messages-container": OramaChatMessagesContainer;
         "orama-chat-suggestions": OramaChatSuggestions;
         "orama-chat-user-message": OramaChatUserMessage;
         "orama-dots-loader": OramaDotsLoader;
         "orama-facets": OramaFacets;
+        "orama-footer": OramaFooter;
         "orama-input": OramaInput;
         "orama-logo-icon": OramaLogoIcon;
         "orama-markdown": OramaMarkdown;
+        "orama-modal": OramaModal;
         "orama-navigation-bar": OramaNavigationBar;
         "orama-search": OramaSearch;
         "orama-search-box": OramaSearchBox;
         "orama-search-button": OramaSearchButton;
         "orama-search-results": OramaSearchResults;
+        "orama-sliding-panel": OramaSlidingPanel;
         "orama-text": OramaText;
         "orama-textarea": OramaTextarea;
         "orama-toggler": OramaToggler;
@@ -445,19 +519,23 @@ declare module "@stencil/core" {
             "orama-chat": LocalJSX.OramaChat & JSXBase.HTMLAttributes<HTMLOramaChatElement>;
             "orama-chat-assistent-message": LocalJSX.OramaChatAssistentMessage & JSXBase.HTMLAttributes<HTMLOramaChatAssistentMessageElement>;
             "orama-chat-box": LocalJSX.OramaChatBox & JSXBase.HTMLAttributes<HTMLOramaChatBoxElement>;
+            "orama-chat-button": LocalJSX.OramaChatButton & JSXBase.HTMLAttributes<HTMLOramaChatButtonElement>;
             "orama-chat-messages-container": LocalJSX.OramaChatMessagesContainer & JSXBase.HTMLAttributes<HTMLOramaChatMessagesContainerElement>;
             "orama-chat-suggestions": LocalJSX.OramaChatSuggestions & JSXBase.HTMLAttributes<HTMLOramaChatSuggestionsElement>;
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
             "orama-dots-loader": LocalJSX.OramaDotsLoader & JSXBase.HTMLAttributes<HTMLOramaDotsLoaderElement>;
             "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
+            "orama-footer": LocalJSX.OramaFooter & JSXBase.HTMLAttributes<HTMLOramaFooterElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-logo-icon": LocalJSX.OramaLogoIcon & JSXBase.HTMLAttributes<HTMLOramaLogoIconElement>;
             "orama-markdown": LocalJSX.OramaMarkdown & JSXBase.HTMLAttributes<HTMLOramaMarkdownElement>;
+            "orama-modal": LocalJSX.OramaModal & JSXBase.HTMLAttributes<HTMLOramaModalElement>;
             "orama-navigation-bar": LocalJSX.OramaNavigationBar & JSXBase.HTMLAttributes<HTMLOramaNavigationBarElement>;
             "orama-search": LocalJSX.OramaSearch & JSXBase.HTMLAttributes<HTMLOramaSearchElement>;
             "orama-search-box": LocalJSX.OramaSearchBox & JSXBase.HTMLAttributes<HTMLOramaSearchBoxElement>;
             "orama-search-button": LocalJSX.OramaSearchButton & JSXBase.HTMLAttributes<HTMLOramaSearchButtonElement>;
             "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;
+            "orama-sliding-panel": LocalJSX.OramaSlidingPanel & JSXBase.HTMLAttributes<HTMLOramaSlidingPanelElement>;
             "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;
             "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
             "orama-toggler": LocalJSX.OramaToggler & JSXBase.HTMLAttributes<HTMLOramaTogglerElement>;

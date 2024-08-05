@@ -69,3 +69,19 @@
   }
   @return map-get($map, $key);
 }
+
+/* ===GENERATE A THEME MAP FROM PALETTE=== */
+@function generate-theme-map($palette: $palette) {
+  $theme: ();
+  @each $feature, $featureMap in $palette {
+    @each $role, $color in $featureMap {
+      $theme: map-merge(
+        $theme,
+        (
+          '--#{$feature}-color-#{$role}': $color,
+        )
+      );
+    }
+  }
+  @return $theme;
+}
