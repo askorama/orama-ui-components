@@ -1,4 +1,4 @@
-import { Component, Host, Prop, Watch, h, Listen, Element, State, Fragment } from '@stencil/core'
+import { Component, Prop, Watch, h, Listen, Element, State, Fragment } from '@stencil/core'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/GlobalContext'
@@ -9,7 +9,6 @@ import type { TThemeOverrides } from '@/config/theme'
 import { initOramaClient } from '@/utils/utils'
 import type { ColorScheme, ResultMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
-import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 
 @Component({
   tag: 'orama-search-box',
@@ -28,9 +27,6 @@ export class SearchBox {
 
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number
-
-  private firstFocusableElement: HTMLElement
-  private lastFocusableElement: HTMLElement
 
   @Watch('index')
   indexChanged() {
@@ -121,7 +117,6 @@ export class SearchBox {
     // TODO: We probable want to keep these props below whithin the respective service
     // instance property. I seems to make sense to pass it as initialization prop.
     // Same goes for any other Chat init prop. Lets talk about it as well, please.
-
     searchState.facetProperty = this.facetProperty
     searchState.resultMap = this.resultMap
 
@@ -168,37 +163,22 @@ export class SearchBox {
               />
             )}
           </div>
-          {/* this should be part of modal content */}
           <orama-footer colorScheme={this.colorScheme} />
         </orama-modal>
         {/* TODO: Create a Slider component to extract layout layer */}
         {this.windowWidth > 1024 && (
-          <Fragment>
-            {globalContext.currentTask === 'chat' && (
-              <button
-                onClick={() => {
-                  globalContext.currentTask = 'search'
-                }}
-                onKeyDown={() => {
-                  globalContext.currentTask = 'search'
-                }}
-                type="button"
-                class="close-button"
-                aria-label="Close chat"
-              >
-                <ph-x size="18" />
-              </button>
-            )}
-            <div class={{ 'slide-container': true, 'slide-up': globalContext.currentTask === 'chat' }}>
-              <div class="slide-container-inner">
-                <orama-chat
-                  showClearChat={false}
-                  defaultTerm={globalContext.currentTerm}
-                  focusInput={globalContext.currentTask === 'chat'}
-                />
-              </div>
-            </div>
-          </Fragment>
+          <orama-sliding-panel
+            open={globalContext.currentTask === 'chat'}
+            onClose={() => {
+              globalContext.currentTask = 'search'
+            }}
+          >
+            <orama-chat
+              showClearChat={false}
+              defaultTerm={globalContext.currentTerm}
+              focusInput={globalContext.currentTask === 'chat'}
+            />
+          </orama-sliding-panel>
         )}
       </Fragment>
     )

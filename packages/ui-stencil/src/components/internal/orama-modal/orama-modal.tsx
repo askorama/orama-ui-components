@@ -7,7 +7,7 @@ import { Component, h, Prop, State, Listen, Element } from '@stencil/core'
 })
 export class OramaModal {
   @Prop() isOpen = false
-  @Prop() title = ''
+  @Prop() mainTitle = ''
   @State() activeElement: HTMLElement
   @Element() el: HTMLElement
 
@@ -89,7 +89,7 @@ export class OramaModal {
       >
         <div class="modal-inner">
           <h1 id="modalTitle" class="modal-title">
-            {this.title}
+            {this.mainTitle}
           </h1>
           <div id="modalContent" class="modal-content">
             <slot />

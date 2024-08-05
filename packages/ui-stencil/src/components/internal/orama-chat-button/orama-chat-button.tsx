@@ -8,6 +8,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowBendDownLeft.mjs'
   styleUrl: 'orama-chat-button.scss',
   shadow: true,
 })
+// TODO: consider renaming this component
 /**
  * The orama-chat-button component is used to render a button element that will trigger the chat.
  */

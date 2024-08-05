@@ -91,7 +91,7 @@ export namespace Components {
     }
     interface OramaModal {
         "isOpen": boolean;
-        "title": string;
+        "mainTitle": string;
     }
     interface OramaNavigationBar {
     }
@@ -112,6 +112,10 @@ export namespace Components {
         "loading": boolean;
         "searchTerm": SearchResultsProps['searchTerm'];
         "sections": SearchResultBySection[];
+    }
+    interface OramaSlidingPanel {
+        "onClosed": () => void;
+        "open": boolean;
     }
     interface OramaText {
         /**
@@ -297,6 +301,12 @@ declare global {
         prototype: HTMLOramaSearchResultsElement;
         new (): HTMLOramaSearchResultsElement;
     };
+    interface HTMLOramaSlidingPanelElement extends Components.OramaSlidingPanel, HTMLStencilElement {
+    }
+    var HTMLOramaSlidingPanelElement: {
+        prototype: HTMLOramaSlidingPanelElement;
+        new (): HTMLOramaSlidingPanelElement;
+    };
     interface HTMLOramaTextElement extends Components.OramaText, HTMLStencilElement {
     }
     var HTMLOramaTextElement: {
@@ -336,6 +346,7 @@ declare global {
         "orama-search-box": HTMLOramaSearchBoxElement;
         "orama-search-button": HTMLOramaSearchButtonElement;
         "orama-search-results": HTMLOramaSearchResultsElement;
+        "orama-sliding-panel": HTMLOramaSlidingPanelElement;
         "orama-text": HTMLOramaTextElement;
         "orama-textarea": HTMLOramaTextareaElement;
         "orama-toggler": HTMLOramaTogglerElement;
@@ -412,7 +423,7 @@ declare namespace LocalJSX {
     }
     interface OramaModal {
         "isOpen"?: boolean;
-        "title"?: string;
+        "mainTitle"?: string;
     }
     interface OramaNavigationBar {
     }
@@ -434,6 +445,10 @@ declare namespace LocalJSX {
         "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchResult>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
         "sections"?: SearchResultBySection[];
+    }
+    interface OramaSlidingPanel {
+        "onClosed"?: () => void;
+        "open"?: boolean;
     }
     interface OramaText {
         /**
@@ -488,6 +503,7 @@ declare namespace LocalJSX {
         "orama-search-box": OramaSearchBox;
         "orama-search-button": OramaSearchButton;
         "orama-search-results": OramaSearchResults;
+        "orama-sliding-panel": OramaSlidingPanel;
         "orama-text": OramaText;
         "orama-textarea": OramaTextarea;
         "orama-toggler": OramaToggler;
@@ -517,6 +533,7 @@ declare module "@stencil/core" {
             "orama-search-box": LocalJSX.OramaSearchBox & JSXBase.HTMLAttributes<HTMLOramaSearchBoxElement>;
             "orama-search-button": LocalJSX.OramaSearchButton & JSXBase.HTMLAttributes<HTMLOramaSearchButtonElement>;
             "orama-search-results": LocalJSX.OramaSearchResults & JSXBase.HTMLAttributes<HTMLOramaSearchResultsElement>;
+            "orama-sliding-panel": LocalJSX.OramaSlidingPanel & JSXBase.HTMLAttributes<HTMLOramaSlidingPanelElement>;
             "orama-text": LocalJSX.OramaText & JSXBase.HTMLAttributes<HTMLOramaTextElement>;
             "orama-textarea": LocalJSX.OramaTextarea & JSXBase.HTMLAttributes<HTMLOramaTextareaElement>;
             "orama-toggler": LocalJSX.OramaToggler & JSXBase.HTMLAttributes<HTMLOramaTogglerElement>;

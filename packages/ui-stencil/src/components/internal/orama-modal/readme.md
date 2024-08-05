@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default |
-| -------- | --------- | ----------- | --------- | ------- |
-| `isOpen` | `is-open` |             | `boolean` | `false` |
-| `title`  | `title`   |             | `string`  | `''`    |
+| Property    | Attribute    | Description | Type      | Default |
+| ----------- | ------------ | ----------- | --------- | ------- |
+| `isOpen`    | `is-open`    |             | `boolean` | `false` |
+| `mainTitle` | `main-title` |             | `string`  | `''`    |
 
 
 ## Dependencies
