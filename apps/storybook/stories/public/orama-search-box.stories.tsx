@@ -34,6 +34,7 @@ export const SearchBox: Story = {
     facetProperty: 'category',
     resultMap: {
       description: 'title',
+      section: 'category',
     },
     colorScheme: 'dark',
     themeConfig: {

@@ -19,6 +19,11 @@ orama-footer {
 .logo-link {
   display: inline-flex;
   align-items: center;
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid var(--border-color-accent, border-color('accent'));
+  }
 }
 
 .logo {

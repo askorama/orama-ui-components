@@ -45,7 +45,7 @@ export class OramaChatButton {
           <span class="icon-star">
             <Icon name="star" size={14} color="blue" />
           </span>
-          <span class="label">{this.label}</span>
+          <span class="button-label">{this.label}</span>
           <span class="icon-enter">
             <ph-arrow-bend-down-left size={12} />
           </span>

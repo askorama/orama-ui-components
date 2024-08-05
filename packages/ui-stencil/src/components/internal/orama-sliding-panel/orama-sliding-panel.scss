@@ -8,7 +8,7 @@ $height-panel-header: 5vh;
   width: 100%;
   height: $height-panel;
   transform: translate3d(0, calc(100% + $height-panel-header), 0);
-  transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
+  transition: cubic-bezier(0.4, 0, 0.2, 1) 0.4s;
   z-index: $zindex-slider-container;
   border-radius: var(--radius-m, $radius-m);
   border: 1px solid var(--border-color-primary, border-color('primary'));
@@ -52,5 +52,5 @@ $height-panel-header: 5vh;
   border: 0;
   background-color: transparent;
   color: var(--icon-color-primary, icon-color('primary'));
-  animation: showIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0.1s forwards;
+  animation: showIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
 }

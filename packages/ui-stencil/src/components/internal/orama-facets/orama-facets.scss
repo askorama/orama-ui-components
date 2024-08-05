@@ -8,6 +8,7 @@
 
   margin: 0;
   overflow-x: auto;
+  scroll-snap-type: y mandatory;
 
   // TODO: check scroll styles
   // Maybe move somewhere else to reuse in some somponents, but not globally
@@ -19,6 +20,10 @@
   @media (--md-min) {
     padding: var(--radius-l, $spacing-l) 0;
   }
+}
+
+.facet {
+  scroll-snap-align: start;
 }
 
 .facet-button {

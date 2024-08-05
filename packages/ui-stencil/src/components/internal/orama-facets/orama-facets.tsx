@@ -31,15 +31,16 @@ export class OramaFacets {
           if (facet?.count === 0) {
             return
           }
+          const isSelected = this.selectedFacet === facet?.name || (!this.selectedFacet && facet?.name === 'All')
           return (
             <li key={facet.name} class="facet">
               <button
                 type="button"
                 class={{
                   'facet-button': true,
-                  'facet-button--selected':
-                    this.selectedFacet === facet?.name || (!this.selectedFacet && facet?.name === 'All'),
+                  'facet-button--selected': isSelected,
                 }}
+                tabIndex={isSelected ? 0 : -1}
                 onClick={() => this.handleClick(facet)}
               >
                 {facet?.name}

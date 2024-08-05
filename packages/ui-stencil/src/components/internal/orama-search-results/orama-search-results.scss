@@ -37,7 +37,7 @@
   padding: var(--spacing-m, $spacing-m);
   border-radius: var(--radius-s, $radius-s);
   background-color: var(--background-color-secondary, background-color('secondary'));
-  border: 0;
+  border: 1px solid transparent;
   text-align: left;
   width: 100%;
   font-family: unset;
