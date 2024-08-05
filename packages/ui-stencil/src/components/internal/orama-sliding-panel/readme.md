@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute | Description | Type         | Default     |
-| ---------- | --------- | ----------- | ------------ | ----------- |
-| `onClosed` | --        |             | `() => void` | `undefined` |
-| `open`     | `open`    |             | `boolean`    | `false`     |
+| Property | Attribute | Description | Type         | Default     |
+| -------- | --------- | ----------- | ------------ | ----------- |
+| `closed` | --        |             | `() => void` | `undefined` |
+| `open`   | `open`    |             | `boolean`    | `false`     |
 
 
 ## Dependencies

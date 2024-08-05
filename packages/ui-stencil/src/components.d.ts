@@ -114,7 +114,7 @@ export namespace Components {
         "sections": SearchResultBySection[];
     }
     interface OramaSlidingPanel {
-        "onClosed": () => void;
+        "closed": () => void;
         "open": boolean;
     }
     interface OramaText {
@@ -447,7 +447,7 @@ declare namespace LocalJSX {
         "sections"?: SearchResultBySection[];
     }
     interface OramaSlidingPanel {
-        "onClosed"?: () => void;
+        "closed"?: () => void;
         "open"?: boolean;
     }
     interface OramaText {

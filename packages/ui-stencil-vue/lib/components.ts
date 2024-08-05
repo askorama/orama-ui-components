@@ -139,7 +139,7 @@ export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchR
 
 export const OramaSlidingPanel = /*@__PURE__*/ defineContainer<JSX.OramaSlidingPanel>('orama-sliding-panel', undefined, [
   'open',
-  'onClosed'
+  'closed'
 ]);
 
 

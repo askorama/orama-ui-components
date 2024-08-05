@@ -1,4 +1,4 @@
-import { Component, Prop, State, h, Element, Watch } from '@stencil/core'
+import { Component, Prop, State, h, Element, Watch, Event } from '@stencil/core'
 import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 
 @Component({
@@ -9,11 +9,8 @@ import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 export class SlideInPanel {
   @Element() el: HTMLElement
   @Prop() open = false
-  @Prop() onClosed: () => void
+  @Prop() closed: () => void
   @State() isOpen: boolean = this.open
-
-  panelRef: HTMLElement
-  buttonRef: HTMLElement
 
   @Watch('open')
   openChanged() {
@@ -21,8 +18,8 @@ export class SlideInPanel {
   }
 
   closePanel() {
-    if (this.onClosed) {
-      this.onClosed()
+    if (this.closed) {
+      this.closed()
     }
     this.isOpen = false
   }
@@ -32,7 +29,6 @@ export class SlideInPanel {
       <div class={{ 'slide-container': true, 'slide-up': this.isOpen }}>
         <div class="slide-container-header">
           <button
-            ref={(el) => (this.buttonRef = el as HTMLElement)}
             onClick={() => this.closePanel()}
             aria-expanded={this.isOpen ? 'true' : 'false'}
             aria-label="Close panel"
@@ -43,14 +39,7 @@ export class SlideInPanel {
             <ph-x size="18" />
           </button>
         </div>
-        <div
-          id="panel"
-          role="region"
-          aria-hidden={!this.isOpen}
-          tabindex="-1"
-          ref={(el) => (this.panelRef = el as HTMLElement)}
-          class="slide-container-inner"
-        >
+        <div id="panel" role="region" aria-hidden={!this.isOpen} tabindex="-1" class="slide-container-inner">
           <slot />
         </div>
       </div>

@@ -169,7 +169,7 @@ export class SearchBox {
         {this.windowWidth > 1024 && (
           <orama-sliding-panel
             open={globalContext.currentTask === 'chat'}
-            onClose={() => {
+            closed={() => {
               globalContext.currentTask = 'search'
             }}
           >
