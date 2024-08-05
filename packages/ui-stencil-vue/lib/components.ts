@@ -104,7 +104,7 @@ export const OramaMarkdown = /*@__PURE__*/ defineContainer<JSX.OramaMarkdown>('o
 
 
 export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-modal', undefined, [
-  'isOpen',
+  'open',
   'mainTitle'
 ]);
 
@@ -146,6 +146,7 @@ export const OramaSlidingPanel = /*@__PURE__*/ defineContainer<JSX.OramaSlidingP
 export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
   'styledAs',
+  'bold',
   'class',
   'align',
   'inactive'

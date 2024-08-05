@@ -6,7 +6,7 @@ import { Component, h, Prop, State, Listen, Element } from '@stencil/core'
   shadow: true,
 })
 export class OramaModal {
-  @Prop() isOpen = false
+  @Prop() open = false
   @Prop() mainTitle = ''
   @State() activeElement: HTMLElement
   @Element() el: HTMLElement
@@ -16,7 +16,7 @@ export class OramaModal {
 
   @Listen('keydown', { target: 'window' })
   handleKeyDown(ev: KeyboardEvent) {
-    if (this.isOpen) {
+    if (this.open) {
       switch (ev.key) {
         case 'Tab':
           this.trapFocus(ev)
@@ -60,18 +60,18 @@ export class OramaModal {
   }
 
   private closeModal() {
-    this.isOpen = false
+    this.open = false
   }
 
   componentDidLoad() {
-    if (this.isOpen) {
+    if (this.open) {
       this.activeElement = document.activeElement as HTMLElement
       this.handleFocus()
     }
   }
 
   componentDidUpdate() {
-    if (this.isOpen) {
+    if (this.open) {
       this.handleFocus()
     } else if (this.activeElement) {
       this.activeElement.focus()
@@ -81,7 +81,7 @@ export class OramaModal {
   render() {
     return (
       <div
-        class={`modal ${this.isOpen ? 'open' : ''}`}
+        class={`modal ${this.open ? 'open' : ''}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modalTitle"

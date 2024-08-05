@@ -1,4 +1,5 @@
 $height-panel: 95vh;
+$height-panel-header: 5vh;
 
 .slide-container {
   position: fixed;
@@ -6,8 +7,8 @@ $height-panel: 95vh;
   left: 0;
   width: 100%;
   height: $height-panel;
-  transform: translate3d(0, 100%, 0);
-  transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s;
+  transform: translate3d(0, calc(100% + $height-panel-header), 0);
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.4s;
   z-index: $zindex-slider-container;
   border-radius: var(--radius-m, $radius-m);
   border: 1px solid var(--border-color-primary, border-color('primary'));

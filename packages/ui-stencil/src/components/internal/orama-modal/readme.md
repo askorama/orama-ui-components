@@ -9,8 +9,8 @@
 
 | Property    | Attribute    | Description | Type      | Default |
 | ----------- | ------------ | ----------- | --------- | ------- |
-| `isOpen`    | `is-open`    |             | `boolean` | `false` |
 | `mainTitle` | `main-title` |             | `string`  | `''`    |
+| `open`      | `open`       |             | `boolean` | `false` |
 
 
 ## Dependencies

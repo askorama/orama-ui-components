@@ -27,6 +27,7 @@ export class OramaText implements TextProps {
 
   @Prop() as?: TextProps['as'] = 'p'
   @Prop() styledAs?: TextProps['styledAs']
+  @Prop() bold?: boolean = false
   @Prop() class?: string
   @Prop() align?: TextProps['align']
   @Prop() inactive?: TextProps['inactive']
@@ -45,6 +46,7 @@ export class OramaText implements TextProps {
           [this.defaultStyle]: true,
           [`text-${this.align}`]: !!this.align,
           'text-inactive': !!this.inactive,
+          'text-bold': !!this.bold,
           [this.class]: !!this.class,
         }}
         {...textProps}

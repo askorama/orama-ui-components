@@ -14,7 +14,7 @@
 
 .modal-content {
   display: flex;
-  background-color: var(--background-color-primary, background('primary'));
+  background-color: var(--background-color-primary, background-color('primary'));
   position: fixed;
   inset: 0;
   z-index: 9999;

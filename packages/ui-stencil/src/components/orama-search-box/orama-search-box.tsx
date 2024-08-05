@@ -147,10 +147,9 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
-    // TODO: extract modal as layout layer
     return (
       <Fragment>
-        <orama-modal isOpen={this.open} class="modal">
+        <orama-modal open={this.open} class="modal">
           <orama-navigation-bar />
           <div class="main">
             <orama-search class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`} />
@@ -165,7 +164,6 @@ export class SearchBox {
           </div>
           <orama-footer colorScheme={this.colorScheme} />
         </orama-modal>
-        {/* TODO: Create a Slider component to extract layout layer */}
         {this.windowWidth > 1024 && (
           <orama-sliding-panel
             open={globalContext.currentTask === 'chat'}

@@ -90,8 +90,8 @@ export namespace Components {
         "content": string;
     }
     interface OramaModal {
-        "isOpen": boolean;
         "mainTitle": string;
+        "open": boolean;
     }
     interface OramaNavigationBar {
     }
@@ -126,6 +126,7 @@ export namespace Components {
           * it defines the HTML tag to be used
          */
         "as"?: TextProps['as'];
+        "bold"?: boolean;
         /**
           * the optional class name
          */
@@ -422,8 +423,8 @@ declare namespace LocalJSX {
         "content"?: string;
     }
     interface OramaModal {
-        "isOpen"?: boolean;
         "mainTitle"?: string;
+        "open"?: boolean;
     }
     interface OramaNavigationBar {
     }
@@ -459,6 +460,7 @@ declare namespace LocalJSX {
           * it defines the HTML tag to be used
          */
         "as"?: TextProps['as'];
+        "bold"?: boolean;
         /**
           * the optional class name
          */
