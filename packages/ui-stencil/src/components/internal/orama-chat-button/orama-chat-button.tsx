@@ -6,7 +6,6 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowBendDownLeft.mjs'
 @Component({
   tag: 'orama-chat-button',
   styleUrl: 'orama-chat-button.scss',
-  shadow: true,
 })
 // TODO: consider renaming this component
 /**

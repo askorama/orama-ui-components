@@ -89,6 +89,7 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
   'placeholder',
   'labelForScreenReaders',
   'defaultValue',
+  'autoFocus',
   'oramaInputChanged'
 ]);
 
@@ -112,7 +113,9 @@ export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-m
 export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined);
 
 
-export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined);
+export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined, [
+  'focusInput'
+]);
 
 
 export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>('orama-search-box', undefined, [

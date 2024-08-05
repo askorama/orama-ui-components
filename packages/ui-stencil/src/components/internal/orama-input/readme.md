@@ -7,6 +7,7 @@
 
 | Property                | Attribute                  | Description | Type                                                                        | Default     |
 | ----------------------- | -------------------------- | ----------- | --------------------------------------------------------------------------- | ----------- |
+| `autoFocus`             | `auto-focus`               |             | `boolean`                                                                   | `false`     |
 | `defaultValue`          | `default-value`            |             | `string`                                                                    | `undefined` |
 | `label`                 | `label`                    |             | `string`                                                                    | `undefined` |
 | `labelForScreenReaders` | `label-for-screen-readers` |             | `string`                                                                    | `undefined` |

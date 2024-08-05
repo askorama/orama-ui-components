@@ -42,6 +42,11 @@
   width: 100%;
   font-family: unset;
   cursor: pointer;
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid var(--border-color-accent, border-color('accent'));
+  }
 }
 
 .collapsed {

@@ -152,7 +152,10 @@ export class SearchBox {
         <orama-modal open={this.open} class="modal">
           <orama-navigation-bar />
           <div class="main">
-            <orama-search class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`} />
+            <orama-search
+              class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
+              focusInput={globalContext.currentTask === 'search'}
+            />
             {this.windowWidth <= 1024 && (
               <orama-chat
                 class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}

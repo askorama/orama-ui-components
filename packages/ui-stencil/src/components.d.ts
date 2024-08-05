@@ -75,6 +75,7 @@ export namespace Components {
         "colorScheme"?: ColorScheme;
     }
     interface OramaInput {
+        "autoFocus"?: boolean;
         "defaultValue": InputProps['defaultValue'];
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
@@ -96,6 +97,7 @@ export namespace Components {
     interface OramaNavigationBar {
     }
     interface OramaSearch {
+        "focusInput"?: boolean;
     }
     interface OramaSearchBox {
         "colorScheme"?: ColorScheme;
@@ -407,6 +409,7 @@ declare namespace LocalJSX {
         "colorScheme"?: ColorScheme;
     }
     interface OramaInput {
+        "autoFocus"?: boolean;
         "defaultValue"?: InputProps['defaultValue'];
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
@@ -429,6 +432,7 @@ declare namespace LocalJSX {
     interface OramaNavigationBar {
     }
     interface OramaSearch {
+        "focusInput"?: boolean;
     }
     interface OramaSearchBox {
         "colorScheme"?: ColorScheme;

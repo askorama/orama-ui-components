@@ -1,4 +1,4 @@
-import { Component, Host, Listen, State, Watch, h, Element } from '@stencil/core'
+import { Component, Host, Listen, State, Watch, h, Element, Prop } from '@stencil/core'
 import { searchState } from '@/context/searchContext'
 import type { SearchResult } from '@/types'
 import { globalContext } from '@/context/GlobalContext'
@@ -10,8 +10,12 @@ import { globalContext } from '@/context/GlobalContext'
 export class OramaSearch {
   @Element() el: HTMLElement
 
+  @Prop() focusInput?: boolean = false
+
   @State() searchValue = ''
   @State() selectedFacet = ''
+
+  inputRef!: HTMLOramaInputElement
 
   @Watch('searchValue')
   @Watch('selectedFacet')
@@ -20,13 +24,13 @@ export class OramaSearch {
     globalContext.currentTerm = this.searchValue
   }
 
-  onFacetClickHandler = (facetName: string) => {
-    this.selectedFacet = facetName
-  }
-
   @Listen('oramaItemClick')
   handleOramaItemClick(event: CustomEvent<SearchResult>) {
     alert(`${event.detail.title} clicked`)
+  }
+
+  onFacetClickHandler = (facetName: string) => {
+    this.selectedFacet = facetName
   }
 
   onInputChange = (e: Event) => {
@@ -48,7 +52,7 @@ export class OramaSearch {
       <Host>
         <form onSubmit={this.handleSubmit} class="search-form">
           <orama-input
-            autofocus
+            autoFocus={this.focusInput}
             type="search"
             onInput={this.onInputChange}
             size="large"
@@ -58,7 +62,7 @@ export class OramaSearch {
           <orama-chat-button
             active={!!this.searchValue}
             label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
-            class="chat-button"
+            class="chat-btn"
             onClick={this.onChatButtonClick}
             onKeyPress={this.onChatButtonClick}
           />

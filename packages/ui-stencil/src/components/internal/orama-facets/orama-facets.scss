@@ -39,6 +39,11 @@
   @media (--md-min) {
     padding: var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
   }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--border-color-accent, border-color('accent'));
+  }
 }
 
 .facet-count {

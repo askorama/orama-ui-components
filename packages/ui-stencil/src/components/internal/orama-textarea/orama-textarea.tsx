@@ -5,7 +5,7 @@ import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core'
   styleUrl: 'orama-textarea.scss',
 })
 export class OramaTextarea {
-  @Element() el: HTMLTextAreaElement
+  @Element() el: HTMLDivElement
 
   @Prop() value: string | null = ''
   @Prop() maxRows: number | string

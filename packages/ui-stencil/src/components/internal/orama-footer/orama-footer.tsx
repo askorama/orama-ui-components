@@ -4,7 +4,6 @@ import type { ColorScheme } from '@/types'
 @Component({
   tag: 'orama-footer',
   styleUrl: 'orama-footer.scss',
-  shadow: true,
 })
 
 /**
