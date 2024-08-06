@@ -129,7 +129,7 @@ async function loadLanguageAndHighlight(language: string): Promise<boolean> {
 @Component({
   tag: 'orama-markdown',
   styleUrl: 'orama-markdown.scss',
-  shadow: true,
+  scoped: true,
 })
 export class OramaMarkdown {
   @Prop() content: string

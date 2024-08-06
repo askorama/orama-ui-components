@@ -3,7 +3,7 @@ import { Component, h, Prop, State, Listen, Element } from '@stencil/core'
 @Component({
   tag: 'orama-modal',
   styleUrl: 'orama-modal.scss',
-  shadow: true,
+  scoped: true,
 })
 export class OramaModal {
   @Prop() open = false

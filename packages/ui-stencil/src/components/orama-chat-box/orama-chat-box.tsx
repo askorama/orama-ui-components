@@ -8,7 +8,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowClockwise.mjs'
 @Component({
   tag: 'orama-chat-box',
   styleUrl: 'orama-chat-box.scss',
-  shadow: true,
+  scoped: true,
 })
 export class ChatBox {
   @Prop() index: CloudIndexConfig

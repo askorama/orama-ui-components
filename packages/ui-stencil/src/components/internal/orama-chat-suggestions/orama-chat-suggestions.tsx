@@ -3,6 +3,7 @@ import { Component, h, Prop } from '@stencil/core'
 @Component({
   tag: 'orama-chat-suggestions',
   styleUrl: 'orama-chat-suggestions.scss',
+  scoped: true,
 })
 export class OramaChatSuggestions {
   @Prop() suggestions: string[]

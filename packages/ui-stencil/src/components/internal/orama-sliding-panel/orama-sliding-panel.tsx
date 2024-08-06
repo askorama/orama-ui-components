@@ -4,7 +4,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 @Component({
   tag: 'orama-sliding-panel',
   styleUrl: 'orama-sliding-panel.scss',
-  shadow: true,
+  scoped: true,
 })
 export class SlideInPanel {
   @Element() el: HTMLElement

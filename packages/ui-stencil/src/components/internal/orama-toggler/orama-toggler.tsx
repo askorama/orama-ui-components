@@ -6,6 +6,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhSparkle.mjs'
 @Component({
   tag: 'orama-toggler',
   styleUrl: 'orama-toggler.scss',
+  scoped: true,
 })
 export class OramaToggler {
   @Prop() performInitialAnimation = false

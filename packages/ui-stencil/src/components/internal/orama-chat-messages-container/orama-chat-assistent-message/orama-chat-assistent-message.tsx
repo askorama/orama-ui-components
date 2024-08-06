@@ -10,7 +10,7 @@ import { copyToClipboard } from '@/utils/utils'
 @Component({
   tag: 'orama-chat-assistent-message',
   styleUrl: 'orama-chat-assistent-message.scss',
-  shadow: true,
+  scoped: true,
 })
 export class OramaChatAssistentMessage {
   @Prop() interaction: TChatInteraction

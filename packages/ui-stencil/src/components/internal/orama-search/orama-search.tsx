@@ -6,6 +6,7 @@ import { globalContext } from '@/context/GlobalContext'
 @Component({
   tag: 'orama-search',
   styleUrl: 'orama-search.scss',
+  scoped: true,
 })
 export class OramaSearch {
   @Element() el: HTMLElement

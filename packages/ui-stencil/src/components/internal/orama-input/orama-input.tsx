@@ -26,6 +26,7 @@ export type InputProps = BaseInputProps & ConditionalInputProps
 @Component({
   tag: 'orama-input',
   styleUrl: 'orama-input.scss',
+  scoped: true,
 })
 export class Input {
   @Element() el: HTMLDivElement

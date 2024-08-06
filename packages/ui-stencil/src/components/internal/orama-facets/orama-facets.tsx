@@ -6,6 +6,7 @@ export type Facet = { name: string; count: number }
 @Component({
   tag: 'orama-facets',
   styleUrl: 'orama-facets.scss',
+  scoped: true,
 })
 
 /**

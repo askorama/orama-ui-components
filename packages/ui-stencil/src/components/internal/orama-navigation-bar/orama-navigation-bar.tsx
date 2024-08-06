@@ -6,7 +6,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhCaretLeft.mjs'
 @Component({
   tag: 'orama-navigation-bar',
   styleUrl: 'orama-navigation-bar.scss',
-  shadow: true,
+  scoped: true,
 })
 export class OramaNavigationBar {
   render() {

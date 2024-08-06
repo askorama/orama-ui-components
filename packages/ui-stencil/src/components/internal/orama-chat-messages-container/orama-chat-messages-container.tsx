@@ -4,7 +4,7 @@ import { chatContext, type TChatInteraction } from '@/context/chatContext'
 @Component({
   tag: 'orama-chat-messages-container',
   styleUrl: 'orama-chat-messages-container.scss',
-  shadow: true,
+  scoped: true,
 })
 export class OramaChatMessagesContainer {
   @Prop() interactions: TChatInteraction[]

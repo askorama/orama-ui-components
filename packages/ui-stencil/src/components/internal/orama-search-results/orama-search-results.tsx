@@ -10,6 +10,7 @@ export type SearchResultsProps = {
 @Component({
   tag: 'orama-search-results',
   styleUrl: 'orama-search-results.scss',
+  scoped: true,
 })
 export class SearchResults {
   @Element() el: HTMLUListElement

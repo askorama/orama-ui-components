@@ -16,6 +16,7 @@ export interface TextProps {
 @Component({
   tag: 'orama-text',
   styleUrl: 'orama-text.scss',
+  scoped: true,
 })
 
 /**

@@ -3,7 +3,7 @@ import { Component, h } from '@stencil/core'
 @Component({
   tag: 'orama-dots-loader',
   styleUrl: 'orama-dots-loader.scss',
-  shadow: true,
+  scoped: true,
 })
 export class DotsLoader {
   render() {
