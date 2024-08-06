@@ -1,6 +1,7 @@
-import { Component, Host, h, Element, Prop, Event, type EventEmitter } from '@stencil/core'
+import { Component, Host, h, Element, Prop, Event, type EventEmitter, Fragment } from '@stencil/core'
 import type { SearchResult, SearchResultBySection } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhFiles.mjs'
+import { searchState } from '@/context/searchContext'
 
 export type SearchResultsProps = {
   sections: SearchResultBySection[]
@@ -16,7 +17,9 @@ export class SearchResults {
   @Element() el: HTMLUListElement
   @Event() oramaItemClick: EventEmitter<SearchResult>
   @Prop() sections: SearchResultBySection[] = []
+  @Prop() suggestions?: string[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
+  @Prop() setChatTerm: (term: string) => void
   @Prop() loading = false
   @Prop() error = false
 
@@ -31,7 +34,22 @@ export class SearchResults {
 
   render() {
     if (!this.searchTerm) {
-      return null
+      return (
+        <div class="suggestions-wrapper">
+          {this.suggestions?.length && (
+            <orama-text as="h3" styledAs="small" class="suggestions-title" variant="secondary">
+              Suggestions
+            </orama-text>
+          )}
+          <orama-chat-suggestions
+            as="list"
+            suggestions={this.suggestions}
+            suggestionClicked={(term) => {
+              this.setChatTerm(term)
+            }}
+          />
+        </div>
+      )
     }
 
     if (this.error) {

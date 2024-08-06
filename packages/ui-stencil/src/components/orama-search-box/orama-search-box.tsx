@@ -159,6 +159,7 @@ export class SearchBox {
             <orama-search
               class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
               focusInput={globalContext.currentTask === 'search'}
+              suggestions={this.suggestions}
             />
             {this.windowWidth <= 1024 && (
               <orama-chat

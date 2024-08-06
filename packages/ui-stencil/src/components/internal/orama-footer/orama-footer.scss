@@ -5,6 +5,7 @@
   justify-content: space-between;
   background-color: var(--background-color-primary, background-color('primary'));
   border-radius: 0 0 var(--radius-m, $radius-m) var(--radius-m, $radius-m);
+  border-top: 1px solid var(--border-color-primary, border-color('primary'));
 }
 
 .powered-by {

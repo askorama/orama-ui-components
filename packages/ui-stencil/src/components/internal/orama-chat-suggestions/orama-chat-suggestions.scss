@@ -2,7 +2,7 @@
   display: block;
 }
 
-.suggestions-list {
+.suggestions-chips {
   display: flex;
   align-items: center;
   gap: var(--spacing-m, $spacing-m);
@@ -25,13 +25,15 @@
   }
 }
 
-.suggestion-button {
+.suggestion-button-chips {
   @include span();
   cursor: pointer;
   border-radius: var(--radius-l, $radius-l);
   border: 1px solid var(--border-color-primary, border-color('primary'));
   padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
   display: flex;
+  align-items: center;
+  column-gap: var(--spacing-s, $spacing-s);
   background-color: var(--background-color-secondary, background-color('secondary'));
   width: max-content;
   color: var(--text-color-secondary, text-color('secondary'));
@@ -50,5 +52,41 @@
 
   @media (--md-min) {
     padding: var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
+  }
+}
+
+.suggestions-list {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.suggestion-item-list {
+  width: 100%;
+}
+
+.suggestion-button-list {
+  display: flex;
+  align-items: center;
+  column-gap: var(--spacing-s, $spacing-s);
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  padding: var(--spacing-s, $spacing-s) var(--spacing-m, $spacing-m);
+  color: var(--text-color-secondary, text-color('secondary'));
+  background: linear-gradient(90deg, var(--text-color-accent, text-color('accent')) 0%, var(--text-color-primary, text-color()) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
+  border: 1px solid transparent;
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid var(--border-color-accent, border-color('accent'));
+    border-radius: var(--radius-s, $radius-s);
   }
 }

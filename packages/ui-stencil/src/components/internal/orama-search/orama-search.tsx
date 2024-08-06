@@ -2,6 +2,8 @@ import { Component, Host, Listen, State, Watch, h, Element, Prop } from '@stenci
 import { searchState } from '@/context/searchContext'
 import type { SearchResult } from '@/types'
 import { globalContext } from '@/context/GlobalContext'
+import { ChatService } from '@/services/ChatService'
+import { chatContext } from '@/context/chatContext'
 
 @Component({
   tag: 'orama-search',
@@ -12,6 +14,7 @@ export class OramaSearch {
   @Element() el: HTMLElement
 
   @Prop() focusInput?: boolean = false
+  @Prop() suggestions?: string[] = []
 
   @State() searchValue = ''
   @State() selectedFacet = ''
@@ -75,6 +78,11 @@ export class OramaSearch {
             facetClicked={this.onFacetClickHandler}
           />
           <orama-search-results
+            suggestions={!chatContext.interactions?.length ? this.suggestions : []}
+            setChatTerm={(term) => {
+              globalContext.currentTask = 'chat'
+              chatContext.chatService?.sendQuestion(term)
+            }}
             sections={searchState.results}
             searchTerm={this.searchValue}
             loading={searchState.loading}

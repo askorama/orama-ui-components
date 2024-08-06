@@ -65,7 +65,7 @@ const Template = ({ preset, colorScheme }) => {
     open=${preset?.open}
     facetProperty=${preset?.facetProperty}
     .resultMap=${preset?.resultMap}
-    colorScheme=${colorScheme}
+    .colorScheme=${colorScheme}
     .themeConfig=${preset.themeConfig}
     .index=${preset.index}
     .suggestions=${preset?.suggestions}
@@ -76,6 +76,5 @@ export const SearchBox = {
   render: Template,
   args: {
     preset: 'orama',
-    colorScheme: 'dark',
   },
 }

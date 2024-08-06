@@ -66,6 +66,15 @@
   margin: $spacing-2xl auto $spacing-3xl;
 }
 
+.suggestions-wrapper {
+  padding: var(--spacing-l, $spacing-l) 0 var(--spacing-m, $spacing-m) 0;
+}
+
+.suggestions-title {
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-xs, $spacing-xs);
+}
+
 ph-files {
   color: var(--icon-color-primary, icon-color('primary'));
 }

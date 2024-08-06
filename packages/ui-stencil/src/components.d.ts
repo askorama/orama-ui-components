@@ -59,6 +59,7 @@ export namespace Components {
         "interactions": TChatInteraction[];
     }
     interface OramaChatSuggestions {
+        "as": 'chips' | 'list';
         "suggestionClicked": (suggestion: string) => void;
         "suggestions": string[];
     }
@@ -100,6 +101,7 @@ export namespace Components {
     }
     interface OramaSearch {
         "focusInput"?: boolean;
+        "suggestions"?: string[];
     }
     interface OramaSearchBox {
         "colorScheme"?: ColorScheme;
@@ -120,6 +122,8 @@ export namespace Components {
         "loading": boolean;
         "searchTerm": SearchResultsProps['searchTerm'];
         "sections": SearchResultBySection[];
+        "setChatTerm": (term: string) => void;
+        "suggestions"?: string[];
     }
     interface OramaSlidingPanel {
         "closed": () => void;
@@ -403,6 +407,7 @@ declare namespace LocalJSX {
         "interactions"?: TChatInteraction[];
     }
     interface OramaChatSuggestions {
+        "as"?: 'chips' | 'list';
         "suggestionClicked"?: (suggestion: string) => void;
         "suggestions"?: string[];
     }
@@ -445,6 +450,7 @@ declare namespace LocalJSX {
     }
     interface OramaSearch {
         "focusInput"?: boolean;
+        "suggestions"?: string[];
     }
     interface OramaSearchBox {
         "colorScheme"?: ColorScheme;
@@ -466,6 +472,8 @@ declare namespace LocalJSX {
         "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchResult>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
         "sections"?: SearchResultBySection[];
+        "setChatTerm"?: (term: string) => void;
+        "suggestions"?: string[];
     }
     interface OramaSlidingPanel {
         "closed"?: () => void;
