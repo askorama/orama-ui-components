@@ -22,7 +22,7 @@ export class OramaChatMessagesContainer {
             <div key={interaction.interactionId}>
               <orama-chat-user-message interaction={{ ...interaction }} />
               <orama-chat-assistent-message interaction={{ ...interaction }} />
-              {interaction.latest && interaction.status === 'done' && interaction.relatedQueries?.length && (
+              {interaction.latest && interaction.status === 'done' && !!interaction.relatedQueries?.length && (
                 <div class="suggestions-wrapper">
                   <orama-chat-suggestions
                     suggestions={interaction.relatedQueries}

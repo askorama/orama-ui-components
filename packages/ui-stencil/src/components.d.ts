@@ -141,6 +141,10 @@ export namespace Components {
           * it defines how it should look like
          */
         "styledAs"?: TextProps['styledAs'];
+        /**
+          * optionally change variant style - default is primary
+         */
+        "variant": TextProps['variant'];
     }
     interface OramaTextarea {
         "autoFocus": boolean;
@@ -477,6 +481,10 @@ declare namespace LocalJSX {
           * it defines how it should look like
          */
         "styledAs"?: TextProps['styledAs'];
+        /**
+          * optionally change variant style - default is primary
+         */
+        "variant"?: TextProps['variant'];
     }
     interface OramaTextarea {
         "autoFocus"?: boolean;
