@@ -17,7 +17,6 @@ const BOTTOM_THRESHOLD = 1
 @Component({
   tag: 'orama-chat',
   styleUrl: 'orama-chat.scss',
-  scoped: true,
 })
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
