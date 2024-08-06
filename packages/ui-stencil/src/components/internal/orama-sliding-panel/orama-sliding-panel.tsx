@@ -1,4 +1,4 @@
-import { Component, Prop, State, h, Element, Watch, Event } from '@stencil/core'
+import { Component, Prop, State, h, Element, Watch, Event, Listen } from '@stencil/core'
 import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 
 @Component({
@@ -12,6 +12,9 @@ export class SlideInPanel {
   @Prop() closed: () => void
   @State() isOpen: boolean = this.open
 
+  private firstFocusableElement: HTMLElement
+  private lastFocusableElement: HTMLElement
+
   @Watch('open')
   openChanged() {
     this.isOpen = this.open
@@ -22,6 +25,40 @@ export class SlideInPanel {
       this.closed()
     }
     this.isOpen = false
+  }
+
+  private trapFocus(event: KeyboardEvent) {
+    const focusableElements = this.el.querySelectorAll(
+      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
+    )
+    const focusableArray = Array.from(focusableElements) as HTMLElement[]
+    console.log('focusable', focusableArray)
+
+    if (focusableArray.length > 0) {
+      this.firstFocusableElement = focusableArray[0]
+      this.lastFocusableElement = focusableArray[focusableArray.length - 1]
+
+      const focusedElement = this.el.querySelector(':focus') as HTMLElement
+
+      if (event.shiftKey && focusedElement === this.firstFocusableElement) {
+        event.preventDefault()
+        this.lastFocusableElement.focus()
+      } else if (!event.shiftKey && focusedElement === this.lastFocusableElement) {
+        event.preventDefault()
+        this.firstFocusableElement.focus()
+      }
+    }
+  }
+
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      event.stopPropagation()
+      this.closePanel()
+    }
+    if (event.key === 'Tab') {
+      this.trapFocus(event)
+    }
   }
 
   render() {

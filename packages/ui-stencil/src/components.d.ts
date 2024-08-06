@@ -37,6 +37,7 @@ export namespace Components {
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatAssistentMessage {
         "interaction": TChatInteraction;
@@ -46,6 +47,7 @@ export namespace Components {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatButton {
         "active"?: boolean;
@@ -104,7 +106,11 @@ export namespace Components {
         "facetProperty"?: string;
         "index": CloudIndexConfig;
         "open"?: boolean;
+        "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
+        "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
         "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchButton {
@@ -375,6 +381,7 @@ declare namespace LocalJSX {
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatAssistentMessage {
         "interaction"?: TChatInteraction;
@@ -384,6 +391,7 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatButton {
         "active"?: boolean;
@@ -443,7 +451,11 @@ declare namespace LocalJSX {
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "open"?: boolean;
+        "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
+        "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
         "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchButton {

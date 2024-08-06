@@ -5,13 +5,6 @@ import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
 
-// TODO: Hardcoding suggestions for now
-const SUGGESTIONS = [
-  'Why is Orama better than other search or AI solutions?',
-  'How does Orama ensure correct answers?',
-  'What are the steps to implement?',
-]
-
 const BOTTOM_THRESHOLD = 1
 
 @Component({
@@ -25,6 +18,7 @@ export class OramaChat {
   @Prop() showClearChat?: boolean = true
   @Prop() defaultTerm?: string
   @Prop() focusInput?: boolean = false
+  @Prop() suggestions?: string[]
 
   @State() inputValue = ''
 
@@ -188,9 +182,9 @@ export class OramaChat {
             ) : null}
 
             {/* TODO: Provide a better animation */}
-            {!chatContext.interactions?.length ? (
+            {!chatContext.interactions?.length && !!this.suggestions?.length ? (
               <div class="suggestions-wrapper">
-                <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
+                <orama-chat-suggestions suggestions={this.suggestions} suggestionClicked={this.handleSuggestionClick} />
               </div>
             ) : null}
             {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}

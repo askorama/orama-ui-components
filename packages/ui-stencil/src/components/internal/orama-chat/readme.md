@@ -15,6 +15,7 @@
 | `showClearChat` | `show-clear-chat` |             | `boolean`                                                  | `true`              |
 | `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `''`                |
 | `sourcesMap`    | --                |             | `{ title?: string; description?: string; path?: string; }` | `undefined`         |
+| `suggestions`   | --                |             | `string[]`                                                 | `undefined`         |
 
 
 ## Dependencies
