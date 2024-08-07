@@ -1,6 +1,6 @@
 import type { Components } from '@orama/wc-components'
 
-type DemoIndexConfig = Record<string, Components.OramaSearchBox>
+export type DemoIndexConfig = Record<string, Components.OramaSearchBox>
 
 const demoIndexes: DemoIndexConfig = {
   orama: {

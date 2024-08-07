@@ -1,8 +1,14 @@
-import type { Meta } from '@storybook/web-components'
+import type { Meta, StoryObj } from '@storybook/web-components'
+import type { Components } from '@orama/wc-components'
 import { html } from 'lit-html'
 import demoIndexes from '../config'
+import type { DemoIndexConfig } from '../config'
 
-const meta: Meta = {
+const meta: Meta<
+  Components.OramaChatBox & {
+    preset: keyof DemoIndexConfig
+  }
+> = {
   title: 'Components/ChatBox',
   component: 'orama-chat-box',
   argTypes: {
@@ -69,7 +75,9 @@ const Template = ({ preset }) => {
   `
 }
 
-export const ChatBox = {
+type Story = StoryObj<Components.OramaChatBox & { preset: keyof DemoIndexConfig }>
+
+export const ChatBox: Story = {
   render: Template,
   args: {
     preset: 'orama',

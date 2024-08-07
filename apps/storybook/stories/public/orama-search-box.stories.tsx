@@ -1,8 +1,10 @@
-import type { Meta } from '@storybook/web-components'
+import type { Meta, StoryObj } from '@storybook/web-components'
+import type { Components } from '@orama/wc-components'
 import demoIndexes from '../config'
 import { html } from 'lit-html'
+import type { DemoIndexConfig } from '../config'
 
-const meta: Meta = {
+const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> = {
   title: 'Components/SearchBox',
   component: 'orama-search-box',
   argTypes: {
@@ -81,7 +83,9 @@ const Template = ({ preset, colorScheme }) => {
   ></orama-search-box>`
 }
 
-export const SearchBox = {
+type Story = StoryObj<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }>
+
+export const SearchBox: Story = {
   render: Template,
   args: {
     preset: 'orama',
