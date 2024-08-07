@@ -1,4 +1,8 @@
-const demoIndexes = {
+import type { Components } from '@orama/wc-components'
+
+type DemoIndexConfig = Record<string, Components.OramaSearchBox>
+
+const demoIndexes: DemoIndexConfig = {
   orama: {
     index: {
       api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
