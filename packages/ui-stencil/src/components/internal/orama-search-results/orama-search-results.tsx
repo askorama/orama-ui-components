@@ -37,7 +37,7 @@ export class SearchResults {
       return (
         <div class="suggestions-wrapper">
           {this.suggestions?.length && (
-            <orama-text as="h3" styledAs="small" class="suggestions-title" variant="secondary">
+            <orama-text as="h2" styledAs="small" class="suggestions-title" variant="secondary">
               Suggestions
             </orama-text>
           )}

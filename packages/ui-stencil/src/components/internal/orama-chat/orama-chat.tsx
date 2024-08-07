@@ -230,6 +230,7 @@ export class OramaChat {
                       type="submit"
                       onClick={this.handleAbortAnswerClick}
                       onKeyDown={this.handleAbortAnswerClick}
+                      aria-label="Abort answer"
                     >
                       <ph-stop size={16} />
                     </orama-button>
@@ -239,6 +240,7 @@ export class OramaChat {
                       onClick={this.handleSubmit}
                       onKeyDown={this.handleSubmit}
                       disabled={!this.inputValue}
+                      aria-label="Send question"
                     >
                       <ph-paper-plane-tilt size={16} />
                     </orama-button>

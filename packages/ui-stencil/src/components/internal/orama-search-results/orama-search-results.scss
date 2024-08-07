@@ -9,6 +9,7 @@
   flex-direction: column;
   gap: var(--spacing-m, $spacing-m);
   margin-top: var(--spacing-s, $spacing-s);
+  padding-bottom: var(--spacing-l, $spacing-l);
 }
 
 .section-item-list {

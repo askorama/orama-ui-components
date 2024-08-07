@@ -13,7 +13,7 @@ export class OramaNavigationBar {
     return (
       <Host>
         <div class="corner-section start">
-          <orama-button type="button" variant="icon">
+          <orama-button type="button" variant="icon" aria-label="Exit">
             <ph-caret-left size="20px" />
           </orama-button>
         </div>
@@ -21,10 +21,10 @@ export class OramaNavigationBar {
           <orama-toggler />
         </div>
         <div class="corner-section end">
-          <orama-button type="button" variant="icon">
+          <orama-button type="button" variant="icon" aria-label="View history">
             <ph-clock size="20px" />
           </orama-button>
-          <orama-button type="button" variant="icon">
+          <orama-button type="button" variant="icon" aria-label="Start new chat">
             <ph-plus size="20px" />
           </orama-button>
         </div>

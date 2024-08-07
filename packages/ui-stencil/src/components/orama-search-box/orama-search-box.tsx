@@ -153,7 +153,7 @@ export class SearchBox {
 
     return (
       <Fragment>
-        <orama-modal open={this.open} class="modal">
+        <orama-modal open={this.open} class="modal" mainTitle="Start your search">
           <orama-navigation-bar />
           <div class="main">
             <orama-search
