@@ -38,7 +38,9 @@ export class OramaModal {
     const focusableElements = this.el.querySelectorAll(
       'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
     )
-    const focusableArray = Array.from(focusableElements) as HTMLElement[]
+    const focusableArray = (Array.from(focusableElements) as HTMLElement[]).filter(
+      (element) => element.offsetParent !== null,
+    )
 
     if (focusableArray.length > 0) {
       this.firstFocusableElement = focusableArray[0]
@@ -60,7 +62,9 @@ export class OramaModal {
     const focusableElements = this.el.querySelectorAll(
       'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
     )
-    const focusableArray = Array.from(focusableElements) as HTMLElement[]
+    const focusableArray = (Array.from(focusableElements) as HTMLElement[]).filter(
+      (element) => element.offsetParent !== null,
+    )
 
     if (focusableArray.length > 0) {
       focusableArray[0].focus()

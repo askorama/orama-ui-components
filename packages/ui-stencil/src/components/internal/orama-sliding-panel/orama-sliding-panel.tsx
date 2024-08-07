@@ -32,7 +32,6 @@ export class SlideInPanel {
       'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
     )
     const focusableArray = Array.from(focusableElements) as HTMLElement[]
-    console.log('focusable', focusableArray)
 
     if (focusableArray.length > 0) {
       this.firstFocusableElement = focusableArray[0]
@@ -63,7 +62,7 @@ export class SlideInPanel {
 
   render() {
     return (
-      <div class={{ 'slide-container': true, 'slide-up': this.isOpen }}>
+      <div class={{ 'slide-container': true, 'slide-up': this.isOpen }} tabIndex={this.isOpen ? 0 : -1}>
         <div class="slide-container-header">
           <button
             onClick={() => this.closePanel()}
