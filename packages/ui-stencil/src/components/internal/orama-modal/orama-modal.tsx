@@ -98,7 +98,9 @@ export class OramaModal {
   handleArrowNavigation(event: KeyboardEvent) {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
 
-    const focusableElements = this.el?.querySelectorAll('a[href], button, textarea, input, select')
+    const focusableElements = this.el?.querySelectorAll(
+      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
+    )
 
     let focusableArray = Array.from(focusableElements) as HTMLElement[]
     focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)

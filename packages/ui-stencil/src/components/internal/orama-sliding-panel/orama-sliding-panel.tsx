@@ -28,10 +28,11 @@ export class SlideInPanel {
   }
 
   private trapFocus(event: KeyboardEvent) {
-    const focusableElements = this.el.querySelectorAll(
+    const focusableElements = this.el?.querySelectorAll(
       'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
     )
-    const focusableArray = Array.from(focusableElements) as HTMLElement[]
+    let focusableArray = Array.from(focusableElements) as HTMLElement[]
+    focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)
 
     if (focusableArray.length > 0) {
       this.firstFocusableElement = focusableArray[0]
