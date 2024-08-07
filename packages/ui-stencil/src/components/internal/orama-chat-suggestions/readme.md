@@ -10,6 +10,7 @@
 | Property            | Attribute | Description | Type                           | Default     |
 | ------------------- | --------- | ----------- | ------------------------------ | ----------- |
 | `as`                | `as`      |             | `"chips" \| "list"`            | `'chips'`   |
+| `icon`              | --        |             | `Node`                         | `undefined` |
 | `suggestionClicked` | --        |             | `(suggestion: string) => void` | `undefined` |
 | `suggestions`       | --        |             | `string[]`                     | `undefined` |
 

@@ -10,7 +10,6 @@
 }
 
 .corner-section {
-  flex: 1;
   display: flex;
   gap: var(--spacing-xs, $spacing-xs);
 
@@ -21,7 +20,8 @@
 
   &.center {
     display: flex;
-    justify-content: 'center';
+    flex: 1;
+    justify-content: center;
   }
 
   &.end {

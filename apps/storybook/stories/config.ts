@@ -20,13 +20,17 @@ const demoIndexes = {
           '--text-color-primary': '',
         },
         dark: {
-          '--text-color-primary': '',
+          '--background-color-primary': '',
+          '--background-color-secondary': '',
+          '--background-color-tertiary': '',
+          '--border-color-primary': '',
+          '--backdrop-background-color-primary': '',
         },
       },
     },
     facetProperty: 'category',
     resultMap: {
-      description: 'title',
+      description: 'content',
       section: 'category',
     },
   },
@@ -46,11 +50,12 @@ const demoIndexes = {
     ],
     themeConfig: {
       colors: {
-        light: {
-          '--text-color-primary': '',
-        },
         dark: {
-          '--text-color-primary': '',
+          '--background-color-primary': '#231102',
+          '--background-color-secondary': '#261803',
+          '--background-color-tertiary': '#3a2a2a',
+          '--border-color-primary': '#443737',
+          '--backdrop-background-color-primary': 'rgba(20, 3, 3, 0.7)',
         },
       },
     },

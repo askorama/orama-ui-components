@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type       | Default |
-| ------------- | ------------- | ----------- | ---------- | ------- |
-| `focusInput`  | `focus-input` |             | `boolean`  | `false` |
-| `suggestions` | --            |             | `string[]` | `[]`    |
+| Property        | Attribute         | Description | Type       | Default     |
+| --------------- | ----------------- | ----------- | ---------- | ----------- |
+| `focusInput`    | `focus-input`     |             | `boolean`  | `false`     |
+| `sourceBaseUrl` | `source-base-url` |             | `string`   | `undefined` |
+| `suggestions`   | --                |             | `string[]` | `[]`        |
 
 
 ## Dependencies

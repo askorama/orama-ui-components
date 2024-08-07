@@ -15,6 +15,7 @@ export class OramaSearch {
 
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[] = []
+  @Prop() sourceBaseUrl?: string
 
   @State() searchValue = ''
   @State() selectedFacet = ''
@@ -83,6 +84,7 @@ export class OramaSearch {
               globalContext.currentTask = 'chat'
               chatContext.chatService?.sendQuestion(term)
             }}
+            sourceBaseUrl={this.sourceBaseUrl}
             sections={searchState.results}
             searchTerm={this.searchValue}
             loading={searchState.loading}

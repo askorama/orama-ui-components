@@ -56,6 +56,13 @@ const meta: Meta = {
       },
       control: { type: 'radio' },
     },
+    themeConfig: {
+      table: {
+        type: {
+          summary: 'Partial<TThemeOverrides>',
+        },
+      },
+    },
   },
 }
 export default meta
@@ -63,7 +70,7 @@ export default meta
 const Template = ({ preset, colorScheme }) => {
   return html`<orama-search-box
     open=${preset?.open}
-    facetProperty=${preset?.facetProperty}
+    .facetProperty=${preset?.facetProperty}
     .resultMap=${preset?.resultMap}
     .colorScheme=${colorScheme}
     .themeConfig=${preset.themeConfig}

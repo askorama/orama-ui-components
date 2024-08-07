@@ -60,6 +60,7 @@ export namespace Components {
     }
     interface OramaChatSuggestions {
         "as": 'chips' | 'list';
+        "icon": Node;
         "suggestionClicked": (suggestion: string) => void;
         "suggestions": string[];
     }
@@ -101,6 +102,7 @@ export namespace Components {
     }
     interface OramaSearch {
         "focusInput"?: boolean;
+        "sourceBaseUrl"?: string;
         "suggestions"?: string[];
     }
     interface OramaSearchBox {
@@ -123,6 +125,7 @@ export namespace Components {
         "searchTerm": SearchResultsProps['searchTerm'];
         "sections": SearchResultBySection[];
         "setChatTerm": (term: string) => void;
+        "sourceBaseUrl"?: string;
         "suggestions"?: string[];
     }
     interface OramaSlidingPanel {
@@ -408,6 +411,7 @@ declare namespace LocalJSX {
     }
     interface OramaChatSuggestions {
         "as"?: 'chips' | 'list';
+        "icon"?: Node;
         "suggestionClicked"?: (suggestion: string) => void;
         "suggestions"?: string[];
     }
@@ -450,6 +454,7 @@ declare namespace LocalJSX {
     }
     interface OramaSearch {
         "focusInput"?: boolean;
+        "sourceBaseUrl"?: string;
         "suggestions"?: string[];
     }
     interface OramaSearchBox {
@@ -473,6 +478,7 @@ declare namespace LocalJSX {
         "searchTerm"?: SearchResultsProps['searchTerm'];
         "sections"?: SearchResultBySection[];
         "setChatTerm"?: (term: string) => void;
+        "sourceBaseUrl"?: string;
         "suggestions"?: string[];
     }
     interface OramaSlidingPanel {

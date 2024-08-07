@@ -15,12 +15,20 @@
 .section-item-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-m, $spacing-m);
+}
+
+.section-wrapper {
+  border-bottom: 1px solid var(--border-color-primary, border-color('primary'));
+  padding-bottom: var(--spacing-m, $spacing-m);
+
+  &:last-of-type {
+    border-bottom: none;
+  }
 }
 
 .section-title-wrapper {
   text-transform: capitalize;
-  padding: var(--spacing-l, $spacing-l) var(--spacing-m, $spacing-m);
+  padding: var(--spacing-s, $spacing-s) var(--spacing-m, $spacing-m);
 
   * {
     color: var(--text-text-color-secondary, text-color('secondary'));
@@ -37,12 +45,19 @@
   align-items: center;
   padding: var(--spacing-m, $spacing-m);
   border-radius: var(--radius-s, $radius-s);
-  background-color: var(--background-color-secondary, background-color('secondary'));
+  background-color: var(--background-color-primary, background-color('primary'));
   border: 1px solid transparent;
   text-align: left;
   width: 100%;
   font-family: unset;
   cursor: pointer;
+  transition: background-color 0.2s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--background-color-secondary, background-color('secondary'));
+    }
+  }
 
   &:focus-visible {
     outline: none;
@@ -74,6 +89,7 @@
 .suggestions-title {
   text-transform: uppercase;
   margin-bottom: var(--spacing-xs, $spacing-xs);
+  padding: 0 var(--spacing-s, $spacing-s);
 }
 
 ph-files {

@@ -17,16 +17,17 @@ export class OramaNavigationBar {
             <ph-caret-left size="20px" />
           </orama-button>
         </div>
-        <div class="section center">
+        <div class="corner-section center">
           <orama-toggler />
         </div>
+        {/* TODO: uncomment when feature is ready */}
         <div class="corner-section end">
-          <orama-button type="button" variant="icon" aria-label="View history">
+          {/* <orama-button type="button" variant="icon" aria-label="View history">
             <ph-clock size="20px" />
           </orama-button>
           <orama-button type="button" variant="icon" aria-label="Start new chat">
             <ph-plus size="20px" />
-          </orama-button>
+          </orama-button> */}
         </div>
       </Host>
     )

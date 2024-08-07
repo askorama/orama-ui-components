@@ -59,6 +59,7 @@ export const OramaChatMessagesContainer = /*@__PURE__*/ defineContainer<JSX.Oram
 export const OramaChatSuggestions = /*@__PURE__*/ defineContainer<JSX.OramaChatSuggestions>('orama-chat-suggestions', undefined, [
   'suggestions',
   'as',
+  'icon',
   'suggestionClicked'
 ]);
 
@@ -118,7 +119,8 @@ export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigat
 
 export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined, [
   'focusInput',
-  'suggestions'
+  'suggestions',
+  'sourceBaseUrl'
 ]);
 
 
@@ -140,6 +142,7 @@ export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchBu
 
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [
+  'sourceBaseUrl',
   'sections',
   'suggestions',
   'searchTerm',

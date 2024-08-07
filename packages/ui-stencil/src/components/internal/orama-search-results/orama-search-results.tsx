@@ -2,6 +2,7 @@ import { Component, Host, h, Element, Prop, Event, type EventEmitter, Fragment }
 import type { SearchResult, SearchResultBySection } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhFiles.mjs'
 import { searchState } from '@/context/searchContext'
+import { Icon } from '@/components/internal/icons'
 
 export type SearchResultsProps = {
   sections: SearchResultBySection[]
@@ -16,6 +17,7 @@ export type SearchResultsProps = {
 export class SearchResults {
   @Element() el: HTMLUListElement
   @Event() oramaItemClick: EventEmitter<SearchResult>
+  @Prop() sourceBaseUrl?: string
   @Prop() sections: SearchResultBySection[] = []
   @Prop() suggestions?: string[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
@@ -26,7 +28,7 @@ export class SearchResults {
   handleItemClick = (item: SearchResult) => {
     if (item?.path) {
       this.oramaItemClick.emit(item)
-      window.location.href = item.path
+      window.location.href = this.sourceBaseUrl ? `${this.sourceBaseUrl}${item.path}` : item.path
     } else {
       throw new Error('No path found')
     }
@@ -43,6 +45,7 @@ export class SearchResults {
           )}
           <orama-chat-suggestions
             as="list"
+            icon={<Icon name="starFour" size={16} />}
             suggestions={this.suggestions}
             suggestionClicked={(term) => {
               this.setChatTerm(term)
@@ -71,7 +74,7 @@ export class SearchResults {
       <Host>
         <ul class="list section-list">
           {this.sections.map((section) => (
-            <div key={section.section}>
+            <div key={section.section} class="section-wrapper">
               {section.section && (
                 <div class="section-title-wrapper">
                   <orama-text as="h2" styledAs="span">

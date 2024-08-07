@@ -8,6 +8,7 @@ import { Component, h, Prop } from '@stencil/core'
 export class OramaChatSuggestions {
   @Prop() suggestions: string[]
   @Prop() as: 'chips' | 'list' = 'chips'
+  @Prop() icon: Node
   @Prop() suggestionClicked: (suggestion: string) => void
 
   handleClick(suggestion: string) {
@@ -34,7 +35,7 @@ export class OramaChatSuggestions {
                 class={`suggestion-button-${classSuffix}`}
                 onClick={() => this.handleClick(suggestion)}
               >
-                <slot name="icon" />
+                {this.icon}
                 {suggestion}
               </button>
             </li>
