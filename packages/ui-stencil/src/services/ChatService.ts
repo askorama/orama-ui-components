@@ -81,7 +81,6 @@ export class ChatService {
   }
 
   resetChat = async () => {
-    console.log('resetChat')
     if (!this.answerSession) {
       throw new OramaClientNotInitializedError()
     }

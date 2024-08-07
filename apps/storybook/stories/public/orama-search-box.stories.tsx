@@ -76,6 +76,8 @@ const Template = ({ preset, colorScheme }) => {
     .themeConfig=${preset.themeConfig}
     .index=${preset.index}
     .suggestions=${preset?.suggestions}
+    .sourceBaseUrl=${preset?.sourceBaseUrl}
+    .sourcesMap=${preset?.sourcesMap}
   ></orama-search-box>`
 }
 

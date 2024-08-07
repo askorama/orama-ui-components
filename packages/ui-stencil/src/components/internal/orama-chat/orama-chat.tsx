@@ -112,6 +112,14 @@ export class OramaChat {
     this.recalculateLockOnBottom()
   }
 
+  setSources = () => {
+    chatContext.sourceBaseURL = this.sourceBaseUrl
+    chatContext.sourcesMap = {
+      ...chatContext.sourcesMap,
+      ...this.sourcesMap,
+    }
+  }
+
   componentWillLoad() {
     this.inputValue = this.defaultTerm || ''
     this.handleFocus()
@@ -120,11 +128,7 @@ export class OramaChat {
   componentDidLoad() {
     this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
     this.recalculateLockOnBottom()
-    chatContext.sourceBaseURL = this.sourceBaseUrl
-    chatContext.sourcesMap = {
-      ...chatContext.sourcesMap,
-      ...this.sourcesMap,
-    }
+    this.setSources()
   }
 
   componentDidUpdate() {
