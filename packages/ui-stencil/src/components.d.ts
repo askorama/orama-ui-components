@@ -95,6 +95,7 @@ export namespace Components {
         "content": string;
     }
     interface OramaModal {
+        "closeOnEscape": boolean;
         "mainTitle": string;
         "open": boolean;
     }
@@ -447,6 +448,7 @@ declare namespace LocalJSX {
         "content"?: string;
     }
     interface OramaModal {
+        "closeOnEscape"?: boolean;
         "mainTitle"?: string;
         "open"?: boolean;
     }

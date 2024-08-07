@@ -153,7 +153,12 @@ export class SearchBox {
 
     return (
       <Fragment>
-        <orama-modal open={this.open} class="modal" mainTitle="Start your search">
+        <orama-modal
+          open={this.open}
+          class="modal"
+          mainTitle="Start your search"
+          closeOnEscape={globalContext.currentTask === 'search'}
+        >
           <orama-navigation-bar />
           <div class="main">
             <orama-search

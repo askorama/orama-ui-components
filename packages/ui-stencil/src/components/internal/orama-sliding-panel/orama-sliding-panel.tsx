@@ -1,4 +1,4 @@
-import { Component, Prop, State, h, Element, Watch, Event, Listen } from '@stencil/core'
+import { Component, Prop, State, h, Element, Watch, Event, Listen, EventEmitter } from '@stencil/core'
 import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 
 @Component({
@@ -52,12 +52,15 @@ export class SlideInPanel {
   @Listen('keydown', { target: 'document' })
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      event.stopPropagation()
       this.closePanel()
     }
     if (event.key === 'Tab') {
       this.trapFocus(event)
     }
+  }
+
+  componentDidLoad() {
+    this.isOpen = this.open
   }
 
   render() {

@@ -7,6 +7,7 @@ import { Component, h, Prop, State, Listen, Element } from '@stencil/core'
 })
 export class OramaModal {
   @Prop() open = false
+  @Prop() closeOnEscape = true
   @Prop() mainTitle = ''
   @State() activeElement: HTMLElement
   @Element() el: HTMLElement
@@ -14,7 +15,7 @@ export class OramaModal {
   private firstFocusableElement: HTMLElement
   private lastFocusableElement: HTMLElement
 
-  @Listen('keydown', { target: 'window' })
+  @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
     if (this.open) {
       switch (ev.key) {
@@ -22,7 +23,11 @@ export class OramaModal {
           this.trapFocus(ev)
           break
         case 'Escape':
-          this.closeModal()
+          if (this.closeOnEscape) {
+            ev.preventDefault()
+            ev.stopPropagation()
+            this.closeModal()
+          }
           break
         case 'ArrowDown':
           this.handleArrowNavigation(ev)
