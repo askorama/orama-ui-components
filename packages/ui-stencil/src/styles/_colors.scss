@@ -25,7 +25,7 @@ $purple600: #6a4bb2;
 $purple700: #432d77;
 
 /**
-* * SEMANTIC AND ELEMENT COLOR MAP FOR LIGHT THEME
+* * SEMANTIC COLOR MAP FOR LIGHT THEME
 * in order to use one of the colors included in the palette map;
 *  use the functions text-color(key), background-color(key), border-color(key)
 * ie: text-color('primary')
@@ -65,16 +65,6 @@ $palette: (
   shadow: (
     primary: white,
   ),
-  'button-text': (
-    primary: $purple100,
-    inactive: $gray500,
-    // todo: value to check with Angela
-  ),
-  'button-background': (
-    primary: $purple500,
-    inactive: $gray100,
-    // todo: value to check with Angela
-  ),
   'backdrop-background': (
     primary: rgba(black, 0.7),
   ),
@@ -90,6 +80,30 @@ $palette: (
     gradientOne: $purple300,
     gradientTwo: rgba(255, 255, 255, 0),
   ),
+);
+
+// ELEMENT COLOR MAP
+$palette: map-merge(
+  $palette,
+  (
+    'button-text': (
+      primary: $purple100,
+      secondary: text-color('inactive'),
+      inactive: $gray500,
+      // todo: value to check with Angela
+    ),
+    'button-background': (
+      primary: $purple500,
+      secondary: background-color('secondary'),
+      inactive: $gray100,
+      // todo: value to check with Angela
+    ),
+    'button-border': (
+      primary: border-color('accent'),
+      secondary: border-color('primary'),
+      inactive: border-color('tertiary'),
+    ),
+  )
 );
 
 /**

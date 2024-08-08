@@ -38,6 +38,10 @@
 }
 
 .button--secondary {
+  background-color: var(--button-background-color-secondary, button-background-color('secondary'));
+  color: var(--button-text-color-secondary, button-text-color('secondary'));
+  border: 1px solid var(--button-border-color-secondary, map-get($palette, 'button-border', 'secondary'));
+
   &:disabled {
     background-color: var(--background-color-tertiary, background-color('tertiary'));
     color: var(--text-color-tertiary);
@@ -63,6 +67,12 @@
   &:hover {
     background-color: var(--background-color-tertiary, background-color('tertiary'));
   }
+}
+
+// slot elements should be aligned center
+::slotted(*) {
+  display: inline-flex;
+  align-items: center;
 }
 
 @keyframes fadeInOut {

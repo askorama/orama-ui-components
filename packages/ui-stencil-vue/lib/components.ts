@@ -139,7 +139,10 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
 ]);
 
 
-export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchButton>('orama-search-button', undefined);
+export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchButton>('orama-search-button', undefined, [
+  'label',
+  'colorScheme'
+]);
 
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [

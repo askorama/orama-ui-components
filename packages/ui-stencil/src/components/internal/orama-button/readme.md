@@ -24,6 +24,7 @@
  - [orama-chat](../orama-chat)
  - [orama-chat-assistent-message](../orama-chat-messages-container/orama-chat-assistent-message)
  - [orama-navigation-bar](../orama-navigation-bar)
+ - [orama-search-button](../../orama-search-button)
 
 ### Graph
 ```mermaid
@@ -31,6 +32,7 @@ graph TD;
   orama-chat --> orama-button
   orama-chat-assistent-message --> orama-button
   orama-navigation-bar --> orama-button
+  orama-search-button --> orama-button
   style orama-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

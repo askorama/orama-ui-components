@@ -68,7 +68,7 @@ export class SearchBox {
 
   updateTheme() {
     const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
-    const uiElement = document.querySelector('#orama-ui')
+    const uiElement = this.el as HTMLElement
 
     if (uiElement && scheme) {
       uiElement.classList.remove('theme-light', 'theme-dark')
@@ -80,7 +80,7 @@ export class SearchBox {
 
   updateCssVariables(scheme: ColorScheme) {
     const config = this.themeConfig
-    const root = document.querySelector('#orama-ui') as HTMLElement
+    const root = this.el as HTMLElement
 
     if (root && config && scheme) {
       if (config.colors?.[scheme]) {
