@@ -1,6 +1,8 @@
-import { Component, Host, h, Element, Prop, Event, type EventEmitter } from '@stencil/core'
+import { Component, Host, h, Element, Prop, Event, type EventEmitter, Fragment } from '@stencil/core'
 import type { SearchResult, SearchResultBySection } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhFiles.mjs'
+import { searchState } from '@/context/searchContext'
+import { Icon } from '@/components/internal/icons'
 
 export type SearchResultsProps = {
   sections: SearchResultBySection[]
@@ -10,19 +12,23 @@ export type SearchResultsProps = {
 @Component({
   tag: 'orama-search-results',
   styleUrl: 'orama-search-results.scss',
+  scoped: true,
 })
 export class SearchResults {
   @Element() el: HTMLUListElement
   @Event() oramaItemClick: EventEmitter<SearchResult>
+  @Prop() sourceBaseUrl?: string
   @Prop() sections: SearchResultBySection[] = []
+  @Prop() suggestions?: string[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
+  @Prop() setChatTerm: (term: string) => void
   @Prop() loading = false
   @Prop() error = false
 
   handleItemClick = (item: SearchResult) => {
     if (item?.path) {
       this.oramaItemClick.emit(item)
-      window.location.href = item.path
+      window.location.href = this.sourceBaseUrl ? `${this.sourceBaseUrl}${item.path}` : item.path
     } else {
       throw new Error('No path found')
     }
@@ -30,7 +36,23 @@ export class SearchResults {
 
   render() {
     if (!this.searchTerm) {
-      return null
+      return (
+        <div class="suggestions-wrapper">
+          {!!this.suggestions?.length && (
+            <orama-text as="h2" styledAs="small" class="suggestions-title" variant="secondary">
+              Suggestions
+            </orama-text>
+          )}
+          <orama-chat-suggestions
+            as="list"
+            icon={<Icon name="starFour" size={16} />}
+            suggestions={this.suggestions}
+            suggestionClicked={(term) => {
+              this.setChatTerm(term)
+            }}
+          />
+        </div>
+      )
     }
 
     if (this.error) {
@@ -52,7 +74,7 @@ export class SearchResults {
       <Host>
         <ul class="list section-list">
           {this.sections.map((section) => (
-            <div key={section.section}>
+            <div key={section.section} class="section-wrapper">
               {section.section && (
                 <div class="section-title-wrapper">
                   <orama-text as="h2" styledAs="span">

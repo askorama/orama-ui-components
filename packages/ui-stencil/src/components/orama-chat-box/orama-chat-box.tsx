@@ -15,8 +15,9 @@ export class ChatBox {
   @Prop() sourceBaseUrl?: string
   @Prop() placeholder?: string
   @Prop() sourcesMap?: SourcesMap
+  @Prop() suggestions?: string[]
 
-  @Watch('cloudIndex')
+  @Watch('index')
   indexChanged() {
     this.startChatService()
   }
@@ -38,7 +39,12 @@ export class ChatBox {
     return (
       // * Note: only dark theme supported at the moment
       <Host id="orama-ui-chatbox" class="theme-dark">
-        <orama-chat placeholder={this.placeholder} sourceBaseUrl={this.sourceBaseUrl} sourcesMap={this.sourcesMap} />
+        <orama-chat
+          placeholder={this.placeholder}
+          sourceBaseUrl={this.sourceBaseUrl}
+          sourcesMap={this.sourcesMap}
+          suggestions={this.suggestions}
+        />
       </Host>
     )
   }

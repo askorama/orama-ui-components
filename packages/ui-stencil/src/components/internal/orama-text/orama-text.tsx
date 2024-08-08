@@ -10,12 +10,15 @@ export interface TextProps {
   class?: string
   /** optionally change text alignment */
   align?: 'left' | 'center' | 'right'
+  /** optionally change variant style - default is primary */
+  variant: 'primary' | 'secondary' | 'tertiary'
   /** show as inactive */
   inactive?: boolean
 }
 @Component({
   tag: 'orama-text',
   styleUrl: 'orama-text.scss',
+  scoped: true,
 })
 
 /**
@@ -30,6 +33,7 @@ export class OramaText implements TextProps {
   @Prop() bold?: boolean = false
   @Prop() class?: string
   @Prop() align?: TextProps['align']
+  @Prop() variant: TextProps['variant'] = 'primary'
   @Prop() inactive?: TextProps['inactive']
 
   @State() defaultStyle: string =
@@ -45,6 +49,7 @@ export class OramaText implements TextProps {
         class={{
           [this.defaultStyle]: true,
           [`text-${this.align}`]: !!this.align,
+          [`${this.defaultStyle}-${this.variant}`]: true,
           'text-inactive': !!this.inactive,
           'text-bold': !!this.bold,
           [this.class]: !!this.class,

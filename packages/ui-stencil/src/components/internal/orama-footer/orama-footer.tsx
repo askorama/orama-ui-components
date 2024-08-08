@@ -4,7 +4,7 @@ import type { ColorScheme } from '@/types'
 @Component({
   tag: 'orama-footer',
   styleUrl: 'orama-footer.scss',
-  shadow: true,
+  scoped: true,
 })
 
 /**
@@ -19,7 +19,7 @@ export class OramaFooter {
   render() {
     const imgName = this.colorScheme === 'dark' ? 'orama-when-dark.svg' : 'orama-when-light.svg'
     return (
-      <Host class="footer">
+      <Host>
         <div class="powered-by">
           <orama-text as="small">Powered by</orama-text>
           <a href="https://www.orama.com" target="_blank" rel="noopener noreferrer" class="logo-link">

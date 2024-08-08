@@ -6,7 +6,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowBendDownLeft.mjs'
 @Component({
   tag: 'orama-chat-button',
   styleUrl: 'orama-chat-button.scss',
-  shadow: true,
+  scoped: true,
 })
 // TODO: consider renaming this component
 /**
@@ -44,9 +44,9 @@ export class OramaChatButton {
           type="button"
         >
           <span class="icon-star">
-            <Icon name="star" size={14} color="blue" />
+            <Icon name="star" size={14} />
           </span>
-          <span class="label">{this.label}</span>
+          <span class="button-label">{this.label}</span>
           <span class="icon-enter">
             <ph-arrow-bend-down-left size={12} />
           </span>

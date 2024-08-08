@@ -1,4 +1,4 @@
-orama-textarea {
+:host {
   position: relative;
   display: flex;
   align-items: center;
@@ -7,30 +7,15 @@ orama-textarea {
   background: var(--background-color-secondary, background-color('secondary'));
   box-shadow: 0px 4px 24px 0px var(--shadow-color-primary, shadow-color('primary'));
   padding: var(--spacing-xs, $spacing-xs) var(--spacing-xs, $spacing-xs) var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
-
-  @media (--sm-min) {
-    padding: var(--spacing-m, $spacing-m);
-  }
-}
-
-::slotted([slot='adornment-start']) {
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
 }
 
 ::slotted([slot='adornment-end']) {
-  position: absolute;
-  right: 0;
-  top: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
 }
 
-textarea {
+.textarea {
   @include paragraph();
   left: 0;
   right: 0;

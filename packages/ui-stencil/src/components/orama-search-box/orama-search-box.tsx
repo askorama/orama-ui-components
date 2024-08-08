@@ -7,7 +7,7 @@ import { SearchService } from '@/services/SearchService'
 import { windowWidthListener } from '@/services/WindowService'
 import type { TThemeOverrides } from '@/config/theme'
 import { initOramaClient } from '@/utils/utils'
-import type { ColorScheme, ResultMap } from '@/types'
+import type { ColorScheme, ResultMap, SourcesMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
 
 @Component({
@@ -20,10 +20,14 @@ export class SearchBox {
 
   @Prop() themeConfig?: Partial<TThemeOverrides>
   @Prop() colorScheme?: ColorScheme = 'light'
-  @Prop() facetProperty?: string
-  @Prop() open? = false
-  @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() index: CloudIndexConfig
+  @Prop() open? = false
+  @Prop() facetProperty?: string
+  @Prop() resultMap?: Partial<ResultMap> = {}
+  @Prop() sourceBaseUrl?: string
+  @Prop() sourcesMap?: SourcesMap
+  @Prop() placeholder?: string
+  @Prop() suggestions?: string[]
 
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number
@@ -149,10 +153,20 @@ export class SearchBox {
 
     return (
       <Fragment>
-        <orama-modal open={this.open} class="modal">
+        <orama-modal
+          open={this.open}
+          class="modal"
+          mainTitle="Start your search"
+          closeOnEscape={globalContext.currentTask === 'search'}
+        >
           <orama-navigation-bar />
           <div class="main">
-            <orama-search class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`} />
+            <orama-search
+              class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
+              focusInput={globalContext.currentTask === 'search'}
+              sourceBaseUrl={this.sourceBaseUrl}
+              suggestions={this.suggestions}
+            />
             {this.windowWidth <= 1024 && (
               <orama-chat
                 class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
@@ -172,9 +186,13 @@ export class SearchBox {
             }}
           >
             <orama-chat
-              showClearChat={false}
+              placeholder={this.placeholder}
               defaultTerm={globalContext.currentTerm}
+              showClearChat={false}
+              sourceBaseUrl={this.sourceBaseUrl}
+              sourcesMap={this.sourcesMap}
               focusInput={globalContext.currentTask === 'chat'}
+              suggestions={this.suggestions}
             />
           </orama-sliding-panel>
         )}

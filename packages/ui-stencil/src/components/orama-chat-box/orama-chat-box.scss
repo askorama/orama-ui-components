@@ -1,3 +1,8 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+}
+
 .header {
   padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
   background: var(--background-color-primary, background-color('primary'));
@@ -28,9 +33,4 @@
       background-color: var(--background-color-tertiary, background-color('tertiary'));
     }
   }
-}
-
-orama-chat {
-  display: flex;
-  flex-grow: 1;
 }

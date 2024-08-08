@@ -37,6 +37,7 @@ export namespace Components {
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatAssistentMessage {
         "interaction": TChatInteraction;
@@ -46,6 +47,7 @@ export namespace Components {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatButton {
         "active"?: boolean;
@@ -57,6 +59,8 @@ export namespace Components {
         "interactions": TChatInteraction[];
     }
     interface OramaChatSuggestions {
+        "as": 'chips' | 'list';
+        "icon": Node;
         "suggestionClicked": (suggestion: string) => void;
         "suggestions": string[];
     }
@@ -75,6 +79,7 @@ export namespace Components {
         "colorScheme"?: ColorScheme;
     }
     interface OramaInput {
+        "autoFocus"?: boolean;
         "defaultValue": InputProps['defaultValue'];
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
@@ -90,19 +95,27 @@ export namespace Components {
         "content": string;
     }
     interface OramaModal {
+        "closeOnEscape": boolean;
         "mainTitle": string;
         "open": boolean;
     }
     interface OramaNavigationBar {
     }
     interface OramaSearch {
+        "focusInput"?: boolean;
+        "sourceBaseUrl"?: string;
+        "suggestions"?: string[];
     }
     interface OramaSearchBox {
         "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index": CloudIndexConfig;
         "open"?: boolean;
+        "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
+        "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
         "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchButton {
@@ -112,6 +125,9 @@ export namespace Components {
         "loading": boolean;
         "searchTerm": SearchResultsProps['searchTerm'];
         "sections": SearchResultBySection[];
+        "setChatTerm": (term: string) => void;
+        "sourceBaseUrl"?: string;
+        "suggestions"?: string[];
     }
     interface OramaSlidingPanel {
         "closed": () => void;
@@ -139,6 +155,10 @@ export namespace Components {
           * it defines how it should look like
          */
         "styledAs"?: TextProps['styledAs'];
+        /**
+          * optionally change variant style - default is primary
+         */
+        "variant": TextProps['variant'];
     }
     interface OramaTextarea {
         "autoFocus": boolean;
@@ -369,6 +389,7 @@ declare namespace LocalJSX {
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatAssistentMessage {
         "interaction"?: TChatInteraction;
@@ -378,6 +399,7 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
     }
     interface OramaChatButton {
         "active"?: boolean;
@@ -389,6 +411,8 @@ declare namespace LocalJSX {
         "interactions"?: TChatInteraction[];
     }
     interface OramaChatSuggestions {
+        "as"?: 'chips' | 'list';
+        "icon"?: Node;
         "suggestionClicked"?: (suggestion: string) => void;
         "suggestions"?: string[];
     }
@@ -407,6 +431,7 @@ declare namespace LocalJSX {
         "colorScheme"?: ColorScheme;
     }
     interface OramaInput {
+        "autoFocus"?: boolean;
         "defaultValue"?: InputProps['defaultValue'];
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
@@ -423,19 +448,27 @@ declare namespace LocalJSX {
         "content"?: string;
     }
     interface OramaModal {
+        "closeOnEscape"?: boolean;
         "mainTitle"?: string;
         "open"?: boolean;
     }
     interface OramaNavigationBar {
     }
     interface OramaSearch {
+        "focusInput"?: boolean;
+        "sourceBaseUrl"?: string;
+        "suggestions"?: string[];
     }
     interface OramaSearchBox {
         "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "open"?: boolean;
+        "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
+        "sourceBaseUrl"?: string;
+        "sourcesMap"?: SourcesMap;
+        "suggestions"?: string[];
         "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchButton {
@@ -446,6 +479,9 @@ declare namespace LocalJSX {
         "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchResult>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
         "sections"?: SearchResultBySection[];
+        "setChatTerm"?: (term: string) => void;
+        "sourceBaseUrl"?: string;
+        "suggestions"?: string[];
     }
     interface OramaSlidingPanel {
         "closed"?: () => void;
@@ -473,6 +509,10 @@ declare namespace LocalJSX {
           * it defines how it should look like
          */
         "styledAs"?: TextProps['styledAs'];
+        /**
+          * optionally change variant style - default is primary
+         */
+        "variant"?: TextProps['variant'];
     }
     interface OramaTextarea {
         "autoFocus"?: boolean;

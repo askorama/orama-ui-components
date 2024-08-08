@@ -8,6 +8,7 @@
 
   margin: 0;
   overflow-x: auto;
+  scroll-snap-type: y mandatory;
 
   // TODO: check scroll styles
   // Maybe move somewhere else to reuse in some somponents, but not globally
@@ -17,8 +18,12 @@
   }
 
   @media (--md-min) {
-    padding: var(--radius-l, $spacing-l) 0;
+    padding: var(--radius-l, $spacing-l) 0 var(--radius-s, $spacing-s);
   }
+}
+
+.facet {
+  scroll-snap-align: start;
 }
 
 .facet-button {
@@ -38,6 +43,11 @@
 
   @media (--md-min) {
     padding: var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: var(--border-color-accent, border-color('accent'));
   }
 }
 

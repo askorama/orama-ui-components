@@ -1,11 +1,56 @@
-import type { StoryObj, Meta } from '@storybook/web-components'
+import type { Meta, StoryObj } from '@storybook/web-components'
 import type { Components } from '@orama/wc-components'
-type Story = StoryObj<Components.OramaSearchBox>
+import demoIndexes from '../config'
+import { html } from 'lit-html'
+import type { DemoIndexConfig } from '../config'
 
-const meta: Meta<Components.OramaSearchBox> = {
+const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> = {
   title: 'Components/SearchBox',
   component: 'orama-search-box',
   argTypes: {
+    preset: {
+      options: Object.keys(demoIndexes),
+      mapping: demoIndexes,
+      control: { type: 'select' },
+    },
+    index: {
+      control: { type: 'object' },
+      table: {
+        type: {
+          summary: 'CloudIndexConfig',
+          detail: `{
+  api_key: string
+  endpoint: string
+}`,
+        },
+      },
+    },
+    sourceBaseUrl: {
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    sourcesMap: {
+      table: {
+        type: {
+          summary: 'SourcesMap',
+          detail: `{
+  title?: string
+  description?: string
+  path?: string
+}`,
+        },
+      },
+    },
+    suggestions: {
+      table: {
+        type: {
+          summary: 'string[]',
+        },
+      },
+    },
     colorScheme: {
       options: ['light', 'dark', 'system'],
       table: {
@@ -13,42 +58,36 @@ const meta: Meta<Components.OramaSearchBox> = {
       },
       control: { type: 'radio' },
     },
+    themeConfig: {
+      table: {
+        type: {
+          summary: 'Partial<TThemeOverrides>',
+        },
+      },
+    },
   },
 }
 export default meta
 
-// const Template = ({ colorScheme, ...args }, context) => {
-//   // todo: I'd like to programatically update parameters background value of colorScheme changes and vice versa
-//   console.log('colorScheme', colorScheme)
-//   console.log('args', args.themeConfig)
+const Template = ({ preset, colorScheme }) => {
+  return html`<orama-search-box
+    open=${preset?.open}
+    .facetProperty=${preset?.facetProperty}
+    .resultMap=${preset?.resultMap}
+    .colorScheme=${colorScheme}
+    .themeConfig=${preset.themeConfig}
+    .index=${preset.index}
+    .suggestions=${preset?.suggestions}
+    .sourceBaseUrl=${preset?.sourceBaseUrl}
+    .sourcesMap=${preset?.sourcesMap}
+  ></orama-search-box>`
+}
 
-//   return html`
-//   <search-box ${spread(args)} color-scheme=${colorScheme}></search-box>
-// `
-// }
+type Story = StoryObj<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }>
 
 export const SearchBox: Story = {
-  // render: Template,
+  render: Template,
   args: {
-    open: true,
-    facetProperty: 'category',
-    resultMap: {
-      description: 'title',
-    },
-    colorScheme: 'dark',
-    themeConfig: {
-      colors: {
-        light: {
-          '--text-color-primary': '',
-        },
-        dark: {
-          '--text-color-primary': '',
-        },
-      },
-    },
-    index: {
-      api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
-      endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
-    },
+    preset: 'orama',
   },
 }

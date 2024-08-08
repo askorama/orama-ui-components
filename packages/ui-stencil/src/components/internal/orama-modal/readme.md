@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property    | Attribute    | Description | Type      | Default |
-| ----------- | ------------ | ----------- | --------- | ------- |
-| `mainTitle` | `main-title` |             | `string`  | `''`    |
-| `open`      | `open`       |             | `boolean` | `false` |
+| Property        | Attribute         | Description | Type      | Default |
+| --------------- | ----------------- | ----------- | --------- | ------- |
+| `closeOnEscape` | `close-on-escape` |             | `boolean` | `true`  |
+| `mainTitle`     | `main-title`      |             | `string`  | `''`    |
+| `open`          | `open`            |             | `boolean` | `false` |
 
 
 ## Dependencies

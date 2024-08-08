@@ -59,7 +59,7 @@ export const config: Config = {
         rucksack(),
         cssfunctions({
           functions: {
-            pxToRem: (px: string) => `calc(${px}rem / var(--base-font-size, 16))`,
+            pxToRem: (px: string) => `calc(${px}rem / var(--orama-base-font-size, 16))`,
           },
         }),
         postcssPresetEnv({

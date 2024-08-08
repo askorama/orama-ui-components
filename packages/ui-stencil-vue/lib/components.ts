@@ -24,7 +24,8 @@ export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-cha
   'sourcesMap',
   'showClearChat',
   'defaultTerm',
-  'focusInput'
+  'focusInput',
+  'suggestions'
 ]);
 
 
@@ -37,7 +38,8 @@ export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('ora
   'index',
   'sourceBaseUrl',
   'placeholder',
-  'sourcesMap'
+  'sourcesMap',
+  'suggestions'
 ]);
 
 
@@ -56,6 +58,8 @@ export const OramaChatMessagesContainer = /*@__PURE__*/ defineContainer<JSX.Oram
 
 export const OramaChatSuggestions = /*@__PURE__*/ defineContainer<JSX.OramaChatSuggestions>('orama-chat-suggestions', undefined, [
   'suggestions',
+  'as',
+  'icon',
   'suggestionClicked'
 ]);
 
@@ -89,6 +93,7 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
   'placeholder',
   'labelForScreenReaders',
   'defaultValue',
+  'autoFocus',
   'oramaInputChanged'
 ]);
 
@@ -105,6 +110,7 @@ export const OramaMarkdown = /*@__PURE__*/ defineContainer<JSX.OramaMarkdown>('o
 
 export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-modal', undefined, [
   'open',
+  'closeOnEscape',
   'mainTitle'
 ]);
 
@@ -112,16 +118,24 @@ export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-m
 export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined);
 
 
-export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined);
+export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined, [
+  'focusInput',
+  'suggestions',
+  'sourceBaseUrl'
+]);
 
 
 export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>('orama-search-box', undefined, [
   'themeConfig',
   'colorScheme',
-  'facetProperty',
+  'index',
   'open',
+  'facetProperty',
   'resultMap',
-  'index'
+  'sourceBaseUrl',
+  'sourcesMap',
+  'placeholder',
+  'suggestions'
 ]);
 
 
@@ -129,8 +143,11 @@ export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchBu
 
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [
+  'sourceBaseUrl',
   'sections',
+  'suggestions',
   'searchTerm',
+  'setChatTerm',
   'loading',
   'error',
   'oramaItemClick'
@@ -149,6 +166,7 @@ export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-tex
   'bold',
   'class',
   'align',
+  'variant',
   'inactive'
 ]);
 

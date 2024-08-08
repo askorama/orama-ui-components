@@ -3,10 +3,11 @@ import { Component, h, Prop, State, Listen, Element } from '@stencil/core'
 @Component({
   tag: 'orama-modal',
   styleUrl: 'orama-modal.scss',
-  shadow: true,
+  scoped: true,
 })
 export class OramaModal {
   @Prop() open = false
+  @Prop() closeOnEscape = true
   @Prop() mainTitle = ''
   @State() activeElement: HTMLElement
   @Element() el: HTMLElement
@@ -14,7 +15,7 @@ export class OramaModal {
   private firstFocusableElement: HTMLElement
   private lastFocusableElement: HTMLElement
 
-  @Listen('keydown', { target: 'window' })
+  @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
     if (this.open) {
       switch (ev.key) {
@@ -22,26 +23,40 @@ export class OramaModal {
           this.trapFocus(ev)
           break
         case 'Escape':
-          this.closeModal()
+          if (this.closeOnEscape) {
+            ev.preventDefault()
+            ev.stopPropagation()
+            this.closeModal()
+          }
+          break
+        case 'ArrowDown':
+          this.handleArrowNavigation(ev)
+          break
+        case 'ArrowUp':
+          this.handleArrowNavigation(ev)
           break
       }
     }
   }
 
   private trapFocus(event: KeyboardEvent) {
-    const focusableElements = this.el.shadowRoot.querySelectorAll(
+    const focusableElements = this.el.querySelectorAll(
       'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
     )
-    const focusableArray = Array.from(focusableElements) as HTMLElement[]
+    const focusableArray = (Array.from(focusableElements) as HTMLElement[]).filter(
+      (element) => element.offsetParent !== null,
+    )
 
     if (focusableArray.length > 0) {
       this.firstFocusableElement = focusableArray[0]
       this.lastFocusableElement = focusableArray[focusableArray.length - 1]
 
-      if (event.shiftKey && document.activeElement === this.firstFocusableElement) {
+      const focusedElement = this.el.querySelector(':focus') as HTMLElement
+
+      if (event.shiftKey && focusedElement === this.firstFocusableElement) {
         event.preventDefault()
         this.lastFocusableElement.focus()
-      } else if (!event.shiftKey && document.activeElement === this.lastFocusableElement) {
+      } else if (!event.shiftKey && focusedElement === this.lastFocusableElement) {
         event.preventDefault()
         this.firstFocusableElement.focus()
       }
@@ -49,10 +64,12 @@ export class OramaModal {
   }
 
   private handleFocus() {
-    const focusableElements = this.el.shadowRoot.querySelectorAll(
+    const focusableElements = this.el.querySelectorAll(
       'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
     )
-    const focusableArray = Array.from(focusableElements) as HTMLElement[]
+    const focusableArray = (Array.from(focusableElements) as HTMLElement[]).filter(
+      (element) => element.offsetParent !== null,
+    )
 
     if (focusableArray.length > 0) {
       focusableArray[0].focus()
@@ -75,6 +92,34 @@ export class OramaModal {
       this.handleFocus()
     } else if (this.activeElement) {
       this.activeElement.focus()
+    }
+  }
+
+  handleArrowNavigation(event: KeyboardEvent) {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
+
+    const focusableElements = this.el?.querySelectorAll(
+      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
+    )
+
+    let focusableArray = Array.from(focusableElements) as HTMLElement[]
+    focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)
+
+    const firstFocusableElement = focusableArray[0]
+    const lastFocusableElement = focusableArray[focusableArray.length - 1]
+
+    const focusedElement = this.el.querySelector(':focus') as HTMLElement
+    const focusedIndex = focusableArray.indexOf(focusedElement)
+
+    let nextFocusableElement: HTMLElement
+
+    if (event.key === 'ArrowDown') {
+      nextFocusableElement =
+        focusedIndex === focusableArray.length - 1 ? firstFocusableElement : focusableArray[focusedIndex + 1]
+      nextFocusableElement?.focus()
+    } else if (event.key === 'ArrowUp') {
+      nextFocusableElement = focusedIndex === 0 ? lastFocusableElement : focusableArray[focusedIndex - 1]
+      nextFocusableElement?.focus()
     }
   }
 

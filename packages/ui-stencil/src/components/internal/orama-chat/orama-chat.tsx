@@ -5,13 +5,6 @@ import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
 
-// TODO: Hardcoding suggestions for now
-const SUGGESTIONS = [
-  'Why is Orama better than other search or AI solutions?',
-  'How does Orama ensure correct answers?',
-  'What are the steps to implement?',
-]
-
 const BOTTOM_THRESHOLD = 1
 
 @Component({
@@ -25,6 +18,7 @@ export class OramaChat {
   @Prop() showClearChat?: boolean = true
   @Prop() defaultTerm?: string
   @Prop() focusInput?: boolean = false
+  @Prop() suggestions?: string[]
 
   @State() inputValue = ''
 
@@ -118,6 +112,14 @@ export class OramaChat {
     this.recalculateLockOnBottom()
   }
 
+  setSources = () => {
+    chatContext.sourceBaseURL = this.sourceBaseUrl
+    chatContext.sourcesMap = {
+      ...chatContext.sourcesMap,
+      ...this.sourcesMap,
+    }
+  }
+
   componentWillLoad() {
     this.inputValue = this.defaultTerm || ''
     this.handleFocus()
@@ -126,11 +128,7 @@ export class OramaChat {
   componentDidLoad() {
     this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
     this.recalculateLockOnBottom()
-    chatContext.sourceBaseURL = this.sourceBaseUrl
-    chatContext.sourcesMap = {
-      ...chatContext.sourcesMap,
-      ...this.sourcesMap,
-    }
+    this.setSources()
   }
 
   componentDidUpdate() {
@@ -188,9 +186,9 @@ export class OramaChat {
             ) : null}
 
             {/* TODO: Provide a better animation */}
-            {!chatContext.interactions?.length ? (
+            {!chatContext.interactions?.length && !!this.suggestions?.length ? (
               <div class="suggestions-wrapper">
-                <orama-chat-suggestions suggestions={SUGGESTIONS} suggestionClicked={this.handleSuggestionClick} />
+                <orama-chat-suggestions suggestions={this.suggestions} suggestionClicked={this.handleSuggestionClick} />
               </div>
             ) : null}
             {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
@@ -236,6 +234,7 @@ export class OramaChat {
                       type="submit"
                       onClick={this.handleAbortAnswerClick}
                       onKeyDown={this.handleAbortAnswerClick}
+                      aria-label="Abort answer"
                     >
                       <ph-stop size={16} />
                     </orama-button>
@@ -245,6 +244,7 @@ export class OramaChat {
                       onClick={this.handleSubmit}
                       onKeyDown={this.handleSubmit}
                       disabled={!this.inputValue}
+                      aria-label="Send question"
                     >
                       <ph-paper-plane-tilt size={16} />
                     </orama-button>

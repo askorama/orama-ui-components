@@ -14,7 +14,8 @@
 | `placeholder`   | `placeholder`     |             | `string`                                                   | `'Ask me anything'` |
 | `showClearChat` | `show-clear-chat` |             | `boolean`                                                  | `true`              |
 | `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `''`                |
-| `sourcesMap`    | --                |             | `{ title?: string; description?: string; path?: string; }` | `undefined`         |
+| `sourcesMap`    | --                |             | `{ title?: string; path?: string; description?: string; }` | `undefined`         |
+| `suggestions`   | --                |             | `string[]`                                                 | `undefined`         |
 
 
 ## Dependencies

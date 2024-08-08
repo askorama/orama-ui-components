@@ -2,12 +2,24 @@
   @include paragraph();
 }
 
+.p-secondary {
+  @include paragraph('secondary');
+}
+
 .span {
   @include span();
 }
 
+.span-secondary {
+  @include span('secondary');
+}
+
 .small {
   @include small();
+}
+
+.small-secondary {
+  @include small('secondary');
 }
 
 .text-bold {

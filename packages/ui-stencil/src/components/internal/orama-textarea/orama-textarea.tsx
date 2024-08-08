@@ -3,9 +3,10 @@ import { Component, Host, Prop, State, Watch, h, Element } from '@stencil/core'
 @Component({
   tag: 'orama-textarea',
   styleUrl: 'orama-textarea.scss',
+  scoped: true,
 })
 export class OramaTextarea {
-  @Element() el: HTMLTextAreaElement
+  @Element() el: HTMLDivElement
 
   @Prop() value: string | null = ''
   @Prop() maxRows: number | string
@@ -154,6 +155,7 @@ export class OramaTextarea {
             paddingLeft: this.startAdornmentWidth ? `${this.startAdornmentWidth}px` : undefined,
             paddingRight: this.endAdornmentWidth ? `${this.endAdornmentWidth}px` : undefined,
           }}
+          class="textarea"
           placeholder={this.placeholder}
         />
         {/* TODO: We should calculate the adormnent width dinamically and apply the appding to the textarea  */}
@@ -166,6 +168,7 @@ export class OramaTextarea {
           readonly
           ref={(el) => (this.shadowTextarea = el as HTMLTextAreaElement)}
           tabindex={-1}
+          class="textarea"
           style={{
             visibility: 'hidden',
             position: 'absolute',

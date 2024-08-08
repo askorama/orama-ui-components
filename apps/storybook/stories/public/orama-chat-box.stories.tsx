@@ -1,29 +1,59 @@
-import type { StoryObj, Meta } from '@storybook/web-components'
+import type { Meta, StoryObj } from '@storybook/web-components'
 import type { Components } from '@orama/wc-components'
+import { html } from 'lit-html'
+import demoIndexes from '../config'
+import type { DemoIndexConfig } from '../config'
 
-const demoIndexes = {
-  orama: {
-    api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
-    endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
-  },
-  recipes: {
-    api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
-    endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
-  },
-  videogames: {
-    api_key: 'WL7pKdEqCTPf3G2412x8ecneqVbnkklr',
-    endpoint: 'https://cloud.orama.foo/v1/indexes/videogames-rk139h',
-  },
-}
-
-const meta: Meta = {
+const meta: Meta<
+  Components.OramaChatBox & {
+    preset: keyof DemoIndexConfig
+  }
+> = {
   title: 'Components/ChatBox',
   component: 'orama-chat-box',
   argTypes: {
-    index: {
+    preset: {
       options: Object.keys(demoIndexes),
       mapping: demoIndexes,
       control: { type: 'select' },
+    },
+    index: {
+      control: { type: 'object' },
+      table: {
+        type: {
+          summary: 'CloudIndexConfig',
+          detail: `{
+  api_key: string
+  endpoint: string
+}`,
+        },
+      },
+    },
+    sourceBaseUrl: {
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    sourcesMap: {
+      table: {
+        type: {
+          summary: 'SourcesMap',
+          detail: `{
+  title?: string
+  description?: string
+  path?: string
+}`,
+        },
+      },
+    },
+    suggestions: {
+      table: {
+        type: {
+          summary: 'string[]',
+        },
+      },
     },
   },
   parameters: {
@@ -32,20 +62,24 @@ const meta: Meta = {
 } satisfies Meta
 
 export default meta
-type Story = StoryObj<Components.OramaChatBox>
+
+const Template = ({ preset }) => {
+  return html`
+    <orama-chat-box
+      .index=${preset?.index}
+      placeholder=${preset?.placeholder}
+      sourceBaseUrl=${preset?.sourceBaseUrl}
+      .sourcesMap=${preset?.sourcesMap}
+      .suggestions=${preset?.suggestions}
+    ></orama-chat-box>
+  `
+}
+
+type Story = StoryObj<Components.OramaChatBox & { preset: keyof DemoIndexConfig }>
 
 export const ChatBox: Story = {
+  render: Template,
   args: {
-    placeholder: 'What do you want to learn about Orama?',
-    sourceBaseUrl: 'https://docs.orama.com',
-    index: {
-      api_key: demoIndexes.orama.api_key,
-      endpoint: demoIndexes.orama.endpoint,
-    },
-    sourcesMap: {
-      title: 'title',
-      description: 'description',
-      path: 'path',
-    },
+    preset: 'orama',
   },
 }

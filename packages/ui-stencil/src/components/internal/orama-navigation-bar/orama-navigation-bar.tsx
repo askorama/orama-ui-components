@@ -6,27 +6,28 @@ import '@phosphor-icons/webcomponents/dist/icons/PhCaretLeft.mjs'
 @Component({
   tag: 'orama-navigation-bar',
   styleUrl: 'orama-navigation-bar.scss',
-  shadow: true,
+  scoped: true,
 })
 export class OramaNavigationBar {
   render() {
     return (
       <Host>
         <div class="corner-section start">
-          <orama-button type="button" variant="icon">
+          <orama-button type="button" variant="icon" aria-label="Exit">
             <ph-caret-left size="20px" />
           </orama-button>
         </div>
-        <div class="section center">
+        <div class="corner-section center">
           <orama-toggler />
         </div>
+        {/* TODO: uncomment when feature is ready */}
         <div class="corner-section end">
-          <orama-button type="button" variant="icon">
+          {/* <orama-button type="button" variant="icon" aria-label="View history">
             <ph-clock size="20px" />
           </orama-button>
-          <orama-button type="button" variant="icon">
+          <orama-button type="button" variant="icon" aria-label="Start new chat">
             <ph-plus size="20px" />
-          </orama-button>
+          </orama-button> */}
         </div>
       </Host>
     )

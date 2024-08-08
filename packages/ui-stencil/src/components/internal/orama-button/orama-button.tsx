@@ -26,7 +26,7 @@ export type ButtonProps = BaseProps & ConditionalProps
 @Component({
   tag: 'orama-button',
   styleUrl: 'orama-button.scss',
-  shadow: true,
+  scoped: true,
 })
 
 /**
