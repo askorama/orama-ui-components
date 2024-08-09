@@ -11,10 +11,10 @@ const meta: Meta<Components.OramaSearchButton> = {
 export default meta
 type Story = StoryObj<Components.OramaSearchButton>
 
-const Template = (args) => {
+const Template = (label: string) => (args) => {
   return html`
     <div>
-      <orama-search-button label="${args.label}" id="orama-ui-search-button"></orama-search-button>
+      <orama-search-button label="${args.label}" id="orama-ui-search-button">${label}</orama-search-button>
       <orama-search-box
         .open=${false}
         .index=${demoIndexes.orama.index}
@@ -29,8 +29,6 @@ const Template = (args) => {
 }
 
 export const SearchButton: Story = {
-  render: Template,
-  args: {
-    label: 'Search...',
-  },
+  render: Template('Search...'),
+  args: {},
 }

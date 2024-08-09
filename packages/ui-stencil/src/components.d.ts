@@ -120,7 +120,6 @@ export namespace Components {
     }
     interface OramaSearchButton {
         "colorScheme": ColorScheme;
-        "label": string;
     }
     interface OramaSearchResults {
         "error": boolean;
@@ -475,7 +474,6 @@ declare namespace LocalJSX {
     }
     interface OramaSearchButton {
         "colorScheme"?: ColorScheme;
-        "label"?: string;
     }
     interface OramaSearchResults {
         "error"?: boolean;

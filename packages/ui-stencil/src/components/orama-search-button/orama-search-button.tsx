@@ -9,7 +9,6 @@ import type { ColorScheme } from '@/types'
   scoped: true,
 })
 export class SearchButton {
-  @Prop() label: string
   @Prop() colorScheme: ColorScheme = 'light'
 
   private showSearchbox() {
@@ -32,7 +31,7 @@ export class SearchButton {
           <span slot="adorment-start">
             <ph-magnifying-glass />
           </span>
-          {this.label}
+          <slot />
           <span slot="adorment-end">{shortcutLabel}</span>
         </orama-button>
       </Host>

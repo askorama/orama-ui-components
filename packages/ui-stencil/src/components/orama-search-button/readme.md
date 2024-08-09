@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type                            | Default     |
-| ------------- | -------------- | ----------- | ------------------------------- | ----------- |
-| `colorScheme` | `color-scheme` |             | `"dark" \| "light" \| "system"` | `'light'`   |
-| `label`       | `label`        |             | `string`                        | `undefined` |
+| Property      | Attribute      | Description | Type                            | Default   |
+| ------------- | -------------- | ----------- | ------------------------------- | --------- |
+| `colorScheme` | `color-scheme` |             | `"dark" \| "light" \| "system"` | `'light'` |
 
 
 ## Dependencies
