@@ -170,7 +170,7 @@ export class SearchBox {
             {this.windowWidth <= 1024 && (
               <orama-chat
                 class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
-                defaultTerm={globalContext.currentTerm}
+                defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
                 showClearChat={false}
                 focusInput={globalContext.currentTask === 'chat'}
               />
@@ -187,7 +187,7 @@ export class SearchBox {
           >
             <orama-chat
               placeholder={this.placeholder}
-              defaultTerm={globalContext.currentTerm}
+              defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
               showClearChat={false}
               sourceBaseUrl={this.sourceBaseUrl}
               sourcesMap={this.sourcesMap}

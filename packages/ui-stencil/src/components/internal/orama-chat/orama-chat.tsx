@@ -4,6 +4,7 @@ import type { SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
+import { globalContext } from '@/context/GlobalContext'
 
 const BOTTOM_THRESHOLD = 1
 
@@ -24,7 +25,9 @@ export class OramaChat {
 
   @Watch('defaultTerm')
   handleDefaultTermChange() {
-    this.inputValue = this.defaultTerm
+    if (this.defaultTerm) {
+      chatContext.chatService?.sendQuestion(this.defaultTerm)
+    }
   }
 
   @Watch('focusInput')
@@ -121,7 +124,6 @@ export class OramaChat {
   }
 
   componentWillLoad() {
-    this.inputValue = this.defaultTerm || ''
     this.handleFocus()
   }
 
