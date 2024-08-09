@@ -5,6 +5,14 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property          | Attribute           | Description | Type         | Default     |
+| ----------------- | ------------------- | ----------- | ------------ | ----------- |
+| `handleClose`     | --                  |             | `() => void` | `undefined` |
+| `showChatActions` | `show-chat-actions` |             | `boolean`    | `false`     |
+
+
 ## Dependencies
 
 ### Used by

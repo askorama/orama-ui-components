@@ -100,6 +100,8 @@ export namespace Components {
         "open": boolean;
     }
     interface OramaNavigationBar {
+        "handleClose": () => void;
+        "showChatActions": boolean;
     }
     interface OramaSearch {
         "focusInput"?: boolean;
@@ -110,7 +112,7 @@ export namespace Components {
         "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index": CloudIndexConfig;
-        "open"?: boolean;
+        "open": boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
         "sourceBaseUrl"?: string;
@@ -454,6 +456,8 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface OramaNavigationBar {
+        "handleClose"?: () => void;
+        "showChatActions"?: boolean;
     }
     interface OramaSearch {
         "focusInput"?: boolean;
