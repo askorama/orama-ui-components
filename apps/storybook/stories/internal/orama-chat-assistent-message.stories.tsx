@@ -17,7 +17,7 @@ const MARKDOWN_MESSAGE = `
 Marked - Markdown Parser
 ========================
 
-[Marked] lets you convert [Markdown] into HTML.  Markdown is a simple text format whose goal is to be very easy to read and write, even when not converted to HTML.  This demo page will let you type anything you like and see how it gets converted.  Live.  No more waiting around.
+[Marked](https://github.com/markedjs/marked/) lets you convert [Markdown](https://github.com/markdown/) into HTML.  Markdown is a simple text format whose goal is to be very easy to read and write, even when not converted to HTML.  This demo page will let you type anything you like and see how it gets converted.  Live.  No more waiting around.
 
 How To Use The Demo
 -------------------
@@ -29,13 +29,13 @@ That's it.  Pretty simple.  There's also a drop-down option above to switch betw
 
 - **Preview:**  A live display of the generated HTML as it would render in a browser.
 - **HTML Source:**  The generated HTML before your browser makes it pretty.
-- **Lexer Data:**  What [marked] uses internally, in case you like gory stuff like this.
+- **Lexer Data:**  What [marked](https://github.com/markedjs/marked/) uses internally, in case you like gory stuff like this.
 - **Quick Reference:**  A brief run-down of how to format things using markdown.
 
 Why Markdown?
 -------------
 
-It's easy.  It's not overly bloated, unlike HTML.  Also, as the creator of [markdown] says,
+It's easy.  It's not overly bloated, unlike HTML.  Also, as the creator of [markdown](https://github.com/markdown/) says,
 
 > The overriding design goal for Markdown's
 > formatting syntax is to make it as readable
@@ -47,11 +47,8 @@ It's easy.  It's not overly bloated, unlike HTML.  Also, as the creator of [mark
 
 Something else with a inline code \`\`console.log("blablabla")\`\`
 
-Ready to start writing?  Either start changing stuff on the left or
-[clear everything](/demo/?text=) with a simple click.
+Ready to start writing?  Either start changing stuff on the left or [clear everything](/demo/?text=) with a simple click.
 
-[Marked]: https://github.com/markedjs/marked/
-[Markdown]: http://daringfireball.net/projects/markdown/
 
 \`\`\`html
 <html>
