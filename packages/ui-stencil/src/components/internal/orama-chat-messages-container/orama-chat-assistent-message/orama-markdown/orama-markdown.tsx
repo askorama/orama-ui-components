@@ -3,6 +3,7 @@ import { Component, Element, Prop, Watch, h } from '@stencil/core'
 import DOMPurify from 'dompurify'
 import hljs from 'highlight.js/lib/core'
 import { marked } from 'marked'
+import { DiffDOM, nodeToObj, stringToObj } from 'diff-dom'
 // biome-ignore lint/suspicious/noExplicitAny: Let me be, TypeScript
 ;(window as any).hljs = hljs
 
@@ -11,6 +12,50 @@ DOMPurify.addHook('afterSanitizeAttributes', (node) => {
     node.setAttribute('target', '_parent')
     node.setAttribute('rel', 'noopener')
   }
+})
+
+const diffDom = new DiffDOM({
+  preDiffApply: (info) => {
+    debugger
+    if (info.diff.action === 'removeTextElement') {
+      const newValue = info.diff.newValue
+      const oldValue = info.diff.oldValue
+      const node = info.node
+
+      const nodes = node.parentNode.getElementsByClassName('fade-in-text')
+
+      for (const n of nodes) {
+        n.remove()
+      }
+    } else if (info.diff.action === 'modifyTextElement') {
+      const newValue = info.diff.newValue
+      const oldValue = info.diff.oldValue
+      const node = info.node
+
+      let textDiff = ''
+
+      if (newValue.startsWith(oldValue)) {
+        textDiff = newValue.substring(oldValue.length)
+
+        const span = document.createElement('span')
+        span.classList.add('fade-in-text')
+        span.innerText = textDiff
+
+        if (node.nodeType === Node.TEXT_NODE) {
+          // debugger
+          node.parentNode.append(span)
+          // node.data = newValue
+        } else {
+          node.data = newValue
+        }
+      } else {
+        node.data = newValue
+      }
+      return true
+    }
+    debugger
+    return false
+  },
 })
 
 /**
@@ -134,15 +179,16 @@ async function loadLanguageAndHighlight(language: string): Promise<boolean> {
 export class OramaMarkdown {
   @Prop() content: string
   divElement!: HTMLDivElement
+  oldTree = document.createElement('div')
   @Element() markdownElement!: HTMLElement
 
   @Watch('content')
-  onContentChange() {
-    this.parseMarkdown()
+  async onContentChange() {
+    await this.parseMarkdown()
   }
 
-  componentDidLoad() {
-    this.parseMarkdown()
+  async componentDidLoad() {
+    await this.parseMarkdown()
   }
 
   parseMarkdown = async () => {
@@ -153,11 +199,10 @@ export class OramaMarkdown {
     // biome-ignore lint/suspicious/noMisleadingCharacterClass: No clear reason for this
     const noZeroWidthCharsContent = this.content.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')
     const highlightedCode = await marked.parse(noZeroWidthCharsContent)
-    this.divElement.innerHTML = DOMPurify.sanitize(highlightedCode)
-
-    const mk = this.markdownElement.shadowRoot.querySelectorAll('.orama-markdown-code')
 
     const pedningBlocksByLanguage: Record<string, true> = {}
+
+    const mk = this.markdownElement.shadowRoot.querySelectorAll('.orama-markdown-code')
 
     for (let i = 0; i < mk.length; i++) {
       const codeBlockRef = mk[i] as HTMLElement
@@ -173,11 +218,32 @@ export class OramaMarkdown {
     }
 
     for (const pendingLanguage of Object.keys(pedningBlocksByLanguage)) {
-      loadLanguageAndHighlight(pendingLanguage).then(() => {
-        const parsedContent = marked.parse(noZeroWidthCharsContent)
-        this.divElement.innerHTML = DOMPurify.sanitize(parsedContent)
-      })
+      // loadLanguageAndHighlight(pendingLanguage).then(() => {
+      //   const parsedContent = marked.parse(noZeroWidthCharsContent)
+      //   newTree.innerHTML = DOMPurify.sanitize(parsedContent)
+      //   const differences = diffDom.diff(this.oldTree, newTree)
+      //   diffDom.apply(this.divElement, differences)
+      //   this.oldTree.innerHTML = DOMPurify.sanitize(highlightedCode)
+      //   // this.divElement.innerHTML = DOMPurify.sanitize(parsedContent)
+      // })
     }
+
+    // console.log(marked.lexer(noZeroWidthCharsContent))
+
+    const newTree = document.createElement('div')
+    newTree.innerHTML = DOMPurify.sanitize(highlightedCode)
+    // console.log(DOMPurify.sanitize(highlightedCode))
+
+    // const obj1 = stringToObj(this.oldString)
+    // const obj2 = stringToObj(`<div>${DOMPurify.sanitize(highlightedCode)`</div>`}`)
+
+    const differences = diffDom.diff(this.oldTree, newTree)
+
+    console.log(differences)
+
+    diffDom.apply(this.divElement, differences)
+
+    this.oldTree.innerHTML = DOMPurify.sanitize(highlightedCode)
   }
 
   render() {

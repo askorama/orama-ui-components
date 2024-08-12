@@ -9,7 +9,10 @@
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "files": ["dist/", "loader/"],
+  "files": [
+    "dist/",
+    "loader/"
+  ],
   "scripts": {
     "build": "stencil build --docs",
     "clean": "rm -rf node_modules .turbo dist .stencil loader www",
@@ -25,6 +28,7 @@
     "@phosphor-icons/webcomponents": "^2.1.5",
     "@stencil/core": "^4.19.0",
     "@stencil/store": "^2.0.16",
+    "diff-dom": "^5.1.4",
     "dompurify": "^3.1.6",
     "highlight.js": "^11.10.0",
     "markdown-it": "^14.1.0",

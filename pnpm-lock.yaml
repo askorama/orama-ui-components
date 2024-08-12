@@ -284,6 +284,9 @@ importers:
       '@stencil/store':
         specifier: ^2.0.16
         version: 2.0.16(@stencil/core@4.19.0)
+      diff-dom:
+        specifier: ^5.1.4
+        version: 5.1.4
       dompurify:
         specifier: ^3.1.6
         version: 3.1.6
@@ -5000,6 +5003,9 @@ packages:
 
   di@0.0.1:
     resolution: {integrity: sha512-uJaamHkagcZtHPqCIHZxnFrXlunQXgBOsZSUOWwFw31QJCAbyTBoHMW75YOTur5ZNx8pIeAKgf6GWIgaqqiLhA==}
+
+  diff-dom@5.1.4:
+    resolution: {integrity: sha512-TSEaVdVGictY1KHg7VpVw2nuM02YKC9C8/qBkGiCnkiAybVbu1zQTMj2/dnVLRO7Z62UsqzHGpXweiOj5/jaZg==}
 
   diff-sequences@29.6.3:
     resolution: {integrity: sha512-EjePK1srD3P08o2j4f0ExnylqRs5B9tJjcp9t1krH2qRi8CCdsYfwe9JgSLurFBWwq4uOlipzfk5fHNvwFKr8Q==}
@@ -15764,6 +15770,8 @@ snapshots:
   devtools-protocol@0.0.1299070: {}
 
   di@0.0.1: {}
+
+  diff-dom@5.1.4: {}
 
   diff-sequences@29.6.3: {}
 
