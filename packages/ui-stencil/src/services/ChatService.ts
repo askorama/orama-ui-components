@@ -84,7 +84,6 @@ export class ChatService {
     if (!this.answerSession) {
       throw new OramaClientNotInitializedError()
     }
-
     this.answerSession.clearSession()
     // TODO: Not sure if this is the right place to do it
     chatContext.lockScrollOnBottom = true

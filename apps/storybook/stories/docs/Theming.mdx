@@ -10,21 +10,13 @@ Design tokens are a critical part of ensuring consistency and scalability in you
 
 We're using global styles that are available to all components and allow theme customization by exposing CSS custom properties.
 
-We use the `mapToCustomProperties(map)` mixin to apply custom properties from a map of key-value pairs.
-Theme switcher classes `.theme-light` and `.theme-dark` are used to apply the color tokens and they must be applied to the host element.
-As an extra layer of safety, to avoid any possible collisions with same named custom properties defined in the hosting application under the same class name, we use the `id^='orama-ui'` selector to scope the custom properties, therefore all shadow hosts must have an id starting with `orama-ui`.
+Theme switcher classes `.theme-light` and `.theme-dark` are used to apply the color tokens and they are automatically applied to the root element of the shadow DOM when the color scheme is changed.
+
+As an extra layer of safety, to avoid any possible collisions with same named custom properties defined in the hosting application under the same class name, we use the `id^='orama-ui'` selector to scope the custom properties, therefore **all shadow hosts must have an `id` starting with `orama-ui`**.
 
 
-```css
-[id^='orama-ui'] {
-  @include mapToCustomProperties($theme-light); // light theme is the default
-  @include mapToCustomProperties($theme-typography);
-  // other global styles...
-
-  &.theme-dark {
-    @include mapToCustomProperties($theme-dark);
-  }
-}
+```html
+<orama-search-button id="orama-ui-search-button">Search</orama-search-button>
 ```
 
 ## Colors

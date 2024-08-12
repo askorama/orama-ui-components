@@ -71,6 +71,7 @@
 .suggestion-button-list {
   display: flex;
   align-items: center;
+  text-align: left;
   column-gap: var(--spacing-s, $spacing-s);
   border: 0;
   background-color: transparent;

@@ -71,6 +71,7 @@ export default meta
 
 const Template = ({ preset, colorScheme }) => {
   return html`<orama-search-box
+    id='orama-ui-search-box'
     open=${preset?.open}
     .facetProperty=${preset?.facetProperty}
     .resultMap=${preset?.resultMap}
@@ -86,7 +87,7 @@ const Template = ({ preset, colorScheme }) => {
 type Story = StoryObj<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }>
 
 export const SearchBox: Story = {
-  render: Template,
+  render: Template as any,
   args: {
     preset: 'orama',
   },

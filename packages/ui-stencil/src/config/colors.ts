@@ -15,6 +15,7 @@ export default {
   "purple200": "#eee9f6",
   "purple300": "#ae8ff7",
   "purple500": "#8152ee",
+  "purple600": "#6a4bb2",
   "purple700": "#432d77",
   "light": {
     "--text-color-primary": "#151515",
@@ -38,10 +39,6 @@ export default {
     "--icon-color-inactive": "#99989d",
     "--icon-color-accent": "#8152ee",
     "--shadow-color-primary": "white",
-    "--button-text-color-primary": "#f7f6f9",
-    "--button-text-color-inactive": "#99989d",
-    "--button-background-color-primary": "#8152ee",
-    "--button-background-color-inactive": "#efefef",
     "--backdrop-background-color-primary": "rgba(0, 0, 0, 0.7)",
     "--chat-button-border-color-gradientOne": "#eee9f6",
     "--chat-button-border-color-gradientTwo": "#eee9f6",
@@ -49,8 +46,17 @@ export default {
     "--chat-button-border-color-gradientFour": "#ae8ff7",
     "--chat-button-border-color-gradientFive": "#eee9f6",
     "--chat-button-border-color-gradientSix": "#eee9f6",
-    "--chat-button-background-color-gradientOne": "#8152ee",
-    "--chat-button-background-color-gradientTwo": "rgba(225, 225, 225, 0)"
+    "--chat-button-background-color-gradientOne": "#ae8ff7",
+    "--chat-button-background-color-gradientTwo": "rgba(255, 255, 255, 0)",
+    "--button-text-color-primary": "#f7f6f9",
+    "--button-text-color-secondary": "text-color(\"inactive\")",
+    "--button-text-color-inactive": "#99989d",
+    "--button-background-color-primary": "#8152ee",
+    "--button-background-color-secondary": "background-color(\"secondary\")",
+    "--button-background-color-inactive": "#efefef",
+    "--button-border-color-primary": "border-color(\"accent\")",
+    "--button-border-color-secondary": "border-color(\"primary\")",
+    "--button-border-color-inactive": "border-color(\"tertiary\")"
   },
   "dark": {
     "--text-color-primary": "#fbfbfb",
@@ -80,10 +86,10 @@ export default {
     "--chat-button-border-color-gradientOne": "#212121",
     "--chat-button-border-color-gradientTwo": "#212121",
     "--chat-button-border-color-gradientThree": "#ae8ff7",
-    "--chat-button-border-color-gradientFour": "#ae8ff7",
+    "--chat-button-border-color-gradientFour": "#8152ee",
     "--chat-button-border-color-gradientFive": "#212121",
     "--chat-button-border-color-gradientSix": "#212121",
-    "--chat-button-background-color-gradientOne": "#8152ee",
+    "--chat-button-background-color-gradientOne": "#6a4bb2",
     "--chat-button-background-color-gradientTwo": "rgba(106, 75, 178, 0)"
   }
 };

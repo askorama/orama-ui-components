@@ -10,13 +10,16 @@ const preview = {
     (story, context) => {
       const bgTheme = context.globals?.backgrounds?.value === DARK_THEME_BG ? 'theme-dark' : 'theme-light'
       const heightValue = context.parameters?.layout === 'set-height' ? '613px' : 'auto'
+      const publicComponent = context.kind?.includes('Components') && !context.kind?.includes('Internal')
+      const wrapperId = !publicComponent && `orama-ui-${context.id}`
+      const wrapperClass = !publicComponent && bgTheme
       return html`
         <style>
           orama-chat-box {
             height: ${heightValue};
           }
         </style>
-        <div id="orama-ui" class="${bgTheme}">${story()}</div>
+        <div id="${wrapperId}" class="${wrapperClass}">${story()}</div>
       `
     },
   ],

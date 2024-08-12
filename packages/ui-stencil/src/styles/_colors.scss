@@ -25,7 +25,7 @@ $purple600: #6a4bb2;
 $purple700: #432d77;
 
 /**
-* * SEMANTIC AND ELEMENT COLOR MAP FOR LIGHT THEME
+* * SEMANTIC COLOR MAP FOR LIGHT THEME
 * in order to use one of the colors included in the palette map;
 *  use the functions text-color(key), background-color(key), border-color(key)
 * ie: text-color('primary')
@@ -65,31 +65,43 @@ $palette: (
   shadow: (
     primary: white,
   ),
-  'button-text': (
-    primary: $purple100,
-    inactive: $gray500,
-    // todo: value to check with Angela
-  ),
-  'button-background': (
-    primary: $purple500,
-    inactive: $gray100,
-    // todo: value to check with Angela
-  ),
-  'backdrop-background': (
-    primary: rgba(black, 0.7),
-  ),
-  'chat-button-border': (
-    gradientOne: $purple200,
-    gradientTwo: $purple200,
-    gradientThree: $purple300,
-    gradientFour: $purple300,
-    gradientFive: $purple200,
-    gradientSix: $purple200,
-  ),
-  'chat-button-background': (
-    gradientOne: $purple300,
-    gradientTwo: rgba(255, 255, 255, 0),
-  ),
+);
+
+// ELEMENT COLOR MAP
+$palette: map-merge(
+  $palette,
+  (
+    'button-text': (
+      primary: $purple100,
+      secondary: text-color('inactive'),
+      inactive: $gray500,
+      // todo: value to check with Angela
+    ),
+    'button-background': (
+      primary: $purple500,
+      secondary: background-color('secondary'),
+      inactive: $gray100,
+      // todo: value to check with Angela
+    ),
+    'button-border': (
+      secondary: border-color('primary'),
+    ),
+    'backdrop-background': (
+      primary: rgba(black, 0.7),
+    ),
+    'chat-button-border': (
+      gradientOne: $purple200,
+      gradientTwo: $purple200,
+      gradientThree: $purple300,
+      gradientFour: $purple300,
+      gradientFive: $purple200,
+      gradientSix: $purple200,
+    ),
+    'chat-button-background': (
+      gradientOne: $purple300,
+      gradientTwo: rgba(255, 255, 255, 0),
+    ),
+  )
 );
 
 /**
@@ -127,25 +139,36 @@ $paletteDark: (
   shadow: (
     primary: black,
   ),
-  'button-text': (
-    primary: $gray100,
-  ),
-  'button-background': (
-    primary: $purple700,
-  ),
-  'backdrop-background': (
-    primary: rgba(black, 0.7),
-  ),
-  'chat-button-border': (
-    gradientOne: $gray800,
-    gradientTwo: $gray800,
-    gradientThree: $purple300,
-    gradientFour: $purple500,
-    gradientFive: $gray800,
-    gradientSix: $gray800,
-  ),
-  'chat-button-background': (
-    gradientOne: $purple600,
-    gradientTwo: rgba(106, 75, 178, 0),
-  ),
+);
+
+$paletteDark: map-merge(
+  $paletteDark,
+  (
+    'button-text': (
+      primary: $gray100,
+      secondary: text-color('inactive', $paletteDark),
+    ),
+    'button-background': (
+      primary: $purple700,
+      secondary: background-color('secondary', $paletteDark),
+    ),
+    'button-border': (
+      secondary: border-color('primary', $paletteDark),
+    ),
+    'backdrop-background': (
+      primary: rgba(black, 0.7),
+    ),
+    'chat-button-border': (
+      gradientOne: $gray800,
+      gradientTwo: $gray800,
+      gradientThree: $purple300,
+      gradientFour: $purple500,
+      gradientFive: $gray800,
+      gradientSix: $gray800,
+    ),
+    'chat-button-background': (
+      gradientOne: $purple600,
+      gradientTwo: rgba(106, 75, 178, 0),
+    ),
+  )
 );

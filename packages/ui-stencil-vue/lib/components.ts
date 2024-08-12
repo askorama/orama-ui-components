@@ -115,7 +115,10 @@ export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-m
 ]);
 
 
-export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined);
+export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined, [
+  'handleClose',
+  'showChatActions'
+]);
 
 
 export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined, [
@@ -139,7 +142,9 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
 ]);
 
 
-export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchButton>('orama-search-button', undefined);
+export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchButton>('orama-search-button', undefined, [
+  'colorScheme'
+]);
 
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [

@@ -6,7 +6,7 @@ import { Component, h, Prop, State, Listen, Element } from '@stencil/core'
   scoped: true,
 })
 export class OramaModal {
-  @Prop() open = false
+  @Prop({ mutable: true }) open = false
   @Prop() closeOnEscape = true
   @Prop() mainTitle = ''
   @State() activeElement: HTMLElement
@@ -14,6 +14,7 @@ export class OramaModal {
 
   private firstFocusableElement: HTMLElement
   private lastFocusableElement: HTMLElement
+  private innerModalRef: HTMLElement
 
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
@@ -85,6 +86,13 @@ export class OramaModal {
       this.activeElement = document.activeElement as HTMLElement
       this.handleFocus()
     }
+    this.el.addEventListener('click', (event) => {
+      event.stopPropagation()
+      event.preventDefault()
+      if (!this.innerModalRef.contains(event.target as Node)) {
+        this.closeModal()
+      }
+    })
   }
 
   componentDidUpdate() {
@@ -132,7 +140,7 @@ export class OramaModal {
         aria-labelledby="modalTitle"
         aria-describedby="modalContent"
       >
-        <div class="modal-inner">
+        <div class="modal-inner" ref={(ref) => (this.innerModalRef = ref)}>
           <h1 id="modalTitle" class="modal-title">
             {this.mainTitle}
           </h1>

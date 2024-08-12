@@ -21,7 +21,7 @@ export class SearchBox {
   @Prop() themeConfig?: Partial<TThemeOverrides>
   @Prop() colorScheme?: ColorScheme = 'light'
   @Prop() index: CloudIndexConfig
-  @Prop() open? = false
+  @Prop({ mutable: true }) open = false
   @Prop() facetProperty?: string
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() sourceBaseUrl?: string
@@ -53,6 +53,11 @@ export class SearchBox {
     searchState.facetProperty = newValue
   }
 
+  // TODO: I'm making the prop mutable to be able to change it from the internal components, but I think we should find a better way to do this
+  private handleCloseSearchBox = () => {
+    this.open = false
+  }
+
   @Listen('oramaItemClick')
   handleItemClick(event: CustomEvent) {
     // TODO: manage item click
@@ -68,7 +73,7 @@ export class SearchBox {
 
   updateTheme() {
     const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
-    const uiElement = document.querySelector('#orama-ui')
+    const uiElement = this.el as HTMLElement
 
     if (uiElement && scheme) {
       uiElement.classList.remove('theme-light', 'theme-dark')
@@ -80,7 +85,7 @@ export class SearchBox {
 
   updateCssVariables(scheme: ColorScheme) {
     const config = this.themeConfig
-    const root = document.querySelector('#orama-ui') as HTMLElement
+    const root = this.el as HTMLElement
 
     if (root && config && scheme) {
       if (config.colors?.[scheme]) {
@@ -157,9 +162,12 @@ export class SearchBox {
           open={this.open}
           class="modal"
           mainTitle="Start your search"
-          closeOnEscape={globalContext.currentTask === 'search'}
+          closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
         >
-          <orama-navigation-bar />
+          <orama-navigation-bar
+            handleClose={this.handleCloseSearchBox}
+            showChatActions={globalContext.currentTask === 'chat'}
+          />
           <div class="main">
             <orama-search
               class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
@@ -170,9 +178,13 @@ export class SearchBox {
             {this.windowWidth <= 1024 && (
               <orama-chat
                 class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
-                defaultTerm={globalContext.currentTerm}
+                defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
                 showClearChat={false}
-                focusInput={globalContext.currentTask === 'chat'}
+                focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
+                placeholder={this.placeholder}
+                sourceBaseUrl={this.sourceBaseUrl}
+                sourcesMap={this.sourcesMap}
+                suggestions={this.suggestions}
               />
             )}
           </div>
@@ -187,11 +199,11 @@ export class SearchBox {
           >
             <orama-chat
               placeholder={this.placeholder}
-              defaultTerm={globalContext.currentTerm}
+              defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
               showClearChat={false}
               sourceBaseUrl={this.sourceBaseUrl}
               sourcesMap={this.sourcesMap}
-              focusInput={globalContext.currentTask === 'chat'}
+              focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
               suggestions={this.suggestions}
             />
           </orama-sliding-panel>
