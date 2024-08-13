@@ -1,7 +1,7 @@
 // TODO: We need to revisit this styles. There are some duplications and variables without fallback
 .button {
   position: relative;
-  display: inline-flex;
+  display: flex;
   gap: var(--spacing-s, $spacing-s);
   align-items: center;
   border-radius: var(--radius-m, $radius-m);
@@ -11,6 +11,8 @@
   font-family: var(--font-primary, font('primary'));
   transition: all 0.2s;
   transition-property: color, background-color, opacity;
+  width: 100%;
+  text-align: left;
 
   &__tooltip {
     display: block;
@@ -25,6 +27,13 @@
     top: -28px;
     animation: fadeInOut 1s ease-in-out 1;
   }
+}
+
+.button__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, $spacing-xs);
+  flex-grow: 1;
 }
 
 .button--primary {
@@ -73,6 +82,11 @@
 ::slotted(*) {
   display: inline-flex;
   align-items: center;
+}
+
+::slotted([slot='adorment-end']),
+::slotted([slot='adorment-start']) {
+  flex-grow: 0;
 }
 
 @keyframes fadeInOut {

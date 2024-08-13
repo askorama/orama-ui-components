@@ -1,4 +1,4 @@
-import type { OramaClient } from '@oramacloud/client'
+import type { OramaClient, ClientSearchParams } from '@oramacloud/client'
 import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
 import { searchState } from '@/context/searchContext'
 import type { ResultMap, SearchResultBySection, SearchResultWithScore } from '@/types'
@@ -36,13 +36,16 @@ export class SearchService {
     searchState.loading = true
 
     const latestAbortController = this.abortController
+    const { limit, offset, where, ...restSearchParams } = searchState.searchParams
 
     // TODO: Maybe we would like to have a debounce here (Check with Michele)
     this.oramaClient
       .search(
         {
-          term: term,
-          limit: LIMIT_RESULTS,
+          ...restSearchParams,
+          term,
+          limit: limit || LIMIT_RESULTS,
+          ...(where ? { where } : {}),
           ...(searchState.facetProperty && {
             facets: {
               [searchState.facetProperty]: {},
@@ -53,10 +56,11 @@ export class SearchService {
                   [searchState.facetProperty]: {
                     eq: selectedFacet,
                   },
+                  ...where,
                 },
               }),
           }),
-        },
+        } as ClientSearchParams,
         { abortController: this.abortController },
       )
       .then((results) => {

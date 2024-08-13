@@ -14,6 +14,7 @@ import { ModalStatus } from "./components/internal/orama-modal/orama-modal";
 import { TThemeOverrides } from "./config/theme";
 import { AnyOrama, Orama, SearchParams } from "@orama/orama";
 import { OramaClient } from "@oramacloud/client";
+import { TThemeOverrides as TThemeOverrides1 } from "./components.d";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
@@ -25,6 +26,7 @@ export { ModalStatus } from "./components/internal/orama-modal/orama-modal";
 export { TThemeOverrides } from "./config/theme";
 export { AnyOrama, Orama, SearchParams } from "@orama/orama";
 export { OramaClient } from "@oramacloud/client";
+export { TThemeOverrides as TThemeOverrides1 } from "./components.d";
 export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
@@ -129,7 +131,8 @@ export namespace Components {
         "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchButton {
-        "colorScheme": ColorScheme;
+        "colorScheme"?: ColorScheme;
+        "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchResults {
         "error": boolean;
@@ -524,6 +527,7 @@ declare namespace LocalJSX {
     }
     interface OramaSearchButton {
         "colorScheme"?: ColorScheme;
+        "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchResults {
         "error"?: boolean;

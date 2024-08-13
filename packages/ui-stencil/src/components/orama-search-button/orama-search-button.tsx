@@ -1,18 +1,74 @@
-import { Component, ComponentInterface, Host, Prop, h } from '@stencil/core'
-import { globalContext } from '@/context/GlobalContext'
-import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
+import { Component, Watch, Prop, h, State, Element, Listen, Host, Event, type EventEmitter } from '@stencil/core'
 import type { ColorScheme } from '@/types'
+import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
+import type { TThemeOverrides } from '@/components'
+
+export type ButtonClick = {
+  id: HTMLElement
+  searchboxId: string
+}
 
 @Component({
   tag: 'orama-search-button',
   styleUrl: 'orama-search-button.scss',
-  scoped: true,
+  shadow: true,
 })
-export class SearchButton {
-  @Prop() colorScheme: ColorScheme = 'light'
+export class OramaSearchButton {
+  @Element() el: HTMLElement
 
-  private showSearchbox() {
-    globalContext.open = true
+  @Prop() themeConfig?: Partial<TThemeOverrides>
+  @Prop() colorScheme?: ColorScheme = 'light'
+
+  @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
+  @State() shortcutLabel = ''
+
+  @Watch('themeConfig')
+  @Watch('colorScheme')
+  watchHandler() {
+    this.updateTheme()
+  }
+
+  updateTheme() {
+    const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
+    const uiElement = this.el as HTMLElement
+
+    if (uiElement && scheme) {
+      uiElement.classList.remove('theme-light', 'theme-dark')
+      uiElement.classList.add(`theme-${scheme}`)
+    }
+
+    this.updateCssVariables(scheme as ColorScheme)
+  }
+
+  updateCssVariables(scheme: ColorScheme) {
+    const config = this.themeConfig
+    const root = this.el as HTMLElement
+
+    if (root && config && scheme) {
+      if (config.colors?.[scheme]) {
+        for (const key of Object.keys(config.colors[scheme])) {
+          root.style.setProperty(`${key}`, config.colors[scheme][key])
+        }
+      }
+      if (config.typography) {
+        for (const key of Object.keys(config.typography)) {
+          root.style.setProperty(`${key}`, config.typography[key])
+        }
+      }
+    }
+  }
+
+  detectSystemColorScheme() {
+    const darkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    this.systemScheme = darkSchemeQuery.matches ? 'dark' : 'light'
+
+    darkSchemeQuery.addEventListener('change', (event) => {
+      this.systemScheme = event.matches ? 'dark' : 'light'
+      if (this.colorScheme === 'system') {
+        this.updateTheme()
+      }
+    })
   }
 
   private handleShortcutLabel() {
@@ -22,17 +78,21 @@ export class SearchButton {
     return isMac ? '⌘ K' : 'Ctrl + K'
   }
 
-  render() {
-    const shortcutLabel = this.handleShortcutLabel()
+  componentWillLoad() {
+    this.updateTheme()
+    this.detectSystemColorScheme()
+    this.shortcutLabel = this.handleShortcutLabel()
+  }
 
+  render() {
     return (
       <Host>
-        <orama-button type="button" onClick={this.showSearchbox} onKeyDown={this.showSearchbox} variant="secondary">
+        <orama-button type="button" variant="secondary">
           <span slot="adorment-start">
             <ph-magnifying-glass />
           </span>
           <slot />
-          <span slot="adorment-end">{shortcutLabel}</span>
+          <span slot="adorment-end">{this.shortcutLabel}</span>
         </orama-button>
       </Host>
     )

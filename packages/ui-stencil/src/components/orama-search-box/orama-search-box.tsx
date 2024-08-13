@@ -73,6 +73,11 @@ export class SearchBox {
     searchState.facetProperty = newValue
   }
 
+  @Watch('searchParams')
+  handleSearchParamsChange(newValue: SearchParams<Orama<AnyOrama | OramaClient>>) {
+    searchState.searchParams = newValue
+  }
+
   @Listen('oramaItemClick')
   handleItemClick(event: CustomEvent) {
     // TODO: manage item click
@@ -156,6 +161,7 @@ export class SearchBox {
     // Same goes for any other Chat init prop. Lets talk about it as well, please.
     searchState.facetProperty = this.facetProperty
     searchState.resultMap = this.resultMap
+    searchState.searchParams = this.searchParams
 
     this.startServices()
     this.updateTheme()
