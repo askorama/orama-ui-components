@@ -80,6 +80,7 @@ $palette: map-merge(
     'button-background': (
       primary: $purple500,
       secondary: background-color('secondary'),
+      'secondary-hover': background-color('tertiary'),
       inactive: $gray100,
       // todo: value to check with Angela
     ),
@@ -151,6 +152,7 @@ $paletteDark: map-merge(
     'button-background': (
       primary: $purple700,
       secondary: background-color('secondary', $paletteDark),
+      'secondary-hover': background-color('tertiary', $paletteDark),
     ),
     'button-border': (
       secondary: border-color('primary', $paletteDark),

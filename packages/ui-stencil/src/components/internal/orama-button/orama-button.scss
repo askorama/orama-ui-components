@@ -50,6 +50,18 @@
   background-color: var(--button-background-color-secondary, button-background-color('secondary'));
   color: var(--button-text-color-secondary, button-text-color('secondary'));
   border: 1px solid var(--button-border-color-secondary, map-get($palette, 'button-border', 'secondary'));
+  transition: all 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--button-background-color-secondary-hover, button-background-color('secondary-hover'));
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid #9671b0;
+  }
 
   &:disabled {
     background-color: var(--background-color-tertiary, background-color('tertiary'));

@@ -28,6 +28,14 @@ export class OramaSearchButton {
     this.updateTheme()
   }
 
+  buttonRef!: HTMLElement
+
+  @Listen('searchboxClosed', { target: 'body' })
+  handleSearchboxClosed(event: CustomEvent<ButtonClick>) {
+    // TODO: should be based on the id of current searchbox
+    this.buttonRef.querySelector('button').focus()
+  }
+
   updateTheme() {
     const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
     const uiElement = this.el as HTMLElement
@@ -87,7 +95,7 @@ export class OramaSearchButton {
   render() {
     return (
       <Host>
-        <orama-button type="button" variant="secondary">
+        <orama-button type="button" variant="secondary" ref={(el) => (this.buttonRef = el)}>
           <span slot="adorment-start">
             <ph-magnifying-glass />
           </span>
