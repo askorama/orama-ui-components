@@ -28,7 +28,6 @@ export class OramaModal {
 
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
-    ev.stopPropagation()
     if (this.modalIsOpen) {
       switch (ev.key) {
         case 'Tab':
@@ -129,6 +128,9 @@ export class OramaModal {
 
   handleArrowNavigation(event: KeyboardEvent) {
     if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
+
+    event.stopPropagation()
+    event.preventDefault()
 
     const focusableElements = this.el?.querySelectorAll(
       'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
