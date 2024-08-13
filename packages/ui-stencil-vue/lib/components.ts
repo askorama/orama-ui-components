@@ -141,6 +141,7 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
   'sourcesMap',
   'placeholder',
   'suggestions',
+  'searchParams',
   'searchboxClosed'
 ]);
 

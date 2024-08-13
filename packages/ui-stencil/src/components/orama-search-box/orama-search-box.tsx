@@ -1,4 +1,6 @@
 import { Component, Prop, Watch, h, Listen, Element, State, Fragment, Event, type EventEmitter } from '@stencil/core'
+import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
+import type { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/GlobalContext'
@@ -28,6 +30,7 @@ export class SearchBox {
   @Prop() sourcesMap?: SourcesMap
   @Prop() placeholder?: string
   @Prop() suggestions?: string[]
+  @Prop() searchParams?: SearchParams<Orama<AnyOrama | OramaClient>>
 
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number

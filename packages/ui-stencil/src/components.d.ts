@@ -12,6 +12,8 @@ import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
 import { ModalStatus } from "./components/internal/orama-modal/orama-modal";
 import { TThemeOverrides } from "./config/theme";
+import { AnyOrama, Orama, SearchParams } from "@orama/orama";
+import { OramaClient } from "@oramacloud/client";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
 export { ButtonProps } from "./components/internal/orama-button/orama-button";
@@ -21,6 +23,8 @@ export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
 export { ModalStatus } from "./components/internal/orama-modal/orama-modal";
 export { TThemeOverrides } from "./config/theme";
+export { AnyOrama, Orama, SearchParams } from "@orama/orama";
+export { OramaClient } from "@oramacloud/client";
 export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
 export namespace Components {
@@ -118,6 +122,7 @@ export namespace Components {
         "open": boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
+        "searchParams"?: SearchParams<Orama<AnyOrama | OramaClient>>;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
@@ -511,6 +516,7 @@ declare namespace LocalJSX {
         "open"?: boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
+        "searchParams"?: SearchParams<Orama<AnyOrama | OramaClient>>;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];

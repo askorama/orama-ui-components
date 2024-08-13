@@ -1,8 +1,6 @@
 import React from 'react'
-import { defineCustomElements, OramaChatBox, OramaSearchBox, OramaButton } from '@orama/react-components'
+import { OramaChatBox, OramaSearchBox, OramaButton } from '@orama/react-components'
 import './App.css'
-
-void defineCustomElements()
 
 function App() {
   const [open, setOpen] = React.useState(false)
