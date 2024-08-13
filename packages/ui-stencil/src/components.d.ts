@@ -10,6 +10,7 @@ import { CloudIndexConfig, ColorScheme, ResultMap, SearchResult, SearchResultByS
 import { TChatInteraction } from "./context/chatContext";
 import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
+import { ModalStatus } from "./components/internal/orama-modal/orama-modal";
 import { TThemeOverrides } from "./config/theme";
 import { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 import { TextProps } from "./components/internal/orama-text/orama-text";
@@ -18,6 +19,7 @@ export { CloudIndexConfig, ColorScheme, ResultMap, SearchResult, SearchResultByS
 export { TChatInteraction } from "./context/chatContext";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
+export { ModalStatus } from "./components/internal/orama-modal/orama-modal";
 export { TThemeOverrides } from "./config/theme";
 export { SearchResultsProps } from "./components/internal/orama-search-results/orama-search-results";
 export { TextProps } from "./components/internal/orama-text/orama-text";
@@ -96,6 +98,7 @@ export namespace Components {
     }
     interface OramaModal {
         "closeOnEscape": boolean;
+        "closeOnOutsideClick": boolean;
         "mainTitle": string;
         "open": boolean;
     }
@@ -177,6 +180,14 @@ export namespace Components {
 export interface OramaInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOramaInputElement;
+}
+export interface OramaModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaModalElement;
+}
+export interface OramaSearchBoxCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaSearchBoxElement;
 }
 export interface OramaSearchResultsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -278,7 +289,18 @@ declare global {
         prototype: HTMLOramaMarkdownElement;
         new (): HTMLOramaMarkdownElement;
     };
+    interface HTMLOramaModalElementEventMap {
+        "modalStatusChanged": ModalStatus;
+    }
     interface HTMLOramaModalElement extends Components.OramaModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaModalElementEventMap>(type: K, listener: (this: HTMLOramaModalElement, ev: OramaModalCustomEvent<HTMLOramaModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaModalElementEventMap>(type: K, listener: (this: HTMLOramaModalElement, ev: OramaModalCustomEvent<HTMLOramaModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaModalElement: {
         prototype: HTMLOramaModalElement;
@@ -296,7 +318,20 @@ declare global {
         prototype: HTMLOramaSearchElement;
         new (): HTMLOramaSearchElement;
     };
+    interface HTMLOramaSearchBoxElementEventMap {
+        "searchboxClosed": {
+    id: HTMLElement
+  };
+    }
     interface HTMLOramaSearchBoxElement extends Components.OramaSearchBox, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaSearchBoxElementEventMap>(type: K, listener: (this: HTMLOramaSearchBoxElement, ev: OramaSearchBoxCustomEvent<HTMLOramaSearchBoxElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaSearchBoxElementEventMap>(type: K, listener: (this: HTMLOramaSearchBoxElement, ev: OramaSearchBoxCustomEvent<HTMLOramaSearchBoxElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaSearchBoxElement: {
         prototype: HTMLOramaSearchBoxElement;
@@ -452,7 +487,9 @@ declare namespace LocalJSX {
     }
     interface OramaModal {
         "closeOnEscape"?: boolean;
+        "closeOnOutsideClick"?: boolean;
         "mainTitle"?: string;
+        "onModalStatusChanged"?: (event: OramaModalCustomEvent<ModalStatus>) => void;
         "open"?: boolean;
     }
     interface OramaNavigationBar {
@@ -468,6 +505,9 @@ declare namespace LocalJSX {
         "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
+        "onSearchboxClosed"?: (event: OramaSearchBoxCustomEvent<{
+    id: HTMLElement
+  }>) => void;
         "open"?: boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;

@@ -1,15 +1,25 @@
-import { Component, h, Prop, State, Listen, Element } from '@stencil/core'
+import { Component, h, Prop, State, Listen, Element, Event, type EventEmitter, Watch } from '@stencil/core'
 
+export type ModalStatus = {
+  open: boolean
+  id: HTMLElement
+}
 @Component({
   tag: 'orama-modal',
   styleUrl: 'orama-modal.scss',
   scoped: true,
 })
 export class OramaModal {
-  @Prop({ mutable: true }) open = false
+  @Prop() open = false
   @Prop() closeOnEscape = true
+  @Prop() closeOnOutsideClick = true
   @Prop() mainTitle = ''
+
   @State() activeElement: HTMLElement
+  @State() modalIsOpen = this.open
+
+  @Event() modalStatusChanged: EventEmitter<ModalStatus>
+
   @Element() el: HTMLElement
 
   private firstFocusableElement: HTMLElement
@@ -18,7 +28,8 @@ export class OramaModal {
 
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
-    if (this.open) {
+    ev.stopPropagation()
+    if (this.modalIsOpen) {
       switch (ev.key) {
         case 'Tab':
           this.trapFocus(ev)
@@ -38,6 +49,19 @@ export class OramaModal {
           break
       }
     }
+  }
+
+  @Watch('modalIsOpen')
+  handleOpenChange(newValue: boolean) {
+    this.modalStatusChanged.emit({
+      open: newValue,
+      id: this.el,
+    })
+  }
+
+  @Watch('open')
+  handleOpenPropChange(newValue: boolean) {
+    this.modalIsOpen = newValue
   }
 
   private trapFocus(event: KeyboardEvent) {
@@ -78,11 +102,11 @@ export class OramaModal {
   }
 
   private closeModal() {
-    this.open = false
+    this.modalIsOpen = false
   }
 
   componentDidLoad() {
-    if (this.open) {
+    if (this.modalIsOpen) {
       this.activeElement = document.activeElement as HTMLElement
       this.handleFocus()
     }
@@ -96,7 +120,7 @@ export class OramaModal {
   }
 
   componentDidUpdate() {
-    if (this.open) {
+    if (this.modalIsOpen) {
       this.handleFocus()
     } else if (this.activeElement) {
       this.activeElement.focus()
@@ -134,7 +158,7 @@ export class OramaModal {
   render() {
     return (
       <div
-        class={`modal ${this.open ? 'open' : ''}`}
+        class={`modal ${this.modalIsOpen ? 'open' : ''}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="modalTitle"

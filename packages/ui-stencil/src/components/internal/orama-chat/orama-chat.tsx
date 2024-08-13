@@ -43,7 +43,7 @@ export class OramaChat {
 
   handleFocus = () => {
     if (this.focusInput) {
-      this.textareaRef.focus()
+      this.textareaRef?.focus()
     }
   }
 

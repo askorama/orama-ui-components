@@ -4,6 +4,7 @@ export type DemoIndexConfig = Record<string, Components.OramaSearchBox>
 
 const demoIndexes: DemoIndexConfig = {
   orama: {
+    open: true,
     index: {
       api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
       endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
@@ -39,6 +40,7 @@ const demoIndexes: DemoIndexConfig = {
     },
   },
   recipes: {
+    open: true,
     index: {
       api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
       endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
@@ -70,6 +72,7 @@ const demoIndexes: DemoIndexConfig = {
     },
   },
   videogames: {
+    open: true,
     index: {
       api_key: 'WL7pKdEqCTPf3G2412x8ecneqVbnkklr',
       endpoint: 'https://cloud.orama.foo/v1/indexes/videogames-rk139h',

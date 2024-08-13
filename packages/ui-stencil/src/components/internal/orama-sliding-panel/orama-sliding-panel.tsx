@@ -52,6 +52,7 @@ export class SlideInPanel {
 
   @Listen('keydown', { target: 'document' })
   handleKeyDown(event: KeyboardEvent) {
+    event.stopPropagation()
     if (event.key === 'Escape') {
       this.closePanel()
     }
