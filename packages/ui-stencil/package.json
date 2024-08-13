@@ -9,7 +9,10 @@
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
-  "files": ["dist/", "loader/"],
+  "files": [
+    "dist/",
+    "loader/"
+  ],
   "scripts": {
     "build": "stencil build --docs",
     "clean": "rm -rf node_modules .turbo dist .stencil loader www",
@@ -21,6 +24,7 @@
   },
   "types": "dist/types/index.d.ts",
   "dependencies": {
+    "@orama/orama": "^2.0.23",
     "@oramacloud/client": "1.3.10",
     "@phosphor-icons/webcomponents": "^2.1.5",
     "@stencil/core": "^4.19.0",

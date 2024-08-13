@@ -1,9 +1,6 @@
-// import { defineCustomElements } from '@orama/wc-components/loader'
 import '@orama/wc-components/dist/orama-ui/orama-ui.css'
 import { html } from 'lit-html'
 import { DARK_THEME_BG, LIGTH_THEME_BG } from '../constants'
-
-// defineCustomElements()
 
 const preview = {
   decorators: [

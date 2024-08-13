@@ -1,4 +1,6 @@
-import { Component, Prop, Watch, h, Listen, Element, State, Fragment } from '@stencil/core'
+import { Component, Prop, Watch, h, Listen, Element, State, Fragment, Event, type EventEmitter } from '@stencil/core'
+import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
+import type { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext } from '@/context/GlobalContext'
@@ -21,16 +23,24 @@ export class SearchBox {
   @Prop() themeConfig?: Partial<TThemeOverrides>
   @Prop() colorScheme?: ColorScheme = 'light'
   @Prop() index: CloudIndexConfig
-  @Prop({ mutable: true }) open = false
+  @Prop() open = false
   @Prop() facetProperty?: string
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() sourceBaseUrl?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() placeholder?: string
   @Prop() suggestions?: string[]
+  @Prop() searchParams?: SearchParams<Orama<AnyOrama | OramaClient>>
 
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number
+  @State() searchBoxIsOpen = this.open
+
+  @Event() searchboxClosed: EventEmitter<{
+    id: HTMLElement
+  }>
+
+  modalRef!: HTMLElement
 
   @Watch('index')
   indexChanged() {
@@ -44,8 +54,18 @@ export class SearchBox {
   }
 
   @Watch('open')
+  handleOpenPropChange(newValue: boolean) {
+    this.searchBoxIsOpen = newValue
+  }
+
+  @Watch('searchBoxIsOpen')
   handleOpenChange(newValue: boolean) {
     globalContext.open = newValue
+    if (!newValue) {
+      this.searchboxClosed.emit({
+        id: this.el,
+      })
+    }
   }
 
   @Watch('facetProperty')
@@ -53,9 +73,9 @@ export class SearchBox {
     searchState.facetProperty = newValue
   }
 
-  // TODO: I'm making the prop mutable to be able to change it from the internal components, but I think we should find a better way to do this
-  private handleCloseSearchBox = () => {
-    this.open = false
+  @Watch('searchParams')
+  handleSearchParamsChange(newValue: SearchParams<Orama<AnyOrama | OramaClient>>) {
+    searchState.searchParams = newValue
   }
 
   @Listen('oramaItemClick')
@@ -65,10 +85,23 @@ export class SearchBox {
   }
 
   @Listen('keydown', { target: 'document' })
-  handleKeyDown(event: KeyboardEvent) {
+  handleCloseOnEsc(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       globalContext.open = false
     }
+  }
+
+  @Listen('modalStatusChanged')
+  modalStatusChangedHandler(event: CustomEvent<{ open: boolean; id: HTMLElement }>) {
+    if (event.detail.id === this.modalRef) {
+      if (!event.detail.open) {
+        this.searchBoxIsOpen = false
+      }
+    }
+  }
+
+  private closeSearchbox = () => {
+    this.searchBoxIsOpen = false
   }
 
   updateTheme() {
@@ -121,13 +154,14 @@ export class SearchBox {
   }
 
   componentWillLoad() {
-    globalContext.open = this.open
+    globalContext.open = this.searchBoxIsOpen
 
     // TODO: We probable want to keep these props below whithin the respective service
     // instance property. I seems to make sense to pass it as initialization prop.
     // Same goes for any other Chat init prop. Lets talk about it as well, please.
     searchState.facetProperty = this.facetProperty
     searchState.resultMap = this.resultMap
+    searchState.searchParams = this.searchParams
 
     this.startServices()
     this.updateTheme()
@@ -159,13 +193,14 @@ export class SearchBox {
     return (
       <Fragment>
         <orama-modal
-          open={this.open}
+          ref={(el) => (this.modalRef = el)}
+          open={this.searchBoxIsOpen}
           class="modal"
           mainTitle="Start your search"
           closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
         >
           <orama-navigation-bar
-            handleClose={this.handleCloseSearchBox}
+            handleClose={this.closeSearchbox}
             showChatActions={globalContext.currentTask === 'chat'}
           />
           <div class="main">

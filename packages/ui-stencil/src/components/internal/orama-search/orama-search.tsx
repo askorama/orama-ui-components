@@ -31,7 +31,7 @@ export class OramaSearch {
 
   @Listen('oramaItemClick')
   handleOramaItemClick(event: CustomEvent<SearchResult>) {
-    alert(`${event.detail.title} clicked`)
+    console.log(`${event.detail.title} clicked`)
   }
 
   onFacetClickHandler = (facetName: string) => {

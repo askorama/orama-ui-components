@@ -24,6 +24,8 @@
     @media (--md-min) {
       padding-left: var(--spacing-3xl, $spacing-3xl);
       background: var(--background-color-primary, background-color('primary'));
+      border: 0;
+      border-bottom: 1px solid var(--border-color-primary, border-color('primary'));
     }
   }
 

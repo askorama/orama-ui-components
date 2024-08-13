@@ -34,6 +34,7 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage,
       proxiesFile: '../ui-stencil-react/src/components/stencil-generated/index.ts',
+      includeDefineCustomElements: true,
     }),
     angularOutputTarget({
       componentCorePackage,
