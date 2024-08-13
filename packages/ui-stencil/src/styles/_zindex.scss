@@ -1,4 +1,4 @@
 $zindex: 'search-modal', 'slider-container';
 
-$zindex-search-modal: index($zindex, 'search-modal') * 10;
-$zindex-slider-container: index($zindex, 'slider-container') * 10;
+$zindex-search-modal: index($zindex, 'search-modal') * 10 + 9999;
+$zindex-slider-container: index($zindex, 'slider-container') * 10 + 9999;

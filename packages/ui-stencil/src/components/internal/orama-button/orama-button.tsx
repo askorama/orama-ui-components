@@ -51,9 +51,11 @@ export class OramaButton {
 
     return (
       <Tag class={buttonClass} {...buttonProps} disabled={this.disabled}>
-        <slot name="adorment-start" />
-        {this.withTooltip && <span class="button__tooltip">{this.withTooltip}</span>}
-        <slot />
+        <span class="button__label">
+          <slot name="adorment-start" />
+          {this.withTooltip && <span class="button__tooltip">{this.withTooltip}</span>}
+          <slot />
+        </span>
         <slot name="adorment-end" />
       </Tag>
     )

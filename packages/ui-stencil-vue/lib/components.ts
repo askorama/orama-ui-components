@@ -111,7 +111,9 @@ export const OramaMarkdown = /*@__PURE__*/ defineContainer<JSX.OramaMarkdown>('o
 export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-modal', undefined, [
   'open',
   'closeOnEscape',
-  'mainTitle'
+  'closeOnOutsideClick',
+  'mainTitle',
+  'modalStatusChanged'
 ]);
 
 
@@ -138,11 +140,14 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
   'sourceBaseUrl',
   'sourcesMap',
   'placeholder',
-  'suggestions'
+  'suggestions',
+  'searchParams',
+  'searchboxClosed'
 ]);
 
 
 export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchButton>('orama-search-button', undefined, [
+  'themeConfig',
   'colorScheme'
 ]);
 

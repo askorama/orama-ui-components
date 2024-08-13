@@ -5,8 +5,9 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from '@orama/wc-components';
 
+import { defineCustomElements } from '@orama/wc-components/loader';
 
-
+defineCustomElements();
 export const OramaButton = /*@__PURE__*/createReactComponent<JSX.OramaButton, HTMLOramaButtonElement>('orama-button');
 export const OramaChat = /*@__PURE__*/createReactComponent<JSX.OramaChat, HTMLOramaChatElement>('orama-chat');
 export const OramaChatAssistentMessage = /*@__PURE__*/createReactComponent<JSX.OramaChatAssistentMessage, HTMLOramaChatAssistentMessageElement>('orama-chat-assistent-message');

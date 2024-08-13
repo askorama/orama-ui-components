@@ -1,7 +1,7 @@
 // TODO: We need to revisit this styles. There are some duplications and variables without fallback
 .button {
   position: relative;
-  display: inline-flex;
+  display: flex;
   gap: var(--spacing-s, $spacing-s);
   align-items: center;
   border-radius: var(--radius-m, $radius-m);
@@ -11,6 +11,8 @@
   font-family: var(--font-primary, font('primary'));
   transition: all 0.2s;
   transition-property: color, background-color, opacity;
+  width: 100%;
+  text-align: left;
 
   &__tooltip {
     display: block;
@@ -27,6 +29,13 @@
   }
 }
 
+.button__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs, $spacing-xs);
+  flex-grow: 1;
+}
+
 .button--primary {
   background-color: var(--button-background-color-primary, button-background-color('primary'));
   color: var(--button-text-color-primary, button-text-color('primary'));
@@ -41,6 +50,18 @@
   background-color: var(--button-background-color-secondary, button-background-color('secondary'));
   color: var(--button-text-color-secondary, button-text-color('secondary'));
   border: 1px solid var(--button-border-color-secondary, map-get($palette, 'button-border', 'secondary'));
+  transition: all 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--button-background-color-secondary-hover, button-background-color('secondary-hover'));
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid #9671b0;
+  }
 
   &:disabled {
     background-color: var(--background-color-tertiary, background-color('tertiary'));
@@ -73,6 +94,11 @@
 ::slotted(*) {
   display: inline-flex;
   align-items: center;
+}
+
+::slotted([slot='adorment-end']),
+::slotted([slot='adorment-start']) {
+  flex-grow: 0;
 }
 
 @keyframes fadeInOut {
