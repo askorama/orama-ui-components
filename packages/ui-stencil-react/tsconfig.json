@@ -11,7 +11,9 @@
     "target": "es2015",
     "skipLibCheck": true,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "declarationDir": "./dist/types",
+    "declaration": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.spec.ts", "**/__tests__/**"]

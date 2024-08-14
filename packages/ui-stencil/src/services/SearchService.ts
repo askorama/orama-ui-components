@@ -36,7 +36,7 @@ export class SearchService {
     searchState.loading = true
 
     const latestAbortController = this.abortController
-    const { limit, offset, where, ...restSearchParams } = searchState.searchParams
+    const { limit, offset, where, ...restSearchParams } = searchState.searchParams ?? {}
 
     // TODO: Maybe we would like to have a debounce here (Check with Michele)
     this.oramaClient

@@ -4,16 +4,22 @@
   "description": "React components for Orama Cloud",
   "license": "Apache-2.0",
   "author": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": ["dist"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
+    "build": "tsup",
+    "build:watch": "tsup --watch",
     "clean": "rm -rf node_modules .turbo",
-    "test": "node ./__tests__/react-library.test.js",
-    "tsc": "tsc -p . --outDir ./dist"
+    "test": "node ./__tests__/react-library.test.js"
   },
   "dependencies": {
     "@orama/wc-components": "workspace:*"
@@ -21,6 +27,10 @@
   "devDependencies": {
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rollup": "^4.20.0",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.2"
   },
   "peerDependencies": {

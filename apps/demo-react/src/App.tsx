@@ -34,8 +34,13 @@ function App() {
           </section>
           <h2>Another section</h2>
           <OramaButton
+            // TODO: This is a hotfix for the trigger being working on the first click only
             onClick={() => {
-              setOpen(true)
+              setOpen(false)
+              // Set true again on next diggest
+              setTimeout(() => {
+                setOpen(true)
+              })
             }}
           >
             Open searchbox
@@ -66,9 +71,6 @@ function App() {
           <div className="component-row">
             <OramaSearchBox
               open={open}
-              onSearchboxClosed={() => {
-                setOpen(false)
-              }}
               index={{
                 api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
                 endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
