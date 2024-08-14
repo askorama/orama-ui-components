@@ -6,7 +6,6 @@
   align-items: center;
   border-radius: var(--radius-m, $radius-m);
   border: 0;
-  padding: var(--spacing-m, $spacing-m);
   cursor: pointer;
   font-family: var(--font-primary, font('primary'));
   transition: all 0.2s;
@@ -27,6 +26,18 @@
     top: -28px;
     animation: fadeInOut 1s ease-in-out 1;
   }
+}
+
+.button--small {
+  padding: var(--spacing-xs, $spacing-xs);
+}
+
+.button--medium {
+  padding: var(--spacing-s, $spacing-s);
+}
+
+.button--large {
+  padding: var(--spacing-m, $spacing-m);
 }
 
 .button__label {

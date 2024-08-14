@@ -26,6 +26,13 @@ const meta: Meta<
         },
       },
     },
+    size: {
+      options: ['small', 'medium', 'large'],
+      table: {
+        defaultValue: { summary: 'medium' },
+      },
+      control: { type: 'radio' },
+    },
     openSearchbox: {
       table: {
         defaultValue: { summary: 'false' },
@@ -44,7 +51,8 @@ type Story = StoryObj<Components.OramaSearchButton>
 const Template = (label: string) => (args) => {
   const [{ openSearchbox }, updateArgs] = useArgs()
 
-  window.addEventListener('searchboxClosed', () => {
+  const searchbox = document.getElementById('orama-ui-search-box')
+  searchbox?.addEventListener('searchboxClosed', () => {
     updateArgs({ openSearchbox: false })
   })
 
@@ -55,6 +63,7 @@ const Template = (label: string) => (args) => {
         label="${args.label}"
         id="orama-ui-search-button"
         .colorScheme=${args.colorScheme}
+        .size=${args.size}
         .onclick=${() => {
           updateArgs({ openSearchbox: !openSearchbox })
         }}

@@ -12,6 +12,7 @@
 | `as`          | `as`           |             | `"a" \| "button"`                    | `'button'`  |
 | `class`       | `class`        |             | `string`                             | `undefined` |
 | `disabled`    | `disabled`     |             | `boolean`                            | `undefined` |
+| `size`        | `size`         |             | `"large" \| "medium" \| "small"`     | `'medium'`  |
 | `type`        | `type`         |             | `"button" \| "reset" \| "submit"`    | `undefined` |
 | `variant`     | `variant`      |             | `"icon" \| "primary" \| "secondary"` | `'primary'` |
 | `withTooltip` | `with-tooltip` |             | `string`                             | `undefined` |

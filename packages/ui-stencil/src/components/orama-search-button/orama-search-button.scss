@@ -1,3 +1,9 @@
 :host {
   display: block;
 }
+
+.kyb-shortcut {
+  background-color: var(--background-color-tertiary, background-color('tertiary'));
+  border-radius: var(--radius-s, $radius-s);
+  padding: var(--spacing-xs, $spacing-xs) var(--spacing-s, $spacing-xs);
+}

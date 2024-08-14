@@ -12,6 +12,7 @@ export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama
   'as',
   'class',
   'variant',
+  'size',
   'type',
   'disabled',
   'withTooltip'
@@ -147,6 +148,7 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
 
 
 export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchButton>('orama-search-button', undefined, [
+  'size',
   'themeConfig',
   'colorScheme'
 ]);

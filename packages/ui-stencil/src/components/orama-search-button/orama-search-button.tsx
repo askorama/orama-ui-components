@@ -16,6 +16,7 @@ export type ButtonClick = {
 export class OramaSearchButton {
   @Element() el: HTMLElement
 
+  @Prop() size: 'small' | 'medium' | 'large' = 'medium'
   @Prop() themeConfig?: Partial<TThemeOverrides>
   @Prop() colorScheme?: ColorScheme = 'light'
 
@@ -95,12 +96,14 @@ export class OramaSearchButton {
   render() {
     return (
       <Host>
-        <orama-button type="button" variant="secondary" ref={(el) => (this.buttonRef = el)}>
+        <orama-button type="button" variant="secondary" ref={(el) => (this.buttonRef = el)} size={this.size}>
           <span slot="adorment-start">
             <ph-magnifying-glass />
           </span>
           <slot />
-          <span slot="adorment-end">{this.shortcutLabel}</span>
+          <span slot="adorment-end" class="kyb-shortcut">
+            {this.shortcutLabel}
+          </span>
         </orama-button>
       </Host>
     )

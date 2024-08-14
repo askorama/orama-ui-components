@@ -34,6 +34,7 @@ export namespace Components {
         "as"?: ButtonProps['as'];
         "class"?: string;
         "disabled"?: boolean;
+        "size": 'small' | 'medium' | 'large';
         "type"?: ButtonProps['type'];
         "variant"?: ButtonProps['variant'];
         "withTooltip"?: string;
@@ -132,6 +133,7 @@ export namespace Components {
     }
     interface OramaSearchButton {
         "colorScheme"?: ColorScheme;
+        "size": 'small' | 'medium' | 'large';
         "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchResults {
@@ -424,6 +426,7 @@ declare namespace LocalJSX {
         "as"?: ButtonProps['as'];
         "class"?: string;
         "disabled"?: boolean;
+        "size"?: 'small' | 'medium' | 'large';
         "type"?: ButtonProps['type'];
         "variant"?: ButtonProps['variant'];
         "withTooltip"?: string;
@@ -527,6 +530,7 @@ declare namespace LocalJSX {
     }
     interface OramaSearchButton {
         "colorScheme"?: ColorScheme;
+        "size"?: 'small' | 'medium' | 'large';
         "themeConfig"?: Partial<TThemeOverrides>;
     }
     interface OramaSearchResults {
