@@ -9,12 +9,6 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": ["dist"],
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
   "scripts": {
     "build": "tsup",
     "build:watch": "tsup --watch",
