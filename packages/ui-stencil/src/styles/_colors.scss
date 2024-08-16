@@ -73,7 +73,7 @@ $palette: map-merge(
   (
     'button-text': (
       primary: $purple100,
-      secondary: text-color('inactive'),
+      secondary: text-color('secondary'),
       inactive: $gray500,
       // todo: value to check with Angela
     ),
