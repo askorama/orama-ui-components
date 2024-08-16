@@ -10,9 +10,10 @@
 | Property        | Attribute         | Description | Type                                                       | Default     |
 | --------------- | ----------------- | ----------- | ---------------------------------------------------------- | ----------- |
 | `index`         | --                |             | `{ api_key: string; endpoint: string; }`                   | `undefined` |
+| `instance`      | --                |             | `OramaClient`                                              | `undefined` |
 | `placeholder`   | `placeholder`     |             | `string`                                                   | `undefined` |
 | `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `undefined` |
-| `sourcesMap`    | --                |             | `{ title?: string; path?: string; description?: string; }` | `undefined` |
+| `sourcesMap`    | --                |             | `{ title?: string; description?: string; path?: string; }` | `undefined` |
 | `suggestions`   | --                |             | `string[]`                                                 | `undefined` |
 
 

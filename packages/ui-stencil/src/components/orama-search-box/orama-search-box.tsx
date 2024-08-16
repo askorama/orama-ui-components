@@ -22,16 +22,19 @@ export class SearchBox {
 
   @Prop() themeConfig?: Partial<TThemeOverrides>
   @Prop() colorScheme?: ColorScheme = 'light'
-  @Prop() index: CloudIndexConfig
+  @Prop() index?: CloudIndexConfig
+  @Prop() instance?: OramaClient
   @Prop() open = false
   @Prop() facetProperty?: string
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() sourceBaseUrl?: string
   @Prop() sourcesMap?: SourcesMap
+  // TODO: remove it in favor of dictionary
   @Prop() placeholder?: string
   @Prop() suggestions?: string[]
   @Prop() searchParams?: SearchParams<Orama<AnyOrama | OramaClient>>
 
+  @State() oramaClient: OramaClient
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number
   @State() searchBoxIsOpen = this.open
@@ -148,9 +151,14 @@ export class SearchBox {
   }
 
   startServices() {
-    const oramaClient = initOramaClient(this.index)
-    searchState.searchService = new SearchService(oramaClient)
-    chatContext.chatService = new ChatService(oramaClient)
+    if (this.index && this.instance) {
+      throw new Error('You should pass only one between instance and index')
+    }
+
+    this.oramaClient = this.instance ? this.instance : initOramaClient(this.index)
+
+    searchState.searchService = new SearchService(this.oramaClient)
+    chatContext.chatService = new ChatService(this.oramaClient)
   }
 
   componentWillLoad() {

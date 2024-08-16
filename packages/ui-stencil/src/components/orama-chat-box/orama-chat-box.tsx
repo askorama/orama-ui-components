@@ -1,9 +1,10 @@
-import { Component, Host, h, Prop, Watch } from '@stencil/core'
+import { Component, Host, h, Prop, Watch, State } from '@stencil/core'
 import { chatContext } from '@/context/chatContext'
 import { ChatService } from '@/services/ChatService'
 import { initOramaClient } from '@/utils/utils'
 import type { CloudIndexConfig, SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowClockwise.mjs'
+import { OramaClient } from '@oramacloud/client'
 
 @Component({
   tag: 'orama-chat-box',
@@ -11,11 +12,14 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowClockwise.mjs'
   shadow: true,
 })
 export class ChatBox {
-  @Prop() index: CloudIndexConfig
+  @Prop() index?: CloudIndexConfig
+  @Prop() instance?: OramaClient
   @Prop() sourceBaseUrl?: string
   @Prop() placeholder?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() suggestions?: string[]
+
+  @State() oramaClient: OramaClient
 
   @Watch('index')
   indexChanged() {
@@ -27,8 +31,13 @@ export class ChatBox {
   }
 
   startChatService() {
-    const oramaClient = initOramaClient(this.index)
-    chatContext.chatService = new ChatService(oramaClient)
+    if (this.index && this.instance) {
+      throw new Error('You should pass only one between instance and index')
+    }
+
+    this.oramaClient = this.instance || initOramaClient(this.index)
+
+    chatContext.chatService = new ChatService(this.oramaClient)
   }
 
   render() {
