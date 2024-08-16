@@ -13,7 +13,8 @@
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     "declarationDir": "./dist/types",
-    "declaration": true
+    "declaration": true,
+    "types": ["node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.spec.ts", "**/__tests__/**"]
