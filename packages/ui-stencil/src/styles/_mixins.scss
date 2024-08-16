@@ -77,10 +77,6 @@
   margin: 0;
   padding: 0;
 
-  @media (--md-min) {
-    font-size: var(--font-size-xs, $font-size-xs);
-  }
-
   @if $variant == 'primary' {
     color: var(--text-color-primary, text-color('primary'));
   }
