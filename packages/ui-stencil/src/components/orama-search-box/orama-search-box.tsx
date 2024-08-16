@@ -8,7 +8,7 @@ import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
 import { windowWidthListener } from '@/services/WindowService'
 import type { TThemeOverrides } from '@/config/theme'
-import { initOramaClient } from '@/utils/utils'
+import { generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/utils/utils'
 import type { ColorScheme, ResultMap, SourcesMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
 
@@ -35,6 +35,7 @@ export class SearchBox {
   @Prop() searchParams?: SearchParams<Orama<AnyOrama | OramaClient>>
 
   @State() oramaClient: OramaClient
+  @State() componentID = generateRandomID('search-box')
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number
   @State() searchBoxIsOpen = this.open
@@ -151,10 +152,7 @@ export class SearchBox {
   }
 
   startServices() {
-    if (this.index && this.instance) {
-      throw new Error('You should pass only one between instance and index')
-    }
-
+    validateCloudIndexConfig(this.el, this.index, this.instance)
     this.oramaClient = this.instance ? this.instance : initOramaClient(this.index)
 
     searchState.searchService = new SearchService(this.oramaClient)
@@ -171,6 +169,7 @@ export class SearchBox {
     searchState.resultMap = this.resultMap
     searchState.searchParams = this.searchParams
 
+    this.el.id = this.componentID
     this.startServices()
     this.updateTheme()
     this.detectSystemColorScheme()

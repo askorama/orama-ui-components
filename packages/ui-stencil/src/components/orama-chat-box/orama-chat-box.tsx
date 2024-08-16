@@ -1,10 +1,10 @@
-import { Component, Host, h, Prop, Watch, State } from '@stencil/core'
+import { Component, Host, h, Prop, Watch, State, Element } from '@stencil/core'
 import { chatContext } from '@/context/chatContext'
 import { ChatService } from '@/services/ChatService'
-import { initOramaClient } from '@/utils/utils'
+import { generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/utils/utils'
 import type { CloudIndexConfig, SourcesMap } from '@/types'
+import type { OramaClient } from '@oramacloud/client'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowClockwise.mjs'
-import { OramaClient } from '@oramacloud/client'
 
 @Component({
   tag: 'orama-chat-box',
@@ -12,6 +12,7 @@ import { OramaClient } from '@oramacloud/client'
   shadow: true,
 })
 export class ChatBox {
+  @Element() el: HTMLElement
   @Prop() index?: CloudIndexConfig
   @Prop() instance?: OramaClient
   @Prop() sourceBaseUrl?: string
@@ -20,6 +21,7 @@ export class ChatBox {
   @Prop() suggestions?: string[]
 
   @State() oramaClient: OramaClient
+  @State() componentID = generateRandomID('chat-box')
 
   @Watch('index')
   indexChanged() {
@@ -27,14 +29,12 @@ export class ChatBox {
   }
 
   componentWillLoad() {
+    this.el.id = this.componentID
     this.startChatService()
   }
 
   startChatService() {
-    if (this.index && this.instance) {
-      throw new Error('You should pass only one between instance and index')
-    }
-
+    validateCloudIndexConfig(this.el, this.index, this.instance)
     this.oramaClient = this.instance || initOramaClient(this.index)
 
     chatContext.chatService = new ChatService(this.oramaClient)
@@ -47,7 +47,7 @@ export class ChatBox {
 
     return (
       // * Note: only dark theme supported at the moment
-      <Host id="orama-ui-chatbox" class="theme-dark">
+      <Host class="theme-dark">
         <orama-chat
           placeholder={this.placeholder}
           sourceBaseUrl={this.sourceBaseUrl}

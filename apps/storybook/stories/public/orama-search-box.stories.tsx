@@ -71,13 +71,13 @@ export default meta
 
 const Template = ({ preset, colorScheme }) => {
   return html`<orama-search-box
-    id='orama-ui-search-box'
     open=${preset?.open}
     .facetProperty=${preset?.facetProperty}
     .resultMap=${preset?.resultMap}
     .colorScheme=${colorScheme}
     .themeConfig=${preset.themeConfig}
     .index=${preset.index}
+    .instance=${preset.instance}
     .suggestions=${preset?.suggestions}
     .sourceBaseUrl=${preset?.sourceBaseUrl}
     .sourcesMap=${preset?.sourcesMap}

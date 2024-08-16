@@ -2,6 +2,7 @@ import { Component, Watch, Prop, h, State, Element, Listen, Host, Event, type Ev
 import type { ColorScheme } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
 import type { TThemeOverrides } from '@/components'
+import { generateRandomID } from '@/utils/utils'
 
 export type ButtonClick = {
   id: HTMLElement
@@ -22,6 +23,7 @@ export class OramaSearchButton {
 
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() shortcutLabel = ''
+  @State() componentID = generateRandomID('search-button')
 
   @Watch('themeConfig')
   @Watch('colorScheme')
@@ -88,6 +90,7 @@ export class OramaSearchButton {
   }
 
   componentWillLoad() {
+    this.el.id = this.componentID
     this.updateTheme()
     this.detectSystemColorScheme()
     this.shortcutLabel = this.handleShortcutLabel()
