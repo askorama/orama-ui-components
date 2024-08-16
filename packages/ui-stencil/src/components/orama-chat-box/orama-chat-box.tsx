@@ -14,7 +14,7 @@ import '@phosphor-icons/webcomponents/dist/icons/PhArrowClockwise.mjs'
 export class ChatBox {
   @Element() el: HTMLElement
   @Prop() index?: CloudIndexConfig
-  @Prop() instance?: OramaClient
+  @Prop() clientInstance?: OramaClient
   @Prop() sourceBaseUrl?: string
   @Prop() placeholder?: string
   @Prop() sourcesMap?: SourcesMap
@@ -34,8 +34,8 @@ export class ChatBox {
   }
 
   startChatService() {
-    validateCloudIndexConfig(this.el, this.index, this.instance)
-    this.oramaClient = this.instance || initOramaClient(this.index)
+    validateCloudIndexConfig(this.el, this.index, this.clientInstance)
+    this.oramaClient = this.clientInstance || initOramaClient(this.index)
 
     chatContext.chatService = new ChatService(this.oramaClient)
   }

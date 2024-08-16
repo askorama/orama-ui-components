@@ -1,5 +1,6 @@
 import React from 'react'
 import { OramaChatBox, OramaSearchBox, OramaButton } from '@orama/react-components'
+import '@orama/react-components/dist/index.css'
 import './App.css'
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
           <div className="component-row">
             <OramaSearchBox
               open={open}
+              colorScheme="dark"
               index={{
                 api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
                 endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',

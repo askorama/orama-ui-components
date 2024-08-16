@@ -19,6 +19,8 @@ purple300: #ae8ff7;
 purple500: #8152ee;
 purple600: #6a4bb2;
 purple700: #432d77;
+
+
     @each $key, $value in $palette {
       @each $subkey, $subvalue in $value {
         --#{$key}-color-#{$subkey}-light: #{$subvalue};

@@ -52,8 +52,8 @@ export namespace Components {
         "interaction": TChatInteraction;
     }
     interface OramaChatBox {
+        "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
-        "instance"?: OramaClient;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
@@ -120,10 +120,10 @@ export namespace Components {
         "suggestions"?: string[];
     }
     interface OramaSearchBox {
+        "clientInstance"?: OramaClient;
         "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
-        "instance"?: OramaClient;
         "open": boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
@@ -446,8 +446,8 @@ declare namespace LocalJSX {
         "interaction"?: TChatInteraction;
     }
     interface OramaChatBox {
+        "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
-        "instance"?: OramaClient;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
@@ -516,10 +516,10 @@ declare namespace LocalJSX {
         "suggestions"?: string[];
     }
     interface OramaSearchBox {
+        "clientInstance"?: OramaClient;
         "colorScheme"?: ColorScheme;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
-        "instance"?: OramaClient;
         "onSearchboxClosed"?: (event: OramaSearchBoxCustomEvent<{
     id: HTMLElement
   }>) => void;
