@@ -7,7 +7,6 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "sideEffects": ["./src/orama-ui.css"],
   "files": ["dist"],
   "scripts": {
     "build": "tsup",
