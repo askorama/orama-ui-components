@@ -8,7 +8,14 @@ const scssFilePath = './src/styles/_tempColors.scss'
 function createTempColorsFile() {
   const colorsContent = fs.readFileSync('./src/styles/_colors.scss', 'utf-8')
   const primitiveColors = colorsContent.match(/(\$[a-zA-Z0-9-]+:.*;)/g).join('\n')
-  const primitiveColorsToExport = primitiveColors.replace(/\$/g, '').replace(/;/g, ';').replace(/:/g, ':')
+  const palette = colorsContent.match(/(\$palette:.*;)/g).join('\n')
+  const paletteDark = colorsContent.match(/(\$paletteDark:.*;)/g).join('\n')
+  const primitiveColorsToExport = primitiveColors
+    .replace(palette, '')
+    .replace(paletteDark, '')
+    .replace(/\$/g, '')
+    .replace(/;/g, ';')
+    .replace(/:/g, ':')
 
   const tempColorsContent = `
   @import 'colors';
@@ -33,7 +40,46 @@ function createTempColorsFile() {
 
 // Function to compile SCSS to CSS
 function compileScss(filePath) {
-  const result = sass.renderSync({ file: filePath })
+  const result = sass.compile(filePath, {
+    functions: {
+      'text-color($arg1, $arg2)': (args) => {
+        const colorKey = args[0].assertString('arg1')
+        const palette = args[1].assertMap('arg2')
+        let currentValue = ''
+        for (const [key, value] of palette.contents.entrySeq()) {
+          const currentKey = key.toString()
+          if (currentKey === 'text') {
+            currentValue = value.get(colorKey).toString()
+            return new sass.SassString(currentValue)
+          }
+        }
+      },
+      'background-color($arg1, $arg2)': (args) => {
+        const colorKey = args[0].assertString('arg1')
+        const palette = args[1].assertMap('arg2')
+        let currentValue = ''
+        for (const [key, value] of palette.contents.entrySeq()) {
+          const currentKey = key.toString()
+          if (currentKey === 'background') {
+            currentValue = value.get(colorKey).toString()
+            return new sass.SassString(currentValue)
+          }
+        }
+      },
+      'border-color($arg1, $arg2)': (args) => {
+        const colorKey = args[0].assertString('arg1')
+        const palette = args[1].assertMap('arg2')
+        let currentValue = ''
+        for (const [key, value] of palette.contents.entrySeq()) {
+          const currentKey = key.toString()
+          if (currentKey === 'border') {
+            currentValue = value.get(colorKey).toString()
+            return new sass.SassString(currentValue)
+          }
+        }
+      },
+    },
+  })
   return result.css.toString()
 }
 

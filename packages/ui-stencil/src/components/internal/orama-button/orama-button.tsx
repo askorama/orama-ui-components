@@ -38,6 +38,7 @@ export class OramaButton {
   @Prop() as?: ButtonProps['as'] = 'button'
   @Prop() class?: string
   @Prop() variant?: ButtonProps['variant'] = 'primary'
+  @Prop() size: 'small' | 'medium' | 'large' = 'medium'
   @Prop() type?: ButtonProps['type']
   @Prop() disabled?: boolean
   @Prop() withTooltip?: string
@@ -47,7 +48,7 @@ export class OramaButton {
     const declaredProps = ['as', 'class', 'variant']
     const buttonProps = getNonExplicitAttributes(this.el, declaredProps)
 
-    const buttonClass = `button button--${this.variant} ${this.class}`
+    const buttonClass = `button button--${this.variant} button--${this.size} ${this.class || ''}`
 
     return (
       <Tag class={buttonClass} {...buttonProps} disabled={this.disabled}>

@@ -30,7 +30,7 @@
   cursor: pointer;
   border-radius: var(--radius-l, $radius-l);
   border: 1px solid var(--border-color-primary, border-color('primary'));
-  padding: var(--spacing-m, $spacing-m) var(--spacing-m, $spacing-m);
+  padding: var(--spacing-s, $spacing-s);
   display: flex;
   align-items: center;
   column-gap: var(--spacing-s, $spacing-s);
@@ -48,10 +48,6 @@
   &:focus-visible {
     outline: none;
     border: 1px solid var(--border-color-accent, border-color('accent'));
-  }
-
-  @media (--md-min) {
-    padding: var(--spacing-xs, $spacing-xs) var(--spacing-m, $spacing-m);
   }
 }
 

@@ -1,7 +1,8 @@
-import { Component, Watch, Prop, h, State, Element, Listen, Host, Event, type EventEmitter } from '@stencil/core'
+import { Component, Watch, Prop, h, State, Element, Listen, Host } from '@stencil/core'
 import type { ColorScheme } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
 import type { TThemeOverrides } from '@/components'
+import { generateRandomID } from '@/utils/utils'
 
 export type ButtonClick = {
   id: HTMLElement
@@ -16,11 +17,13 @@ export type ButtonClick = {
 export class OramaSearchButton {
   @Element() el: HTMLElement
 
+  @Prop() size: 'small' | 'medium' | 'large' = 'medium'
   @Prop() themeConfig?: Partial<TThemeOverrides>
   @Prop() colorScheme?: ColorScheme = 'light'
 
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() shortcutLabel = ''
+  @State() componentID = generateRandomID('search-button')
 
   @Watch('themeConfig')
   @Watch('colorScheme')
@@ -34,6 +37,16 @@ export class OramaSearchButton {
   handleSearchboxClosed(event: CustomEvent<ButtonClick>) {
     // TODO: should be based on the id of current searchbox
     this.buttonRef.querySelector('button').focus()
+  }
+
+  // trigger click when entering  '⌘ K' o Mac or 'Ctrl + K'
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault()
+      console.log('keydown')
+      this.buttonRef.click()
+    }
   }
 
   updateTheme() {
@@ -87,6 +100,7 @@ export class OramaSearchButton {
   }
 
   componentWillLoad() {
+    this.el.id = this.componentID
     this.updateTheme()
     this.detectSystemColorScheme()
     this.shortcutLabel = this.handleShortcutLabel()
@@ -95,12 +109,14 @@ export class OramaSearchButton {
   render() {
     return (
       <Host>
-        <orama-button type="button" variant="secondary" ref={(el) => (this.buttonRef = el)}>
+        <orama-button type="button" variant="secondary" ref={(el) => (this.buttonRef = el)} size={this.size}>
           <span slot="adorment-start">
             <ph-magnifying-glass />
           </span>
           <slot />
-          <span slot="adorment-end">{this.shortcutLabel}</span>
+          <span slot="adorment-end" class="kyb-shortcut">
+            {this.shortcutLabel}
+          </span>
         </orama-button>
       </Host>
     )

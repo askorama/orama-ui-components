@@ -67,6 +67,7 @@ const Template = ({ preset }) => {
   return html`
     <orama-chat-box
       .index=${preset?.index}
+      .instance=${preset?.instance}
       placeholder=${preset?.placeholder}
       sourceBaseUrl=${preset?.sourceBaseUrl}
       .sourcesMap=${preset?.sourcesMap}

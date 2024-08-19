@@ -65,8 +65,8 @@ function App() {
         <section>
           <div className="component-row">
             <OramaSearchBox
-              id="orama-ui-something"
               open={open}
+              colorScheme="dark"
               onSearchboxClosed={() => setOpen(false)}
               index={{
                 api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',

@@ -90,7 +90,7 @@ export class SearchResults {
                         <orama-text as="h3" styledAs="p">
                           {result.title}
                         </orama-text>
-                        <orama-text as="p" styledAs="span" class="collapsed">
+                        <orama-text as="p" styledAs="span" class="collapsed" variant="tertiary">
                           {result.description}
                         </orama-text>
                       </div>

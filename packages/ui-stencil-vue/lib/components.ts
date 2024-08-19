@@ -12,6 +12,7 @@ export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama
   'as',
   'class',
   'variant',
+  'size',
   'type',
   'disabled',
   'withTooltip'
@@ -36,6 +37,7 @@ export const OramaChatAssistentMessage = /*@__PURE__*/ defineContainer<JSX.Orama
 
 export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('orama-chat-box', undefined, [
   'index',
+  'clientInstance',
   'sourceBaseUrl',
   'placeholder',
   'sourcesMap',
@@ -134,6 +136,7 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
   'themeConfig',
   'colorScheme',
   'index',
+  'clientInstance',
   'open',
   'facetProperty',
   'resultMap',
@@ -147,6 +150,7 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
 
 
 export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchButton>('orama-search-button', undefined, [
+  'size',
   'themeConfig',
   'colorScheme'
 ]);
