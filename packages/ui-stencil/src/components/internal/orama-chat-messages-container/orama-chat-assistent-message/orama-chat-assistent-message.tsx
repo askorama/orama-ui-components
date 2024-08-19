@@ -58,25 +58,27 @@ export class OramaChatAssistentMessage {
     return (
       <Host>
         {!!this.interaction.sources?.length && (
-          <div class="sources-wrapper">
-            <h2 class="sr-only">Sources</h2>
-            {this.interaction.sources.map((source, index) => (
-              <a
-                href={`${chatContext.sourceBaseURL}${source[chatContext.sourcesMap.path]}`}
-                class="source"
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                key={`source-${index}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <orama-text as="h3" styledAs="span" class="source-title">
-                  {source[chatContext.sourcesMap.title]}
-                </orama-text>
-                <orama-text as="p" styledAs="span" class="source-subtitle">
-                  {source[chatContext.sourcesMap.description]}
-                </orama-text>
-              </a>
-            ))}
+          <div class="sources-outer-wrapper">
+            <div class="sources-wrapper">
+              <h2 class="sr-only">Sources</h2>
+              {this.interaction.sources.map((source, index) => (
+                <a
+                  href={`${chatContext.sourceBaseURL}${source[chatContext.sourcesMap.path]}`}
+                  class="source"
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  key={`source-${index}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <orama-text as="h3" styledAs="span" class="source-title">
+                    {source[chatContext.sourcesMap.title]}
+                  </orama-text>
+                  <orama-text as="p" styledAs="span" class="source-subtitle" variant="tertiary">
+                    {source[chatContext.sourcesMap.description]}
+                  </orama-text>
+                </a>
+              ))}
+            </div>
           </div>
         )}
         <div class="message-wrapper">

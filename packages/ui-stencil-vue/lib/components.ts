@@ -96,7 +96,7 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
   'labelForScreenReaders',
   'defaultValue',
   'autoFocus',
-  'oramaInputChanged'
+  'resetValue'
 ]);
 
 

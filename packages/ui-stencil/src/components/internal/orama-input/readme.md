@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event               | Description | Type                  |
-| ------------------- | ----------- | --------------------- |
-| `oramaInputChanged` |             | `CustomEvent<string>` |
+| Event        | Description | Type                |
+| ------------ | ----------- | ------------------- |
+| `resetValue` |             | `CustomEvent<void>` |
 
 
 ## Dependencies

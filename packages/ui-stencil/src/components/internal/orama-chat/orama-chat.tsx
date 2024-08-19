@@ -2,9 +2,8 @@ import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
 import type { SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
-import '@phosphor-icons/webcomponents/dist/icons/PhStop.mjs'
+import '@phosphor-icons/webcomponents/dist/icons/PhStopCircle.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
-import { globalContext } from '@/context/GlobalContext'
 
 const BOTTOM_THRESHOLD = 1
 
@@ -238,7 +237,7 @@ export class OramaChat {
                       onKeyDown={this.handleAbortAnswerClick}
                       aria-label="Abort answer"
                     >
-                      <ph-stop size={16} />
+                      <ph-stop-circle size={16} />
                     </orama-button>
                   ) : (
                     <orama-button

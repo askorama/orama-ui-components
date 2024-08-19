@@ -6,6 +6,10 @@
   @include paragraph('secondary');
 }
 
+.p-tertiary {
+  @include paragraph('tertiary');
+}
+
 .span {
   @include span();
 }
@@ -14,12 +18,20 @@
   @include span('secondary');
 }
 
+.span-tertiary {
+  @include span('tertiary');
+}
+
 .small {
   @include small();
 }
 
 .small-secondary {
   @include small('secondary');
+}
+
+.small-tertiary {
+  @include small('tertiary');
 }
 
 .text-bold {

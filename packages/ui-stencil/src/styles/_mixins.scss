@@ -68,6 +68,10 @@
   @if $variant == 'secondary' {
     color: var(--text-color-secondary, text-color('secondary'));
   }
+
+  @if $variant == 'tertiary' {
+    color: var(--text-color-tertiary, text-color('tertiary'));
+  }
 }
 
 @mixin span($variant: 'primary') {
@@ -84,6 +88,10 @@
   @if $variant == 'secondary' {
     color: var(--text-color-secondary, text-color('secondary'));
   }
+
+  @if $variant == 'tertiary' {
+    color: var(--text-color-tertiary, text-color('tertiary'));
+  }
 }
 
 @mixin small($variant: 'primary') {
@@ -99,5 +107,9 @@
 
   @if $variant == 'secondary' {
     color: var(--text-color-secondary, text-color('secondary'));
+  }
+
+  @if $variant == 'tertiary' {
+    color: var(--text-color-tertiary, text-color('tertiary'));
   }
 }

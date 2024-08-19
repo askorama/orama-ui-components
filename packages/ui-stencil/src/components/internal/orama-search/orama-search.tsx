@@ -63,6 +63,9 @@ export class OramaSearch {
             size="large"
             labelForScreenReaders="Search..."
             placeholder="Search..."
+            onResetValue={() => {
+              this.searchValue = ''
+            }}
           />
           <orama-chat-button
             active={!!this.searchValue}
