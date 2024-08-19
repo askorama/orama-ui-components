@@ -197,8 +197,6 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
-    console.log('COLOR SCHEMA:', this.colorScheme, this.systemScheme)
-
     return (
       <Fragment>
         <orama-modal

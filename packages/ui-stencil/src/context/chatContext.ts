@@ -15,6 +15,7 @@ export enum TAnswerStatus {
   loading = 'loading',
   streaming = 'streaming',
   error = 'error',
+  aborted = 'aborted',
   done = 'done',
 }
 

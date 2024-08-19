@@ -21,6 +21,18 @@ export class ChatService {
       this.answerSession = this.oramaClient.createAnswerSession({
         events: {
           onStateChange: (state) => {
+            if (state[state.length - 1].aborted) {
+              chatContext.interactions = chatContext.interactions.map((interaction, index) => {
+                if (index === chatContext.interactions.length - 1) {
+                  return {
+                    ...interaction,
+                    status: TAnswerStatus.aborted,
+                  }
+                }
+                return interaction
+              })
+              return
+            }
             chatContext.interactions = state.map((interaction, index) => {
               let answerStatus = TAnswerStatus.loading
 
