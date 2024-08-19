@@ -1,6 +1,5 @@
 import React from 'react'
-import { OramaChatBox, OramaSearchBox, OramaButton } from '@orama/react-components'
-import '@orama/react-components/dist/index.css'
+import { OramaChatBox, OramaSearchBox, OramaSearchButton } from '@orama/react-components'
 import './App.css'
 
 function App() {
@@ -34,18 +33,13 @@ function App() {
             </div>
           </section>
           <h2>Another section</h2>
-          <OramaButton
-            // TODO: This is a hotfix for the trigger being working on the first click only
+          <OramaSearchButton
             onClick={() => {
-              setOpen(false)
-              // Set true again on next diggest
-              setTimeout(() => {
-                setOpen(true)
-              })
+              setOpen(true)
             }}
           >
-            Open searchbox
-          </OramaButton>
+            Search
+          </OramaSearchButton>
           <p>
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
             atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
@@ -73,6 +67,7 @@ function App() {
             <OramaSearchBox
               open={open}
               colorScheme="dark"
+              onSearchboxClosed={() => setOpen(false)}
               index={{
                 api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
                 endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',

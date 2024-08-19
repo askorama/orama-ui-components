@@ -1,13 +1,12 @@
 {
   "name": "@orama/react-components",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "React components for Orama Cloud",
   "license": "Apache-2.0",
   "author": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "sideEffects": false,
   "files": ["dist"],
   "scripts": {
     "build": "tsup",
