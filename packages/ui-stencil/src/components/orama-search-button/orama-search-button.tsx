@@ -1,4 +1,4 @@
-import { Component, Watch, Prop, h, State, Element, Listen, Host, Event, type EventEmitter } from '@stencil/core'
+import { Component, Watch, Prop, h, State, Element, Listen, Host } from '@stencil/core'
 import type { ColorScheme } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
 import type { TThemeOverrides } from '@/components'
@@ -37,6 +37,16 @@ export class OramaSearchButton {
   handleSearchboxClosed(event: CustomEvent<ButtonClick>) {
     // TODO: should be based on the id of current searchbox
     this.buttonRef.querySelector('button').focus()
+  }
+
+  // trigger click when entering  '⌘ K' o Mac or 'Ctrl + K'
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault()
+      console.log('keydown')
+      this.buttonRef.click()
+    }
   }
 
   updateTheme() {

@@ -51,7 +51,7 @@ type Story = StoryObj<Components.OramaSearchButton>
 const Template = (label: string) => (args) => {
   const [{ openSearchbox }, updateArgs] = useArgs()
 
-  const searchbox = document.getElementById('orama-ui-search-box')
+  const searchbox = document.querySelector('orama-search-box')
   searchbox?.addEventListener('searchboxClosed', () => {
     updateArgs({ openSearchbox: false })
   })
@@ -61,7 +61,6 @@ const Template = (label: string) => (args) => {
       <div style="width: 240px">
       <orama-search-button
         label="${args.label}"
-        id="orama-ui-search-button"
         .colorScheme=${args.colorScheme}
         .size=${args.size}
         .onclick=${() => {
@@ -72,7 +71,6 @@ const Template = (label: string) => (args) => {
       </orama-search-button>
       </div>
       <orama-search-box
-        id="orama-ui-search-box"
         .open=${openSearchbox}
         .colorScheme=${args.colorScheme}
         .index=${demoIndexes.orama.index}

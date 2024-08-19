@@ -91,7 +91,7 @@ export class SearchBox {
   @Listen('keydown', { target: 'document' })
   handleCloseOnEsc(event: KeyboardEvent) {
     if (event.key === 'Escape') {
-      globalContext.open = false
+      this.closeSearchbox()
     }
   }
 

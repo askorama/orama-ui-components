@@ -6,14 +6,15 @@ export type DemoIndexConfig = Record<string, Components.OramaSearchBox>
 const demoIndexes: DemoIndexConfig = {
   orama: {
     open: true,
-    // index: {
-    //   api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
-    //   endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
-    // },
-    instance: new OramaClient({
+    index: {
       api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
       endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
-    }),
+    },
+    // Uncomment this line to use the OramaClient instance and comment the index prop
+    // clientInstance: new OramaClient({
+    //   api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
+    //   endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
+    // }),
     placeholder: 'What do you want to learn about Orama?',
     sourceBaseUrl: 'https://docs.orama.com',
     sourcesMap: {
