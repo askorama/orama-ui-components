@@ -86,7 +86,7 @@ export namespace Components {
     }
     interface OramaFooter {
         "class"?: string;
-        "colorScheme"?: ColorScheme;
+        "colorScheme"?: Omit<ColorScheme, 'system'>;
     }
     interface OramaInput {
         "autoFocus"?: boolean;
@@ -480,7 +480,7 @@ declare namespace LocalJSX {
     }
     interface OramaFooter {
         "class"?: string;
-        "colorScheme"?: ColorScheme;
+        "colorScheme"?: Omit<ColorScheme, 'system'>;
     }
     interface OramaInput {
         "autoFocus"?: boolean;

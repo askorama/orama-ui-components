@@ -171,8 +171,8 @@ export class SearchBox {
 
     this.el.id = this.componentID
     this.startServices()
-    this.updateTheme()
     this.detectSystemColorScheme()
+    this.updateTheme()
   }
 
   connectedCallback() {
@@ -196,6 +196,8 @@ export class SearchBox {
     if (!chatContext.chatService) {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
+
+    console.log('COLOR SCHEMA:', this.colorScheme, this.systemScheme)
 
     return (
       <Fragment>
@@ -230,7 +232,7 @@ export class SearchBox {
               />
             )}
           </div>
-          <orama-footer colorScheme={this.colorScheme} />
+          <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
         </orama-modal>
         {this.windowWidth > 1024 && (
           <orama-sliding-panel

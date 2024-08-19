@@ -14,7 +14,7 @@ export class OramaFooter {
   @Element() el: HTMLElement
 
   @Prop() class?: string
-  @Prop() colorScheme?: ColorScheme = 'light'
+  @Prop() colorScheme?: Omit<ColorScheme, 'system'> = 'light'
 
   render() {
     const imgName = this.colorScheme === 'dark' ? 'orama-when-dark.svg' : 'orama-when-light.svg'
