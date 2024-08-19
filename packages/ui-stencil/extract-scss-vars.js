@@ -142,7 +142,7 @@ async function extractExportVariables(css) {
     // Write the JavaScript file
     fs.writeFileSync('./src/config/colors.ts', `${comment}\n${jsContent}`, 'utf-8')
     // remove the temporary file
-    // fs.unlinkSync(scssFilePath)
+    fs.unlinkSync(scssFilePath)
     console.log('SCSS :export variables have been extracted to _colors.js')
   } catch (error) {
     console.error('Error extracting SCSS :export variables:', error)
