@@ -273,7 +273,7 @@ declare global {
         new (): HTMLOramaFooterElement;
     };
     interface HTMLOramaInputElementEventMap {
-        "oramaInputChanged": string;
+        "resetValue": void;
     }
     interface HTMLOramaInputElement extends Components.OramaInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOramaInputElementEventMap>(type: K, listener: (this: HTMLOramaInputElement, ev: OramaInputCustomEvent<HTMLOramaInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -488,7 +488,7 @@ declare namespace LocalJSX {
         "label"?: InputProps['label'];
         "labelForScreenReaders"?: InputProps['labelForScreenReaders'];
         "name"?: InputProps['name'];
-        "onOramaInputChanged"?: (event: OramaInputCustomEvent<string>) => void;
+        "onResetValue"?: (event: OramaInputCustomEvent<void>) => void;
         "placeholder"?: InputProps['placeholder'];
         "size"?: InputProps['size'];
         "type"?: InputProps['type'];

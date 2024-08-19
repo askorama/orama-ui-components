@@ -44,12 +44,12 @@ export class Input {
   private inputRef!: HTMLInputElement
 
   @Event({
-    eventName: 'oramaInputChanged',
+    eventName: 'resetValue',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  valueChange: EventEmitter<string>
+  resetValue!: EventEmitter<void>
 
   @State() value: string
 
@@ -67,6 +67,8 @@ export class Input {
 
   clearInputValue = (): void => {
     this.value = ''
+    this.inputRef.focus()
+    this.resetValue.emit()
   }
 
   ensureFocus() {
