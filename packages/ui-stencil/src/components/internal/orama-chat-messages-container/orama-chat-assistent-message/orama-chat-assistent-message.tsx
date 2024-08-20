@@ -51,7 +51,7 @@ export class OramaChatAssistentMessage {
       )
     }
 
-    if (!this.interaction.response) {
+    if (!this.interaction.sources?.length) {
       return
     }
 
@@ -82,7 +82,7 @@ export class OramaChatAssistentMessage {
           </div>
         )}
         <div class="message-wrapper">
-          <orama-markdown content={this.interaction.response} />
+          {!this.interaction.response ? <orama-dots-loader /> : <orama-markdown content={this.interaction.response} />}
 
           <div class={{ 'message-actions': true, hidden: this.interaction.status !== TAnswerStatus.done }}>
             {this.interaction.latest && (

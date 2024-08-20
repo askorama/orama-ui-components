@@ -35,8 +35,9 @@ export class ChatService {
             }
             chatContext.interactions = state.map((interaction, index) => {
               let answerStatus = TAnswerStatus.loading
-
-              if (interaction.loading && interaction.response) {
+              if (interaction.loading && interaction.sources) {
+                answerStatus = TAnswerStatus.rendering
+              } else if (interaction.loading && interaction.response) {
                 answerStatus = TAnswerStatus.streaming
               } else if (!interaction.loading && interaction.response) {
                 answerStatus = TAnswerStatus.done
