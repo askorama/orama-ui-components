@@ -36,25 +36,6 @@ export class OramaChatAssistentMessage {
     chatContext.chatService?.regenerateLatest()
   }
 
-  private carouselObserver() {
-    const carousel = this.carouselSourceRef
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            this.carouselStart = carousel.scrollLeft === 0
-            this.carouselEnd = carousel.scrollLeft === carousel.scrollWidth - carousel.clientWidth
-            // console.log('carouselStart', this.carouselStart)
-            // console.log('carouselEnd', this.carouselEnd)
-          }
-        }
-      },
-      { threshold: 0.5 },
-    )
-
-    observer.observe(carousel)
-  }
-
   private handleCarouselMove(next = true) {
     const carousel = this.carouselSourceRef
     const slide = carousel.querySelector('.source')
