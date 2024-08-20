@@ -40,13 +40,20 @@ export class OramaChatAssistentMessage {
     const carousel = this.carouselSourceRef
     const slide = carousel.querySelector('.source')
     const slideWidth = slide.clientWidth
-    carousel.scrollLeft = carousel.scrollLeft + (next ? slideWidth : -slideWidth)
+    const slideMargin = Number.parseInt(window.getComputedStyle(slide).marginRight, 10)
+    const slideTotalWidth = slideWidth + slideMargin
+    carousel.scrollLeft = carousel.scrollLeft + (next ? slideTotalWidth : -slideTotalWidth)
 
+    // TO be fixed
     if (next) {
+      if (this.carouselEnd) return
       this.carouselStart = false
-      this.carouselEnd = carousel.scrollLeft === carousel.scrollWidth - carousel.clientWidth
+      this.carouselEnd =
+        Number.parseInt(carousel.scrollLeft + slideTotalWidth.toString()) ===
+        carousel.scrollWidth - carousel.offsetWidth
     } else {
-      this.carouselStart = carousel.scrollLeft - slideWidth === 0
+      if (this.carouselStart) return
+      this.carouselStart = carousel.scrollLeft - slideTotalWidth === 0
       this.carouselEnd = false
     }
   }

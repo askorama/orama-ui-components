@@ -94,7 +94,6 @@
 
 .sources-wrapper {
   display: flex;
-  gap: var(--spacing-s, $spacing-s);
   overflow-x: auto;
   scrollbar-width: none;
   position: relative;
@@ -108,6 +107,7 @@
   position: relative;
   overflow: hidden;
   width: pxToRem(195);
+  margin-right: var(--spacing-s, $spacing-s);
   flex-grow: 0;
   flex-shrink: 0;
   text-decoration: none;
