@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, h } from '@stencil/core'
+import { Component, Host, Prop, State, h, Listen, Watch } from '@stencil/core'
 import type { TChatInteraction } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhCopy.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowsClockwise.mjs'
@@ -14,6 +14,10 @@ import { copyToClipboard } from '@/utils/utils'
 })
 export class OramaChatAssistentMessage {
   @Prop() interaction: TChatInteraction
+  @State() carouselEnd = false
+  @State() carouselStart = true
+
+  carouselSourceRef!: HTMLElement
 
   @State() isCopied = false
   handleCopyToClipboard = () => {
@@ -22,14 +26,48 @@ export class OramaChatAssistentMessage {
     copyToClipboard(this.interaction.response)
   }
 
-  handleRetryMessage = () => {
-    chatContext.chatService?.regenerateLatest()
-  }
-
   @State() isDisliked = false
   handleDislikeMessage = () => {
     // todo: replace with actual dislike logic
     this.isDisliked = !this.isDisliked
+  }
+
+  private handleRetryMessage = () => {
+    chatContext.chatService?.regenerateLatest()
+  }
+
+  private carouselObserver() {
+    const carousel = this.carouselSourceRef
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            this.carouselStart = carousel.scrollLeft === 0
+            this.carouselEnd = carousel.scrollLeft === carousel.scrollWidth - carousel.clientWidth
+            // console.log('carouselStart', this.carouselStart)
+            // console.log('carouselEnd', this.carouselEnd)
+          }
+        }
+      },
+      { threshold: 0.5 },
+    )
+
+    observer.observe(carousel)
+  }
+
+  private handleCarouselMove(next = true) {
+    const carousel = this.carouselSourceRef
+    const slide = carousel.querySelector('.source')
+    const slideWidth = slide.clientWidth
+    carousel.scrollLeft = carousel.scrollLeft + (next ? slideWidth : -slideWidth)
+
+    if (next) {
+      this.carouselStart = false
+      this.carouselEnd = carousel.scrollLeft === carousel.scrollWidth - carousel.clientWidth
+    } else {
+      this.carouselStart = carousel.scrollLeft - slideWidth === 0
+      this.carouselEnd = false
+    }
   }
 
   render() {
@@ -58,9 +96,29 @@ export class OramaChatAssistentMessage {
     return (
       <Host>
         {!!this.interaction.sources?.length && (
+          // TODO: move this to a separate component orama-sources
           <div class="sources-outer-wrapper">
-            <div class="sources-wrapper">
-              <h2 class="sr-only">Sources</h2>
+            <h2 class="sr-only">Sources</h2>
+            {/* {!this.carouselStart && (
+              <button
+                class="carousel-arrow carousel-arrow--prev"
+                onClick={() => this.handleCarouselMove(false)}
+                type="button"
+              >
+                &#8249;
+              </button>
+            )}
+
+            {!this.carouselEnd && (
+              <button
+                class="carousel-arrow carousel-arrow--next"
+                onClick={() => this.handleCarouselMove(true)}
+                type="button"
+              >
+                &#8250;
+              </button>
+            )} */}
+            <div class="sources-wrapper" ref={(el) => (this.carouselSourceRef = el)}>
               {this.interaction.sources.map((source, index) => (
                 <a
                   href={`${chatContext.sourceBaseURL}${source[chatContext.sourcesMap.path]}`}
@@ -69,6 +127,7 @@ export class OramaChatAssistentMessage {
                   key={`source-${index}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  id={`source-${index}`}
                 >
                   <orama-text as="h3" styledAs="span" class="source-title">
                     {source[chatContext.sourcesMap.title]}
