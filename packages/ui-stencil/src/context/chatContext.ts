@@ -12,8 +12,9 @@ import type { SourcesMap } from '@/types'
 // TODO;: this type should be imported from orama-client
 export enum TAnswerStatus {
   idle = 'idle',
-  loading = 'loading',
-  streaming = 'streaming',
+  loading = 'loading', // waiting for sources to be fetched
+  rendering = 'rendering', // rendering interaction sources
+  streaming = 'streaming', // streaming interaction answer
   error = 'error',
   aborted = 'aborted',
   done = 'done',
