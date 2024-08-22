@@ -3,7 +3,7 @@ import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
 import type { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
-import { globalContext } from '@/context/GlobalContext'
+import { globalContext, globalStore } from '@/context/GlobalContext'
 import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
 import { windowWidthListener } from '@/services/WindowService'
@@ -24,7 +24,7 @@ export class SearchBox {
   @Prop() colorScheme?: ColorScheme = 'light'
   @Prop() index?: CloudIndexConfig
   @Prop() clientInstance?: OramaClient
-  @Prop() open = false
+  @Prop({ mutable: true }) open = false
   @Prop() facetProperty?: string
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() sourceBaseUrl?: string
@@ -38,7 +38,6 @@ export class SearchBox {
   @State() componentID = generateRandomID('search-box')
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() windowWidth: number
-  @State() isOpen = this.open
 
   @Event() searchboxClosed: EventEmitter<{
     id: HTMLElement
@@ -59,17 +58,7 @@ export class SearchBox {
 
   @Watch('open')
   handleOpenPropChange(newValue: boolean) {
-    this.isOpen = newValue
-  }
-
-  @Watch('isOpen')
-  handleOpenChange(newValue: boolean) {
     globalContext.open = newValue
-    if (!newValue) {
-      this.searchboxClosed.emit({
-        id: this.el,
-      })
-    }
   }
 
   @Watch('facetProperty')
@@ -99,13 +88,15 @@ export class SearchBox {
   modalStatusChangedHandler(event: CustomEvent<{ open: boolean; id: HTMLElement }>) {
     if (event.detail.id === this.modalRef) {
       if (!event.detail.open) {
-        this.isOpen = false
+        globalContext.open = false
+        this.open = false
       }
     }
   }
 
   private closeSearchbox = () => {
-    this.isOpen = false
+    globalContext.open = false
+    this.open = false
   }
 
   updateTheme() {
@@ -160,8 +151,6 @@ export class SearchBox {
   }
 
   componentWillLoad() {
-    globalContext.open = this.isOpen
-
     // TODO: We probable want to keep these props below whithin the respective service
     // instance property. I seems to make sense to pass it as initialization prop.
     // Same goes for any other Chat init prop. Lets talk about it as well, please.
@@ -177,6 +166,9 @@ export class SearchBox {
 
   connectedCallback() {
     this.windowWidth = windowWidthListener.width
+    globalStore.onChange('open', () => {
+      this.open = globalContext.open
+    })
     windowWidthListener.addEventListener('widthChange', this.updateWindowWidth)
   }
 
@@ -201,7 +193,7 @@ export class SearchBox {
       <Fragment>
         <orama-modal
           ref={(el) => (this.modalRef = el)}
-          open={this.isOpen}
+          open={globalContext.open}
           class="modal"
           mainTitle="Start your search"
           closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
