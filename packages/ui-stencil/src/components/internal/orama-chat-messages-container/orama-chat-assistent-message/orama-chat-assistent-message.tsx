@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, h, Listen, Watch } from '@stencil/core'
+import { Component, Host, Prop, State, h } from '@stencil/core'
 import type { TChatInteraction } from '@/context/chatContext'
 import '@phosphor-icons/webcomponents/dist/icons/PhCopy.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowsClockwise.mjs'
@@ -14,11 +14,6 @@ import { copyToClipboard } from '@/utils/utils'
 })
 export class OramaChatAssistentMessage {
   @Prop() interaction: TChatInteraction
-  @State() carouselEnd = false
-  @State() carouselStart = true
-
-  carouselSourceRef!: HTMLElement
-
   @State() isCopied = false
   handleCopyToClipboard = () => {
     this.isCopied = true
@@ -34,28 +29,6 @@ export class OramaChatAssistentMessage {
 
   private handleRetryMessage = () => {
     chatContext.chatService?.regenerateLatest()
-  }
-
-  private handleCarouselMove(next = true) {
-    const carousel = this.carouselSourceRef
-    const slide = carousel.querySelector('.source')
-    const slideWidth = slide.clientWidth
-    const slideMargin = Number.parseInt(window.getComputedStyle(slide).marginRight, 10)
-    const slideTotalWidth = slideWidth + slideMargin
-    carousel.scrollLeft = carousel.scrollLeft + (next ? slideTotalWidth : -slideTotalWidth)
-
-    // TO be fixed
-    if (next) {
-      if (this.carouselEnd) return
-      this.carouselStart = false
-      this.carouselEnd =
-        Number.parseInt(carousel.scrollLeft + slideTotalWidth.toString()) ===
-        carousel.scrollWidth - carousel.offsetWidth
-    } else {
-      if (this.carouselStart) return
-      this.carouselStart = carousel.scrollLeft - slideTotalWidth === 0
-      this.carouselEnd = false
-    }
   }
 
   render() {
@@ -77,57 +50,13 @@ export class OramaChatAssistentMessage {
       )
     }
 
-    if (!this.interaction.sources?.length) {
-      return
-    }
-
     return (
       <Host>
-        {!!this.interaction.sources?.length && (
-          // TODO: move this to a separate component orama-sources
-          <div class="sources-outer-wrapper">
-            <h2 class="sr-only">Sources</h2>
-            {/* {!this.carouselStart && (
-              <button
-                class="carousel-arrow carousel-arrow--prev"
-                onClick={() => this.handleCarouselMove(false)}
-                type="button"
-              >
-                &#8249;
-              </button>
-            )}
-
-            {!this.carouselEnd && (
-              <button
-                class="carousel-arrow carousel-arrow--next"
-                onClick={() => this.handleCarouselMove(true)}
-                type="button"
-              >
-                &#8250;
-              </button>
-            )} */}
-            <div class="sources-wrapper" ref={(el) => (this.carouselSourceRef = el)}>
-              {this.interaction.sources.map((source, index) => (
-                <a
-                  href={`${chatContext.sourceBaseURL}${source[chatContext.sourcesMap.path]}`}
-                  class="source"
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                  key={`source-${index}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id={`source-${index}`}
-                >
-                  <orama-text as="h3" styledAs="span" class="source-title">
-                    {source[chatContext.sourcesMap.title]}
-                  </orama-text>
-                  <orama-text as="p" styledAs="span" class="source-subtitle" variant="tertiary">
-                    {source[chatContext.sourcesMap.description]}
-                  </orama-text>
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
+        <orama-sources
+          sources={this.interaction.sources}
+          sourceBaseURL={chatContext.sourceBaseURL}
+          sourcesMap={chatContext.sourcesMap}
+        />
         <div class="message-wrapper">
           {!this.interaction.response ? <orama-dots-loader /> : <orama-markdown content={this.interaction.response} />}
 

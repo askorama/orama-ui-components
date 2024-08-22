@@ -47,8 +47,10 @@ graph TD;
   orama-chat-user-message --> orama-text
   orama-chat-assistent-message --> orama-dots-loader
   orama-chat-assistent-message --> orama-text
+  orama-chat-assistent-message --> orama-sources
   orama-chat-assistent-message --> orama-markdown
   orama-chat-assistent-message --> orama-button
+  orama-sources --> orama-text
   orama-chat-box --> orama-chat
   orama-search-box --> orama-chat
   style orama-chat fill:#f9f,stroke:#333,stroke-width:4px

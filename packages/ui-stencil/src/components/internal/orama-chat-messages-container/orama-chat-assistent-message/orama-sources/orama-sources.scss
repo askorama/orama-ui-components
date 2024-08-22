@@ -1,0 +1,106 @@
+.sources-outer-wrapper {
+  overflow: hidden;
+  position: relative;
+  margin: 0 var(--spacing-s, $spacing-s) var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
+}
+
+.source-next {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.carousel-arrow {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  margin-block: auto;
+  height: fit-content;
+  height: 100%;
+  color: var(--text-color-secondary, text-color('secondary'));
+  padding: 0 var(--spacing-m, $spacing-m);
+  border: none;
+  font-size: pxToRem(18);
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    opacity 0.2s;
+  opacity: 1;
+  z-index: 1;
+
+  &.hidden {
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus {
+  &:not(.hidden) {
+    color: var(--text-color-primary, text-color('primary'));
+  }
+}
+
+.carousel-arrow--prev {
+  left: 0;
+  background: linear-gradient(-90deg, transparent, 70%, var(--background-color-primary, background-color('primary')));
+}
+
+.carousel-arrow--next {
+  right: 0;
+  background: linear-gradient(90deg, transparent, 30%, var(--background-color-primary, background-color('primary')));
+}
+
+.sources-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: relative;
+
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+}
+
+.source {
+  position: relative;
+  overflow: hidden;
+  width: pxToRem(195);
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-decoration: none;
+  padding: var(--spacing-m, $spacing-m);
+  border-radius: var(--radius-s, $radius-s);
+  background: var(--background-color-secondary, background-color('secondary'));
+  transition: background 0.2s ease-in-out;
+
+  .source-title,
+  .source-subtitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--background-color-tertiary, background-color('tertiary'));
+    }
+  }
+}
+
+.source-inner-wrapper {
+  position: relative;
+  display: flex;
+  padding-right: var(--spacing-s, $spacing-s);
+
+  &:last-of-type {
+    padding-right: var(--spacing-l, $spacing-l);
+  }
+}
+
+.sr-only {
+  @include screen-reader-only();
+}

@@ -122,6 +122,36 @@ export const ChatAssistentMessage: Story = {
           description: 'The capital of France',
           path: 'https://en.wikipedia.org/wiki/Paris',
         },
+        {
+          title: 'Buenos Aires',
+          description: 'The capital of Argentina',
+          path: 'https://en.wikipedia.org/wiki/Buenos_Aires',
+        },
+        {
+          title: 'Brasília',
+          description: 'The capital of Brasil',
+          path: 'https://en.wikipedia.org/wiki/Brazil',
+        },
+        {
+          title: 'Recife',
+          description: 'Alternative capital of Brazil',
+          path: 'https://en.wikipedia.org/wiki/Recife',
+        },
+        {
+          title: 'Pernambuco',
+          description: 'A country inside Brazil',
+          path: 'https://en.wikipedia.org/wiki/Brasil',
+        },
+        {
+          title: 'Imbiribeira',
+          description: 'Neughbourhood of Recife',
+          path: 'https://en.wikipedia.org/wiki/imbiribeira',
+        },
+        {
+          title: 'Lagoa do Araça',
+          description: 'Neughbourhood of Recife',
+          path: 'https://en.wikipedia.org/wiki/imbiribeira',
+        },
       ],
       // biome-ignore lint/suspicious/noExplicitAny: Enum is rasing error here...
       status: 'done' as any,
