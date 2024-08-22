@@ -1,6 +1,5 @@
 import type { StoryObj, Meta } from '@storybook/web-components'
 import type { Components } from '@orama/wc-components'
-import { useArgs } from '@storybook/preview-api'
 import demoIndexes from '../config'
 import { html } from 'lit-html'
 
@@ -49,13 +48,6 @@ export default meta
 type Story = StoryObj<Components.OramaSearchButton>
 
 const Template = (label: string) => (args) => {
-  const [{ openSearchbox }, updateArgs] = useArgs()
-
-  const searchbox = document.querySelector('orama-search-box')
-  searchbox?.addEventListener('searchboxClosed', () => {
-    updateArgs({ openSearchbox: false })
-  })
-
   return html`
     <div style="display: flex; justify-content: flex-start">
       <div style="width: 240px">
@@ -63,15 +55,11 @@ const Template = (label: string) => (args) => {
         label="${args.label}"
         .colorScheme=${args.colorScheme}
         .size=${args.size}
-        .onclick=${() => {
-          updateArgs({ openSearchbox: !openSearchbox })
-        }}
       >
           ${label}
       </orama-search-button>
       </div>
       <orama-search-box
-        .open=${openSearchbox}
         .colorScheme=${args.colorScheme}
         .index=${demoIndexes.orama.index}
         .placeholder=${demoIndexes.orama.placeholder}

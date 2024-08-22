@@ -33,13 +33,7 @@ function App() {
             </div>
           </section>
           <h2>Another section</h2>
-          <OramaSearchButton
-            onClick={() => {
-              setOpen(true)
-            }}
-          >
-            Search
-          </OramaSearchButton>
+          <OramaSearchButton>Search</OramaSearchButton>
           <p>
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
             atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique

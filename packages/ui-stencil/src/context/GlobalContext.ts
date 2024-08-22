@@ -1,9 +1,9 @@
-import { createStore } from '@stencil/store'
+import { createStore } from '@stencil/store';
 
-const { state: globalContext } = createStore({
+const { state: globalContext, ...globalStore } = createStore({
   open: false,
   currentTask: 'search' as 'search' | 'chat',
   currentTerm: '',
-})
+});
 
-export { globalContext }
+export { globalContext, globalStore };

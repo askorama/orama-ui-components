@@ -3,6 +3,7 @@ import type { ColorScheme } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhMagnifyingGlass.mjs'
 import type { TThemeOverrides } from '@/components'
 import { generateRandomID } from '@/utils/utils'
+import { globalContext } from '@/context/GlobalContext'
 
 export type ButtonClick = {
   id: HTMLElement
@@ -44,7 +45,6 @@ export class OramaSearchButton {
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
       event.preventDefault()
-      console.log('keydown')
       this.buttonRef.click()
     }
   }
@@ -109,7 +109,16 @@ export class OramaSearchButton {
   render() {
     return (
       <Host>
-        <orama-button type="button" variant="secondary" ref={(el) => (this.buttonRef = el)} size={this.size}>
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+        <orama-button
+          type="button"
+          variant="secondary"
+          ref={(el) => (this.buttonRef = el)}
+          size={this.size}
+          onClick={() => {
+            globalContext.open = true
+          }}
+        >
           <span slot="adorment-start">
             <ph-magnifying-glass />
           </span>
