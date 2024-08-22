@@ -115,7 +115,7 @@
   border-radius: var(--radius-s, $radius-s);
   background: var(--background-color-secondary, background-color('secondary'));
   transition: background 0.2s ease-in-out;
-  scroll-snap-align: start;
+  // scroll-snap-align: start;
 
   .source-title,
   .source-subtitle {
