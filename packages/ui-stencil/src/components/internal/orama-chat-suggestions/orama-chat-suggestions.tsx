@@ -33,7 +33,10 @@ export class OramaChatSuggestions {
               <button
                 type="button"
                 class={`suggestion-button-${classSuffix}`}
-                onClick={() => this.handleClick(suggestion)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  this.handleClick(suggestion)
+                }}
               >
                 {this.icon}
                 {suggestion}
