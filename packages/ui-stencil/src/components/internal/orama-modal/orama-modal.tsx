@@ -22,6 +22,8 @@ export class OramaModal {
 
   @Element() el: HTMLElement
 
+  originalBodyOverflowState = 'scroll'
+
   private firstFocusableElement: HTMLElement
   private lastFocusableElement: HTMLElement
   private innerModalRef: HTMLElement
@@ -56,6 +58,12 @@ export class OramaModal {
       open: newValue,
       id: this.el,
     })
+
+    if (newValue) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = this.originalBodyOverflowState
+    }
   }
 
   @Watch('open')
@@ -105,9 +113,12 @@ export class OramaModal {
   }
 
   componentDidLoad() {
+    this.originalBodyOverflowState = document.body.style.overflow
+
     if (this.modalIsOpen) {
       this.activeElement = document.activeElement as HTMLElement
       this.handleFocus()
+      document.body.style.overflow = 'hidden'
     }
     this.el.addEventListener('click', (event) => {
       event.stopPropagation()
