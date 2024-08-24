@@ -166,9 +166,12 @@ export class SearchBox {
 
   connectedCallback() {
     this.windowWidth = windowWidthListener.width
+    globalContext.open = this.open
+
     globalStore.onChange('open', () => {
       this.open = globalContext.open
     })
+
     windowWidthListener.addEventListener('widthChange', this.updateWindowWidth)
   }
 

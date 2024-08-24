@@ -71,7 +71,7 @@ export default meta
 
 const Template = ({ preset, colorScheme }) => {
   return html`<orama-search-box
-    open=${preset?.open}
+    .open=${preset?.open}
     .facetProperty=${preset?.facetProperty}
     .resultMap=${preset?.resultMap}
     .colorScheme=${colorScheme}

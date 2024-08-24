@@ -101,7 +101,15 @@ export class ChatService {
       throw new OramaClientNotInitializedError();
     }
 
+    if (chatContext.interactions.length < 1) {
+      return;
+    }
+
     // TODO: SDK should abort any streaming before cleaning the sessions. It is not doing that today
+    if (['loading', 'rendering', 'streaming'].includes(chatContext.interactions[chatContext.interactions.length - 1].status)) {
+      this.answerSession.abortAnswer();
+    }
+
     this.answerSession.clearSession();
   };
 }
