@@ -18,7 +18,7 @@ import type { CloudIndexConfig } from '@/types'
   shadow: true,
 })
 export class SearchBox {
-  @Element() el: HTMLElement
+  @Element() htmlElement!: HTMLElement
 
   @Prop() themeConfig?: Partial<TThemeOverrides>
   @Prop() colorScheme?: ColorScheme = 'light'
@@ -44,6 +44,8 @@ export class SearchBox {
   }>
 
   modalRef!: HTMLElement
+
+  schemaQuery: MediaQueryList
 
   @Watch('index')
   indexChanged() {
@@ -101,7 +103,7 @@ export class SearchBox {
 
   updateTheme() {
     const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
-    const uiElement = this.el as HTMLElement
+    const uiElement = this.htmlElement
 
     if (uiElement && scheme) {
       uiElement.classList.remove('theme-light', 'theme-dark')
@@ -113,7 +115,7 @@ export class SearchBox {
 
   updateCssVariables(scheme: ColorScheme) {
     const config = this.themeConfig
-    const root = this.el as HTMLElement
+    const root = this.htmlElement as HTMLElement
 
     if (root && config && scheme) {
       if (config.colors?.[scheme]) {
@@ -129,21 +131,8 @@ export class SearchBox {
     }
   }
 
-  detectSystemColorScheme() {
-    const darkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-    this.systemScheme = darkSchemeQuery.matches ? 'dark' : 'light'
-
-    darkSchemeQuery.addEventListener('change', (event) => {
-      this.systemScheme = event.matches ? 'dark' : 'light'
-      if (this.colorScheme === 'system') {
-        this.updateTheme()
-      }
-    })
-  }
-
   startServices() {
-    validateCloudIndexConfig(this.el, this.index, this.clientInstance)
+    validateCloudIndexConfig(this.htmlElement, this.index, this.clientInstance)
     this.oramaClient = this.clientInstance ? this.clientInstance : initOramaClient(this.index)
 
     searchState.searchService = new SearchService(this.oramaClient)
@@ -158,9 +147,12 @@ export class SearchBox {
     searchState.resultMap = this.resultMap
     searchState.searchParams = this.searchParams
 
-    this.el.id = this.componentID
+    this.htmlElement.id = this.componentID
     this.startServices()
-    this.detectSystemColorScheme()
+  }
+
+  private onPrefersColorSchemeChange = (event) => {
+    this.systemScheme = event.matches ? 'dark' : 'light'
     this.updateTheme()
   }
 
@@ -172,11 +164,18 @@ export class SearchBox {
       this.open = globalContext.open
     })
 
+    this.htmlElement.id = this.componentID
+    this.schemaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    this.systemScheme = this.schemaQuery.matches ? 'dark' : 'light'
+    this.updateTheme()
+
+    this.schemaQuery.addEventListener('change', this.onPrefersColorSchemeChange)
     windowWidthListener.addEventListener('widthChange', this.updateWindowWidth)
   }
 
   disconnectedCallback() {
     windowWidthListener.removeEventListener('widthChange', this.updateWindowWidth)
+    this.schemaQuery?.removeEventListener('change', this.onPrefersColorSchemeChange)
   }
 
   private updateWindowWidth = (event: CustomEvent) => {

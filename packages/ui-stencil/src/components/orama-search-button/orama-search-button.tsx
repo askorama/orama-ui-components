@@ -16,7 +16,7 @@ export type ButtonClick = {
   shadow: true,
 })
 export class OramaSearchButton {
-  @Element() el: HTMLElement
+  @Element() htmlElement!: HTMLElement
 
   @Prop() size: 'small' | 'medium' | 'large' = 'medium'
   @Prop() themeConfig?: Partial<TThemeOverrides>
@@ -25,6 +25,8 @@ export class OramaSearchButton {
   @State() systemScheme: Omit<ColorScheme, 'system'> = 'light'
   @State() shortcutLabel = ''
   @State() componentID = generateRandomID('search-button')
+
+  schemaQuery!: MediaQueryList
 
   @Watch('themeConfig')
   @Watch('colorScheme')
@@ -51,7 +53,7 @@ export class OramaSearchButton {
 
   updateTheme() {
     const scheme = this.colorScheme === 'system' ? this.systemScheme : this.colorScheme
-    const uiElement = this.el as HTMLElement
+    const uiElement = this.htmlElement
 
     if (uiElement && scheme) {
       uiElement.classList.remove('theme-light', 'theme-dark')
@@ -63,7 +65,7 @@ export class OramaSearchButton {
 
   updateCssVariables(scheme: ColorScheme) {
     const config = this.themeConfig
-    const root = this.el as HTMLElement
+    const root = this.htmlElement
 
     if (root && config && scheme) {
       if (config.colors?.[scheme]) {
@@ -79,19 +81,6 @@ export class OramaSearchButton {
     }
   }
 
-  detectSystemColorScheme() {
-    const darkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
-
-    this.systemScheme = darkSchemeQuery.matches ? 'dark' : 'light'
-
-    darkSchemeQuery.addEventListener('change', (event) => {
-      this.systemScheme = event.matches ? 'dark' : 'light'
-      if (this.colorScheme === 'system') {
-        this.updateTheme()
-      }
-    })
-  }
-
   private handleShortcutLabel() {
     const userAgent = navigator.userAgent
     const isMac = userAgent.includes('Mac')
@@ -99,11 +88,23 @@ export class OramaSearchButton {
     return isMac ? '⌘ K' : 'Ctrl + K'
   }
 
-  componentWillLoad() {
-    this.el.id = this.componentID
+  private onPrefersColorSchemeChange = (event) => {
+    this.systemScheme = event.matches ? 'dark' : 'light'
     this.updateTheme()
-    this.detectSystemColorScheme()
+  }
+  connectedCallback() {
+    this.htmlElement.id = this.componentID
     this.shortcutLabel = this.handleShortcutLabel()
+
+    this.schemaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    this.systemScheme = this.schemaQuery.matches ? 'dark' : 'light'
+    this.updateTheme()
+
+    this.schemaQuery.addEventListener('change', this.onPrefersColorSchemeChange)
+  }
+
+  disconnectedCallback() {
+    this.schemaQuery.removeEventListener('change', this.onPrefersColorSchemeChange)
   }
 
   render() {

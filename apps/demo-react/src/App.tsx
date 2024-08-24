@@ -33,7 +33,7 @@ function App() {
             </div>
           </section>
           <h2>Another section</h2>
-          <OramaSearchButton>Search</OramaSearchButton>
+          <OramaSearchButton colorScheme="system">Search</OramaSearchButton>
           <p>
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
             atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique
@@ -60,7 +60,7 @@ function App() {
           <div className="component-row">
             <OramaSearchBox
               open={open}
-              colorScheme="dark"
+              colorScheme="system"
               onSearchboxClosed={() => setOpen(false)}
               index={{
                 api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
