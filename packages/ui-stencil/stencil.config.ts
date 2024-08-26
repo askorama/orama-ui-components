@@ -15,6 +15,10 @@ const componentCorePackage = '@orama/wc-components'
 
 export const config: Config = {
   namespace,
+  extras: {
+    // Otherwise we would need to import each coomponent in applications with bunlders like vite.
+    enableImportInjection: true,
+  },
   globalStyle: 'src/styles/globals.scss',
   outputTargets: [
     {
