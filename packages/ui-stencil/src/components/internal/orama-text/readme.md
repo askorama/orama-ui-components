@@ -27,6 +27,7 @@
  - [orama-footer](../orama-footer)
  - [orama-search-box](../../orama-search-box)
  - [orama-search-results](../orama-search-results)
+ - [orama-sources](../orama-chat-messages-container/orama-chat-assistent-message/orama-sources)
 
 ### Graph
 ```mermaid
@@ -38,6 +39,7 @@ graph TD;
   orama-footer --> orama-text
   orama-search-box --> orama-text
   orama-search-results --> orama-text
+  orama-sources --> orama-text
   style orama-text fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

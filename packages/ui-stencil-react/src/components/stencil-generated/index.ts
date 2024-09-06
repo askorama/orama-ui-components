@@ -29,6 +29,7 @@ export const OramaSearchBox = /*@__PURE__*/createReactComponent<JSX.OramaSearchB
 export const OramaSearchButton = /*@__PURE__*/createReactComponent<JSX.OramaSearchButton, HTMLOramaSearchButtonElement>('orama-search-button');
 export const OramaSearchResults = /*@__PURE__*/createReactComponent<JSX.OramaSearchResults, HTMLOramaSearchResultsElement>('orama-search-results');
 export const OramaSlidingPanel = /*@__PURE__*/createReactComponent<JSX.OramaSlidingPanel, HTMLOramaSlidingPanelElement>('orama-sliding-panel');
+export const OramaSources = /*@__PURE__*/createReactComponent<JSX.OramaSources, HTMLOramaSourcesElement>('orama-sources');
 export const OramaText = /*@__PURE__*/createReactComponent<JSX.OramaText, HTMLOramaTextElement>('orama-text');
 export const OramaTextarea = /*@__PURE__*/createReactComponent<JSX.OramaTextarea, HTMLOramaTextareaElement>('orama-textarea');
 export const OramaToggler = /*@__PURE__*/createReactComponent<JSX.OramaToggler, HTMLOramaTogglerElement>('orama-toggler');

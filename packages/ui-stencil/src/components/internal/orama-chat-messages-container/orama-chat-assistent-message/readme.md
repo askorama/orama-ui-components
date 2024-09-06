@@ -22,6 +22,7 @@
 
 - [orama-dots-loader](../../orama-dots-loader)
 - [orama-text](../../orama-text)
+- [orama-sources](orama-sources)
 - [orama-markdown](orama-markdown)
 - [orama-button](../../orama-button)
 
@@ -30,8 +31,10 @@
 graph TD;
   orama-chat-assistent-message --> orama-dots-loader
   orama-chat-assistent-message --> orama-text
+  orama-chat-assistent-message --> orama-sources
   orama-chat-assistent-message --> orama-markdown
   orama-chat-assistent-message --> orama-button
+  orama-sources --> orama-text
   orama-chat-messages-container --> orama-chat-assistent-message
   style orama-chat-assistent-message fill:#f9f,stroke:#333,stroke-width:4px
 ```

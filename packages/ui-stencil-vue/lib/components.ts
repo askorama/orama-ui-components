@@ -174,6 +174,13 @@ export const OramaSlidingPanel = /*@__PURE__*/ defineContainer<JSX.OramaSlidingP
 ]);
 
 
+export const OramaSources = /*@__PURE__*/ defineContainer<JSX.OramaSources>('orama-sources', undefined, [
+  'sources',
+  'sourceBaseURL',
+  'sourcesMap'
+]);
+
+
 export const OramaText = /*@__PURE__*/ defineContainer<JSX.OramaText>('orama-text', undefined, [
   'as',
   'styledAs',
