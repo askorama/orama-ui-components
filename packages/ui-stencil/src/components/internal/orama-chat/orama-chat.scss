@@ -90,3 +90,23 @@ orama-logo-icon {
   right: 50%;
   transform: translate(50%, -50%);
 }
+
+.empty-state-container {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  //
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-m, $spacing-m);
+  width: 100%;
+}
+
+.empty-state-text {
+  text-align: center;
+  color: var(--text-color-tertiary, text-color('tertiary'));
+  max-width: 200px;
+}

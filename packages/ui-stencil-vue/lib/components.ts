@@ -23,10 +23,12 @@ export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-cha
   'placeholder',
   'sourceBaseUrl',
   'sourcesMap',
-  'showClearChat',
+  'showHeader',
   'defaultTerm',
   'focusInput',
-  'suggestions'
+  'suggestions',
+  'chatTitle',
+  'emptyStateText'
 ]);
 
 
@@ -41,7 +43,9 @@ export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('ora
   'sourceBaseUrl',
   'placeholder',
   'sourcesMap',
-  'suggestions'
+  'suggestions',
+  'chatTitle',
+  'emptyStateText'
 ]);
 
 
@@ -101,6 +105,11 @@ export const OramaInput = /*@__PURE__*/ defineContainer<JSX.OramaInput>('orama-i
 
 
 export const OramaLogoIcon = /*@__PURE__*/ defineContainer<JSX.OramaLogoIcon>('orama-logo-icon', undefined, [
+  'size'
+]);
+
+
+export const OramaLogoMessageBoxesIcon = /*@__PURE__*/ defineContainer<JSX.OramaLogoMessageBoxesIcon>('orama-logo-message-boxes-icon', undefined, [
   'size'
 ]);
 

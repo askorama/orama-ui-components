@@ -40,10 +40,12 @@ export namespace Components {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "chatTitle"?: string;
         "defaultTerm"?: string;
+        "emptyStateText"?: string;
         "focusInput"?: boolean;
         "placeholder"?: string;
-        "showClearChat"?: boolean;
+        "showHeader"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
@@ -52,7 +54,9 @@ export namespace Components {
         "interaction": TChatInteraction;
     }
     interface OramaChatBox {
+        "chatTitle"?: string;
         "clientInstance"?: OramaClient;
+        "emptyStateText"?: string;
         "index"?: CloudIndexConfig;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
@@ -99,6 +103,9 @@ export namespace Components {
         "type"?: InputProps['type'];
     }
     interface OramaLogoIcon {
+        "size": number;
+    }
+    interface OramaLogoMessageBoxesIcon {
         "size": number;
     }
     interface OramaMarkdown {
@@ -300,6 +307,12 @@ declare global {
         prototype: HTMLOramaLogoIconElement;
         new (): HTMLOramaLogoIconElement;
     };
+    interface HTMLOramaLogoMessageBoxesIconElement extends Components.OramaLogoMessageBoxesIcon, HTMLStencilElement {
+    }
+    var HTMLOramaLogoMessageBoxesIconElement: {
+        prototype: HTMLOramaLogoMessageBoxesIconElement;
+        new (): HTMLOramaLogoMessageBoxesIconElement;
+    };
     interface HTMLOramaMarkdownElement extends Components.OramaMarkdown, HTMLStencilElement {
     }
     var HTMLOramaMarkdownElement: {
@@ -421,6 +434,7 @@ declare global {
         "orama-footer": HTMLOramaFooterElement;
         "orama-input": HTMLOramaInputElement;
         "orama-logo-icon": HTMLOramaLogoIconElement;
+        "orama-logo-message-boxes-icon": HTMLOramaLogoMessageBoxesIconElement;
         "orama-markdown": HTMLOramaMarkdownElement;
         "orama-modal": HTMLOramaModalElement;
         "orama-navigation-bar": HTMLOramaNavigationBarElement;
@@ -446,10 +460,12 @@ declare namespace LocalJSX {
         "withTooltip"?: string;
     }
     interface OramaChat {
+        "chatTitle"?: string;
         "defaultTerm"?: string;
+        "emptyStateText"?: string;
         "focusInput"?: boolean;
         "placeholder"?: string;
-        "showClearChat"?: boolean;
+        "showHeader"?: boolean;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
@@ -458,7 +474,9 @@ declare namespace LocalJSX {
         "interaction"?: TChatInteraction;
     }
     interface OramaChatBox {
+        "chatTitle"?: string;
         "clientInstance"?: OramaClient;
+        "emptyStateText"?: string;
         "index"?: CloudIndexConfig;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
@@ -506,6 +524,9 @@ declare namespace LocalJSX {
         "type"?: InputProps['type'];
     }
     interface OramaLogoIcon {
+        "size"?: number;
+    }
+    interface OramaLogoMessageBoxesIcon {
         "size"?: number;
     }
     interface OramaMarkdown {
@@ -619,6 +640,7 @@ declare namespace LocalJSX {
         "orama-footer": OramaFooter;
         "orama-input": OramaInput;
         "orama-logo-icon": OramaLogoIcon;
+        "orama-logo-message-boxes-icon": OramaLogoMessageBoxesIcon;
         "orama-markdown": OramaMarkdown;
         "orama-modal": OramaModal;
         "orama-navigation-bar": OramaNavigationBar;
@@ -650,6 +672,7 @@ declare module "@stencil/core" {
             "orama-footer": LocalJSX.OramaFooter & JSXBase.HTMLAttributes<HTMLOramaFooterElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;
             "orama-logo-icon": LocalJSX.OramaLogoIcon & JSXBase.HTMLAttributes<HTMLOramaLogoIconElement>;
+            "orama-logo-message-boxes-icon": LocalJSX.OramaLogoMessageBoxesIcon & JSXBase.HTMLAttributes<HTMLOramaLogoMessageBoxesIconElement>;
             "orama-markdown": LocalJSX.OramaMarkdown & JSXBase.HTMLAttributes<HTMLOramaMarkdownElement>;
             "orama-modal": LocalJSX.OramaModal & JSXBase.HTMLAttributes<HTMLOramaModalElement>;
             "orama-navigation-bar": LocalJSX.OramaNavigationBar & JSXBase.HTMLAttributes<HTMLOramaNavigationBarElement>;

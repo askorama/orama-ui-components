@@ -19,6 +19,8 @@ export class ChatBox {
   @Prop() placeholder?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() suggestions?: string[]
+  @Prop() chatTitle?: string
+  @Prop() emptyStateText?: string
 
   @State() oramaClient: OramaClient
   @State() componentID = generateRandomID('chat-box')
@@ -46,13 +48,14 @@ export class ChatBox {
     }
 
     return (
-      // * Note: only dark theme supported at the moment
-      <Host class="theme-dark">
+      <Host>
         <orama-chat
           placeholder={this.placeholder}
           sourceBaseUrl={this.sourceBaseUrl}
           sourcesMap={this.sourcesMap}
           suggestions={this.suggestions}
+          chatTitle={this.chatTitle}
+          emptyStateText={this.emptyStateText}
         />
       </Host>
     )

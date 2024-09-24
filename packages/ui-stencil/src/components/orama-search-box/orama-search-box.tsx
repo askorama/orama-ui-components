@@ -215,7 +215,7 @@ export class SearchBox {
               <orama-chat
                 class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
                 defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
-                showClearChat={false}
+                showHeader={false}
                 focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
                 placeholder={this.placeholder}
                 sourceBaseUrl={this.sourceBaseUrl}
@@ -236,7 +236,7 @@ export class SearchBox {
             <orama-chat
               placeholder={this.placeholder}
               defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
-              showClearChat={false}
+              showHeader={false}
               sourceBaseUrl={this.sourceBaseUrl}
               sourcesMap={this.sourcesMap}
               focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}

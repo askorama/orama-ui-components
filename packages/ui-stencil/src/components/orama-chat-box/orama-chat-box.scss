@@ -4,9 +4,13 @@
 }
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: var(--spacing-m, $spacing-m) var(--spacing-l, $spacing-l);
-  background: var(--background-color-primary, background-color('primary'));
-  text-align: end;
+  background: var(--background-color-fourth, background-color('fourth'));
+  border: 1px solid var(--border-color-primary, border-color('primary'));
+  // text-align: end;
   transition: opacity 0.2s;
 
   &.hidden button {
@@ -33,4 +37,8 @@
       background-color: var(--background-color-tertiary, background-color('tertiary'));
     }
   }
+}
+
+.header.hidden {
+  display: none;
 }

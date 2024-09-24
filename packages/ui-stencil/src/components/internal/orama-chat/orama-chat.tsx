@@ -15,10 +15,13 @@ export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
   @Prop() sourceBaseUrl?: string = ''
   @Prop() sourcesMap?: SourcesMap
-  @Prop() showClearChat?: boolean = true
+  @Prop() showHeader?: boolean = true
   @Prop() defaultTerm?: string
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[]
+
+  @Prop() chatTitle?: string = undefined
+  @Prop() emptyStateText?: string
 
   @State() inputValue = ''
   @State() showGoToBottomButton = false
@@ -241,24 +244,30 @@ export class OramaChat {
     return this.messagesContainerRef.scrollHeight > this.messagesContainerRef.clientHeight
   }
 
+
   render() {
     const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
     const lastInteractionStatus = lastInteraction?.status
+    const hasInteractions = chatContext.interactions?.length > 0
+    const showHeader = this.showHeader && (hasInteractions || !!this.chatTitle)
 
-    // ? Question: Maybe should be a orama-button variant?
     return (
       <Host>
-        {this.showClearChat && (
-          <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
+        <div class={{ header: true, hidden: !showHeader }}>
+          <orama-text as="p" styledAs='span' bold align="left">
+            {!!this.chatTitle && this.chatTitle}
+          </orama-text>
+
+          {hasInteractions && (
             <button
               type="button"
               onClick={() => chatContext.chatService.resetChat()}
-              aria-hidden={chatContext.interactions?.length === 0}
+              aria-hidden={!hasInteractions}
             >
               <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
             </button>
-          </div>
-        )}
+          )}
+        </div>
         {/* CHAT MESSAGES */}
         <div class={'messages-container-wrapper-non-scrollable'}>
           <div
@@ -268,7 +277,16 @@ export class OramaChat {
             <div ref={(ref) => (this.nonScrollableMessagesContainerRef = ref)}>
               {chatContext.interactions?.length ? (
                 <orama-chat-messages-container interactions={chatContext.interactions} />
-              ) : null}
+              ) : (
+                !!this.emptyStateText ? (
+                  <div class="empty-state-container">
+                    <orama-logo-message-boxes-icon />
+                    <orama-text as="p" align="center" class="empty-state-text">
+                      {this.emptyStateText}
+                    </orama-text>
+                  </div>
+                ) : null
+              )}
 
               {/* TODO: Provide a better animation */}
               {!chatContext.interactions?.length && !!this.suggestions?.length ? (

@@ -55,6 +55,20 @@ const meta: Meta<
         },
       },
     },
+    emptyStateText: {
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    chatTitle: {
+      table: {
+        type: {
+          summary: 'string',
+        },
+      },
+    },
   },
   parameters: {
     layout: 'set-height',
@@ -72,6 +86,8 @@ const Template = ({ preset }) => {
       sourceBaseUrl=${preset?.sourceBaseUrl}
       .sourcesMap=${preset?.sourcesMap}
       .suggestions=${preset?.suggestions}
+      .emptyStateText=${preset?.emptyStateText}
+      .chatTitle=${preset?.chatTitle}
     ></orama-chat-box>
   `
 }
