@@ -7,15 +7,17 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type                                                       | Default             |
-| --------------- | ----------------- | ----------- | ---------------------------------------------------------- | ------------------- |
-| `defaultTerm`   | `default-term`    |             | `string`                                                   | `undefined`         |
-| `focusInput`    | `focus-input`     |             | `boolean`                                                  | `false`             |
-| `placeholder`   | `placeholder`     |             | `string`                                                   | `'Ask me anything'` |
-| `showClearChat` | `show-clear-chat` |             | `boolean`                                                  | `true`              |
-| `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `''`                |
-| `sourcesMap`    | --                |             | `{ title?: string; path?: string; description?: string; }` | `undefined`         |
-| `suggestions`   | --                |             | `string[]`                                                 | `undefined`         |
+| Property         | Attribute          | Description | Type                                                       | Default             |
+| ---------------- | ------------------ | ----------- | ---------------------------------------------------------- | ------------------- |
+| `chatTitle`      | `chat-title`       |             | `string`                                                   | `undefined`         |
+| `defaultTerm`    | `default-term`     |             | `string`                                                   | `undefined`         |
+| `emptyStateText` | `empty-state-text` |             | `string`                                                   | `undefined`         |
+| `focusInput`     | `focus-input`      |             | `boolean`                                                  | `false`             |
+| `placeholder`    | `placeholder`      |             | `string`                                                   | `'Ask me anything'` |
+| `showHeader`     | `show-header`      |             | `boolean`                                                  | `true`              |
+| `sourceBaseUrl`  | `source-base-url`  |             | `string`                                                   | `''`                |
+| `sourcesMap`     | --                 |             | `{ title?: string; description?: string; path?: string; }` | `undefined`         |
+| `suggestions`    | --                 |             | `string[]`                                                 | `undefined`         |
 
 
 ## Dependencies
@@ -27,20 +29,22 @@
 
 ### Depends on
 
+- [orama-text](../orama-text)
 - [orama-chat-messages-container](../orama-chat-messages-container)
+- [orama-logo-message-boxes-icon](../orama-logo-message-boxes-icon)
 - [orama-chat-suggestions](../orama-chat-suggestions)
 - [orama-textarea](../orama-textarea)
 - [orama-button](../orama-button)
-- [orama-text](../orama-text)
 
 ### Graph
 ```mermaid
 graph TD;
+  orama-chat --> orama-text
   orama-chat --> orama-chat-messages-container
+  orama-chat --> orama-logo-message-boxes-icon
   orama-chat --> orama-chat-suggestions
   orama-chat --> orama-textarea
   orama-chat --> orama-button
-  orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message
   orama-chat-messages-container --> orama-chat-suggestions

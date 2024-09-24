@@ -7,14 +7,16 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type                                                       | Default     |
-| ---------------- | ----------------- | ----------- | ---------------------------------------------------------- | ----------- |
-| `clientInstance` | --                |             | `OramaClient`                                              | `undefined` |
-| `index`          | --                |             | `{ api_key: string; endpoint: string; }`                   | `undefined` |
-| `placeholder`    | `placeholder`     |             | `string`                                                   | `undefined` |
-| `sourceBaseUrl`  | `source-base-url` |             | `string`                                                   | `undefined` |
-| `sourcesMap`     | --                |             | `{ title?: string; path?: string; description?: string; }` | `undefined` |
-| `suggestions`    | --                |             | `string[]`                                                 | `undefined` |
+| Property         | Attribute          | Description | Type                                                       | Default     |
+| ---------------- | ------------------ | ----------- | ---------------------------------------------------------- | ----------- |
+| `chatTitle`      | `chat-title`       |             | `string`                                                   | `undefined` |
+| `clientInstance` | --                 |             | `OramaClient`                                              | `undefined` |
+| `emptyStateText` | `empty-state-text` |             | `string`                                                   | `undefined` |
+| `index`          | --                 |             | `{ api_key: string; endpoint: string; }`                   | `undefined` |
+| `placeholder`    | `placeholder`      |             | `string`                                                   | `undefined` |
+| `sourceBaseUrl`  | `source-base-url`  |             | `string`                                                   | `undefined` |
+| `sourcesMap`     | --                 |             | `{ title?: string; description?: string; path?: string; }` | `undefined` |
+| `suggestions`    | --                 |             | `string[]`                                                 | `undefined` |
 
 
 ## Dependencies
@@ -29,11 +31,12 @@
 graph TD;
   orama-chat-box --> orama-text
   orama-chat-box --> orama-chat
+  orama-chat --> orama-text
   orama-chat --> orama-chat-messages-container
+  orama-chat --> orama-logo-message-boxes-icon
   orama-chat --> orama-chat-suggestions
   orama-chat --> orama-textarea
   orama-chat --> orama-button
-  orama-chat --> orama-text
   orama-chat-messages-container --> orama-chat-user-message
   orama-chat-messages-container --> orama-chat-assistent-message
   orama-chat-messages-container --> orama-chat-suggestions
