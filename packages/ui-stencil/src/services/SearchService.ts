@@ -61,7 +61,6 @@ export class SearchService {
               }),
           }),
         } as ClientSearchParams,
-        // @ts-expect-error - Orama OSS does not accept the second parameter, but Cloud client does
         { abortController: this.abortController },
       )
       .then((results) => {
