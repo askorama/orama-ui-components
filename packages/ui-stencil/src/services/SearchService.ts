@@ -1,6 +1,7 @@
 import type { OramaClient, ClientSearchParams } from '@oramacloud/client'
 import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
 import { searchState } from '@/context/searchContext'
+import { Switch } from '@orama/switch'
 import type { ResultMap, SearchResultBySection, SearchResultWithScore } from '@/types'
 
 const LIMIT_RESULTS = 10
@@ -10,10 +11,10 @@ type OramaHit = { id: string; score: number; document: { title: string; descript
 
 export class SearchService {
   private abortController: AbortController
-  private oramaClient: OramaClient
+  private oramaClient: Switch
 
   constructor(oramaClient: OramaClient) {
-    this.oramaClient = oramaClient
+    this.oramaClient = new Switch(oramaClient)
     this.abortController = new AbortController()
   }
 
@@ -38,9 +39,8 @@ export class SearchService {
     const latestAbortController = this.abortController
     const { limit, offset, where, ...restSearchParams } = searchState.searchParams ?? {}
 
-    // TODO: Maybe we would like to have a debounce here (Check with Michele)
     this.oramaClient
-      .search(
+      .search<any>(
         {
           ...restSearchParams,
           term,
@@ -61,6 +61,7 @@ export class SearchService {
               }),
           }),
         } as ClientSearchParams,
+        // @ts-expect-error - Orama OSS does not accept the second parameter, but Cloud client does
         { abortController: this.abortController },
       )
       .then((results) => {

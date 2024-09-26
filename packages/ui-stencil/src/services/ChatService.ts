@@ -1,13 +1,16 @@
-import type { OramaClient, AnswerSession } from '@oramacloud/client'
+import type { AnswerSession as OSSAnswerSession } from '@orama/orama'
+import type { OramaClient, AnswerSession as CloudAnswerSession } from '@oramacloud/client'
 import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
 import { chatContext, TAnswerStatus } from '@/context/chatContext'
+import type { OramaSwitchClient } from '@orama/switch'
+import { Switch } from '@orama/switch'
 
 export class ChatService {
-  oramaClient: OramaClient
-  answerSession: AnswerSession
+  oramaClient: Switch
+  answerSession: CloudAnswerSession | OSSAnswerSession
 
-  constructor(oramaClient: OramaClient) {
-    this.oramaClient = oramaClient
+  constructor(oramaClient: OramaSwitchClient) {
+    this.oramaClient = new Switch(oramaClient)
   }
 
   sendQuestion = (term: string, systemPrompts?: string[]) => {
