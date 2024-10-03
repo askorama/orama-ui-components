@@ -55,9 +55,12 @@ const Template = (label: string) => (args) => {
         .colorScheme=${args.colorScheme}
         .index=${demoIndexes.orama.index}
         .placeholder=${demoIndexes.orama.placeholder}
+        .facetProperty=${demoIndexes.orama.facetProperty}
+        .resultMap=${demoIndexes.orama.resultMap}
+        .themeConfig=${demoIndexes.orama.themeConfig}
+        .suggestions=${demoIndexes.orama.suggestions}
         .sourceBaseUrl=${demoIndexes.orama.sourceBaseUrl}
         .sourcesMap=${demoIndexes.orama.sourcesMap}
-        .suggestions=${demoIndexes.orama.suggestions}
       >
       </orama-search-box>
     </div>
