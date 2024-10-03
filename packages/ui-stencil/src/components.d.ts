@@ -126,6 +126,7 @@ export namespace Components {
         "disableChat"?: boolean;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
+        "layout"?: 'modal' | 'embedded';
         "open": boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
@@ -536,6 +537,7 @@ declare namespace LocalJSX {
         "disableChat"?: boolean;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
+        "layout"?: 'modal' | 'embedded';
         "onSearchboxClosed"?: (event: OramaSearchBoxCustomEvent<{
     id: HTMLElement
   }>) => void;

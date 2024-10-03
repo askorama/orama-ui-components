@@ -33,6 +33,8 @@ export class SearchBox {
   @Prop() sourceBaseUrl?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() disableChat?: boolean = false
+  @Prop() layout?: 'modal' | 'embedded' = 'modal'
+
   // TODO: remove it in favor of dictionary
   @Prop() placeholder?: string
   @Prop() suggestions?: string[]
@@ -186,15 +188,55 @@ export class SearchBox {
     this.windowWidth = event.detail
   }
 
-  render() {
-    if (!searchState.searchService) {
-      return <orama-text as="p">Unable to initialize search service</orama-text>
-    }
+  getSearchBox() {
+    return (
+      <Fragment>
+        <orama-search
+          class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
+          focusInput={globalContext.currentTask === 'search'}
+          sourceBaseUrl={this.sourceBaseUrl}
+          disableChat={this.disableChat}
+          suggestions={this.suggestions}
+        />
+      </Fragment>
+    )
+  }
 
-    if (!chatContext.chatService) {
-      return <orama-text as="p">Unable to initialize chat service</orama-text>
-    }
+  getChatBox() {
+    return (
+      <Fragment>
+        <orama-chat
+          class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
+          defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
+          showClearChat={false}
+          focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
+          placeholder={this.placeholder}
+          sourceBaseUrl={this.sourceBaseUrl}
+          sourcesMap={this.sourcesMap}
+          suggestions={this.suggestions}
+        />
+      </Fragment>
+    )
+  }
 
+  getSlidingPanel() {
+    return (
+      <Fragment>
+        {this.windowWidth > 1024 && (
+          <orama-sliding-panel
+            open={globalContext.currentTask === 'chat'}
+            closed={() => {
+              globalContext.currentTask = 'search'
+            }}
+          >
+            {this.getChatBox()}
+          </orama-sliding-panel>
+        )}
+      </Fragment>
+    )
+  }
+
+  getModalLayout() {
     return (
       <Fragment>
         <orama-modal
@@ -211,47 +253,46 @@ export class SearchBox {
             />
           )}
           <div class="main">
-            <orama-search
-              class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
-              focusInput={globalContext.currentTask === 'search'}
-              sourceBaseUrl={this.sourceBaseUrl}
-              disableChat={this.disableChat}
-              suggestions={this.suggestions}
-            />
-            {this.windowWidth <= 1024 && (
-              <orama-chat
-                class={`${globalContext.currentTask === 'chat' ? 'section-active' : 'section-inactive'}`}
-                defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
-                showClearChat={false}
-                focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
-                placeholder={this.placeholder}
-                sourceBaseUrl={this.sourceBaseUrl}
-                sourcesMap={this.sourcesMap}
-                suggestions={this.suggestions}
-              />
-            )}
+            {this.getSearchBox()}
+            {this.windowWidth <= 1024 && this.getChatBox()}
           </div>
           <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
         </orama-modal>
-        {this.windowWidth > 1024 && (
-          <orama-sliding-panel
-            open={globalContext.currentTask === 'chat'}
-            closed={() => {
-              globalContext.currentTask = 'search'
-            }}
-          >
-            <orama-chat
-              placeholder={this.placeholder}
-              defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
-              showClearChat={false}
-              sourceBaseUrl={this.sourceBaseUrl}
-              sourcesMap={this.sourcesMap}
-              focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
-              suggestions={this.suggestions}
-            />
-          </orama-sliding-panel>
-        )}
+        {this.getSlidingPanel()}
       </Fragment>
     )
+  }
+
+  getEmbeddedLayout() {
+    return (
+      <Fragment>
+        <div class="embed">
+          {this.disableChat ? null : (
+            <orama-navigation-bar
+              handleClose={this.closeSearchbox}
+              showChatActions={globalContext.currentTask === 'chat'}
+            />
+          )}
+          <div class="main">
+            {this.getSearchBox()}
+            {this.windowWidth <= 1024 && this.getChatBox()}
+          </div>
+          <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
+        </div>
+        {this.getSlidingPanel()}
+      </Fragment>
+    )
+  }
+
+  render() {
+    if (!searchState.searchService) {
+      return <orama-text as="p">Unable to initialize search service</orama-text>
+    }
+
+    if (!chatContext.chatService) {
+      return <orama-text as="p">Unable to initialize chat service</orama-text>
+    }
+
+    return this.layout === 'embedded' ? this.getEmbeddedLayout() : this.getModalLayout()
   }
 }

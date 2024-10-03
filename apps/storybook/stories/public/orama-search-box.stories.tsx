@@ -73,18 +73,19 @@ export default meta
 // TODO: Poor controls: https://linear.app/oramasearch/issue/ORM-1823/poor-serachbox-storybook-controls
 const Template = ({ preset, colorScheme }) => {
   return html`<orama-search-box
-    .open=${preset?.open}
-    .facetProperty=${preset?.facetProperty}
-    .resultMap=${preset?.resultMap}
-    .colorScheme=${colorScheme}
-    .themeConfig=${preset.themeConfig}
-    .index=${preset.index}
-    .instance=${preset.instance}
-    .suggestions=${preset?.suggestions}
-    .sourceBaseUrl=${preset?.sourceBaseUrl}
-    .sourcesMap=${preset?.sourcesMap}
-    .disableChat=${preset?.disableChat}
-  ></orama-search-box>`
+      .open=${preset?.open}
+      .facetProperty=${preset?.facetProperty}
+      .resultMap=${preset?.resultMap}
+      .colorScheme=${colorScheme}
+      .themeConfig=${preset.themeConfig}
+      .index=${preset.index}
+      .instance=${preset.instance}
+      .suggestions=${preset?.suggestions}
+      .sourceBaseUrl=${preset?.sourceBaseUrl}
+      .sourcesMap=${preset?.sourcesMap}
+      .disableChat=${preset?.disableChat}
+      .layout=${'embedded'}
+    ></orama-search-box>`
 }
 
 type Story = StoryObj<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }>
@@ -93,5 +94,6 @@ export const SearchBox: Story = {
   render: Template as any,
   args: {
     preset: 'orama',
+    colorScheme: 'light',
   },
 }

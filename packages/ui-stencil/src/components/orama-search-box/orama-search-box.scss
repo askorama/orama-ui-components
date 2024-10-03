@@ -23,6 +23,12 @@
   }
 }
 
+.embed {
+  display: block;
+  background-color: var(--background-color-primary, background-color(primary));
+  border-radius: var(--radius-m,calc(12rem/var(--orama-base-font-size, 16)))
+}
+
 .main {
   display: flex;
   flex-direction: column;

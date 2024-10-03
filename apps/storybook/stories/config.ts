@@ -6,6 +6,7 @@ export type DemoIndexConfig = Record<string, Components.OramaSearchBox>
 const demoIndexes: DemoIndexConfig = {
   orama: {
     open: true,
+    layout: 'embedded',
     index: {
       api_key: 'LerNlbp6379jVKaPs4wt2nZT4MJZbU1J',
       endpoint: 'https://cloud.orama.run/v1/indexes/docs-orama-b3f5xd',
@@ -20,11 +21,7 @@ const demoIndexes: DemoIndexConfig = {
     sourcesMap: {
       description: 'content',
     },
-    suggestions: [
-      'Why is Orama better than other search or AI solutions?',
-      'How does Orama ensure correct answers?',
-      'What are the steps to implement?',
-    ],
+    suggestions: ['What is Orama?', 'Does Orama have an integration with Strapi?', 'How to create an answer session?'],
     themeConfig: {
       colors: {
         light: {
@@ -47,7 +44,7 @@ const demoIndexes: DemoIndexConfig = {
   },
   recipes: {
     open: true,
-    disableChat: true,
+    disableChat: false,
     index: {
       api_key: 'yl2JSnjLNBV6FVfUWEyadpjFr6KzPiDR',
       endpoint: 'https://cloud.orama.run/v1/indexes/recipes-m7w9mm',
@@ -57,9 +54,9 @@ const demoIndexes: DemoIndexConfig = {
       description: 'category',
     },
     suggestions: [
-      'How do I make a chocolate cake?',
-      'What are the ingredients for a margarita pizza?',
-      'How do I make a vegan lasagna?',
+      'How do I make delicious peanut butter cookies?',
+      'What are the ingredients for a margherita pizza?',
+      'Tell me three pasta recipes.',
     ],
     themeConfig: {
       colors: {
@@ -80,6 +77,7 @@ const demoIndexes: DemoIndexConfig = {
   },
   videogames: {
     open: true,
+    disableChat: true,
     index: {
       api_key: 'WL7pKdEqCTPf3G2412x8ecneqVbnkklr',
       endpoint: 'https://cloud.orama.foo/v1/indexes/videogames-rk139h',

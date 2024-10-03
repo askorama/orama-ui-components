@@ -89,7 +89,7 @@ export class OramaSearch {
             facetClicked={this.onFacetClickHandler}
           />
           <orama-search-results
-            suggestions={!chatContext.interactions?.length && !this.disableChat ? this.suggestions : []}
+            suggestions={!globalContext.currentTerm?.length && !this.disableChat ? this.suggestions : []}
             setChatTerm={(term) => {
               globalContext.currentTask = 'chat'
               chatContext.chatService?.sendQuestion(term)
