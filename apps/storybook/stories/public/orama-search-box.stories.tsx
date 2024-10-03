@@ -25,14 +25,23 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
         },
       },
     },
+    layout: {
+      options: ['embedded', 'modal'],
+      control: { type: 'select' },
+      table: {
+        defaultValue: { summary: 'modal' },
+      },
+    },
     sourceBaseUrl: {
       table: {
         type: {
           summary: 'string',
         },
       },
+      control: { type: 'text' },
     },
     sourcesMap: {
+      control: { type: 'object' },
       table: {
         type: {
           summary: 'SourcesMap',
@@ -45,6 +54,7 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
       },
     },
     suggestions: {
+      control: { type: 'object' },
       table: {
         type: {
           summary: 'string[]',
@@ -60,6 +70,7 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
     },
     disableChat: { type: 'boolean', defaultValue: false },
     themeConfig: {
+      control: false,
       table: {
         type: {
           summary: 'Partial<TThemeOverrides>',
@@ -71,7 +82,7 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
 export default meta
 
 // TODO: Poor controls: https://linear.app/oramasearch/issue/ORM-1823/poor-serachbox-storybook-controls
-const SearchBoxTemplate = ({ preset, colorScheme, layout, disableChat }) => {
+const Template = ({ preset, colorScheme, layout, disableChat }) => {
   return html`<orama-search-box
       .open=${preset?.open}
       .facetProperty=${preset?.facetProperty}
@@ -88,51 +99,13 @@ const SearchBoxTemplate = ({ preset, colorScheme, layout, disableChat }) => {
     ></orama-search-box>`
 }
 
-const SearchBoxWithButtonTemplate = ({ preset, colorScheme, disableChat }) => {
-  return html`
-    <div style="display: flex; justify-content: flex-start">
-      <div style="width: 240px">
-      <orama-search-button
-        label="Search"
-        .colorScheme=${colorScheme}
-        .size=${'medium'}
-      >
-          ${'Search'}
-      </orama-search-button>
-      </div>
-      <orama-search-box
-        .open=${preset?.open}
-        .facetProperty=${preset?.facetProperty}
-        .resultMap=${preset?.resultMap}
-        .colorScheme=${colorScheme}
-        .themeConfig=${preset.themeConfig}
-        .index=${preset.index}
-        .instance=${preset.instance}
-        .suggestions=${preset?.suggestions}
-        .sourceBaseUrl=${preset?.sourceBaseUrl}
-        .sourcesMap=${preset?.sourcesMap}
-        .disableChat=${disableChat}
-      >
-      </orama-search-box>
-    </div>
-  `
-}
-
 type Story = StoryObj<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }>
 
-export const SearchModal: Story = {
-  render: SearchBoxWithButtonTemplate as any,
-  args: {
-    preset: 'orama',
-    colorScheme: 'light',
-  },
-}
-
 export const SearchBox: Story = {
-  render: SearchBoxTemplate as any,
+  render: Template as any,
   args: {
     preset: 'orama',
     colorScheme: 'light',
-    layout: 'embedded',
+    layout: 'modal',
   },
 }

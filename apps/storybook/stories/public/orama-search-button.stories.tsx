@@ -19,6 +19,7 @@ const meta: Meta<
       control: { type: 'radio' },
     },
     themeConfig: {
+      control: false,
       table: {
         type: {
           summary: 'Partial<TThemeOverrides>',
@@ -31,15 +32,6 @@ const meta: Meta<
         defaultValue: { summary: 'medium' },
       },
       control: { type: 'radio' },
-    },
-    openSearchbox: {
-      table: {
-        defaultValue: { summary: 'false' },
-        type: {
-          summary: 'boolean',
-        },
-      },
-      control: { type: 'boolean' },
     },
   },
 } satisfies Meta
@@ -74,4 +66,8 @@ const Template = (label: string) => (args) => {
 
 export const SearchButton: Story = {
   render: Template('Search...'),
+  args: {
+    colorScheme: 'light',
+    size: 'medium',
+  },
 }
