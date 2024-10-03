@@ -45,7 +45,7 @@
   align-items: center;
   padding: var(--spacing-m, $spacing-m);
   border-radius: var(--radius-s, $radius-s);
-  background-color: var(--background-color-primary, background-color('primary'));
+  background-color: var(--background-color-secondary, background-color('secondary'));
   border: 1px solid transparent;
   text-align: left;
   width: 100%;
@@ -55,7 +55,7 @@
 
   @media (hover: hover) {
     &:hover {
-      background-color: var(--background-color-secondary, background-color('secondary'));
+      background-color: var(--background-color-tertiary, background-color('tertiary'));
     }
   }
 
