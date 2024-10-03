@@ -2,7 +2,6 @@ import { Component, Host, Listen, State, Watch, h, Element, Prop } from '@stenci
 import { searchState } from '@/context/searchContext'
 import type { SearchResult } from '@/types'
 import { globalContext } from '@/context/GlobalContext'
-import { ChatService } from '@/services/ChatService'
 import { chatContext } from '@/context/chatContext'
 
 @Component({
@@ -16,6 +15,7 @@ export class OramaSearch {
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[] = []
   @Prop() sourceBaseUrl?: string
+  @Prop() disableChat?: boolean = false
 
   @State() searchValue = ''
   @State() selectedFacet = ''
@@ -48,6 +48,11 @@ export class OramaSearch {
 
   handleSubmit = (e: Event) => {
     e.preventDefault()
+
+    if (this.disableChat) {
+      return
+    }
+
     const chatButton = this.el.querySelector('orama-chat-button') as HTMLElement
     chatButton.click()
   }
@@ -67,13 +72,15 @@ export class OramaSearch {
               this.searchValue = ''
             }}
           />
-          <orama-chat-button
-            active={!!this.searchValue}
-            label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
-            class="chat-btn"
-            onClick={this.onChatButtonClick}
-            onKeyPress={this.onChatButtonClick}
-          />
+          {this.disableChat ? null : (
+            <orama-chat-button
+              active={!!this.searchValue}
+              label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
+              class="chat-btn"
+              onClick={this.onChatButtonClick}
+              onKeyPress={this.onChatButtonClick}
+            />
+          )}
         </form>
         <div class="result-wrapper">
           <orama-facets
@@ -82,7 +89,7 @@ export class OramaSearch {
             facetClicked={this.onFacetClickHandler}
           />
           <orama-search-results
-            suggestions={!chatContext.interactions?.length ? this.suggestions : []}
+            suggestions={!chatContext.interactions?.length && !this.disableChat ? this.suggestions : []}
             setChatTerm={(term) => {
               globalContext.currentTask = 'chat'
               chatContext.chatService?.sendQuestion(term)
