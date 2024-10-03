@@ -58,6 +58,7 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
       },
       control: { type: 'radio' },
     },
+    disableChat: { type: 'boolean', defaultValue: false },
     themeConfig: {
       table: {
         type: {
@@ -69,6 +70,7 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
 }
 export default meta
 
+// TODO: Poor controls: https://linear.app/oramasearch/issue/ORM-1823/poor-serachbox-storybook-controls
 const Template = ({ preset, colorScheme }) => {
   return html`<orama-search-box
     .open=${preset?.open}
@@ -81,6 +83,7 @@ const Template = ({ preset, colorScheme }) => {
     .suggestions=${preset?.suggestions}
     .sourceBaseUrl=${preset?.sourceBaseUrl}
     .sourcesMap=${preset?.sourcesMap}
+    .disableChat=${preset?.disableChat}
   ></orama-search-box>`
 }
 

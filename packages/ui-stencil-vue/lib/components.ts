@@ -128,7 +128,8 @@ export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigat
 export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined, [
   'focusInput',
   'suggestions',
-  'sourceBaseUrl'
+  'sourceBaseUrl',
+  'disableChat'
 ]);
 
 
@@ -142,6 +143,7 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
   'resultMap',
   'sourceBaseUrl',
   'sourcesMap',
+  'disableChat',
   'placeholder',
   'suggestions',
   'searchParams',

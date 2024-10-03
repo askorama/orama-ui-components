@@ -115,6 +115,7 @@ export namespace Components {
         "showChatActions": boolean;
     }
     interface OramaSearch {
+        "disableChat"?: boolean;
         "focusInput"?: boolean;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
@@ -122,6 +123,7 @@ export namespace Components {
     interface OramaSearchBox {
         "clientInstance"?: OramaClient;
         "colorScheme"?: ColorScheme;
+        "disableChat"?: boolean;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "open": boolean;
@@ -523,6 +525,7 @@ declare namespace LocalJSX {
         "showChatActions"?: boolean;
     }
     interface OramaSearch {
+        "disableChat"?: boolean;
         "focusInput"?: boolean;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
@@ -530,6 +533,7 @@ declare namespace LocalJSX {
     interface OramaSearchBox {
         "clientInstance"?: OramaClient;
         "colorScheme"?: ColorScheme;
+        "disableChat"?: boolean;
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "onSearchboxClosed"?: (event: OramaSearchBoxCustomEvent<{

@@ -9,6 +9,7 @@
 
 | Property        | Attribute         | Description | Type       | Default     |
 | --------------- | ----------------- | ----------- | ---------- | ----------- |
+| `disableChat`   | `disable-chat`    |             | `boolean`  | `false`     |
 | `focusInput`    | `focus-input`     |             | `boolean`  | `false`     |
 | `sourceBaseUrl` | `source-base-url` |             | `string`   | `undefined` |
 | `suggestions`   | --                |             | `string[]` | `[]`        |

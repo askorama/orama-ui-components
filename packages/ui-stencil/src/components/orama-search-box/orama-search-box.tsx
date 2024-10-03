@@ -12,6 +12,9 @@ import { generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/u
 import type { ColorScheme, ResultMap, SourcesMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
 
+// TODO: AI components should be lazyly loaded. In case of Disable AI flag, it should not be loaded at all
+// https://linear.app/oramasearch/issue/ORM-1824/ai-components-should-be-lazyly-loaded-in-case-of-disable-ai-flag-they
+
 @Component({
   tag: 'orama-search-box',
   styleUrl: 'orama-search-box.scss',
@@ -29,6 +32,7 @@ export class SearchBox {
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() sourceBaseUrl?: string
   @Prop() sourcesMap?: SourcesMap
+  @Prop() disableChat?: boolean = false
   // TODO: remove it in favor of dictionary
   @Prop() placeholder?: string
   @Prop() suggestions?: string[]
@@ -200,15 +204,18 @@ export class SearchBox {
           mainTitle="Start your search"
           closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
         >
-          <orama-navigation-bar
-            handleClose={this.closeSearchbox}
-            showChatActions={globalContext.currentTask === 'chat'}
-          />
+          {this.disableChat ? null : (
+            <orama-navigation-bar
+              handleClose={this.closeSearchbox}
+              showChatActions={globalContext.currentTask === 'chat'}
+            />
+          )}
           <div class="main">
             <orama-search
               class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
               focusInput={globalContext.currentTask === 'search'}
               sourceBaseUrl={this.sourceBaseUrl}
+              disableChat={this.disableChat}
               suggestions={this.suggestions}
             />
             {this.windowWidth <= 1024 && (
