@@ -192,7 +192,13 @@ export class SearchBox {
     return (
       <Fragment>
         <orama-search
-          class={`${globalContext.currentTask === 'search' ? 'section-active' : 'section-inactive'}`}
+          class={`${
+            this.windowWidth > 1024
+              ? 'section-active'
+              : globalContext.currentTask === 'search'
+                ? 'section-active'
+                : 'section-inactive'
+          }`}
           focusInput={globalContext.currentTask === 'search'}
           sourceBaseUrl={this.sourceBaseUrl}
           disableChat={this.disableChat}
