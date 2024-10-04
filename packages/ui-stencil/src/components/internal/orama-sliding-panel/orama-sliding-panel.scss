@@ -12,7 +12,7 @@ $height-panel-header: 5vh;
     left: 0;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: $zindex-slider-container - 10;
-    animation: backdropFadeIn 2s ease-in 1;
+    animation: backdropFadeIn 0.5s ease-in 1;
     opacity: 0;
 
     @media (--md-min) {
