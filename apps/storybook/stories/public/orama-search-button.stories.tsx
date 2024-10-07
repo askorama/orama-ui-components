@@ -54,7 +54,7 @@ const Template = (label: string) => (args) => {
       <orama-search-box
         .colorScheme=${args.colorScheme}
         .index=${demoIndexes.orama.index}
-        .placeholder=${demoIndexes.orama.placeholder}
+        .chatPlaceholder=${demoIndexes.orama.placeholder}
         .facetProperty=${demoIndexes.orama.facetProperty}
         .resultMap=${demoIndexes.orama.resultMap}
         .themeConfig=${demoIndexes.orama.themeConfig}

@@ -201,7 +201,7 @@ export class SearchBox {
                 ? 'section-active'
                 : 'section-inactive'
           }`}
-          placeholder={this?.searchPlaceholder || this.placeholder}
+          placeholder={this?.searchPlaceholder || 'Search...'}
           focusInput={globalContext.currentTask === 'search'}
           sourceBaseUrl={this.sourceBaseUrl}
           disableChat={this.disableChat}
