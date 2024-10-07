@@ -126,6 +126,7 @@ export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigat
 
 
 export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama-search', undefined, [
+  'placeholder',
   'focusInput',
   'suggestions',
   'sourceBaseUrl',
@@ -146,6 +147,8 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
   'disableChat',
   'layout',
   'placeholder',
+  'chatPlaceholder',
+  'searchPlaceholder',
   'suggestions',
   'searchParams',
   'searchboxClosed'
@@ -172,6 +175,7 @@ export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchR
 
 
 export const OramaSlidingPanel = /*@__PURE__*/ defineContainer<JSX.OramaSlidingPanel>('orama-sliding-panel', undefined, [
+  'backdrop',
   'open',
   'closed'
 ]);

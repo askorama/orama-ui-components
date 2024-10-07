@@ -37,6 +37,8 @@ export class SearchBox {
 
   // TODO: remove it in favor of dictionary
   @Prop() placeholder?: string
+  @Prop() chatPlaceholder?: string
+  @Prop() searchPlaceholder?: string
   @Prop() suggestions?: string[]
   @Prop() searchParams?: SearchParams<Orama<AnyOrama | OramaClient>>
 
@@ -199,6 +201,7 @@ export class SearchBox {
                 ? 'section-active'
                 : 'section-inactive'
           }`}
+          placeholder={this?.searchPlaceholder || this.placeholder}
           focusInput={globalContext.currentTask === 'search'}
           sourceBaseUrl={this.sourceBaseUrl}
           disableChat={this.disableChat}
@@ -216,7 +219,7 @@ export class SearchBox {
           defaultTerm={globalContext.currentTask === 'chat' ? globalContext.currentTerm : ''}
           showClearChat={false}
           focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
-          placeholder={this.placeholder}
+          placeholder={this?.chatPlaceholder || this.placeholder}
           sourceBaseUrl={this.sourceBaseUrl}
           sourcesMap={this.sourcesMap}
           suggestions={this.suggestions}
@@ -225,12 +228,13 @@ export class SearchBox {
     )
   }
 
-  getSlidingPanel() {
+  getSlidingPanel(options = { withBackdrop: false }) {
     return (
       <Fragment>
         {this.windowWidth > 1024 && (
           <orama-sliding-panel
             open={globalContext.currentTask === 'chat'}
+            backdrop={options.withBackdrop}
             closed={() => {
               globalContext.currentTask = 'search'
             }}
@@ -238,6 +242,24 @@ export class SearchBox {
             {this.getChatBox()}
           </orama-sliding-panel>
         )}
+      </Fragment>
+    )
+  }
+
+  getInnerContent() {
+    return (
+      <Fragment>
+        {this.disableChat ? null : (
+          <orama-navigation-bar
+            handleClose={this.closeSearchbox}
+            showChatActions={globalContext.currentTask === 'chat'}
+          />
+        )}
+        <div class="main">
+          {this.getSearchBox()}
+          {this.windowWidth <= 1024 && this.getChatBox()}
+        </div>
+        <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
       </Fragment>
     )
   }
@@ -252,17 +274,7 @@ export class SearchBox {
           mainTitle="Start your search"
           closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
         >
-          {this.disableChat ? null : (
-            <orama-navigation-bar
-              handleClose={this.closeSearchbox}
-              showChatActions={globalContext.currentTask === 'chat'}
-            />
-          )}
-          <div class="main">
-            {this.getSearchBox()}
-            {this.windowWidth <= 1024 && this.getChatBox()}
-          </div>
-          <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
+          {this.getInnerContent()}
         </orama-modal>
         {this.getSlidingPanel()}
       </Fragment>
@@ -272,20 +284,8 @@ export class SearchBox {
   getEmbeddedLayout() {
     return (
       <Fragment>
-        <div class="embed">
-          {this.disableChat ? null : (
-            <orama-navigation-bar
-              handleClose={this.closeSearchbox}
-              showChatActions={globalContext.currentTask === 'chat'}
-            />
-          )}
-          <div class="main">
-            {this.getSearchBox()}
-            {this.windowWidth <= 1024 && this.getChatBox()}
-          </div>
-          <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
-        </div>
-        {this.getSlidingPanel()}
+        <div class="embed">{this.getInnerContent()}</div>
+        {this.getSlidingPanel({ withBackdrop: true })}
       </Fragment>
     )
   }

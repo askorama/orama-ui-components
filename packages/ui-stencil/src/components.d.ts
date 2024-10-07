@@ -117,10 +117,12 @@ export namespace Components {
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
     }
     interface OramaSearchBox {
+        "chatPlaceholder"?: string;
         "clientInstance"?: OramaClient;
         "colorScheme"?: ColorScheme;
         "disableChat"?: boolean;
@@ -131,6 +133,7 @@ export namespace Components {
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
         "searchParams"?: SearchParams<Orama<AnyOrama | OramaClient>>;
+        "searchPlaceholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
@@ -151,6 +154,7 @@ export namespace Components {
         "suggestions"?: string[];
     }
     interface OramaSlidingPanel {
+        "backdrop": boolean;
         "closed": () => void;
         "open": boolean;
     }
@@ -528,10 +532,12 @@ declare namespace LocalJSX {
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
     }
     interface OramaSearchBox {
+        "chatPlaceholder"?: string;
         "clientInstance"?: OramaClient;
         "colorScheme"?: ColorScheme;
         "disableChat"?: boolean;
@@ -545,6 +551,7 @@ declare namespace LocalJSX {
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
         "searchParams"?: SearchParams<Orama<AnyOrama | OramaClient>>;
+        "searchPlaceholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
@@ -566,6 +573,7 @@ declare namespace LocalJSX {
         "suggestions"?: string[];
     }
     interface OramaSlidingPanel {
+        "backdrop"?: boolean;
         "closed"?: () => void;
         "open"?: boolean;
     }

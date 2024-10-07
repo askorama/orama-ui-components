@@ -10,7 +10,7 @@ $height-panel-header: 5vh;
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--backdrop-background-color-primary, palette('backdrop-background', 'primary'));
     z-index: $zindex-slider-container - 10;
     animation: backdropFadeIn 0.5s ease-in 1;
     opacity: 0;

@@ -12,6 +12,7 @@ import { chatContext } from '@/context/chatContext'
 export class OramaSearch {
   @Element() el: HTMLElement
 
+  @Prop() placeholder?: string = 'Search...'
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[] = []
   @Prop() sourceBaseUrl?: string
@@ -66,8 +67,8 @@ export class OramaSearch {
             type="search"
             onInput={this.onInputChange}
             size="large"
-            labelForScreenReaders="Search..."
-            placeholder="Search..."
+            labelForScreenReaders={this.placeholder}
+            placeholder={this.placeholder}
             onResetValue={() => {
               this.searchValue = ''
             }}

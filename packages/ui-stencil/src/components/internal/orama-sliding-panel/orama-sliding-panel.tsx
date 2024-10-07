@@ -8,6 +8,8 @@ import '@phosphor-icons/webcomponents/dist/icons/PhX.mjs'
 })
 export class SlideInPanel {
   @Element() el: HTMLElement
+
+  @Prop() backdrop = false
   @Prop() open = false
   @Prop() closed: () => void
   @State() isOpen: boolean = this.open
@@ -85,7 +87,7 @@ export class SlideInPanel {
             <slot />
           </div>
         </div>
-        <div class={{ 'slide-backdrop': true, visible: this.isOpen }} />
+        {this.backdrop && <div class={{ 'slide-backdrop': true, visible: this.isOpen }} />}
       </Fragment>
     )
   }
