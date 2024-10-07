@@ -22,20 +22,25 @@ This library provides a set of ready to use UI components for easily implementin
 
 ## Getting Started
 
-Orama Components were built with StencilJS as Web Components. They can be used in any project, no matter the framework or library you are using. But we also provide **React**, **Angular**, and **Vue** wrappers for easier integration. **Properties and Events** are the same across all wrappers, but the syntax is slightly different for each one, so please check the documentation for each wrapper for examples.
+Orama UI Components are built using StencilJS as Web Components. They can be used in any project, no matter the framework or library you are using. 
+
+## Authentication
+
+Since most of our components require you to have a Orama Cloud index already deployed, make sure to:
+
+1. **Sign Up**: go to [Orama Cloud](https://cloud.orama.com) and create a Free Account if you don't have one yet.
+2. **Create your first index**: select the [Data Source](https://docs.orama.com/cloud/data-sources/introduction-to-data-sources) that suits your use case to start importing your data.
+3. **Deploy your index**: once it is deployed, it's ready for searching. Start by integrating our _SearchBox_.
+
+## Usage
+
+Orama UI Components provide a **Web Components** library that can be used in any project, no matter the framework or library you are using. We also provide **React**, **Angular**, and **Vue** wrappers for easier integration. **Properties and Events** are the same across all wrappers, but the syntax is slightly different for each one, so please check the documentation for each wrapper for examples.
 
 - [Web Components](./packages/ui-stencil/)
 - [React Components](./packages/ui-stencil-react/)
 - [Angular Components](./packages/ui-stencil-angular/)
 - [Vue Components](./packages/ui-stencil-vue/)
 
-## Authentication
+## Storybook
 
-Since most of our components require you to have a cloud index already deployed, make sure to:
-
-1. **Sign Up**: Go to [Our Signup Page](https://cloud.oramasearch.com/auth/signup) and create an account.
-2. **Create your first index**: You can even create a Demo index to start playing around
-
-<!-- ## Storybook
-
-You can find a Storybook at [https://components.orama.com](https://components.orama.com/?path=/docs/welcome--docs) will all available components. -->
+You can find a Storybook at [https://components.orama.com](https://components.orama.com/?path=/docs/welcome--docs) will all available components.
