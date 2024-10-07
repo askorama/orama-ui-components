@@ -24,9 +24,22 @@
 }
 
 .embed {
-  display: block;
-  background-color: var(--background-color-primary, background-color(primary));
-  border-radius: var(--radius-m,calc(12rem/var(--orama-base-font-size, 16)))
+  background-color: var(--background-color-secondary, background-color('secondary'));
+  border: 1px solid var(--border-color-primary, border-color('primary'));
+  border-radius: var(--radius-m, $radius-m);
+  inset: 0;
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+  max-height: pxToRem(400);
+  overflow: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    margin: -0.5rem 0;
+  }
 }
 
 .main {

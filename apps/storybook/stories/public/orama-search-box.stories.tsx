@@ -26,7 +26,7 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
       },
     },
     layout: {
-      options: ['embedded', 'modal'],
+      options: ['embed', 'modal'],
       control: { type: 'select' },
       table: {
         defaultValue: { summary: 'modal' },
@@ -82,7 +82,7 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
 export default meta
 
 // TODO: Poor controls: https://linear.app/oramasearch/issue/ORM-1823/poor-serachbox-storybook-controls
-const Template = ({ preset, colorScheme, layout, disableChat }) => {
+const Template = ({ preset, chatPlaceholder, searchPlaceholder, colorScheme, layout, disableChat }) => {
   return html`<orama-search-box
       .open=${preset?.open}
       .facetProperty=${preset?.facetProperty}
@@ -96,6 +96,8 @@ const Template = ({ preset, colorScheme, layout, disableChat }) => {
       .sourcesMap=${preset?.sourcesMap}
       .disableChat=${disableChat}
       .layout=${layout}
+      .chatPlaceholder=${chatPlaceholder}
+      .searchPlaceholder=${searchPlaceholder}
     ></orama-search-box>`
 }
 
@@ -107,5 +109,7 @@ export const SearchBox: Story = {
     preset: 'orama',
     colorScheme: 'light',
     layout: 'modal',
+    searchPlaceholder: 'Search...',
+    chatPlaceholder: 'Ask me anything...',
   },
 }

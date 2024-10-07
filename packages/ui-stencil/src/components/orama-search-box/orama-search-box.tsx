@@ -33,7 +33,7 @@ export class SearchBox {
   @Prop() sourceBaseUrl?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() disableChat?: boolean = false
-  @Prop() layout?: 'modal' | 'embedded' = 'modal'
+  @Prop() layout?: 'modal' | 'embed' = 'modal'
 
   // TODO: remove it in favor of dictionary
   @Prop() placeholder?: string
@@ -281,7 +281,7 @@ export class SearchBox {
     )
   }
 
-  getEmbeddedLayout() {
+  getEmbedLayout() {
     return (
       <Fragment>
         <div class="embed">{this.getInnerContent()}</div>
@@ -299,6 +299,6 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
-    return this.layout === 'embedded' ? this.getEmbeddedLayout() : this.getModalLayout()
+    return this.layout === 'embed' ? this.getEmbedLayout() : this.getModalLayout()
   }
 }
