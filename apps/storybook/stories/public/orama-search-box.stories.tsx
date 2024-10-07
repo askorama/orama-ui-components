@@ -32,33 +32,20 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
         defaultValue: { summary: 'modal' },
       },
     },
-    sourceBaseUrl: {
+    chatPlaceholder: {
       table: {
         type: {
           summary: 'string',
         },
-      },
-      control: { type: 'text' },
-    },
-    sourcesMap: {
-      control: { type: 'object' },
-      table: {
-        type: {
-          summary: 'SourcesMap',
-          detail: `{
-  title?: string
-  description?: string
-  path?: string
-}`,
-        },
+        defaultValue: { summary: '' },
       },
     },
-    suggestions: {
-      control: { type: 'object' },
+    searchPlaceholder: {
       table: {
         type: {
-          summary: 'string[]',
+          summary: 'string',
         },
+        defaultValue: { summary: 'Search...' },
       },
     },
     colorScheme: {
@@ -68,7 +55,10 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
       },
       control: { type: 'radio' },
     },
-    disableChat: { type: 'boolean', defaultValue: false },
+    disableChat: {
+      control: { type: 'boolean', defaultValue: false },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
     themeConfig: {
       control: false,
       table: {
@@ -111,5 +101,6 @@ export const SearchBox: Story = {
     layout: 'modal',
     searchPlaceholder: 'Search...',
     chatPlaceholder: 'Ask me anything...',
+    disableChat: false,
   },
 }
