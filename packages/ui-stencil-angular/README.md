@@ -8,3 +8,11 @@
 # Orama UI Angular Components
 
 This library provides a set of ready to use Angular Components for easily implementing **Search** and **AI Chat** functionalities in your web applications through Orama.
+
+## Installation
+
+You can install Orama Angular Components using npm, yarn, pnpm, bun:
+
+```
+npm i @orama/angular-components
+```

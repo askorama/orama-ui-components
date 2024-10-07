@@ -8,3 +8,11 @@
 # Orama UI Vue Components
 
 This library provides a set of ready to use Vue Components for easily implementing **Search** and **AI Chat** functionalities in your web applications through Orama.
+
+## Installation
+
+You can install Orama Vue Components using npm, yarn, pnpm, bun:
+
+```
+npm i @orama/vue-components
+```

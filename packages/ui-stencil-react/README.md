@@ -8,3 +8,11 @@
 # Orama UI React Components
 
 This library provides a set of ready to use React Components for easily implementing **Search** and **AI Chat** functionalities in your web applications through Orama.
+
+## Installation
+
+You can install Orama React Components using npm, yarn, pnpm, bun:
+
+```
+npm i @orama/react-components
+```
