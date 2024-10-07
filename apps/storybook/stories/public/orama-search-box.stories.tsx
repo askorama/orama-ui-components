@@ -25,30 +25,27 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
         },
       },
     },
-    sourceBaseUrl: {
+    layout: {
+      options: ['embed', 'modal'],
+      control: { type: 'select' },
+      table: {
+        defaultValue: { summary: 'modal' },
+      },
+    },
+    chatPlaceholder: {
       table: {
         type: {
           summary: 'string',
         },
+        defaultValue: { summary: '' },
       },
     },
-    sourcesMap: {
+    searchPlaceholder: {
       table: {
         type: {
-          summary: 'SourcesMap',
-          detail: `{
-  title?: string
-  description?: string
-  path?: string
-}`,
+          summary: 'string',
         },
-      },
-    },
-    suggestions: {
-      table: {
-        type: {
-          summary: 'string[]',
-        },
+        defaultValue: { summary: 'Search...' },
       },
     },
     colorScheme: {
@@ -58,8 +55,12 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
       },
       control: { type: 'radio' },
     },
-    disableChat: { type: 'boolean', defaultValue: false },
+    disableChat: {
+      control: { type: 'boolean', defaultValue: false },
+      table: { type: { summary: 'boolean' }, defaultValue: { summary: 'false' } },
+    },
     themeConfig: {
+      control: false,
       table: {
         type: {
           summary: 'Partial<TThemeOverrides>',
@@ -71,20 +72,23 @@ const meta: Meta<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }> 
 export default meta
 
 // TODO: Poor controls: https://linear.app/oramasearch/issue/ORM-1823/poor-serachbox-storybook-controls
-const Template = ({ preset, colorScheme }) => {
+const Template = ({ preset, chatPlaceholder, searchPlaceholder, colorScheme, layout, disableChat }) => {
   return html`<orama-search-box
-    .open=${preset?.open}
-    .facetProperty=${preset?.facetProperty}
-    .resultMap=${preset?.resultMap}
-    .colorScheme=${colorScheme}
-    .themeConfig=${preset.themeConfig}
-    .index=${preset.index}
-    .instance=${preset.instance}
-    .suggestions=${preset?.suggestions}
-    .sourceBaseUrl=${preset?.sourceBaseUrl}
-    .sourcesMap=${preset?.sourcesMap}
-    .disableChat=${preset?.disableChat}
-  ></orama-search-box>`
+      .open=${preset?.open}
+      .facetProperty=${preset?.facetProperty}
+      .resultMap=${preset?.resultMap}
+      .colorScheme=${colorScheme}
+      .themeConfig=${preset.themeConfig}
+      .index=${preset.index}
+      .instance=${preset.instance}
+      .suggestions=${preset?.suggestions}
+      .sourceBaseUrl=${preset?.sourceBaseUrl}
+      .sourcesMap=${preset?.sourcesMap}
+      .disableChat=${disableChat}
+      .layout=${layout}
+      .chatPlaceholder=${chatPlaceholder}
+      .searchPlaceholder=${searchPlaceholder}
+    ></orama-search-box>`
 }
 
 type Story = StoryObj<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }>
@@ -93,5 +97,10 @@ export const SearchBox: Story = {
   render: Template as any,
   args: {
     preset: 'orama',
+    colorScheme: 'light',
+    layout: 'modal',
+    searchPlaceholder: 'Search...',
+    chatPlaceholder: 'Ask me anything...',
+    disableChat: false,
   },
 }

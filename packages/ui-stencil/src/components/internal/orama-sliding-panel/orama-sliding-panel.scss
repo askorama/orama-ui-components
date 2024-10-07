@@ -1,6 +1,39 @@
 $height-panel: 95vh;
 $height-panel-header: 5vh;
 
+.slide-backdrop {
+  &.visible {
+    display: none;
+    position: fixed;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: var(--backdrop-background-color-primary, palette('backdrop-background', 'primary'));
+    z-index: $zindex-slider-container - 10;
+    animation: backdropFadeIn 0.5s ease-in 1;
+    opacity: 0;
+
+    @media (--md-min) {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes backdropFadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .slide-container {
   position: fixed;
   bottom: 0;

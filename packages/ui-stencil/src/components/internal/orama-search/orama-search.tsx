@@ -12,6 +12,7 @@ import { chatContext } from '@/context/chatContext'
 export class OramaSearch {
   @Element() el: HTMLElement
 
+  @Prop() placeholder?: string = 'Search...'
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[] = []
   @Prop() sourceBaseUrl?: string
@@ -66,8 +67,8 @@ export class OramaSearch {
             type="search"
             onInput={this.onInputChange}
             size="large"
-            labelForScreenReaders="Search..."
-            placeholder="Search..."
+            labelForScreenReaders={this.placeholder}
+            placeholder={this.placeholder}
             onResetValue={() => {
               this.searchValue = ''
             }}
@@ -89,7 +90,7 @@ export class OramaSearch {
             facetClicked={this.onFacetClickHandler}
           />
           <orama-search-results
-            suggestions={!chatContext.interactions?.length && !this.disableChat ? this.suggestions : []}
+            suggestions={!globalContext.currentTerm?.length && !this.disableChat ? this.suggestions : []}
             setChatTerm={(term) => {
               globalContext.currentTask = 'chat'
               chatContext.chatService?.sendQuestion(term)

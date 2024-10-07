@@ -19,6 +19,7 @@ const meta: Meta<
       control: { type: 'radio' },
     },
     themeConfig: {
+      control: false,
       table: {
         type: {
           summary: 'Partial<TThemeOverrides>',
@@ -31,15 +32,6 @@ const meta: Meta<
         defaultValue: { summary: 'medium' },
       },
       control: { type: 'radio' },
-    },
-    openSearchbox: {
-      table: {
-        defaultValue: { summary: 'false' },
-        type: {
-          summary: 'boolean',
-        },
-      },
-      control: { type: 'boolean' },
     },
   },
 } satisfies Meta
@@ -62,10 +54,13 @@ const Template = (label: string) => (args) => {
       <orama-search-box
         .colorScheme=${args.colorScheme}
         .index=${demoIndexes.orama.index}
-        .placeholder=${demoIndexes.orama.placeholder}
+        .chatPlaceholder=${demoIndexes.orama.placeholder}
+        .facetProperty=${demoIndexes.orama.facetProperty}
+        .resultMap=${demoIndexes.orama.resultMap}
+        .themeConfig=${demoIndexes.orama.themeConfig}
+        .suggestions=${demoIndexes.orama.suggestions}
         .sourceBaseUrl=${demoIndexes.orama.sourceBaseUrl}
         .sourcesMap=${demoIndexes.orama.sourcesMap}
-        .suggestions=${demoIndexes.orama.suggestions}
       >
       </orama-search-box>
     </div>
@@ -74,4 +69,8 @@ const Template = (label: string) => (args) => {
 
 export const SearchButton: Story = {
   render: Template('Search...'),
+  args: {
+    colorScheme: 'light',
+    size: 'medium',
+  },
 }
