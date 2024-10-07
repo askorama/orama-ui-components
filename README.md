@@ -24,15 +24,15 @@ This library provides a set of ready to use UI components for easily implementin
 
 Orama UI Components are built using StencilJS as Web Components. They can be used in any project, no matter the framework or library you are using. 
 
-## Authentication
+### Create your first index
 
 Since most of our components require you to have a Orama Cloud index already deployed, make sure to:
 
-1. **Sign Up**: go to [Orama Cloud](https://cloud.orama.com) and create a Free Account if you don't have one yet.
-2. **Create your first index**: select the [Data Source](https://docs.orama.com/cloud/data-sources/introduction-to-data-sources) that suits your use case to start importing your data.
-3. **Deploy your index**: once it is deployed, it's ready for searching. Start by integrating our _SearchBox_.
+1. **Sign Up**: go to [Orama Cloud](https://cloud.orama.com) and create a Free Account.
+2. **Create your first index**: select the [Data Source](https://docs.orama.com/cloud/data-sources/introduction-to-data-sources) and start importing your data.
+3. **Deploy your index**: once it is deployed, it's ready for searching!
 
-## Usage
+### Usage
 
 Orama UI Components provide a **Web Components** library that can be used in any project, no matter the framework or library you are using. We also provide **React**, **Angular**, and **Vue** wrappers for easier integration. **Properties and Events** are the same across all wrappers, but the syntax is slightly different for each one, so please check the documentation for each wrapper for examples.
 
