@@ -1,4 +1,6 @@
 import type { CloudIndexConfig } from '@/types'
+import type { Orama } from '@orama/orama'
+import { Switch } from '@orama/switch'
 import { OramaClient } from '@oramacloud/client'
 
 export function format(first: string, middle: string, last: string): string {
@@ -35,7 +37,11 @@ export function getNonExplicitAttributes(element: HTMLElement, explicitProps: st
   }, {})
 }
 
-export function validateCloudIndexConfig(el: HTMLElement, index?: CloudIndexConfig, instance?: OramaClient): void {
+export function validateCloudIndexConfig(
+  el: HTMLElement,
+  index?: CloudIndexConfig,
+  instance?: OramaClient | Orama<unknown>,
+): void {
   const componentDetails = `
     Component: ${el.tagName.toLowerCase()}
     Id: ${el.id}
@@ -48,8 +54,10 @@ export function validateCloudIndexConfig(el: HTMLElement, index?: CloudIndexConf
   }
 
   if (instance && !index) {
+    const oramaInstance = new Switch(instance)
+
     // TODO: maybe add a validate method to the client?
-    instance
+    oramaInstance
       .search({
         term: 'test',
       })

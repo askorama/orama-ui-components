@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type                                                       | Default     |
-| ---------------- | ----------------- | ----------- | ---------------------------------------------------------- | ----------- |
-| `clientInstance` | --                |             | `OramaClient`                                              | `undefined` |
-| `index`          | --                |             | `{ api_key: string; endpoint: string; }`                   | `undefined` |
-| `placeholder`    | `placeholder`     |             | `string`                                                   | `undefined` |
-| `sourceBaseUrl`  | `source-base-url` |             | `string`                                                   | `undefined` |
-| `sourcesMap`     | --                |             | `{ title?: string; path?: string; description?: string; }` | `undefined` |
-| `suggestions`    | --                |             | `string[]`                                                 | `undefined` |
+| Property         | Attribute         | Description | Type                                                                                                                                                                             | Default     |
+| ---------------- | ----------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `clientInstance` | --                |             | `FunctionComponents<unknown> & Internals<unknown, Index, DocumentsStore, Sorter> & ArrayCallbackComponents<any> & OramaID & { plugins: OramaPlugin<unknown>[]; } \| OramaClient` | `undefined` |
+| `index`          | --                |             | `{ api_key: string; endpoint: string; }`                                                                                                                                         | `undefined` |
+| `placeholder`    | `placeholder`     |             | `string`                                                                                                                                                                         | `undefined` |
+| `sourceBaseUrl`  | `source-base-url` |             | `string`                                                                                                                                                                         | `undefined` |
+| `sourcesMap`     | --                |             | `{ title?: string; path?: string; description?: string; }`                                                                                                                       | `undefined` |
+| `suggestions`    | --                |             | `string[]`                                                                                                                                                                       | `undefined` |
 
 
 ## Dependencies
