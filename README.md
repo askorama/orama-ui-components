@@ -7,14 +7,10 @@
 </h4>
 <br />
 
-<div align="center">
-
 [![Web Components](https://img.shields.io/badge/WebComponents-Web--Components?logo=webcomponentsdotorg&color=gray)](./packages/ui-stencil/)
 [![React Components](https://img.shields.io/badge/React-Components?logo=react&color=1c2c4c)](./packages/ui-stencil-react/)
 [![Vue Components](https://img.shields.io/badge/Vue-Components?logo=vuedotjs&color=35495e)](./packages/ui-stencil-vue/)
 [![Angular Components](https://img.shields.io/badge/Angular-Components?logo=angular&color=c3002f)](./packages/ui-stencil-angular/)
-
-</div>
 
 # Orama UI Components
 
