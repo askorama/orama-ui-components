@@ -89,7 +89,6 @@ const Template = ({ preset, chatPlaceholder, searchPlaceholder, colorScheme, lay
       .layout=${layout}
       .chatPlaceholder=${chatPlaceholder}
       .searchPlaceholder=${searchPlaceholder}
-      .linksTarget=${'_parent'}
     ></orama-search-box>
   </div>`
 }
