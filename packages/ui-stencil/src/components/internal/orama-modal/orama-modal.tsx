@@ -122,7 +122,7 @@ export class OramaModal {
       document.body.style.overflow = 'hidden'
     }
     this.el.addEventListener('click', (event) => {
-      if (!this.innerModalRef.contains(event.target as Node)) {
+      if (this.innerModalRef && !this.innerModalRef.contains(event.target as Node)) {
         event.stopPropagation()
         event.preventDefault()
         this.closeModal()
