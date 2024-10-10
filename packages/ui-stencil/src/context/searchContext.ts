@@ -11,9 +11,6 @@ const store = createStore({
   facetProperty: '', // TODO: consider to move to resultsMap
   results: [] as SearchResultBySection[],
   resultMap: {} as ResultMap,
-  sourceBaseURL: '' as string,
-  linksTarget: '_blank' as string,
-  linksRel: 'noopener noreferrer' as string,
   highlightedIndex: -1,
   loading: false,
   error: false,

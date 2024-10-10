@@ -49,16 +49,6 @@ export class OramaSearch {
     globalContext.currentTask = 'chat'
   }
 
-  setSearchContext = () => {
-    searchState.sourceBaseURL = this.sourceBaseUrl
-    searchState.linksTarget = this.linksTarget
-    searchState.linksRel = this.linksRel
-  }
-
-  componentDidLoad() {
-    this.setSearchContext()
-  }
-
   handleSubmit = (e: Event) => {
     e.preventDefault()
 
