@@ -73,7 +73,8 @@ export default meta
 
 // TODO: Poor controls: https://linear.app/oramasearch/issue/ORM-1823/poor-serachbox-storybook-controls
 const Template = ({ preset, chatPlaceholder, searchPlaceholder, colorScheme, layout, disableChat }) => {
-  return html`<orama-search-box
+  return html`<div style="${layout === 'embed' ? 'height: 600px' : ''}">
+    <orama-search-box
       .open=${preset?.open}
       .facetProperty=${preset?.facetProperty}
       .resultMap=${preset?.resultMap}
@@ -88,7 +89,9 @@ const Template = ({ preset, chatPlaceholder, searchPlaceholder, colorScheme, lay
       .layout=${layout}
       .chatPlaceholder=${chatPlaceholder}
       .searchPlaceholder=${searchPlaceholder}
-    ></orama-search-box>`
+      .linksTarget=${'_parent'}
+    ></orama-search-box>
+  </div>`
 }
 
 type Story = StoryObj<Components.OramaSearchBox & { preset: keyof DemoIndexConfig }>

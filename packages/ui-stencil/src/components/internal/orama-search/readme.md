@@ -11,6 +11,8 @@
 | --------------- | ----------------- | ----------- | ---------- | ------------- |
 | `disableChat`   | `disable-chat`    |             | `boolean`  | `false`       |
 | `focusInput`    | `focus-input`     |             | `boolean`  | `false`       |
+| `linksRel`      | `links-rel`       |             | `string`   | `undefined`   |
+| `linksTarget`   | `links-target`    |             | `string`   | `undefined`   |
 | `placeholder`   | `placeholder`     |             | `string`   | `'Search...'` |
 | `sourceBaseUrl` | `source-base-url` |             | `string`   | `undefined`   |
 | `suggestions`   | --                |             | `string[]` | `[]`          |

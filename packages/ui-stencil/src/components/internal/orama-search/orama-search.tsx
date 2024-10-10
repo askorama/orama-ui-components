@@ -16,6 +16,8 @@ export class OramaSearch {
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[] = []
   @Prop() sourceBaseUrl?: string
+  @Prop() linksTarget?: string
+  @Prop() linksRel?: string
   @Prop() disableChat?: boolean = false
 
   @State() searchValue = ''
@@ -45,6 +47,16 @@ export class OramaSearch {
 
   onChatButtonClick = () => {
     globalContext.currentTask = 'chat'
+  }
+
+  setSearchContext = () => {
+    searchState.sourceBaseURL = this.sourceBaseUrl
+    searchState.linksTarget = this.linksTarget
+    searchState.linksRel = this.linksRel
+  }
+
+  componentDidLoad() {
+    this.setSearchContext()
   }
 
   handleSubmit = (e: Event) => {
@@ -96,6 +108,8 @@ export class OramaSearch {
               chatContext.chatService?.sendQuestion(term)
             }}
             sourceBaseUrl={this.sourceBaseUrl}
+            linksTarget={this.linksTarget}
+            linksRel={this.linksRel}
             sections={searchState.results}
             searchTerm={this.searchValue}
             loading={searchState.loading}

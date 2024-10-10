@@ -14,6 +14,8 @@ const BOTTOM_THRESHOLD = 1
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
   @Prop() sourceBaseUrl?: string = ''
+  @Prop() linksTarget?: string
+  @Prop() linksRel?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() showClearChat?: boolean = true
   @Prop() defaultTerm?: string
@@ -146,6 +148,8 @@ export class OramaChat {
       ...chatContext.sourcesMap,
       ...this.sourcesMap,
     }
+    chatContext.linksTarget = this.linksTarget
+    chatContext.linksRel = this.linksRel
   }
 
   componentWillLoad() {

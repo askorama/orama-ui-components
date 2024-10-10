@@ -9,6 +9,8 @@
 
 | Property        | Attribute           | Description | Type                                                       | Default                                                                       |
 | --------------- | ------------------- | ----------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `linksRel`      | `links-rel`         |             | `string`                                                   | `'noopener noreferrer'`                                                       |
+| `linksTarget`   | `links-target`      |             | `string`                                                   | `'_blank'`                                                                    |
 | `sourceBaseURL` | `source-base-u-r-l` |             | `string`                                                   | `''`                                                                          |
 | `sources`       | `sources`           |             | `any`                                                      | `undefined`                                                                   |
 | `sourcesMap`    | --                  |             | `{ title?: string; description?: string; path?: string; }` | `{     title: 'title',     description: 'description',     path: 'path',   }` |

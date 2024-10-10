@@ -31,6 +31,8 @@ export class SearchBox {
   @Prop() facetProperty?: string
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() sourceBaseUrl?: string
+  @Prop() linksTarget?: string
+  @Prop() linksRel?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() disableChat?: boolean = false
   @Prop() layout?: 'modal' | 'embed' = 'modal'
@@ -204,6 +206,8 @@ export class SearchBox {
           placeholder={this?.searchPlaceholder || 'Search...'}
           focusInput={globalContext.currentTask === 'search'}
           sourceBaseUrl={this.sourceBaseUrl}
+          linksTarget={this.linksTarget}
+          linksRel={this.linksRel}
           disableChat={this.disableChat}
           suggestions={this.suggestions}
         />
@@ -221,6 +225,8 @@ export class SearchBox {
           focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
           placeholder={this?.chatPlaceholder || this.placeholder}
           sourceBaseUrl={this.sourceBaseUrl}
+          linksTarget={this.linksTarget}
+          linksRel={this.linksRel}
           sourcesMap={this.sourcesMap}
           suggestions={this.suggestions}
         />

@@ -22,6 +22,8 @@ export const OramaButton = /*@__PURE__*/ defineContainer<JSX.OramaButton>('orama
 export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-chat', undefined, [
   'placeholder',
   'sourceBaseUrl',
+  'linksTarget',
+  'linksRel',
   'sourcesMap',
   'showClearChat',
   'defaultTerm',
@@ -39,6 +41,8 @@ export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('ora
   'index',
   'clientInstance',
   'sourceBaseUrl',
+  'linksTarget',
+  'linksRel',
   'placeholder',
   'sourcesMap',
   'suggestions'
@@ -131,6 +135,8 @@ export const OramaSearch = /*@__PURE__*/ defineContainer<JSX.OramaSearch>('orama
   'focusInput',
   'suggestions',
   'sourceBaseUrl',
+  'linksTarget',
+  'linksRel',
   'disableChat'
 ]);
 
@@ -144,6 +150,8 @@ export const OramaSearchBox = /*@__PURE__*/ defineContainer<JSX.OramaSearchBox>(
   'facetProperty',
   'resultMap',
   'sourceBaseUrl',
+  'linksTarget',
+  'linksRel',
   'sourcesMap',
   'disableChat',
   'layout',
@@ -165,6 +173,8 @@ export const OramaSearchButton = /*@__PURE__*/ defineContainer<JSX.OramaSearchBu
 
 export const OramaSearchResults = /*@__PURE__*/ defineContainer<JSX.OramaSearchResults>('orama-search-results', undefined, [
   'sourceBaseUrl',
+  'linksTarget',
+  'linksRel',
   'sections',
   'suggestions',
   'searchTerm',
@@ -185,6 +195,8 @@ export const OramaSlidingPanel = /*@__PURE__*/ defineContainer<JSX.OramaSlidingP
 export const OramaSources = /*@__PURE__*/ defineContainer<JSX.OramaSources>('orama-sources', undefined, [
   'sources',
   'sourceBaseURL',
+  'linksTarget',
+  'linksRel',
   'sourcesMap'
 ]);
 

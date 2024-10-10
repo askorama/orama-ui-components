@@ -42,6 +42,8 @@ export namespace Components {
     interface OramaChat {
         "defaultTerm"?: string;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -54,6 +56,8 @@ export namespace Components {
     interface OramaChatBox {
         "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
@@ -118,6 +122,8 @@ export namespace Components {
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
@@ -130,6 +136,8 @@ export namespace Components {
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "layout"?: 'modal' | 'embed';
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "open": boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
@@ -147,6 +155,8 @@ export namespace Components {
     }
     interface OramaSearchResults {
         "error": boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "loading": boolean;
         "searchTerm": SearchResultsProps['searchTerm'];
         "sections": SearchResultBySection[];
@@ -160,6 +170,8 @@ export namespace Components {
         "open": boolean;
     }
     interface OramaSources {
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "sourceBaseURL"?: string;
         "sources": any;
         "sourcesMap"?: SourcesMap;
@@ -456,6 +468,8 @@ declare namespace LocalJSX {
     interface OramaChat {
         "defaultTerm"?: string;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -468,6 +482,8 @@ declare namespace LocalJSX {
     interface OramaChatBox {
         "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
@@ -534,6 +550,8 @@ declare namespace LocalJSX {
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
@@ -546,6 +564,8 @@ declare namespace LocalJSX {
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "layout"?: 'modal' | 'embed';
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "onSearchboxClosed"?: (event: OramaSearchBoxCustomEvent<{
     id: HTMLElement
   }>) => void;
@@ -566,6 +586,8 @@ declare namespace LocalJSX {
     }
     interface OramaSearchResults {
         "error"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "loading"?: boolean;
         "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchResult>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
@@ -580,6 +602,8 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface OramaSources {
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "sourceBaseURL"?: string;
         "sources"?: any;
         "sourcesMap"?: SourcesMap;
