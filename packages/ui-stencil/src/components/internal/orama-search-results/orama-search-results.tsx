@@ -93,10 +93,11 @@ export class SearchResults {
                 {section.items.map((result) => (
                   <li class="list-item" key={result.id}>
                     <a
-                      href={this.getItemLinkUrl(result)}
+                      href={`${this.sourceBaseUrl}${result.path}`}
                       class="list-item-button"
                       target={this.linksTarget}
                       rel={this.linksRel}
+                      id={`search-result-${result.id}`}
                       onClick={() => this.handleItemClick(result)}
                     >
                       <ph-files size="20px" />

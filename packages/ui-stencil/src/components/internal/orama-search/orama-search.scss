@@ -38,12 +38,6 @@
   }
 }
 
-.chat-btn {
-  @media (--md-max) {
-    display: none;
-  }
-}
-
 .search-form {
   display: flex;
   flex-direction: column;

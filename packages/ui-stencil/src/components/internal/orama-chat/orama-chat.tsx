@@ -1,6 +1,6 @@
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
+import { Component, Host, Listen, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, chatStore, TAnswerStatus } from '@/context/chatContext'
-import type { SourcesMap } from '@/types'
+import type { SearchResult, SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStopCircle.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
@@ -24,6 +24,11 @@ export class OramaChat {
 
   @State() inputValue = ''
   @State() showGoToBottomButton = false
+
+  @Listen('sourceItemClick')
+  handleSourceItemClick(event: CustomEvent<SearchResult>) {
+    console.log(`Source item clicked: ${event.detail.title}`, event.detail)
+  }
 
   @Watch('defaultTerm')
   handleDefaultTermChange() {

@@ -34,7 +34,7 @@ export class OramaSearch {
 
   @Listen('oramaItemClick')
   handleOramaItemClick(event: CustomEvent<SearchResult>) {
-    console.log(`${event.detail.title} clicked`)
+    console.log(`Item clicked: ${event.detail.title}`, event.detail)
   }
 
   onFacetClickHandler = (facetName: string) => {
@@ -43,10 +43,6 @@ export class OramaSearch {
 
   onInputChange = (e: Event) => {
     this.searchValue = (e.target as HTMLInputElement).value
-  }
-
-  onChatButtonClick = () => {
-    globalContext.currentTask = 'chat'
   }
 
   handleSubmit = (e: Event) => {
@@ -75,15 +71,7 @@ export class OramaSearch {
               this.searchValue = ''
             }}
           />
-          {this.disableChat ? null : (
-            <orama-chat-button
-              active={!!this.searchValue}
-              label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
-              class="chat-btn"
-              onClick={this.onChatButtonClick}
-              onKeyPress={this.onChatButtonClick}
-            />
-          )}
+          <slot name="summary" />
         </form>
         <div class="result-wrapper">
           <orama-facets

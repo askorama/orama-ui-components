@@ -119,6 +119,7 @@ export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-m
   'closeOnEscape',
   'closeOnOutsideClick',
   'mainTitle',
+  'layout',
   'modalStatusChanged'
 ]);
 
@@ -197,7 +198,8 @@ export const OramaSources = /*@__PURE__*/ defineContainer<JSX.OramaSources>('ora
   'sourceBaseURL',
   'linksTarget',
   'linksRel',
-  'sourcesMap'
+  'sourcesMap',
+  'sourceItemClick'
 ]);
 
 

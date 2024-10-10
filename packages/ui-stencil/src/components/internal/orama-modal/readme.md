@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property              | Attribute                | Description | Type      | Default |
-| --------------------- | ------------------------ | ----------- | --------- | ------- |
-| `closeOnEscape`       | `close-on-escape`        |             | `boolean` | `true`  |
-| `closeOnOutsideClick` | `close-on-outside-click` |             | `boolean` | `true`  |
-| `mainTitle`           | `main-title`             |             | `string`  | `''`    |
-| `open`                | `open`                   |             | `boolean` | `false` |
+| Property              | Attribute                | Description | Type                 | Default   |
+| --------------------- | ------------------------ | ----------- | -------------------- | --------- |
+| `closeOnEscape`       | `close-on-escape`        |             | `boolean`            | `true`    |
+| `closeOnOutsideClick` | `close-on-outside-click` |             | `boolean`            | `true`    |
+| `layout`              | `layout`                 |             | `"embed" \| "modal"` | `'modal'` |
+| `mainTitle`           | `main-title`             |             | `string`             | `''`      |
+| `open`                | `open`                   |             | `boolean`            | `false`   |
 
 
 ## Events

@@ -12,9 +12,6 @@ import { generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/u
 import type { ColorScheme, ResultMap, SourcesMap } from '@/types'
 import type { CloudIndexConfig } from '@/types'
 
-// TODO: AI components should be lazyly loaded. In case of Disable AI flag, it should not be loaded at all
-// https://linear.app/oramasearch/issue/ORM-1824/ai-components-should-be-lazyly-loaded-in-case-of-disable-ai-flag-they
-
 @Component({
   tag: 'orama-search-box',
   styleUrl: 'orama-search-box.scss',
@@ -83,19 +80,6 @@ export class SearchBox {
     searchState.searchParams = newValue
   }
 
-  @Listen('oramaItemClick')
-  handleItemClick(event: CustomEvent) {
-    // TODO: manage item click
-    console.log('Item clicked', event.detail)
-  }
-
-  @Listen('keydown', { target: 'document' })
-  handleCloseOnEsc(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      this.closeSearchbox()
-    }
-  }
-
   @Listen('modalStatusChanged')
   modalStatusChangedHandler(event: CustomEvent<{ open: boolean; id: HTMLElement }>) {
     if (event.detail.id === this.modalRef) {
@@ -109,6 +93,10 @@ export class SearchBox {
   private closeSearchbox = () => {
     globalContext.open = false
     this.open = false
+  }
+
+  private onChatButtonClick = () => {
+    globalContext.currentTask = 'chat'
   }
 
   updateTheme() {
@@ -210,7 +198,17 @@ export class SearchBox {
           linksRel={this.linksRel}
           disableChat={this.disableChat}
           suggestions={this.suggestions}
-        />
+        >
+          {this.windowWidth > 768 && !this.disableChat && (
+            <orama-chat-button
+              slot="summary"
+              active={!!globalContext.currentTerm}
+              label={`${globalContext.currentTerm ? `${globalContext.currentTerm} - ` : ''}Get a summary`}
+              onClick={this.onChatButtonClick}
+              onKeyPress={this.onChatButtonClick}
+            />
+          )}
+        </orama-search>
       </Fragment>
     )
   }
@@ -234,44 +232,7 @@ export class SearchBox {
     )
   }
 
-  getSlidingPanel(options = { withBackdrop: false }) {
-    return (
-      <Fragment>
-        {this.windowWidth > 1024 && (
-          <orama-sliding-panel
-            open={globalContext.currentTask === 'chat'}
-            backdrop={options.withBackdrop}
-            closed={() => {
-              globalContext.currentTask = 'search'
-            }}
-          >
-            {this.getChatBox()}
-          </orama-sliding-panel>
-        )}
-      </Fragment>
-    )
-  }
-
-  getInnerContent() {
-    return (
-      <Fragment>
-        {this.disableChat ? null : (
-          <orama-navigation-bar
-            handleClose={this.closeSearchbox}
-            showBackButton={this.layout !== 'embed'}
-            showChatActions={globalContext.currentTask === 'chat'}
-          />
-        )}
-        <div class="main">
-          {this.getSearchBox()}
-          {this.windowWidth <= 1024 && this.getChatBox()}
-        </div>
-        <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
-      </Fragment>
-    )
-  }
-
-  getModalLayout() {
+  getSearchBoxLayout() {
     return (
       <Fragment>
         <orama-modal
@@ -280,19 +241,34 @@ export class SearchBox {
           class="modal"
           mainTitle="Start your search"
           closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
+          layout={this.layout}
         >
-          {this.getInnerContent()}
+          <Fragment>
+            {this.disableChat ? null : (
+              <orama-navigation-bar
+                handleClose={this.closeSearchbox}
+                showBackButton={this.layout !== 'embed'}
+                showChatActions={globalContext.currentTask === 'chat'}
+              />
+            )}
+            <div class="main">
+              {this.getSearchBox()}
+              {this.windowWidth <= 1024 && this.getChatBox()}
+            </div>
+            <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
+          </Fragment>
         </orama-modal>
-        {this.getSlidingPanel()}
-      </Fragment>
-    )
-  }
-
-  getEmbedLayout() {
-    return (
-      <Fragment>
-        <div class="embed">{this.getInnerContent()}</div>
-        {this.getSlidingPanel({ withBackdrop: true })}
+        {this.windowWidth > 1024 && (
+          <orama-sliding-panel
+            open={globalContext.currentTask === 'chat'}
+            backdrop={this.layout === 'embed'}
+            closed={() => {
+              globalContext.currentTask = 'search'
+            }}
+          >
+            {this.getChatBox()}
+          </orama-sliding-panel>
+        )}
       </Fragment>
     )
   }
@@ -306,6 +282,6 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
-    return this.layout === 'embed' ? this.getEmbedLayout() : this.getModalLayout()
+    return this.getSearchBoxLayout()
   }
 }

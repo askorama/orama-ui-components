@@ -16,6 +16,13 @@
 | `sourcesMap`    | --                  |             | `{ title?: string; path?: string; description?: string; }` | `{     title: 'title',     description: 'description',     path: 'path',   }` |
 
 
+## Events
+
+| Event             | Description | Type                                                                             |
+| ----------------- | ----------- | -------------------------------------------------------------------------------- |
+| `sourceItemClick` |             | `CustomEvent<{ id: string; title: string; description: string; path: string; }>` |
+
+
 ## Dependencies
 
 ### Used by

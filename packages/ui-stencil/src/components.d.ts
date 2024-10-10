@@ -111,6 +111,7 @@ export namespace Components {
     interface OramaModal {
         "closeOnEscape": boolean;
         "closeOnOutsideClick": boolean;
+        "layout"?: 'modal' | 'embed';
         "mainTitle": string;
         "open": boolean;
     }
@@ -229,6 +230,10 @@ export interface OramaSearchBoxCustomEvent<T> extends CustomEvent<T> {
 export interface OramaSearchResultsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOramaSearchResultsElement;
+}
+export interface OramaSourcesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaSourcesElement;
 }
 declare global {
     interface HTMLOramaButtonElement extends Components.OramaButton, HTMLStencilElement {
@@ -403,7 +408,18 @@ declare global {
         prototype: HTMLOramaSlidingPanelElement;
         new (): HTMLOramaSlidingPanelElement;
     };
+    interface HTMLOramaSourcesElementEventMap {
+        "sourceItemClick": SearchResult;
+    }
     interface HTMLOramaSourcesElement extends Components.OramaSources, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaSourcesElementEventMap>(type: K, listener: (this: HTMLOramaSourcesElement, ev: OramaSourcesCustomEvent<HTMLOramaSourcesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaSourcesElementEventMap>(type: K, listener: (this: HTMLOramaSourcesElement, ev: OramaSourcesCustomEvent<HTMLOramaSourcesElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaSourcesElement: {
         prototype: HTMLOramaSourcesElement;
@@ -538,6 +554,7 @@ declare namespace LocalJSX {
     interface OramaModal {
         "closeOnEscape"?: boolean;
         "closeOnOutsideClick"?: boolean;
+        "layout"?: 'modal' | 'embed';
         "mainTitle"?: string;
         "onModalStatusChanged"?: (event: OramaModalCustomEvent<ModalStatus>) => void;
         "open"?: boolean;
@@ -604,6 +621,7 @@ declare namespace LocalJSX {
     interface OramaSources {
         "linksRel"?: string;
         "linksTarget"?: string;
+        "onSourceItemClick"?: (event: OramaSourcesCustomEvent<SearchResult>) => void;
         "sourceBaseURL"?: string;
         "sources"?: any;
         "sourcesMap"?: SourcesMap;
