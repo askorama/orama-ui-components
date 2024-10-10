@@ -56,6 +56,8 @@ export class OramaChatAssistentMessage {
           sources={this.interaction.sources}
           sourceBaseURL={chatContext.sourceBaseURL}
           sourcesMap={chatContext.sourcesMap}
+          linksRel={chatContext.linksRel}
+          linksTarget={chatContext.linksTarget}
         />
         <div class="message-wrapper">
           {!this.interaction.response ? <orama-dots-loader /> : <orama-markdown content={this.interaction.response} />}

@@ -9,6 +9,12 @@
   }
 }
 
+.spacer {
+  display: block;
+  width: pxToRem(36);
+  height: pxToRem(36);
+}
+
 .corner-section {
   display: flex;
   gap: var(--spacing-xs, $spacing-xs);

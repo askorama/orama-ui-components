@@ -11,6 +11,8 @@
 | --------------- | ----------------- | ----------- | ---------------------------------------------------------- | ------------------- |
 | `defaultTerm`   | `default-term`    |             | `string`                                                   | `undefined`         |
 | `focusInput`    | `focus-input`     |             | `boolean`                                                  | `false`             |
+| `linksRel`      | `links-rel`       |             | `string`                                                   | `undefined`         |
+| `linksTarget`   | `links-target`    |             | `string`                                                   | `undefined`         |
 | `placeholder`   | `placeholder`     |             | `string`                                                   | `'Ask me anything'` |
 | `showClearChat` | `show-clear-chat` |             | `boolean`                                                  | `true`              |
 | `sourceBaseUrl` | `source-base-url` |             | `string`                                                   | `''`                |

@@ -15,6 +15,8 @@ export class OramaSources {
   // biome-ignore lint/suspicious/noExplicitAny: Sources can be any shape
   @Prop() sources: any
   @Prop() sourceBaseURL?: string = ''
+  @Prop() linksTarget?: string = '_blank'
+  @Prop() linksRel?: string = 'noopener noreferrer'
   @Prop() sourcesMap?: SourcesMap = {
     title: 'title',
     description: 'description',
@@ -173,8 +175,8 @@ export class OramaSources {
                   // TODO: Use a URL object instead
                   href={`${this.sourceBaseURL}${source[this.sourcesMap.path]}`}
                   class="source"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={this.linksTarget}
+                  rel={this.linksRel}
                   id={`source-${index}`}
                 >
                   <orama-text as="h3" styledAs="span" class="source-title">

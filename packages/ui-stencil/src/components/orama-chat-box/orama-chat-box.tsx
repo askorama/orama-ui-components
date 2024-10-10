@@ -16,6 +16,8 @@ export class ChatBox {
   @Prop() index?: CloudIndexConfig
   @Prop() clientInstance?: OramaClient
   @Prop() sourceBaseUrl?: string
+  @Prop() linksTarget?: string
+  @Prop() linksRel?: string
   @Prop() placeholder?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() suggestions?: string[]
