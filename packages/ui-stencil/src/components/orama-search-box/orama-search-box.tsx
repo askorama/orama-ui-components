@@ -252,6 +252,7 @@ export class SearchBox {
         {this.disableChat ? null : (
           <orama-navigation-bar
             handleClose={this.closeSearchbox}
+            showBackButton={this.layout !== 'embed'}
             showChatActions={globalContext.currentTask === 'chat'}
           />
         )}

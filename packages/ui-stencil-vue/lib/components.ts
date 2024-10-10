@@ -121,6 +121,7 @@ export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-m
 
 export const OramaNavigationBar = /*@__PURE__*/ defineContainer<JSX.OramaNavigationBar>('orama-navigation-bar', undefined, [
   'handleClose',
+  'showBackButton',
   'showChatActions'
 ]);
 

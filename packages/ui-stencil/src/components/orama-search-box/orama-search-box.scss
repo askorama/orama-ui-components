@@ -31,7 +31,8 @@
   width: 100%;
   margin: 0 auto;
   height: 100%;
-  max-height: pxToRem(400);
+  min-height: pxToRem(400);
+  max-height: 100%;
   overflow: hidden;
   padding: 0;
   display: flex;

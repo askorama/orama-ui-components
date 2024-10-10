@@ -112,6 +112,7 @@ export namespace Components {
     }
     interface OramaNavigationBar {
         "handleClose": () => void;
+        "showBackButton": boolean;
         "showChatActions": boolean;
     }
     interface OramaSearch {
@@ -527,6 +528,7 @@ declare namespace LocalJSX {
     }
     interface OramaNavigationBar {
         "handleClose"?: () => void;
+        "showBackButton"?: boolean;
         "showChatActions"?: boolean;
     }
     interface OramaSearch {
