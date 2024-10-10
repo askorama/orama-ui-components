@@ -43,13 +43,13 @@ const Template = (label: string) => (args) => {
   return html`
     <div style="display: flex; justify-content: flex-start">
       <div style="width: 240px">
-      <orama-search-button
-        label="${args.label}"
-        .colorScheme=${args.colorScheme}
-        .size=${args.size}
-      >
-          ${label}
-      </orama-search-button>
+        <orama-search-button
+          label="${args.label}"
+          .colorScheme=${args.colorScheme}
+          .size=${args.size}
+        >
+            ${label}
+        </orama-search-button>
       </div>
       <orama-search-box
         .colorScheme=${args.colorScheme}

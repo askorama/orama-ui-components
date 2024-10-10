@@ -31,6 +31,7 @@ export class OramaChatSuggestions {
           return (
             <li key={suggestion} class={`suggestion-item-${classSuffix}`}>
               <button
+                focus-on-arrow-nav
                 type="button"
                 class={`suggestion-button-${classSuffix}`}
                 onClick={(e) => {

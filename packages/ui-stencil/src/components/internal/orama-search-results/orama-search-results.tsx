@@ -93,6 +93,7 @@ export class SearchResults {
                 {section.items.map((result) => (
                   <li class="list-item" key={result.id}>
                     <a
+                      focus-on-arrow-nav
                       href={`${this.sourceBaseUrl}${result.path}`}
                       class="list-item-button"
                       target={this.linksTarget}

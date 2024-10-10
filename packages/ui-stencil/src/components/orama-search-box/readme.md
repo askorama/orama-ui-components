@@ -41,11 +41,11 @@
 - [orama-search](../internal/orama-search)
 - [orama-chat-button](../internal/orama-chat-button)
 - [orama-chat](../internal/orama-chat)
-- [orama-modal](../internal/orama-modal)
 - [orama-navigation-bar](../internal/orama-navigation-bar)
 - [orama-footer](../internal/orama-footer)
 - [orama-sliding-panel](../internal/orama-sliding-panel)
 - [orama-text](../internal/orama-text)
+- [orama-modal](../internal/orama-modal)
 
 ### Graph
 ```mermaid
@@ -53,11 +53,11 @@ graph TD;
   orama-search-box --> orama-search
   orama-search-box --> orama-chat-button
   orama-search-box --> orama-chat
-  orama-search-box --> orama-modal
   orama-search-box --> orama-navigation-bar
   orama-search-box --> orama-footer
   orama-search-box --> orama-sliding-panel
   orama-search-box --> orama-text
+  orama-search-box --> orama-modal
   orama-search --> orama-input
   orama-search --> orama-facets
   orama-search --> orama-search-results

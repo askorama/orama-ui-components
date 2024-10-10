@@ -90,6 +90,18 @@ export class SearchBox {
     }
   }
 
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(ev: KeyboardEvent) {
+    if (this.open) {
+      switch (ev.key) {
+        case 'ArrowDown':
+        case 'ArrowUp':
+          this.handleArrowNavigation(ev)
+          break
+      }
+    }
+  }
+
   private closeSearchbox = () => {
     globalContext.open = false
     this.open = false
@@ -180,6 +192,36 @@ export class SearchBox {
     this.windowWidth = event.detail
   }
 
+  handleArrowNavigation(event: KeyboardEvent) {
+    if (globalContext.currentTask !== 'search') return
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
+
+    event.stopPropagation()
+    event.preventDefault()
+
+    const focusableElements = this.modalRef?.querySelectorAll('[focus-on-arrow-nav]')
+
+    let focusableArray = Array.from(focusableElements) as HTMLElement[]
+    focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)
+
+    const firstFocusableElement = focusableArray[0]
+    const lastFocusableElement = focusableArray[focusableArray.length - 1]
+
+    const focusedElement = this.modalRef.querySelector(':focus') as HTMLElement
+    const focusedIndex = focusableArray.indexOf(focusedElement)
+
+    let nextFocusableElement: HTMLElement
+
+    if (event.key === 'ArrowDown') {
+      nextFocusableElement =
+        focusedIndex === focusableArray.length - 1 ? firstFocusableElement : focusableArray[focusedIndex + 1]
+      nextFocusableElement?.focus()
+    } else if (event.key === 'ArrowUp') {
+      nextFocusableElement = focusedIndex === 0 ? lastFocusableElement : focusableArray[focusedIndex - 1]
+      nextFocusableElement?.focus()
+    }
+  }
+
   getSearchBox() {
     return (
       <Fragment>
@@ -199,9 +241,10 @@ export class SearchBox {
           disableChat={this.disableChat}
           suggestions={this.suggestions}
         >
-          {this.windowWidth > 768 && !this.disableChat && (
+          {this.windowWidth > 1024 && !this.disableChat && (
             <orama-chat-button
               slot="summary"
+              focus-on-arrow-nav
               active={!!globalContext.currentTerm}
               label={`${globalContext.currentTerm ? `${globalContext.currentTerm} - ` : ''}Get a summary`}
               onClick={this.onChatButtonClick}
@@ -232,45 +275,37 @@ export class SearchBox {
     )
   }
 
-  getSearchBoxLayout() {
+  getInnerContent() {
     return (
       <Fragment>
-        <orama-modal
-          ref={(el) => (this.modalRef = el)}
-          open={globalContext.open}
-          class="modal"
-          mainTitle="Start your search"
-          closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
-          layout={this.layout}
-        >
-          <Fragment>
-            {this.disableChat ? null : (
-              <orama-navigation-bar
-                handleClose={this.closeSearchbox}
-                showBackButton={this.layout !== 'embed'}
-                showChatActions={globalContext.currentTask === 'chat'}
-              />
-            )}
-            <div class="main">
-              {this.getSearchBox()}
-              {this.windowWidth <= 1024 && this.getChatBox()}
-            </div>
-            <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
-          </Fragment>
-        </orama-modal>
-        {this.windowWidth > 1024 && (
-          <orama-sliding-panel
-            open={globalContext.currentTask === 'chat'}
-            backdrop={this.layout === 'embed'}
-            closed={() => {
-              globalContext.currentTask = 'search'
-            }}
-          >
-            {this.getChatBox()}
-          </orama-sliding-panel>
+        {this.disableChat ? null : (
+          <orama-navigation-bar
+            handleClose={this.closeSearchbox}
+            showBackButton={this.layout !== 'embed'}
+            showChatActions={globalContext.currentTask === 'chat'}
+          />
         )}
+        <div class="main">
+          {this.getSearchBox()}
+          {this.windowWidth <= 1024 && this.getChatBox()}
+        </div>
+        <orama-footer colorScheme={this.colorScheme === 'system' ? this.systemScheme : this.colorScheme} />
       </Fragment>
     )
+  }
+
+  getOuterContent() {
+    return this.windowWidth > 1024 ? (
+      <orama-sliding-panel
+        open={globalContext.currentTask === 'chat'}
+        backdrop={this.layout === 'embed'}
+        closed={() => {
+          globalContext.currentTask = 'search'
+        }}
+      >
+        {this.getChatBox()}
+      </orama-sliding-panel>
+    ) : null
   }
 
   render() {
@@ -282,6 +317,20 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
-    return this.getSearchBoxLayout()
+    return (
+      <Fragment>
+        <orama-modal
+          ref={(el) => (this.modalRef = el)}
+          open={globalContext.open}
+          class="modal"
+          mainTitle="Start your search"
+          closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
+          layout={this.layout}
+        >
+          {this.getInnerContent()}
+        </orama-modal>
+        {this.getOuterContent()}
+      </Fragment>
+    )
   }
 }

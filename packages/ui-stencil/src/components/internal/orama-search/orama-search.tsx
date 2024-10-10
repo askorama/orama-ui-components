@@ -61,6 +61,7 @@ export class OramaSearch {
       <Host>
         <form onSubmit={this.handleSubmit} class="search-form">
           <orama-input
+            focus-on-arrow-nav
             autoFocus={this.focusInput}
             type="search"
             onInput={this.onInputChange}
