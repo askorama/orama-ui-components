@@ -55,7 +55,11 @@ export class ChatBox {
           sourcesMap={this.sourcesMap}
           suggestions={this.suggestions}
           focusInput={this.autoFocus}
-        />
+        >
+          <div slot="empty-state">
+            <slot name="empty-state" />
+          </div>
+        </orama-chat>
       </Host>
     )
   }

@@ -1,4 +1,4 @@
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
+import { Component, Fragment, Host, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, chatStore, TAnswerStatus } from '@/context/chatContext'
 import type { SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
@@ -247,17 +247,14 @@ export class OramaChat {
   render() {
     const lastInteraction = chatContext.interactions?.[chatContext.interactions.length - 1]
     const lastInteractionStatus = lastInteraction?.status
+    const hasInteractions = chatContext.interactions?.length > 0
 
     // ? Question: Maybe should be a orama-button variant?
     return (
       <Host>
-        {this.showClearChat && !!chatContext.interactions?.length && (
+        {this.showClearChat && hasInteractions && (
           <div class="header">
-            <button
-              type="button"
-              onClick={() => chatContext.chatService.resetChat()}
-              aria-hidden={chatContext.interactions?.length === 0}
-            >
+            <button type="button" onClick={() => chatContext.chatService.resetChat()}>
               <ph-arrow-clockwise weight="fill" size="14" /> Clear chat
             </button>
           </div>
@@ -265,22 +262,25 @@ export class OramaChat {
         {/* CHAT MESSAGES */}
         <div class={'messages-container-wrapper-non-scrollable'}>
           <div
-            class={`messages-container-wrapper ${!chatContext.interactions?.length ? 'isEmpty' : ''}`}
+            class={`messages-container-wrapper ${!hasInteractions ? 'isEmpty' : ''}`}
             ref={(ref) => (this.messagesContainerRef = ref)}
           >
             <div ref={(ref) => (this.nonScrollableMessagesContainerRef = ref)}>
-              {chatContext.interactions?.length ? (
-                <orama-chat-messages-container interactions={chatContext.interactions} />
-              ) : null}
+              {hasInteractions ? <orama-chat-messages-container interactions={chatContext.interactions} /> : null}
 
               {/* TODO: Provide a better animation */}
-              {!chatContext.interactions?.length && !!this.suggestions?.length ? (
-                <div class="suggestions-wrapper">
-                  <orama-chat-suggestions
-                    suggestions={this.suggestions}
-                    suggestionClicked={this.handleSuggestionClick}
-                  />
-                </div>
+              {!hasInteractions ? (
+                <Fragment>
+                  <slot name="empty-state" />
+                  {!!this.suggestions?.length && (
+                    <div class="suggestions-wrapper">
+                      <orama-chat-suggestions
+                        suggestions={this.suggestions}
+                        suggestionClicked={this.handleSuggestionClick}
+                      />
+                    </div>
+                  )}
+                </Fragment>
               ) : null}
               {/* TODO: not required for chatbox, but maybe required for Searchbox v2 */}
               {/* <orama-logo-icon /> */}
