@@ -72,11 +72,7 @@ const Template = ({ preset }) => {
       sourceBaseUrl=${preset?.sourceBaseUrl}
       .sourcesMap=${preset?.sourcesMap}
       .suggestions=${preset?.suggestions}
-    >
-    <div slot="empty-state" style="display: flex; justify-content: center; align-items: center; padding: 1rem;">
-      <orama-text as="p">Optional empty content here...</orama-text>
-    </div>
-  </orama-chat-box>
+    ></orama-chat-box>
   `
 }
 
