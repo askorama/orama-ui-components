@@ -27,7 +27,7 @@ export class OramaChat {
 
   @Listen('sourceItemClick')
   handleSourceItemClick(event: CustomEvent<SearchResult>) {
-    console.log(`Source item clicked: ${event.detail.title}`, event.detail)
+    // console.log(`Source item clicked: ${event.detail.title}`, event.detail)
   }
 
   @Watch('defaultTerm')
