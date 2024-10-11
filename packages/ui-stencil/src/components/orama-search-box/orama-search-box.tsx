@@ -50,7 +50,7 @@ export class SearchBox {
     id: HTMLElement
   }>
 
-  modalRef!: HTMLElement
+  wrapperRef!: HTMLElement
 
   schemaQuery: MediaQueryList
 
@@ -82,7 +82,7 @@ export class SearchBox {
 
   @Listen('modalStatusChanged')
   modalStatusChangedHandler(event: CustomEvent<{ open: boolean; id: HTMLElement }>) {
-    if (event.detail.id === this.modalRef) {
+    if (event.detail.id === this.wrapperRef) {
       if (!event.detail.open) {
         globalContext.open = false
         this.open = false
@@ -194,7 +194,7 @@ export class SearchBox {
     event.stopPropagation()
     event.preventDefault()
 
-    const focusableElements = this.modalRef?.querySelectorAll('[focus-on-arrow-nav]')
+    const focusableElements = this.wrapperRef?.querySelectorAll('[focus-on-arrow-nav]')
 
     let focusableArray = Array.from(focusableElements) as HTMLElement[]
     focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)
@@ -202,7 +202,7 @@ export class SearchBox {
     const firstFocusableElement = focusableArray[0]
     const lastFocusableElement = focusableArray[focusableArray.length - 1]
 
-    const focusedElement = this.modalRef.querySelector(':focus') as HTMLElement
+    const focusedElement = this.wrapperRef.querySelector(':focus') as HTMLElement
     const focusedIndex = focusableArray.indexOf(focusedElement)
 
     let nextFocusableElement: HTMLElement
@@ -307,7 +307,7 @@ export class SearchBox {
     return (
       <Fragment>
         <orama-modal
-          ref={(el) => (this.modalRef = el)}
+          ref={(el) => (this.wrapperRef = el)}
           open={globalContext.open}
           class="modal"
           mainTitle="Start your search"
@@ -323,7 +323,7 @@ export class SearchBox {
   getEmbedLayout() {
     return (
       <Fragment>
-        <orama-embed ref={(el) => (this.modalRef = el)}>{this.getInnerContent()}</orama-embed>
+        <orama-embed ref={(el) => (this.wrapperRef = el)}>{this.getInnerContent()}</orama-embed>
         {this.getOuterContent()}
       </Fragment>
     )
