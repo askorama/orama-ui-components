@@ -6,10 +6,6 @@ import { Component, h, Prop, State, Listen, Element, Event, type EventEmitter, W
   scoped: true,
 })
 export class OramaEmbed {
-  @State() activeElement: HTMLElement
-
-  @Element() el: HTMLElement
-
   render() {
     return (
       <div class="embed">
