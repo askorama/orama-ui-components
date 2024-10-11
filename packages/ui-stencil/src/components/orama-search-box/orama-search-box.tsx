@@ -1,16 +1,15 @@
 import { Component, Prop, Watch, h, Listen, Element, State, Fragment, Event, type EventEmitter } from '@stencil/core'
-import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
-import type { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext, globalStore } from '@/context/GlobalContext'
 import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
 import { windowWidthListener } from '@/services/WindowService'
+import { arrowKeysNavigation, generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/utils/utils'
+import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
+import type { OramaClient } from '@oramacloud/client'
+import type { CloudIndexConfig, ColorScheme, ResultMap, SourcesMap } from '@/types'
 import type { TThemeOverrides } from '@/config/theme'
-import { generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/utils/utils'
-import type { ColorScheme, ResultMap, SourcesMap } from '@/types'
-import type { CloudIndexConfig } from '@/types'
 
 @Component({
   tag: 'orama-search-box',
@@ -93,17 +92,8 @@ export class SearchBox {
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
     if (this.open && ['ArrowDown', 'ArrowUp'].includes(ev.key)) {
-      this.handleArrowNavigation(ev)
+      arrowKeysNavigation(this.wrapperRef, ev)
     }
-  }
-
-  private closeSearchbox = () => {
-    globalContext.open = false
-    this.open = false
-  }
-
-  private onChatButtonClick = () => {
-    globalContext.currentTask = 'chat'
   }
 
   updateTheme() {
@@ -156,11 +146,6 @@ export class SearchBox {
     this.startServices()
   }
 
-  private onPrefersColorSchemeChange = (event) => {
-    this.systemScheme = event.matches ? 'dark' : 'light'
-    this.updateTheme()
-  }
-
   connectedCallback() {
     this.windowWidth = windowWidthListener.width
     globalContext.open = this.open
@@ -181,40 +166,6 @@ export class SearchBox {
   disconnectedCallback() {
     windowWidthListener.removeEventListener('widthChange', this.updateWindowWidth)
     this.schemaQuery?.removeEventListener('change', this.onPrefersColorSchemeChange)
-  }
-
-  private updateWindowWidth = (event: CustomEvent) => {
-    this.windowWidth = event.detail
-  }
-
-  handleArrowNavigation(event: KeyboardEvent) {
-    if (globalContext.currentTask !== 'search') return
-    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
-
-    event.stopPropagation()
-    event.preventDefault()
-
-    const focusableElements = this.wrapperRef?.querySelectorAll('[focus-on-arrow-nav]')
-
-    let focusableArray = Array.from(focusableElements) as HTMLElement[]
-    focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)
-
-    const firstFocusableElement = focusableArray[0]
-    const lastFocusableElement = focusableArray[focusableArray.length - 1]
-
-    const focusedElement = this.wrapperRef.querySelector(':focus') as HTMLElement
-    const focusedIndex = focusableArray.indexOf(focusedElement)
-
-    let nextFocusableElement: HTMLElement
-
-    if (event.key === 'ArrowDown') {
-      nextFocusableElement =
-        focusedIndex === focusableArray.length - 1 ? firstFocusableElement : focusableArray[focusedIndex + 1]
-      nextFocusableElement?.focus()
-    } else if (event.key === 'ArrowUp') {
-      nextFocusableElement = focusedIndex === 0 ? lastFocusableElement : focusableArray[focusedIndex - 1]
-      nextFocusableElement?.focus()
-    }
   }
 
   getSearchBox() {
@@ -339,5 +290,23 @@ export class SearchBox {
     }
 
     return this.layout === 'modal' ? this.getModalLayout() : this.getEmbedLayout()
+  }
+
+  private closeSearchbox = () => {
+    globalContext.open = false
+    this.open = false
+  }
+
+  private onChatButtonClick = () => {
+    globalContext.currentTask = 'chat'
+  }
+
+  private onPrefersColorSchemeChange = (event) => {
+    this.systemScheme = event.matches ? 'dark' : 'light'
+    this.updateTheme()
+  }
+
+  private updateWindowWidth = (event: CustomEvent) => {
+    this.windowWidth = event.detail
   }
 }
