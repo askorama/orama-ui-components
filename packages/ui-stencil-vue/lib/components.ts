@@ -45,7 +45,8 @@ export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('ora
   'linksRel',
   'placeholder',
   'sourcesMap',
-  'suggestions'
+  'suggestions',
+  'autoFocus'
 ]);
 
 
