@@ -12,6 +12,8 @@
 | `autoFocus`      | `auto-focus`      |             | `boolean`                                                  | `true`      |
 | `clientInstance` | --                |             | `OramaClient`                                              | `undefined` |
 | `index`          | --                |             | `{ api_key: string; endpoint: string; }`                   | `undefined` |
+| `linksRel`       | `links-rel`       |             | `string`                                                   | `undefined` |
+| `linksTarget`    | `links-target`    |             | `string`                                                   | `undefined` |
 | `placeholder`    | `placeholder`     |             | `string`                                                   | `undefined` |
 | `sourceBaseUrl`  | `source-base-url` |             | `string`                                                   | `undefined` |
 | `sourcesMap`     | --                |             | `{ title?: string; description?: string; path?: string; }` | `undefined` |

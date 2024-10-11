@@ -16,6 +16,8 @@ export class OramaSearch {
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[] = []
   @Prop() sourceBaseUrl?: string
+  @Prop() linksTarget?: string
+  @Prop() linksRel?: string
   @Prop() disableChat?: boolean = false
 
   @State() searchValue = ''
@@ -32,7 +34,7 @@ export class OramaSearch {
 
   @Listen('oramaItemClick')
   handleOramaItemClick(event: CustomEvent<SearchResult>) {
-    console.log(`${event.detail.title} clicked`)
+    // console.log(`Item clicked: ${event.detail.title}`, event.detail)
   }
 
   onFacetClickHandler = (facetName: string) => {
@@ -41,10 +43,6 @@ export class OramaSearch {
 
   onInputChange = (e: Event) => {
     this.searchValue = (e.target as HTMLInputElement).value
-  }
-
-  onChatButtonClick = () => {
-    globalContext.currentTask = 'chat'
   }
 
   handleSubmit = (e: Event) => {
@@ -63,6 +61,7 @@ export class OramaSearch {
       <Host>
         <form onSubmit={this.handleSubmit} class="search-form">
           <orama-input
+            focus-on-arrow-nav
             autoFocus={this.focusInput}
             type="search"
             onInput={this.onInputChange}
@@ -73,15 +72,7 @@ export class OramaSearch {
               this.searchValue = ''
             }}
           />
-          {this.disableChat ? null : (
-            <orama-chat-button
-              active={!!this.searchValue}
-              label={`${this.searchValue ? `${this.searchValue} - ` : ''}Get a summary`}
-              class="chat-btn"
-              onClick={this.onChatButtonClick}
-              onKeyPress={this.onChatButtonClick}
-            />
-          )}
+          <slot name="summary" />
         </form>
         <div class="result-wrapper">
           <orama-facets
@@ -96,6 +87,8 @@ export class OramaSearch {
               chatContext.chatService?.sendQuestion(term)
             }}
             sourceBaseUrl={this.sourceBaseUrl}
+            linksTarget={this.linksTarget}
+            linksRel={this.linksRel}
             sections={searchState.results}
             searchTerm={this.searchValue}
             loading={searchState.loading}

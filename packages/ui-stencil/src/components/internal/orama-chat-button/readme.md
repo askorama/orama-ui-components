@@ -19,12 +19,12 @@
 
 ### Used by
 
- - [orama-search](../orama-search)
+ - [orama-search-box](../../orama-search-box)
 
 ### Graph
 ```mermaid
 graph TD;
-  orama-search --> orama-chat-button
+  orama-search-box --> orama-chat-button
   style orama-chat-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

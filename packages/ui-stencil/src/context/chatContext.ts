@@ -40,6 +40,8 @@ const { state: chatContext, ...chatStore } = createStore({
   chatService: null as ChatService | null,
   interactions: [] as TChatInteraction[],
   sourceBaseURL: '' as string,
+  linksTarget: '_blank' as string,
+  linksRel: 'noopener noreferrer' as string,
   sourcesMap: {
     title: 'title',
     description: 'description',

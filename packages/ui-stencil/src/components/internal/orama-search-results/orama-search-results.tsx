@@ -17,6 +17,8 @@ export class SearchResults {
   @Element() el: HTMLUListElement
   @Event() oramaItemClick: EventEmitter<SearchResult>
   @Prop() sourceBaseUrl?: string
+  @Prop() linksTarget?: string = '_blank'
+  @Prop() linksRel?: string = 'noopener noreferrer'
   @Prop() sections: SearchResultBySection[] = []
   @Prop() suggestions?: string[] = []
   @Prop() searchTerm: SearchResultsProps['searchTerm']
@@ -27,10 +29,16 @@ export class SearchResults {
   handleItemClick = (item: SearchResult) => {
     if (item?.path) {
       this.oramaItemClick.emit(item)
-      window.location.href = this.sourceBaseUrl ? `${this.sourceBaseUrl}${item.path}` : item.path
     } else {
       throw new Error('No path found')
     }
+  }
+
+  getItemLinkUrl = (item: SearchResult) => {
+    if (item?.path) {
+      return this.sourceBaseUrl ? `${this.sourceBaseUrl}${item.path}` : item.path
+    }
+    return '#'
   }
 
   render() {
@@ -84,7 +92,15 @@ export class SearchResults {
               <ul class="list section-item-list">
                 {section.items.map((result) => (
                   <li class="list-item" key={result.id}>
-                    <button type="button" class="list-item-button" onClick={() => this.handleItemClick(result)}>
+                    <a
+                      focus-on-arrow-nav
+                      href={`${this.sourceBaseUrl}${result.path}`}
+                      class="list-item-button"
+                      target={this.linksTarget}
+                      rel={this.linksRel}
+                      id={`search-result-${result.id}`}
+                      onClick={() => this.handleItemClick(result)}
+                    >
                       <ph-files size="20px" />
                       <div>
                         <orama-text as="h3" styledAs="p">
@@ -94,7 +110,7 @@ export class SearchResults {
                           {result.description}
                         </orama-text>
                       </div>
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>

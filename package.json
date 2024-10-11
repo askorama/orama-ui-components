@@ -3,7 +3,7 @@
   "name": "stencil-design-system",
   "version": "0.0.28",
   "scripts": {
-    "build": "turbo run build",
+    "build": "pnpm convert-scss-to-js && turbo run build",
     "build:storybook": "turbo run build --filter=storybook",
     "clean": "turbo run clean",
     "dev": "turbo run dev --filter=@orama/wc-components --filter=storybook",
