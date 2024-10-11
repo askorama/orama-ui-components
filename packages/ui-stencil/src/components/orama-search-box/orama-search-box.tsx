@@ -92,13 +92,8 @@ export class SearchBox {
 
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
-    if (this.open) {
-      switch (ev.key) {
-        case 'ArrowDown':
-        case 'ArrowUp':
-          this.handleArrowNavigation(ev)
-          break
-      }
+    if (this.open && ['ArrowDown', 'ArrowUp'].includes(ev.key)) {
+      this.handleArrowNavigation(ev)
     }
   }
 
@@ -308,6 +303,32 @@ export class SearchBox {
     ) : null
   }
 
+  getModalLayout() {
+    return (
+      <Fragment>
+        <orama-modal
+          ref={(el) => (this.modalRef = el)}
+          open={globalContext.open}
+          class="modal"
+          mainTitle="Start your search"
+          closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
+        >
+          {this.getInnerContent()}
+        </orama-modal>
+        {this.getOuterContent()}
+      </Fragment>
+    )
+  }
+
+  getEmbedLayout() {
+    return (
+      <Fragment>
+        <orama-embed ref={(el) => (this.modalRef = el)}>{this.getInnerContent()}</orama-embed>
+        {this.getOuterContent()}
+      </Fragment>
+    )
+  }
+
   render() {
     if (!searchState.searchService) {
       return <orama-text as="p">Unable to initialize search service</orama-text>
@@ -317,20 +338,6 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
-    return (
-      <Fragment>
-        <orama-modal
-          ref={(el) => (this.modalRef = el)}
-          open={globalContext.open}
-          class="modal"
-          mainTitle="Start your search"
-          closeOnEscape={globalContext.currentTask === 'search' || this.windowWidth <= 1024}
-          layout={this.layout}
-        >
-          {this.getInnerContent()}
-        </orama-modal>
-        {this.getOuterContent()}
-      </Fragment>
-    )
+    return this.layout === 'modal' ? this.getModalLayout() : this.getEmbedLayout()
   }
 }

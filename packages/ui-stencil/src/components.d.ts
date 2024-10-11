@@ -83,6 +83,8 @@ export namespace Components {
     }
     interface OramaDotsLoader {
     }
+    interface OramaEmbed {
+    }
     interface OramaFacets {
         "facetClicked": (facetName: string) => void;
         "facets": Facet[];
@@ -111,7 +113,6 @@ export namespace Components {
     interface OramaModal {
         "closeOnEscape": boolean;
         "closeOnOutsideClick": boolean;
-        "layout"?: 'modal' | 'embed';
         "mainTitle": string;
         "open": boolean;
     }
@@ -290,6 +291,12 @@ declare global {
         prototype: HTMLOramaDotsLoaderElement;
         new (): HTMLOramaDotsLoaderElement;
     };
+    interface HTMLOramaEmbedElement extends Components.OramaEmbed, HTMLStencilElement {
+    }
+    var HTMLOramaEmbedElement: {
+        prototype: HTMLOramaEmbedElement;
+        new (): HTMLOramaEmbedElement;
+    };
     interface HTMLOramaFacetsElement extends Components.OramaFacets, HTMLStencilElement {
     }
     var HTMLOramaFacetsElement: {
@@ -453,6 +460,7 @@ declare global {
         "orama-chat-suggestions": HTMLOramaChatSuggestionsElement;
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
         "orama-dots-loader": HTMLOramaDotsLoaderElement;
+        "orama-embed": HTMLOramaEmbedElement;
         "orama-facets": HTMLOramaFacetsElement;
         "orama-footer": HTMLOramaFooterElement;
         "orama-input": HTMLOramaInputElement;
@@ -525,6 +533,8 @@ declare namespace LocalJSX {
     }
     interface OramaDotsLoader {
     }
+    interface OramaEmbed {
+    }
     interface OramaFacets {
         "facetClicked"?: (facetName: string) => void;
         "facets"?: Facet[];
@@ -554,7 +564,6 @@ declare namespace LocalJSX {
     interface OramaModal {
         "closeOnEscape"?: boolean;
         "closeOnOutsideClick"?: boolean;
-        "layout"?: 'modal' | 'embed';
         "mainTitle"?: string;
         "onModalStatusChanged"?: (event: OramaModalCustomEvent<ModalStatus>) => void;
         "open"?: boolean;
@@ -673,6 +682,7 @@ declare namespace LocalJSX {
         "orama-chat-suggestions": OramaChatSuggestions;
         "orama-chat-user-message": OramaChatUserMessage;
         "orama-dots-loader": OramaDotsLoader;
+        "orama-embed": OramaEmbed;
         "orama-facets": OramaFacets;
         "orama-footer": OramaFooter;
         "orama-input": OramaInput;
@@ -704,6 +714,7 @@ declare module "@stencil/core" {
             "orama-chat-suggestions": LocalJSX.OramaChatSuggestions & JSXBase.HTMLAttributes<HTMLOramaChatSuggestionsElement>;
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
             "orama-dots-loader": LocalJSX.OramaDotsLoader & JSXBase.HTMLAttributes<HTMLOramaDotsLoaderElement>;
+            "orama-embed": LocalJSX.OramaEmbed & JSXBase.HTMLAttributes<HTMLOramaEmbedElement>;
             "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
             "orama-footer": LocalJSX.OramaFooter & JSXBase.HTMLAttributes<HTMLOramaFooterElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;

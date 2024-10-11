@@ -14,10 +14,9 @@ export class OramaModal {
   @Prop() closeOnEscape = true
   @Prop() closeOnOutsideClick = true
   @Prop() mainTitle = ''
-  @Prop() layout?: 'modal' | 'embed' = 'modal'
 
   @State() activeElement: HTMLElement
-  @State() modalIsOpen = this.layout === 'embed' ? true : this.open
+  @State() modalIsOpen = this.open
 
   @Event() modalStatusChanged: EventEmitter<ModalStatus>
 
@@ -37,7 +36,7 @@ export class OramaModal {
           this.trapFocus(ev)
           break
         case 'Escape':
-          if (this.closeOnEscape && this.layout === 'modal') {
+          if (this.closeOnEscape) {
             ev.preventDefault()
             ev.stopPropagation()
             this.closeModal()
@@ -132,7 +131,7 @@ export class OramaModal {
     }
   }
 
-  renderModal() {
+  render() {
     return (
       <div
         class={`modal ${this.modalIsOpen ? 'open' : ''}`}
@@ -154,17 +153,5 @@ export class OramaModal {
         </div>
       </div>
     )
-  }
-
-  renderEmbed() {
-    return (
-      <div class="embed">
-        <slot />
-      </div>
-    )
-  }
-
-  render() {
-    return this.layout === 'modal' ? this.renderModal() : this.renderEmbed()
   }
 }

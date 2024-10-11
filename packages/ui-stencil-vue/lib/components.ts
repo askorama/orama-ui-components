@@ -78,6 +78,9 @@ export const OramaChatUserMessage = /*@__PURE__*/ defineContainer<JSX.OramaChatU
 export const OramaDotsLoader = /*@__PURE__*/ defineContainer<JSX.OramaDotsLoader>('orama-dots-loader', undefined);
 
 
+export const OramaEmbed = /*@__PURE__*/ defineContainer<JSX.OramaEmbed>('orama-embed', undefined);
+
+
 export const OramaFacets = /*@__PURE__*/ defineContainer<JSX.OramaFacets>('orama-facets', undefined, [
   'facets',
   'selectedFacet',
@@ -119,7 +122,6 @@ export const OramaModal = /*@__PURE__*/ defineContainer<JSX.OramaModal>('orama-m
   'closeOnEscape',
   'closeOnOutsideClick',
   'mainTitle',
-  'layout',
   'modalStatusChanged'
 ]);
 
