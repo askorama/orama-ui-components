@@ -20,6 +20,9 @@
 .logo-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: var(--spacing-s, $spacing-s);
+  text-decoration: none;
 
   &:focus-visible {
     outline: none;

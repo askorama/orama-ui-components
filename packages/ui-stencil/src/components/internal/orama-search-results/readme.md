@@ -5,15 +5,17 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type                      | Default     |
-| --------------- | ----------------- | ----------- | ------------------------- | ----------- |
-| `error`         | `error`           |             | `boolean`                 | `false`     |
-| `loading`       | `loading`         |             | `boolean`                 | `false`     |
-| `searchTerm`    | `search-term`     |             | `string`                  | `undefined` |
-| `sections`      | --                |             | `SearchResultBySection[]` | `[]`        |
-| `setChatTerm`   | --                |             | `(term: string) => void`  | `undefined` |
-| `sourceBaseUrl` | `source-base-url` |             | `string`                  | `undefined` |
-| `suggestions`   | --                |             | `string[]`                | `[]`        |
+| Property        | Attribute         | Description | Type                      | Default                 |
+| --------------- | ----------------- | ----------- | ------------------------- | ----------------------- |
+| `error`         | `error`           |             | `boolean`                 | `false`                 |
+| `linksRel`      | `links-rel`       |             | `string`                  | `'noopener noreferrer'` |
+| `linksTarget`   | `links-target`    |             | `string`                  | `'_blank'`              |
+| `loading`       | `loading`         |             | `boolean`                 | `false`                 |
+| `searchTerm`    | `search-term`     |             | `string`                  | `undefined`             |
+| `sections`      | --                |             | `SearchResultBySection[]` | `[]`                    |
+| `setChatTerm`   | --                |             | `(term: string) => void`  | `undefined`             |
+| `sourceBaseUrl` | `source-base-url` |             | `string`                  | `undefined`             |
+| `suggestions`   | --                |             | `string[]`                | `[]`                    |
 
 
 ## Events

@@ -1,6 +1,6 @@
-import { Component, Host, Prop, State, Watch, h } from '@stencil/core'
+import { Component, Host, Listen, Prop, State, Watch, h } from '@stencil/core'
 import { chatContext, chatStore, TAnswerStatus } from '@/context/chatContext'
-import type { SourcesMap } from '@/types'
+import type { SearchResult, SourcesMap } from '@/types'
 import '@phosphor-icons/webcomponents/dist/icons/PhPaperPlaneTilt.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhStopCircle.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhArrowDown.mjs'
@@ -14,6 +14,8 @@ const BOTTOM_THRESHOLD = 1
 export class OramaChat {
   @Prop() placeholder?: string = 'Ask me anything'
   @Prop() sourceBaseUrl?: string = ''
+  @Prop() linksTarget?: string
+  @Prop() linksRel?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() showClearChat?: boolean = true
   @Prop() defaultTerm?: string
@@ -22,6 +24,11 @@ export class OramaChat {
 
   @State() inputValue = ''
   @State() showGoToBottomButton = false
+
+  @Listen('sourceItemClick')
+  handleSourceItemClick(event: CustomEvent<SearchResult>) {
+    // console.log(`Source item clicked: ${event.detail.title}`, event.detail)
+  }
 
   @Watch('defaultTerm')
   handleDefaultTermChange() {
@@ -146,6 +153,8 @@ export class OramaChat {
       ...chatContext.sourcesMap,
       ...this.sourcesMap,
     }
+    chatContext.linksTarget = this.linksTarget
+    chatContext.linksRel = this.linksRel
   }
 
   componentWillLoad() {

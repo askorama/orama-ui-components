@@ -1,19 +1,15 @@
 import { Component, Prop, Watch, h, Listen, Element, State, Fragment, Event, type EventEmitter } from '@stencil/core'
-import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
-import type { OramaClient } from '@oramacloud/client'
 import { searchState } from '@/context/searchContext'
 import { chatContext } from '@/context/chatContext'
 import { globalContext, globalStore } from '@/context/GlobalContext'
 import { ChatService } from '@/services/ChatService'
 import { SearchService } from '@/services/SearchService'
 import { windowWidthListener } from '@/services/WindowService'
+import { arrowKeysNavigation, generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/utils/utils'
+import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
+import type { OramaClient } from '@oramacloud/client'
+import type { CloudIndexConfig, ColorScheme, ResultMap, SourcesMap } from '@/types'
 import type { TThemeOverrides } from '@/config/theme'
-import { generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/utils/utils'
-import type { ColorScheme, ResultMap, SourcesMap } from '@/types'
-import type { CloudIndexConfig } from '@/types'
-
-// TODO: AI components should be lazyly loaded. In case of Disable AI flag, it should not be loaded at all
-// https://linear.app/oramasearch/issue/ORM-1824/ai-components-should-be-lazyly-loaded-in-case-of-disable-ai-flag-they
 
 @Component({
   tag: 'orama-search-box',
@@ -31,6 +27,8 @@ export class SearchBox {
   @Prop() facetProperty?: string
   @Prop() resultMap?: Partial<ResultMap> = {}
   @Prop() sourceBaseUrl?: string
+  @Prop() linksTarget?: string
+  @Prop() linksRel?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() disableChat?: boolean = false
   @Prop() layout?: 'modal' | 'embed' = 'modal'
@@ -51,7 +49,7 @@ export class SearchBox {
     id: HTMLElement
   }>
 
-  modalRef!: HTMLElement
+  wrapperRef!: HTMLElement
 
   schemaQuery: MediaQueryList
 
@@ -81,22 +79,9 @@ export class SearchBox {
     searchState.searchParams = newValue
   }
 
-  @Listen('oramaItemClick')
-  handleItemClick(event: CustomEvent) {
-    // TODO: manage item click
-    console.log('Item clicked', event.detail)
-  }
-
-  @Listen('keydown', { target: 'document' })
-  handleCloseOnEsc(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
-      this.closeSearchbox()
-    }
-  }
-
   @Listen('modalStatusChanged')
   modalStatusChangedHandler(event: CustomEvent<{ open: boolean; id: HTMLElement }>) {
-    if (event.detail.id === this.modalRef) {
+    if (event.detail.id === this.wrapperRef) {
       if (!event.detail.open) {
         globalContext.open = false
         this.open = false
@@ -104,9 +89,11 @@ export class SearchBox {
     }
   }
 
-  private closeSearchbox = () => {
-    globalContext.open = false
-    this.open = false
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(ev: KeyboardEvent) {
+    if (this.open && ['ArrowDown', 'ArrowUp'].includes(ev.key)) {
+      arrowKeysNavigation(this.wrapperRef, ev)
+    }
   }
 
   updateTheme() {
@@ -159,11 +146,6 @@ export class SearchBox {
     this.startServices()
   }
 
-  private onPrefersColorSchemeChange = (event) => {
-    this.systemScheme = event.matches ? 'dark' : 'light'
-    this.updateTheme()
-  }
-
   connectedCallback() {
     this.windowWidth = windowWidthListener.width
     globalContext.open = this.open
@@ -186,10 +168,6 @@ export class SearchBox {
     this.schemaQuery?.removeEventListener('change', this.onPrefersColorSchemeChange)
   }
 
-  private updateWindowWidth = (event: CustomEvent) => {
-    this.windowWidth = event.detail
-  }
-
   getSearchBox() {
     return (
       <Fragment>
@@ -204,9 +182,22 @@ export class SearchBox {
           placeholder={this?.searchPlaceholder || 'Search...'}
           focusInput={globalContext.currentTask === 'search'}
           sourceBaseUrl={this.sourceBaseUrl}
+          linksTarget={this.linksTarget}
+          linksRel={this.linksRel}
           disableChat={this.disableChat}
           suggestions={this.suggestions}
-        />
+        >
+          {this.windowWidth > 1024 && !this.disableChat && (
+            <orama-chat-button
+              slot="summary"
+              focus-on-arrow-nav
+              active={!!globalContext.currentTerm}
+              label={`${globalContext.currentTerm ? `${globalContext.currentTerm} - ` : ''}Get a summary`}
+              onClick={this.onChatButtonClick}
+              onKeyPress={this.onChatButtonClick}
+            />
+          )}
+        </orama-search>
       </Fragment>
     )
   }
@@ -221,27 +212,11 @@ export class SearchBox {
           focusInput={globalContext.currentTask === 'chat' || chatContext.interactions.length === 0}
           placeholder={this?.chatPlaceholder || this.placeholder}
           sourceBaseUrl={this.sourceBaseUrl}
+          linksTarget={this.linksTarget}
+          linksRel={this.linksRel}
           sourcesMap={this.sourcesMap}
           suggestions={this.suggestions}
         />
-      </Fragment>
-    )
-  }
-
-  getSlidingPanel(options = { withBackdrop: false }) {
-    return (
-      <Fragment>
-        {this.windowWidth > 1024 && (
-          <orama-sliding-panel
-            open={globalContext.currentTask === 'chat'}
-            backdrop={options.withBackdrop}
-            closed={() => {
-              globalContext.currentTask = 'search'
-            }}
-          >
-            {this.getChatBox()}
-          </orama-sliding-panel>
-        )}
       </Fragment>
     )
   }
@@ -252,6 +227,7 @@ export class SearchBox {
         {this.disableChat ? null : (
           <orama-navigation-bar
             handleClose={this.closeSearchbox}
+            showBackButton={this.layout !== 'embed'}
             showChatActions={globalContext.currentTask === 'chat'}
           />
         )}
@@ -264,11 +240,25 @@ export class SearchBox {
     )
   }
 
+  getOuterContent() {
+    return this.windowWidth > 1024 ? (
+      <orama-sliding-panel
+        open={globalContext.currentTask === 'chat'}
+        backdrop={this.layout === 'embed'}
+        closed={() => {
+          globalContext.currentTask = 'search'
+        }}
+      >
+        {this.getChatBox()}
+      </orama-sliding-panel>
+    ) : null
+  }
+
   getModalLayout() {
     return (
       <Fragment>
         <orama-modal
-          ref={(el) => (this.modalRef = el)}
+          ref={(el) => (this.wrapperRef = el)}
           open={globalContext.open}
           class="modal"
           mainTitle="Start your search"
@@ -276,7 +266,7 @@ export class SearchBox {
         >
           {this.getInnerContent()}
         </orama-modal>
-        {this.getSlidingPanel()}
+        {this.getOuterContent()}
       </Fragment>
     )
   }
@@ -284,8 +274,8 @@ export class SearchBox {
   getEmbedLayout() {
     return (
       <Fragment>
-        <div class="embed">{this.getInnerContent()}</div>
-        {this.getSlidingPanel({ withBackdrop: true })}
+        <orama-embed ref={(el) => (this.wrapperRef = el)}>{this.getInnerContent()}</orama-embed>
+        {this.getOuterContent()}
       </Fragment>
     )
   }
@@ -299,6 +289,24 @@ export class SearchBox {
       return <orama-text as="p">Unable to initialize chat service</orama-text>
     }
 
-    return this.layout === 'embed' ? this.getEmbedLayout() : this.getModalLayout()
+    return this.layout === 'modal' ? this.getModalLayout() : this.getEmbedLayout()
+  }
+
+  private closeSearchbox = () => {
+    globalContext.open = false
+    this.open = false
+  }
+
+  private onChatButtonClick = () => {
+    globalContext.currentTask = 'chat'
+  }
+
+  private onPrefersColorSchemeChange = (event) => {
+    this.systemScheme = event.matches ? 'dark' : 'light'
+    this.updateTheme()
+  }
+
+  private updateWindowWidth = (event: CustomEvent) => {
+    this.windowWidth = event.detail
   }
 }

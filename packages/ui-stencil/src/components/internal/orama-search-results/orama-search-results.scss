@@ -40,6 +40,8 @@
 }
 
 .list-item-button {
+  position: relative;
+  text-decoration: none;
   display: flex;
   gap: var(--spacing-m, $spacing-m);
   align-items: center;
@@ -48,7 +50,6 @@
   background-color: var(--background-color-secondary, background-color('secondary'));
   border: 1px solid transparent;
   text-align: left;
-  width: 100%;
   font-family: unset;
   cursor: pointer;
   transition: background-color 0.2s;

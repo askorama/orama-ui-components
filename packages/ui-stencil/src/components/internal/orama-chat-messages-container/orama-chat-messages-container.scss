@@ -17,6 +17,7 @@ orama-chat-messages-container {
   flex-direction: column;
   margin: var(--spacing-l, $spacing-l) 0;
   gap: var(--spacing-xl, $spacing-xl);
+  overflow: hidden;
 }
 
 .suggestions-wrapper {

@@ -42,6 +42,8 @@ export namespace Components {
     interface OramaChat {
         "defaultTerm"?: string;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -54,6 +56,8 @@ export namespace Components {
     interface OramaChatBox {
         "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
@@ -78,6 +82,8 @@ export namespace Components {
         "interaction": TChatInteraction;
     }
     interface OramaDotsLoader {
+    }
+    interface OramaEmbed {
     }
     interface OramaFacets {
         "facetClicked": (facetName: string) => void;
@@ -112,11 +118,14 @@ export namespace Components {
     }
     interface OramaNavigationBar {
         "handleClose": () => void;
+        "showBackButton": boolean;
         "showChatActions": boolean;
     }
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
@@ -129,6 +138,8 @@ export namespace Components {
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "layout"?: 'modal' | 'embed';
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "open": boolean;
         "placeholder"?: string;
         "resultMap"?: Partial<ResultMap>;
@@ -146,6 +157,8 @@ export namespace Components {
     }
     interface OramaSearchResults {
         "error": boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "loading": boolean;
         "searchTerm": SearchResultsProps['searchTerm'];
         "sections": SearchResultBySection[];
@@ -159,6 +172,8 @@ export namespace Components {
         "open": boolean;
     }
     interface OramaSources {
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "sourceBaseURL"?: string;
         "sources": any;
         "sourcesMap"?: SourcesMap;
@@ -217,6 +232,10 @@ export interface OramaSearchResultsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOramaSearchResultsElement;
 }
+export interface OramaSourcesCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOramaSourcesElement;
+}
 declare global {
     interface HTMLOramaButtonElement extends Components.OramaButton, HTMLStencilElement {
     }
@@ -271,6 +290,12 @@ declare global {
     var HTMLOramaDotsLoaderElement: {
         prototype: HTMLOramaDotsLoaderElement;
         new (): HTMLOramaDotsLoaderElement;
+    };
+    interface HTMLOramaEmbedElement extends Components.OramaEmbed, HTMLStencilElement {
+    }
+    var HTMLOramaEmbedElement: {
+        prototype: HTMLOramaEmbedElement;
+        new (): HTMLOramaEmbedElement;
     };
     interface HTMLOramaFacetsElement extends Components.OramaFacets, HTMLStencilElement {
     }
@@ -390,7 +415,18 @@ declare global {
         prototype: HTMLOramaSlidingPanelElement;
         new (): HTMLOramaSlidingPanelElement;
     };
+    interface HTMLOramaSourcesElementEventMap {
+        "sourceItemClick": SearchResult;
+    }
     interface HTMLOramaSourcesElement extends Components.OramaSources, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOramaSourcesElementEventMap>(type: K, listener: (this: HTMLOramaSourcesElement, ev: OramaSourcesCustomEvent<HTMLOramaSourcesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOramaSourcesElementEventMap>(type: K, listener: (this: HTMLOramaSourcesElement, ev: OramaSourcesCustomEvent<HTMLOramaSourcesElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOramaSourcesElement: {
         prototype: HTMLOramaSourcesElement;
@@ -424,6 +460,7 @@ declare global {
         "orama-chat-suggestions": HTMLOramaChatSuggestionsElement;
         "orama-chat-user-message": HTMLOramaChatUserMessageElement;
         "orama-dots-loader": HTMLOramaDotsLoaderElement;
+        "orama-embed": HTMLOramaEmbedElement;
         "orama-facets": HTMLOramaFacetsElement;
         "orama-footer": HTMLOramaFooterElement;
         "orama-input": HTMLOramaInputElement;
@@ -455,6 +492,8 @@ declare namespace LocalJSX {
     interface OramaChat {
         "defaultTerm"?: string;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "showClearChat"?: boolean;
         "sourceBaseUrl"?: string;
@@ -467,6 +506,8 @@ declare namespace LocalJSX {
     interface OramaChatBox {
         "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
@@ -491,6 +532,8 @@ declare namespace LocalJSX {
         "interaction"?: TChatInteraction;
     }
     interface OramaDotsLoader {
+    }
+    interface OramaEmbed {
     }
     interface OramaFacets {
         "facetClicked"?: (facetName: string) => void;
@@ -527,11 +570,14 @@ declare namespace LocalJSX {
     }
     interface OramaNavigationBar {
         "handleClose"?: () => void;
+        "showBackButton"?: boolean;
         "showChatActions"?: boolean;
     }
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "placeholder"?: string;
         "sourceBaseUrl"?: string;
         "suggestions"?: string[];
@@ -544,6 +590,8 @@ declare namespace LocalJSX {
         "facetProperty"?: string;
         "index"?: CloudIndexConfig;
         "layout"?: 'modal' | 'embed';
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "onSearchboxClosed"?: (event: OramaSearchBoxCustomEvent<{
     id: HTMLElement
   }>) => void;
@@ -564,6 +612,8 @@ declare namespace LocalJSX {
     }
     interface OramaSearchResults {
         "error"?: boolean;
+        "linksRel"?: string;
+        "linksTarget"?: string;
         "loading"?: boolean;
         "onOramaItemClick"?: (event: OramaSearchResultsCustomEvent<SearchResult>) => void;
         "searchTerm"?: SearchResultsProps['searchTerm'];
@@ -578,6 +628,9 @@ declare namespace LocalJSX {
         "open"?: boolean;
     }
     interface OramaSources {
+        "linksRel"?: string;
+        "linksTarget"?: string;
+        "onSourceItemClick"?: (event: OramaSourcesCustomEvent<SearchResult>) => void;
         "sourceBaseURL"?: string;
         "sources"?: any;
         "sourcesMap"?: SourcesMap;
@@ -629,6 +682,7 @@ declare namespace LocalJSX {
         "orama-chat-suggestions": OramaChatSuggestions;
         "orama-chat-user-message": OramaChatUserMessage;
         "orama-dots-loader": OramaDotsLoader;
+        "orama-embed": OramaEmbed;
         "orama-facets": OramaFacets;
         "orama-footer": OramaFooter;
         "orama-input": OramaInput;
@@ -660,6 +714,7 @@ declare module "@stencil/core" {
             "orama-chat-suggestions": LocalJSX.OramaChatSuggestions & JSXBase.HTMLAttributes<HTMLOramaChatSuggestionsElement>;
             "orama-chat-user-message": LocalJSX.OramaChatUserMessage & JSXBase.HTMLAttributes<HTMLOramaChatUserMessageElement>;
             "orama-dots-loader": LocalJSX.OramaDotsLoader & JSXBase.HTMLAttributes<HTMLOramaDotsLoaderElement>;
+            "orama-embed": LocalJSX.OramaEmbed & JSXBase.HTMLAttributes<HTMLOramaEmbedElement>;
             "orama-facets": LocalJSX.OramaFacets & JSXBase.HTMLAttributes<HTMLOramaFacetsElement>;
             "orama-footer": LocalJSX.OramaFooter & JSXBase.HTMLAttributes<HTMLOramaFooterElement>;
             "orama-input": LocalJSX.OramaInput & JSXBase.HTMLAttributes<HTMLOramaInputElement>;

@@ -1,6 +1,43 @@
 import type { CloudIndexConfig } from '@/types'
 import { OramaClient } from '@oramacloud/client'
 
+/**
+ * Arrow keys navigation for focusable elements within a container
+ *
+ * @param ref HTMLElement - The element that contains the focusable elements
+ * @param event KeyboardEvent - The event that triggered the navigation
+ * @param selector string - The selector for the focusable elements (default: '[focus-on-arrow-nav]')
+ * @returns void
+ */
+export function arrowKeysNavigation(ref: HTMLElement, event: KeyboardEvent, selector = '[focus-on-arrow-nav]') {
+  if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
+
+  event.stopPropagation()
+  event.preventDefault()
+
+  const focusableElements = ref.querySelectorAll(selector)
+
+  let focusableArray = Array.from(focusableElements) as HTMLElement[]
+  focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)
+
+  const firstFocusableElement = focusableArray[0]
+  const lastFocusableElement = focusableArray[focusableArray.length - 1]
+
+  const focusedElement = ref.querySelector(':focus') as HTMLElement
+  const focusedIndex = focusableArray.indexOf(focusedElement)
+
+  let nextFocusableElement: HTMLElement
+
+  if (event.key === 'ArrowDown') {
+    nextFocusableElement =
+      focusedIndex === focusableArray.length - 1 ? firstFocusableElement : focusableArray[focusedIndex + 1]
+    nextFocusableElement?.focus()
+  } else if (event.key === 'ArrowUp') {
+    nextFocusableElement = focusedIndex === 0 ? lastFocusableElement : focusableArray[focusedIndex - 1]
+    nextFocusableElement?.focus()
+  }
+}
+
 export function format(first: string, middle: string, last: string): string {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '')
 }

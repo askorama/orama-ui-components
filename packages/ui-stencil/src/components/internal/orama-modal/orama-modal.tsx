@@ -42,12 +42,6 @@ export class OramaModal {
             this.closeModal()
           }
           break
-        case 'ArrowDown':
-          this.handleArrowNavigation(ev)
-          break
-        case 'ArrowUp':
-          this.handleArrowNavigation(ev)
-          break
       }
     }
   }
@@ -121,9 +115,9 @@ export class OramaModal {
       document.body.style.overflow = 'hidden'
     }
     this.el.addEventListener('click', (event) => {
-      event.stopPropagation()
-      event.preventDefault()
-      if (!this.innerModalRef.contains(event.target as Node)) {
+      if (this.innerModalRef && !this.innerModalRef.contains(event.target as Node)) {
+        event.stopPropagation()
+        event.preventDefault()
         this.closeModal()
       }
     })
@@ -134,37 +128,6 @@ export class OramaModal {
       this.handleFocus()
     } else if (this.activeElement) {
       this.activeElement.focus()
-    }
-  }
-
-  handleArrowNavigation(event: KeyboardEvent) {
-    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return
-
-    event.stopPropagation()
-    event.preventDefault()
-
-    const focusableElements = this.el?.querySelectorAll(
-      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])',
-    )
-
-    let focusableArray = Array.from(focusableElements) as HTMLElement[]
-    focusableArray = focusableArray.filter((element) => element.tabIndex !== -1)
-
-    const firstFocusableElement = focusableArray[0]
-    const lastFocusableElement = focusableArray[focusableArray.length - 1]
-
-    const focusedElement = this.el.querySelector(':focus') as HTMLElement
-    const focusedIndex = focusableArray.indexOf(focusedElement)
-
-    let nextFocusableElement: HTMLElement
-
-    if (event.key === 'ArrowDown') {
-      nextFocusableElement =
-        focusedIndex === focusableArray.length - 1 ? firstFocusableElement : focusableArray[focusedIndex + 1]
-      nextFocusableElement?.focus()
-    } else if (event.key === 'ArrowUp') {
-      nextFocusableElement = focusedIndex === 0 ? lastFocusableElement : focusableArray[focusedIndex - 1]
-      nextFocusableElement?.focus()
     }
   }
 

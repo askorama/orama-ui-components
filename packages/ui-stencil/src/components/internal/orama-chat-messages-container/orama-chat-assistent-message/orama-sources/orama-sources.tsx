@@ -1,5 +1,5 @@
-import type { SourcesMap } from '@/types'
-import { Component, Prop, State, h } from '@stencil/core'
+import type { SourcesMap, SearchResult } from '@/types'
+import { Component, Event, Prop, State, h, type EventEmitter } from '@stencil/core'
 import '@phosphor-icons/webcomponents/dist/icons/PhCaretLeft.mjs'
 import '@phosphor-icons/webcomponents/dist/icons/PhCaretRight.mjs'
 
@@ -15,6 +15,8 @@ export class OramaSources {
   // biome-ignore lint/suspicious/noExplicitAny: Sources can be any shape
   @Prop() sources: any
   @Prop() sourceBaseURL?: string = ''
+  @Prop() linksTarget?: string = '_blank'
+  @Prop() linksRel?: string = 'noopener noreferrer'
   @Prop() sourcesMap?: SourcesMap = {
     title: 'title',
     description: 'description',
@@ -24,6 +26,8 @@ export class OramaSources {
 
   @State() isCarouselScrollAtEnd = false
   @State() isCarouselScrollAtStart = false
+
+  @Event() sourceItemClick: EventEmitter<SearchResult>
 
   getNextItemCarousel(container: HTMLElement, items: HTMLCollectionOf<Element>) {
     for (let i = 0; i < items.length; i++) {
@@ -91,6 +95,14 @@ export class OramaSources {
 
   handleCarouselScroll = () => {
     this.computeCarouselArrowsVisibility()
+  }
+
+  handleItemClick = (item: SearchResult) => {
+    if (item?.path) {
+      this.sourceItemClick.emit(item)
+    } else {
+      throw new Error('No path found')
+    }
   }
 
   computeCarouselArrowsVisibility() {
@@ -173,9 +185,10 @@ export class OramaSources {
                   // TODO: Use a URL object instead
                   href={`${this.sourceBaseURL}${source[this.sourcesMap.path]}`}
                   class="source"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={this.linksTarget}
+                  rel={this.linksRel}
                   id={`source-${index}`}
+                  onClick={() => this.handleItemClick(source)}
                 >
                   <orama-text as="h3" styledAs="span" class="source-title">
                     {source[this.sourcesMap.title]}
