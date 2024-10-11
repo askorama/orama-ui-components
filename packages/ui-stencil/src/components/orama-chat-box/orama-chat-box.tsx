@@ -58,7 +58,7 @@ export class ChatBox {
           suggestions={this.suggestions}
           focusInput={this.autoFocus}
         >
-          <div slot="empty-state">
+          <div slot="chat-empty-state">
             <slot name="empty-state" />
           </div>
         </orama-chat>

@@ -280,7 +280,7 @@ export class OramaChat {
               {/* TODO: Provide a better animation */}
               {!hasInteractions ? (
                 <Fragment>
-                  <slot name="empty-state" />
+                  <slot name="chat-empty-state" />
                   {!!this.suggestions?.length && (
                     <div class="suggestions-wrapper">
                       <orama-chat-suggestions
