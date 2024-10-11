@@ -52,6 +52,7 @@ export namespace Components {
         "interaction": TChatInteraction;
     }
     interface OramaChatBox {
+        "autoFocus": boolean;
         "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
         "placeholder"?: string;
@@ -465,6 +466,7 @@ declare namespace LocalJSX {
         "interaction"?: TChatInteraction;
     }
     interface OramaChatBox {
+        "autoFocus"?: boolean;
         "clientInstance"?: OramaClient;
         "index"?: CloudIndexConfig;
         "placeholder"?: string;

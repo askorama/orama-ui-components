@@ -19,6 +19,7 @@ export class ChatBox {
   @Prop() placeholder?: string
   @Prop() sourcesMap?: SourcesMap
   @Prop() suggestions?: string[]
+  @Prop() autoFocus = true
 
   @State() oramaClient: OramaClient
   @State() componentID = generateRandomID('chat-box')
@@ -53,6 +54,7 @@ export class ChatBox {
           sourceBaseUrl={this.sourceBaseUrl}
           sourcesMap={this.sourcesMap}
           suggestions={this.suggestions}
+          focusInput={this.autoFocus}
         />
       </Host>
     )

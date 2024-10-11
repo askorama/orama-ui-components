@@ -51,7 +51,12 @@ export class OramaChat {
 
   handleFocus = () => {
     if (this.focusInput) {
-      this.textareaRef?.focus()
+      const texteareaEl = this.textareaRef.querySelector('textarea')
+      if (!texteareaEl) return
+      // requestAnimationFrame used to ensure that the focus is set after the textarea is fully rendered
+      requestAnimationFrame(() => {
+        texteareaEl.focus()
+      })
     }
   }
 
@@ -148,13 +153,10 @@ export class OramaChat {
     }
   }
 
-  componentWillLoad() {
-    this.handleFocus()
-  }
-
   componentDidLoad() {
     this.messagesContainerRef.addEventListener('wheel', this.handleWheel)
     this.setSources()
+    this.handleFocus()
 
     this.scrollableContainerResizeObserver = new ResizeObserver(() => {
       this.recalculateGoBoToBottomButton()
@@ -207,6 +209,7 @@ export class OramaChat {
     this.messagesContainerRef.removeEventListener('wheel', this.handleWheel)
     this.scrollableContainerResizeObserver.disconnect()
     this.nonScrollableContainerResizeObserver.disconnect()
+    chatContext.interactions = []
   }
 
   handleSubmit = (e: Event) => {
@@ -248,8 +251,8 @@ export class OramaChat {
     // ? Question: Maybe should be a orama-button variant?
     return (
       <Host>
-        {this.showClearChat && (
-          <div class={{ header: true, hidden: chatContext.interactions?.length === 0 }}>
+        {this.showClearChat && !!chatContext.interactions?.length && (
+          <div class="header">
             <button
               type="button"
               onClick={() => chatContext.chatService.resetChat()}

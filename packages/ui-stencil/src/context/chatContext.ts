@@ -47,10 +47,4 @@ const { state: chatContext, ...chatStore } = createStore({
   } as SourcesMap,
 })
 
-chatStore.onChange('chatService', (chatService) => {
-  if (!chatService?.answerSession) {
-    chatContext.interactions = []
-  }
-})
-
 export { chatContext, chatStore }
