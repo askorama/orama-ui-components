@@ -28,6 +28,11 @@ const demoIndexes: DemoIndexConfig = {
       description: 'content',
       section: 'category',
     },
+    highlight: {
+      caseSensitive: false,
+      HTMLTag: 'b',
+      CSSClass: 'font-bold',
+    },
   },
   recipes: {
     open: true,

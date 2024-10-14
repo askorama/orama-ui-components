@@ -1,5 +1,7 @@
 import { Component, Host, h, Element, Prop, Event, type EventEmitter } from '@stencil/core'
 import type { SearchResult, SearchResultBySection } from '@/types'
+import { Highlight } from '@orama/highlight'
+import type { HighlightOptions } from '@orama/highlight'
 import '@phosphor-icons/webcomponents/dist/icons/PhFiles.mjs'
 import { Icon } from '@/components/internal/icons'
 
@@ -25,6 +27,9 @@ export class SearchResults {
   @Prop() setChatTerm: (term: string) => void
   @Prop() loading = false
   @Prop() error = false
+  @Prop() highlight?: HighlightOptions | false = false
+
+  private highlighter?: Highlight
 
   handleItemClick = (item: SearchResult) => {
     if (item?.path) {
@@ -41,6 +46,16 @@ export class SearchResults {
     return '#'
   }
 
+  getHighlightedText = (text: string) => {
+    return this.highlighter.highlight(text, this.searchTerm)
+  }
+
+  componentDidLoad() {
+    if (this.highlight) {
+      this.highlighter = new Highlight(this.highlight)
+    }
+  }
+
   render() {
     if (!this.searchTerm) {
       return (
@@ -52,7 +67,7 @@ export class SearchResults {
           )}
           <orama-chat-suggestions
             as="list"
-            icon={<Icon name="starFour" size={16} />}
+            icon={<Icon name="starFour" size={16} color="var(--text-color-accent, text-color('accent')" />}
             suggestions={this.suggestions}
             suggestionClicked={(term) => {
               this.setChatTerm(term)
@@ -103,11 +118,21 @@ export class SearchResults {
                     >
                       <ph-files size="20px" />
                       <div>
-                        <orama-text as="h3" styledAs="p">
-                          {result.title}
+                        <orama-text as="h3" styledAs="p" class="result-title collapsed">
+                          {!this.highlight ? (
+                            <span innerHTML={result.title} />
+                          ) : result.title.length > 60 ? (
+                            <span innerHTML={this.getHighlightedText(result.title).trim(60)} />
+                          ) : (
+                            <span innerHTML={this.getHighlightedText(result.title).HTML} />
+                          )}
                         </orama-text>
-                        <orama-text as="p" styledAs="span" class="collapsed" variant="tertiary">
-                          {result.description}
+                        <orama-text as="p" styledAs="span" class="result-description collapsed" variant="tertiary">
+                          {!this.highlight ? (
+                            <span innerHTML={result.description} />
+                          ) : (
+                            <span innerHTML={this.getHighlightedText(result.description).trim(60)} />
+                          )}
                         </orama-text>
                       </div>
                     </a>

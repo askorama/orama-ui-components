@@ -74,7 +74,7 @@ importers:
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^18.0.6
-        version: 18.0.6(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(chokidar@3.6.0)(html-webpack-plugin@5.6.0(webpack@5.91.0(@swc/core@1.6.5(@swc/helpers@0.5.5))(esbuild@0.21.3)))(jest@29.7.0(@types/node@20.14.9)(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(karma@6.4.3)(lightningcss@1.26.0)(ng-packagr@18.0.0(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(tslib@2.6.3)(typescript@5.4.5))(sass-embedded@1.77.8)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(typescript@5.4.5)
+        version: 18.0.6(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(chokidar@3.6.0)(html-webpack-plugin@5.6.0(webpack@5.92.1(@swc/core@1.6.5(@swc/helpers@0.5.5))))(jest@29.7.0(@types/node@20.14.9)(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(karma@6.4.3)(lightningcss@1.26.0)(ng-packagr@18.0.0(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(tslib@2.6.3)(typescript@5.4.5))(sass-embedded@1.77.8)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(typescript@5.4.5)
       '@angular/cli':
         specifier: ~18.0.6
         version: 18.0.6(chokidar@3.6.0)
@@ -278,6 +278,9 @@ importers:
 
   packages/ui-stencil:
     dependencies:
+      '@orama/highlight':
+        specifier: ^0.1.6
+        version: 0.1.6
       '@orama/orama':
         specifier: ^2.0.23
         version: 2.0.23
@@ -417,7 +420,7 @@ importers:
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^18.0.6
-        version: 18.0.6(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(chokidar@3.6.0)(html-webpack-plugin@5.6.0(webpack@5.92.1(@swc/core@1.6.5(@swc/helpers@0.5.5))))(jest@29.7.0(@types/node@20.14.9)(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(karma@6.4.3)(lightningcss@1.26.0)(ng-packagr@18.0.0(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(tslib@2.6.3)(typescript@5.4.5))(sass-embedded@1.77.8)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(typescript@5.4.5)
+        version: 18.0.6(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(chokidar@3.6.0)(html-webpack-plugin@5.6.0(webpack@5.91.0(@swc/core@1.6.5(@swc/helpers@0.5.5))(esbuild@0.21.3)))(jest@29.7.0(@types/node@20.14.9)(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(karma@6.4.3)(lightningcss@1.26.0)(ng-packagr@18.0.0(@angular/compiler-cli@18.0.5(@angular/compiler@18.0.5(@angular/core@18.0.5(rxjs@7.8.1)(zone.js@0.14.7)))(typescript@5.4.5))(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(tslib@2.6.3)(typescript@5.4.5))(sass-embedded@1.77.8)(tailwindcss@3.4.10(ts-node@10.9.2(@swc/core@1.6.5(@swc/helpers@0.5.5))(@types/node@20.14.9)(typescript@5.4.5)))(typescript@5.4.5)
       '@angular/cli':
         specifier: ~18.0.6
         version: 18.0.6(chokidar@3.6.0)
@@ -2885,6 +2888,9 @@ packages:
     resolution: {integrity: sha512-4NBlx5ve0EvZplCRJbESm0MdMbRCw16alP2y76KAAAwzmFFXXrUj5hFwhw55+sSg5qaRRx6sY+s7usKgnNo3TQ==}
     peerDependencies:
       lit: ^2.0.0 || ^3.0.0
+
+  '@orama/highlight@0.1.6':
+    resolution: {integrity: sha512-6Va8paStIoVy5algYDQu1hU0NUCkcrBx7FSt+0Lllp4d2VA1aVi6ACQ7xoINYls8sDZqg6vXf2lj4YDlVamBtw==}
 
   '@orama/orama@2.0.23':
     resolution: {integrity: sha512-hb99eZAKW0KBaTyf8f7iV1yFIniQtkcs3sV5pooQ7mh33DCjTyeB39qUW8IHyBDFSs2rjLoePjW0CROvhb3rkw==}
@@ -13640,6 +13646,10 @@ snapshots:
   '@open-wc/lit-helpers@0.7.0(lit@3.1.4)':
     dependencies:
       lit: 3.1.4
+
+  '@orama/highlight@0.1.6':
+    dependencies:
+      '@orama/orama': 2.0.23
 
   '@orama/orama@2.0.23': {}
 
