@@ -91,7 +91,11 @@ export class SearchBox {
 
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
-    if (this.open && ['ArrowDown', 'ArrowUp'].includes(ev.key)) {
+    if (
+      globalContext.currentTask === 'search' &&
+      ((this.layout === 'modal' && this.open) || this.layout === 'embed') &&
+      ['ArrowDown', 'ArrowUp'].includes(ev.key)
+    ) {
       arrowKeysNavigation(this.wrapperRef, ev)
     }
   }
