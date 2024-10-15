@@ -75,7 +75,7 @@
   width: 300px;
 
   @media (--sm-min) {
-    width: $xs;
+    width: pxToRem(480);
   }
 }
 
