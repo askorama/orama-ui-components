@@ -12,6 +12,7 @@ import { OramaClient } from "@oramacloud/client";
 import { Facet } from "./components/internal/orama-facets/orama-facets";
 import { InputProps } from "./components/internal/orama-input/orama-input";
 import { ModalStatus } from "./components/internal/orama-modal/orama-modal";
+import { HighlightOptions } from "@orama/highlight";
 import { TThemeOverrides } from "./config/theme";
 import { AnyOrama, Orama, SearchParams } from "@orama/orama";
 import { TThemeOverrides as TThemeOverrides1 } from "./components.d";
@@ -24,6 +25,7 @@ export { OramaClient } from "@oramacloud/client";
 export { Facet } from "./components/internal/orama-facets/orama-facets";
 export { InputProps } from "./components/internal/orama-input/orama-input";
 export { ModalStatus } from "./components/internal/orama-modal/orama-modal";
+export { HighlightOptions } from "@orama/highlight";
 export { TThemeOverrides } from "./config/theme";
 export { AnyOrama, Orama, SearchParams } from "@orama/orama";
 export { TThemeOverrides as TThemeOverrides1 } from "./components.d";
@@ -125,6 +127,7 @@ export namespace Components {
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "highlight"?: HighlightOptions | false;
         "linksRel"?: string;
         "linksTarget"?: string;
         "placeholder"?: string;
@@ -137,6 +140,7 @@ export namespace Components {
         "colorScheme"?: ColorScheme;
         "disableChat"?: boolean;
         "facetProperty"?: string;
+        "highlight"?: HighlightOptions | false;
         "index"?: CloudIndexConfig;
         "layout"?: 'modal' | 'embed';
         "linksRel"?: string;
@@ -158,6 +162,7 @@ export namespace Components {
     }
     interface OramaSearchResults {
         "error": boolean;
+        "highlight"?: HighlightOptions | false;
         "linksRel"?: string;
         "linksTarget"?: string;
         "loading": boolean;
@@ -578,6 +583,7 @@ declare namespace LocalJSX {
     interface OramaSearch {
         "disableChat"?: boolean;
         "focusInput"?: boolean;
+        "highlight"?: HighlightOptions | false;
         "linksRel"?: string;
         "linksTarget"?: string;
         "placeholder"?: string;
@@ -590,6 +596,7 @@ declare namespace LocalJSX {
         "colorScheme"?: ColorScheme;
         "disableChat"?: boolean;
         "facetProperty"?: string;
+        "highlight"?: HighlightOptions | false;
         "index"?: CloudIndexConfig;
         "layout"?: 'modal' | 'embed';
         "linksRel"?: string;
@@ -614,6 +621,7 @@ declare namespace LocalJSX {
     }
     interface OramaSearchResults {
         "error"?: boolean;
+        "highlight"?: HighlightOptions | false;
         "linksRel"?: string;
         "linksTarget"?: string;
         "loading"?: boolean;

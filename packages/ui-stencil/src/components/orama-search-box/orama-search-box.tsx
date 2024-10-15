@@ -7,6 +7,7 @@ import { SearchService } from '@/services/SearchService'
 import { windowWidthListener } from '@/services/WindowService'
 import { arrowKeysNavigation, generateRandomID, initOramaClient, validateCloudIndexConfig } from '@/utils/utils'
 import type { AnyOrama, Orama, SearchParams } from '@orama/orama'
+import type { HighlightOptions } from '@orama/highlight'
 import type { OramaClient } from '@oramacloud/client'
 import type { CloudIndexConfig, ColorScheme, ResultMap, SourcesMap } from '@/types'
 import type { TThemeOverrides } from '@/config/theme'
@@ -32,6 +33,7 @@ export class SearchBox {
   @Prop() sourcesMap?: SourcesMap
   @Prop() disableChat?: boolean = false
   @Prop() layout?: 'modal' | 'embed' = 'modal'
+  @Prop() highlight?: HighlightOptions | false = false
 
   // TODO: remove it in favor of dictionary
   @Prop() placeholder?: string
@@ -91,7 +93,11 @@ export class SearchBox {
 
   @Listen('keydown', { target: 'document' })
   handleKeyDown(ev: KeyboardEvent) {
-    if (this.open && ['ArrowDown', 'ArrowUp'].includes(ev.key)) {
+    if (
+      globalContext.currentTask === 'search' &&
+      ((this.layout === 'modal' && this.open) || this.layout === 'embed') &&
+      ['ArrowDown', 'ArrowUp'].includes(ev.key)
+    ) {
       arrowKeysNavigation(this.wrapperRef, ev)
     }
   }
@@ -184,6 +190,7 @@ export class SearchBox {
           sourceBaseUrl={this.sourceBaseUrl}
           linksTarget={this.linksTarget}
           linksRel={this.linksRel}
+          highlight={this.highlight}
           disableChat={this.disableChat}
           suggestions={this.suggestions}
         >

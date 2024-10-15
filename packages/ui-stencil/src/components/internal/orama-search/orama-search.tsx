@@ -3,6 +3,7 @@ import { searchState } from '@/context/searchContext'
 import type { SearchResult } from '@/types'
 import { globalContext } from '@/context/GlobalContext'
 import { chatContext } from '@/context/chatContext'
+import type { HighlightOptions } from '@orama/highlight'
 
 @Component({
   tag: 'orama-search',
@@ -19,6 +20,7 @@ export class OramaSearch {
   @Prop() linksTarget?: string
   @Prop() linksRel?: string
   @Prop() disableChat?: boolean = false
+  @Prop() highlight?: HighlightOptions | false = false
 
   @State() searchValue = ''
   @State() selectedFacet = ''
@@ -91,6 +93,7 @@ export class OramaSearch {
             linksRel={this.linksRel}
             sections={searchState.results}
             searchTerm={this.searchValue}
+            highlight={this.highlight}
             loading={searchState.loading}
             error={searchState.error}
           />

@@ -83,6 +83,7 @@ const Template = ({ preset, chatPlaceholder, searchPlaceholder, colorScheme, dis
       .disableChat=${disableChat}
       .chatPlaceholder=${chatPlaceholder}
       .searchPlaceholder=${searchPlaceholder}
+      .highlight=${preset?.highlight}
     ></orama-search-box></div>`
 }
 
