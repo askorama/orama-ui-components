@@ -73,6 +73,10 @@
 
   // todo: should be based on available space
   width: 300px;
+
+  @media (--sm-min) {
+    width: $xs;
+  }
 }
 
 .result-title {
