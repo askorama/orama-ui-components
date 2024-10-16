@@ -171,34 +171,42 @@ export class OramaSources {
               this.carouselSourceRef = el
             }}
           >
-            {this.sources.map((source, index) => (
-              <div
-                class="source-inner-wrapper"
-                // biome-ignore lint/suspicious/noArrayIndexKey: we do not have id for sources
-                key={`source-${index}`}
-                style={{
-                  position: 'relative',
-                  display: 'flex',
-                }}
-              >
-                <a
-                  // TODO: Use a URL object instead
-                  href={`${this.sourceBaseURL}${source[this.sourcesMap.path]}`}
-                  class="source"
-                  target={this.linksTarget}
-                  rel={this.linksRel}
-                  id={`source-${index}`}
-                  onClick={() => this.handleItemClick(source)}
+            {this.sources.map((source, index) => {
+              const showSources =
+                (!!source[this.sourcesMap.title] && !!source[this.sourcesMap.path]) ||
+                (!!source[this.sourcesMap.description] && !!source[this.sourcesMap.path])
+
+              if (!showSources) return
+
+              return (
+                <div
+                  class="source-inner-wrapper"
+                  // biome-ignore lint/suspicious/noArrayIndexKey: we do not have id for sources
+                  key={`source-${index}`}
+                  style={{
+                    position: 'relative',
+                    display: 'flex',
+                  }}
                 >
-                  <orama-text as="h3" styledAs="span" class="source-title">
-                    {source[this.sourcesMap.title]}
-                  </orama-text>
-                  <orama-text as="p" styledAs="span" class="source-subtitle" variant="tertiary">
-                    {source[this.sourcesMap.description]}
-                  </orama-text>
-                </a>
-              </div>
-            ))}
+                  <a
+                    // TODO: Use a URL object instead
+                    href={`${this.sourceBaseURL}${source[this.sourcesMap.path]}`}
+                    class="source"
+                    target={this.linksTarget}
+                    rel={this.linksRel}
+                    id={`source-${index}`}
+                    onClick={() => this.handleItemClick(source)}
+                  >
+                    <orama-text as="h3" styledAs="span" class="source-title">
+                      {source[this.sourcesMap.title]}
+                    </orama-text>
+                    <orama-text as="p" styledAs="span" class="source-subtitle" variant="tertiary">
+                      {source[this.sourcesMap.description]}
+                    </orama-text>
+                  </a>
+                </div>
+              )
+            })}
           </div>
         </div>
       </host>

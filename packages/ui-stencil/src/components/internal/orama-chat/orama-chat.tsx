@@ -21,6 +21,7 @@ export class OramaChat {
   @Prop() defaultTerm?: string
   @Prop() focusInput?: boolean = false
   @Prop() suggestions?: string[]
+  @Prop() systemPrompts?: string[]
 
   @State() inputValue = ''
   @State() showGoToBottomButton = false
@@ -33,7 +34,7 @@ export class OramaChat {
   @Watch('defaultTerm')
   handleDefaultTermChange() {
     if (this.defaultTerm) {
-      chatContext.chatService?.sendQuestion(this.defaultTerm)
+      chatContext.chatService?.sendQuestion(this.defaultTerm, this.systemPrompts)
     }
   }
 

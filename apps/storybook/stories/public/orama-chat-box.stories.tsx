@@ -72,6 +72,7 @@ const Template = ({ preset }) => {
       sourceBaseUrl=${preset?.sourceBaseUrl}
       .sourcesMap=${preset?.sourcesMap}
       .suggestions=${preset?.suggestions}
+      .systemPrompts=${preset?.systemPrompts}
     ></orama-chat-box>
   `
 }

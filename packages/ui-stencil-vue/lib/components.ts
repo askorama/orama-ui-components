@@ -28,7 +28,8 @@ export const OramaChat = /*@__PURE__*/ defineContainer<JSX.OramaChat>('orama-cha
   'showClearChat',
   'defaultTerm',
   'focusInput',
-  'suggestions'
+  'suggestions',
+  'systemPrompts'
 ]);
 
 
@@ -46,7 +47,8 @@ export const OramaChatBox = /*@__PURE__*/ defineContainer<JSX.OramaChatBox>('ora
   'placeholder',
   'sourcesMap',
   'suggestions',
-  'autoFocus'
+  'autoFocus',
+  'systemPrompts'
 ]);
 
 
