@@ -229,7 +229,7 @@ export class OramaChat {
       throw new Error('Chat Service is not initialized')
     }
 
-    chatContext.chatService.sendQuestion(this.inputValue)
+    chatContext.chatService.sendQuestion(this.inputValue, this.systemPrompts)
     this.inputValue = ''
   }
 
