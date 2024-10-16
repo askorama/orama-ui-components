@@ -18,6 +18,7 @@
 | `sourceBaseUrl`  | `source-base-url` |             | `string`                                                   | `undefined` |
 | `sourcesMap`     | --                |             | `{ title?: string; description?: string; path?: string; }` | `undefined` |
 | `suggestions`    | --                |             | `string[]`                                                 | `undefined` |
+| `systemPrompts`  | --                |             | `string[]`                                                 | `undefined` |
 
 
 ## Dependencies

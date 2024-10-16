@@ -51,6 +51,7 @@ export namespace Components {
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
+        "systemPrompts"?: string[];
     }
     interface OramaChatAssistentMessage {
         "interaction": TChatInteraction;
@@ -65,6 +66,7 @@ export namespace Components {
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
+        "systemPrompts"?: string[];
     }
     interface OramaChatButton {
         "active"?: boolean;
@@ -505,6 +507,7 @@ declare namespace LocalJSX {
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
+        "systemPrompts"?: string[];
     }
     interface OramaChatAssistentMessage {
         "interaction"?: TChatInteraction;
@@ -519,6 +522,7 @@ declare namespace LocalJSX {
         "sourceBaseUrl"?: string;
         "sourcesMap"?: SourcesMap;
         "suggestions"?: string[];
+        "systemPrompts"?: string[];
     }
     interface OramaChatButton {
         "active"?: boolean;

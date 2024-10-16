@@ -10,7 +10,7 @@ export class ChatService {
     this.oramaClient = oramaClient
   }
 
-  sendQuestion = (term: string) => {
+  sendQuestion = (term: string, systemPrompts?: string[]) => {
     if (!this.oramaClient) {
       throw new OramaClientNotInitializedError()
     }
@@ -62,6 +62,10 @@ export class ChatService {
           },
         },
       })
+
+      if (systemPrompts) {
+        this.answerSession.setSystemPromptConfiguration({ systemPrompts })
+      }
     }
 
     // TODO: ABORT/ERROR/STOP should emmit onStateChange event. Keeping the lines below as a reference
