@@ -1,9 +1,9 @@
 import type { AnswerSession as OSSAnswerSession } from '@orama/orama'
-import type { OramaClient, AnswerSession as CloudAnswerSession } from '@oramacloud/client'
-import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
-import { chatContext, TAnswerStatus } from '@/context/chatContext'
+import type { AnswerSession as CloudAnswerSession } from '@oramacloud/client'
 import type { OramaSwitchClient } from '@orama/switch'
 import { Switch } from '@orama/switch'
+import { OramaClientNotInitializedError } from '@/erros/OramaClientNotInitialized'
+import { chatContext, TAnswerStatus } from '@/context/chatContext'
 
 export class ChatService {
   oramaClient: Switch
@@ -65,10 +65,6 @@ export class ChatService {
           },
         },
       })
-
-      if (systemPrompts) {
-        this.answerSession.setSystemPromptConfiguration({ systemPrompts })
-      }
     }
 
     // TODO: ABORT/ERROR/STOP should emmit onStateChange event. Keeping the lines below as a reference
